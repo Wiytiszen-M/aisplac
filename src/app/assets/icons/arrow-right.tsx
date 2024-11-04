@@ -1,0 +1,25 @@
+import * as React from "react";
+
+const ArrowRight: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="76"
+    height="57"
+    fill="none"
+    viewBox="0 0 76 57"
+    {...props}
+  >
+    <path
+      stroke="#fff"
+      strokeWidth="3"
+      d="m50 2 23.251 23.699a4 4 0 0 1 0 5.602L50 55"
+    ></path>
+    <path
+      stroke="#fff"
+      strokeWidth="3"
+      d="m28 2 23.252 23.699a4 4 0 0 1 0 5.602L28 55M2 2l23.252 23.699a4 4 0 0 1 0 5.602L2 55"
+    ></path>
+  </svg>
+);
+
+export default ArrowRight;
