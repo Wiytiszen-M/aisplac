@@ -6,9 +6,9 @@ type Props = {
 
 const ValuesSection = ({ className }: Props) => {
   return (
-    <section className={`flex flex-col gap-44 ${className}`}>
+    <section className={`flex flex-col gap-44  mb-[77px] ${className}`}>
       <div className="relative flex flex-col  items-center gap-3 w-full">
-        <div className="1 relative  w-[487px] h-[487px] rounded rotate-45 top-36 overflow-hidden">
+        <div className="1 relative  w-[487px] h-[487px] rounded-2xl rotate-45 top-36 overflow-hidden">
           <div
             className="3 w-[487px] h-[487px] -rotate-45 transform transition-transform duration-300 scale-150"
             style={{
@@ -24,7 +24,7 @@ const ValuesSection = ({ className }: Props) => {
           </div>
         </div>
         <div className="w-full flex items-center justify-center gap-[220px]">
-          <div className="2  w-[487px] h-[487px] rounded rotate-45 overflow-hidden  ">
+          <div className="2  w-[487px] h-[487px] rounded-2xl rotate-45 overflow-hidden  ">
             <div
               style={{
                 backgroundImage: "url('/confianza.webp')",
@@ -38,7 +38,7 @@ const ValuesSection = ({ className }: Props) => {
               </div>
             </div>
           </div>
-          <div className="3 bg-white w-[487px] h-[487px]  rounded rotate-45 overflow-hidden">
+          <div className="3 bg-white w-[487px] h-[487px]  rounded-2xl rotate-45 overflow-hidden">
             <div
               style={{
                 backgroundImage: "url('/union.webp')",

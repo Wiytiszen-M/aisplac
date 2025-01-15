@@ -12,14 +12,22 @@ import ModularSection from "@/components/modular-section/modular-section";
 export default function Home() {
   return (
     <>
-      <main className="relative min-h-screen w-full  flex flex-col items-center justify-center  text-center ">
-        <div className="absolute top-16 right-44 flex gap-3 justify-end">
+      <main className="relative min-h-screen w-full  flex flex-col items-center justify-center  text-center">
+        <div className="absolute top-16 right-44 flex gap-3 justify-end z-10">
           <ShoppingCart className="w-12 h-12" />
           <Buy className="w-12 h-12" />
           <User className="w-12 h-12" />
         </div>
         <Navigation className="absolute left-0 top-[329px]" />
-        <div className="mb-44 flex flex-col w-full h-full justify-center items-center">
+        <div
+          className="-z-10 relative mb-44 flex flex-col w-full h-full justify-center items-center"
+          style={{
+            backgroundImage: "url(/bg.webp)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           <Image
             src="/logo.svg"
             width={486}
@@ -27,17 +35,23 @@ export default function Home() {
             alt="logo"
             className="mt-[430px]"
           />
-          <div className="flex flex-col justify-center items-center gap-12 mt-[530px] w-[876px]">
+          <div className="flex flex-col justify-center items-center gap-12 mt-[530px] mb-44 w-[876px]">
             <p className="text-3xl mt-[300px]">
               Somos una empresa familiar Pampeana fundada en el año 2000.
               Nuestra misión, desde nuestros inicios, es proporcionar soluciones
               integrales para la construcción en seco, con un enfoque en la
               eficiencia y la sostenibilidad.
             </p>
-            <button className="font-bold bg-[#A9B0C3] py-4 rounded-lg w-[232px] text-[#3E3E5E]">
+            <button className="font-bold bg-[#A9B0C3] py-4 rounded-lg w-[232px]   text-[#3E3E5E]">
               LEER MÁS
             </button>
           </div>
+          <div
+            className="absolute bottom-0 w-full h-full z-10"
+            style={{
+              background: "linear-gradient(transparent 90%, #1c1936 100%)",
+            }}
+          />
         </div>
         <ValuesSection />
         <div
