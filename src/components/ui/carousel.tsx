@@ -5,7 +5,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
 import ArrowRight from "@/app/assets/icons/arrow-right";
-import ArrowLeft from "@/app/assets/icons/arrow-right";
+import ArrowLeft from "@/app/assets/icons/arrow-left";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
