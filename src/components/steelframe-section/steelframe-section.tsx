@@ -41,7 +41,7 @@ const SteelframeSection = ({ className }: steelframeProps) => {
         </div>
         <div className="flex items-center uppercase ">
           <Link
-            href="#"
+            href="/steelframe"
             className="flex items-center gap-4 text-2xl font-bold "
           >
             Ver Productos <ArrowRight className="w-12 h-12" />

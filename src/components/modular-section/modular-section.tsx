@@ -11,12 +11,15 @@ const ModularSection = ({ className }: steelframeProps) => {
   return (
     <section
       className={`relative flex flex-col justify-center items-center min-h-screen w-full bg-cover bg-center bg-no-repeat ${className}`}
-      style={{
-        backgroundImage: "url('/module-bg.png')",
-      }}
     >
       <div
-        className="absolute bottom-0 w-full h-full bg-no-repeat "
+        className="absolute -z-20 flex flex-col justify-center items-center h-full w-full bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/module-bg.png')",
+        }}
+      />
+      <div
+        className="absolute bottom-0 w-full h-full bg-no-repeat bg-contain -z-10"
         style={{
           opacity: 0.1,
           backgroundImage: "url('/module-vector.png')",
@@ -47,9 +50,9 @@ const ModularSection = ({ className }: steelframeProps) => {
             text ever since the 1500s.
           </p>
         </div>
-        <div className="flex items-center uppercase ">
+        <div className="relative z-30 flex items-center uppercase ">
           <Link
-            href="#"
+            href="/modular"
             className="flex items-center gap-4 text-2xl font-bold "
           >
             Ver Productos <ArrowRight className="w-12 h-12" />

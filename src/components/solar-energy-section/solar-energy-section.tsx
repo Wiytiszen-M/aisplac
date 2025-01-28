@@ -1,3 +1,4 @@
+import { Buy, ShoppingCart, User } from "@/app/assets/icons";
 import ArrowRight from "@/app/assets/icons/arrow-right";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +8,7 @@ type SolarEnergyProps = {
   className?: string;
 };
 
-const SolarEnergy = ({ className }: SolarEnergyProps) => {
+const SolarEnergySection = ({ className }: SolarEnergyProps) => {
   return (
     <section
       className={`relative flex flex-col items-center gap-12 w-full h-screen ${className}`}
@@ -44,7 +45,7 @@ const SolarEnergy = ({ className }: SolarEnergyProps) => {
           </p>
           <div className="flex items-center uppercase ">
             <Link
-              href="#"
+              href="/solar-energy"
               className="flex items-center gap-4 text-2xl font-bold mt-10 "
             >
               Ver Productos <ArrowRight className="w-12 h-12" />
@@ -56,4 +57,4 @@ const SolarEnergy = ({ className }: SolarEnergyProps) => {
   );
 };
 
-export default SolarEnergy;
+export default SolarEnergySection;

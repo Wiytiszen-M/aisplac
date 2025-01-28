@@ -1,13 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Buy, Facebook, Instagram, ShoppingCart, User } from "./assets/icons";
-import Footer from "@/components/footer/footer";
-import News from "@/components/news/news";
+import { Buy, ShoppingCart, User } from "./assets/icons";
 import Navigation from "@/components/navigation/navigation";
 import ValuesSection from "@/components/values-section/values-section";
 import SteelframeSection from "@/components/steelframe-section/steelframe-section";
-import SolarEnergy from "@/components/solar-energy/solar-energy";
 import ModularSection from "@/components/modular-section/modular-section";
+import MapSection from "@/components/map-section/map-section";
+import SolarEnergySection from "@/components/solar-energy-section/solar-energy-section";
 
 export default function Home() {
   return (
@@ -73,26 +71,9 @@ export default function Home() {
         </div>
 
         <SteelframeSection />
-        <SolarEnergy className="mt-36" />
+        <SolarEnergySection className="mt-36" />
         <ModularSection />
-        <News />
-        <div className="flex justify-center  py-10 items-center gap-4">
-          <Link
-            href="https://www.instagram.com/aisplacsrl/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram className="w-20 h-20 hover:text-red" />
-          </Link>
-          <Link
-            href="https://www.facebook.com/Aisplac"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Facebook className="w-20 h-20" />
-          </Link>
-        </div>
-        <Footer />
+        <MapSection />
       </main>
     </>
   );
