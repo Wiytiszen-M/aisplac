@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import { Buy, ShoppingCart, User } from "../assets/icons";
 import Link from "next/link";
+import AISButton from "@/components/AISButton/AISButton";
+import Header from "@/components/header/header";
 
 type SolarEnergyProps = {
   className?: string;
@@ -10,39 +13,12 @@ type SolarEnergyProps = {
 const SolarEnergy = ({ className }: SolarEnergyProps) => {
   return (
     <section
-      className={`relative flex flex-col items-center gap-12 w-full h-[2647px] ${className}`}
+      className={`relative flex flex-col items-center gap-12 w-full h-full ${className}`}
       style={{
         background: "linear-gradient(0deg, transparent 20%, #00232B 100%);",
       }}
     >
-      <div className="absolute top-16 flex w-full justify-between z-10">
-        <div className="flex items-center ml-[160px]">
-          <button className="p-2">
-            <svg
-              className="w-8 h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              ></path>
-            </svg>
-          </button>
-        </div>
-        <Link href="/">
-          <Image src="/logo.svg" width={112} height={64} alt="logo" />
-        </Link>
-        <div className="flex gap-3 mr-[160px]">
-          <ShoppingCart className="w-12 h-12" />
-          <Buy className="w-12 h-12" />
-          <User className="w-12 h-12" />
-        </div>
-      </div>
+      <Header />
       <div className="h-[900px]">
         <div
           className="absolute w-[95%] right-0 h-[900px] rounded-bl-[218px] flex flex-col"
@@ -90,10 +66,46 @@ const SolarEnergy = ({ className }: SolarEnergyProps) => {
           ¡Acercate y te armamos el proyecto
           <br /> ideal para tu empresa o vivienda!
         </p>
-        <button className="bg-[#A9B0C3] text-[#3E3E5E] rounded  px-[56px] py-4">
-          CONTACTANOS
-        </button>
+        <AISButton
+          text="CONTACTANOS"
+          color="secondary"
+          className="w-[300px] h-[80px]"
+          onClick={() => {}}
+        />
       </div>
+      <Image
+        src="/solar-panel-1.png"
+        width={1654}
+        height={514}
+        alt="solar-energy-bg"
+        className="mt-40 mb-28"
+      />
+      <p className="w-[1233px] text-center text-3xl  leading-[50px]">
+        La energía solar representa la vanguardia en soluciones energéticas
+        sustentables, aprovechando la tecnología más avanzada para transformar
+        la energía del sol en electricidad limpia y eficiente. Cada instalación
+        es personalizada para maximizar el rendimiento, adaptándose a las
+        necesidades específicas de tu proyecto. Este servicio es desarrollado
+        por profesionales en la energía renovable, con amplia trayectoria y
+        experiencia en el exterior del país.
+      </p>
+      <Image
+        src="/solar-panel-2.png"
+        width={1654}
+        height={514}
+        alt="solar-energy-bg"
+        className="mt-40 mb-28"
+      />
+      <p className="w-[760px] mb-36 text-center  font-bold text-4xl  leading-[50px]">
+        Tus proyectos pueden ser amigables con el medio ambiente, contactanos y
+        te ayudamos a hacerlo realidad. 
+      </p>
+      <AISButton
+        text="CONTACTANOS"
+        color="secondary"
+        className="w-[300px] h-[80px] mb-[239px]"
+        onClick={() => {}}
+      />
     </section>
   );
 };

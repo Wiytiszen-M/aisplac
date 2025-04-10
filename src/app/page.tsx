@@ -6,6 +6,8 @@ import SteelframeSection from "@/components/steelframe-section/steelframe-sectio
 import ModularSection from "@/components/modular-section/modular-section";
 import MapSection from "@/components/map-section/map-section";
 import SolarEnergySection from "@/components/solar-energy-section/solar-energy-section";
+import News from "@/components/news/news";
+import PVCSection from "@/components/pvc-section/pvc-section";
 
 export default function Home() {
   return (
@@ -31,7 +33,8 @@ export default function Home() {
             width={486}
             height={277}
             alt="logo"
-            className="mt-[430px]"
+            className="mt-[430px] z-30"
+            style={{ width: "486px", height: "277px" }}
           />
           <div className="flex flex-col justify-center items-center gap-12 mt-[530px] mb-44 w-[876px]">
             <p className="text-3xl mt-[300px]">
@@ -64,15 +67,24 @@ export default function Home() {
             height="584"
             src="https://www.youtube.com/embed/{VIDEO_ID}"
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </div>
-
-        <SteelframeSection />
+        <div className="w-full relative mt-[115px]">
+          <Image
+            src="/pvc-tables.png"
+            alt="pvc-tables-bg"
+            width={827}
+            height={654}
+            className="absolute h-[814px] z-10 -top-[33px]"
+          />
+          <PVCSection />
+          <SteelframeSection />
+        </div>
         <SolarEnergySection className="mt-36" />
         <ModularSection />
+        <News />
         <MapSection />
       </main>
     </>

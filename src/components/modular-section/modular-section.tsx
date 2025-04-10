@@ -45,9 +45,8 @@ const ModularSection = ({ className }: steelframeProps) => {
       <div className="flex w-full mx-20 p-44 pt-16 justify-between">
         <div className="w-[514px] flex flex-col gap-12 justify-start text-left">
           <p className="w-[630px] text-3xl">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-            text ever since the 1500s.
+            La construcción modular es la arquitectura del futuro por la rapidez
+            de ejecución, eficiencia de montaje y sostenibilidad.
           </p>
         </div>
         <div className="relative z-30 flex items-center uppercase ">

@@ -1,4 +1,5 @@
 import TripleArrowLeft from "@/app/assets/icons/triple-arrow-left";
+import OutstandingProducts from "@/components/AISButton/outstanding-products/outstanding-products";
 import FiltersPanel from "@/components/filter-panel/filter-panel";
 import Header from "@/components/header/header";
 import ProductGrid from "@/components/product-grid/product-grid";
@@ -25,9 +26,12 @@ const Category = () => {
           <TripleArrowLeft />
           Nombre de la categoria
         </Link>
-        <div className="flex w-full justify-center">
-          <FiltersPanel />
-          <ProductGrid />
+        <div className="flex flex-col gap-32 w-full justify-center">
+          <div className="flex">
+            <FiltersPanel />
+            <ProductGrid />
+          </div>
+          <OutstandingProducts />
         </div>
       </div>
     </section>

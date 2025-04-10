@@ -1,90 +1,37 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Buy, ShoppingCart, User } from "../assets/icons";
-import Head from "next/head";
 import Header from "@/components/header/header";
 
 const categories = [
-  {
-    id: 1,
-    name: "ACCESORIOS PARA CIELORRASO PVC",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 2,
-    name: "AISLANTES TERMICOS",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 3,
-    name: "ACCESORIOS STEEL FRAME",
-    gridArea: "span 2 / span 1",
-  },
-  {
-    id: 4,
-    name: "CIELORRASO DE PVC",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 5,
-    name: "CINTAS Y MALLAS",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 6,
-    name: "FIBROCEMENTO",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 7,
-    name: "PERFILERIA DRYWALL PLUS",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 8,
-    name: "MASILLAS",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 9,
-    name: "MOLDURAS DE TEROPOL",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 10,
-    name: "PERFILERIA STEEL FRAME",
-    gridArea: "span 2 / span 1",
-  },
-  {
-    id: 11,
-    name: "OSB",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 12,
-    name: "PERFILERIA DRYWALL PLUS",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 13,
-    name: "CINTAS Y MALLAS",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 14,
-    name: "FIBROCEMENTO",
-    gridArea: "span 1 / span 1",
-  },
-  {
-    id: 15,
-    name: "TORNILLOS",
-    gridArea: "span 1 / span 1",
-  },
+  { id: 1, name: "ACCESORIOS PARA CIELORRASO PVC" },
+  { id: 2, name: "ACCESORIOS STEEL FRAME" },
+  { id: 3, name: "AISLANTES TERMICOS" },
+  { id: 4, name: "CIELORRASO DE PVC" },
+  { id: 5, name: "CINTAS Y MALLAS" },
+  { id: 6, name: "FIBROCEMENTO" },
+  { id: 7, name: "MASILLAS" },
+  { id: 8, name: "MOLDURAS DE TEROGOL" },
+  { id: 9, name: "PERFILERIA DRYWALL PLUS" },
+  { id: 10, name: "OSB" },
+  { id: 11, name: "PERFILERIA STEEL FRAME" },
+  { id: 12, name: "CINTAS Y MALLAS" },
+  { id: 13, name: "PERFILERIA DRYWALL PLUS" },
+  { id: 14, name: "MASILLAS" },
+  { id: 15, name: "FIBROCEMENTO" },
+  { id: 16, name: "TORNILLOS" },
+  { id: 17, name: "PERFILERIA PARA CIELORRASO DESMONTABLE" },
+  { id: 18, name: "PLACA PARA CIELORRASO DESMONTABLE" },
+  { id: 19, name: "PLACAS DE YESO" },
+  { id: 20, name: "PLACAS ANTIHUMEDAD" },
+  { id: 21, name: "REVESTIMIENTO MARMOL" },
+  { id: 22, name: "FIBROCEMENTO" },
+  { id: 23, name: "YESO" },
+  { id: 24, name: "SIKA" },
 ];
 
 const SteelframePage = () => {
   return (
-    <section className="py-16">
+    <section className="py-16 overflow-hidden">
       <Header />
       <div
         className="relative flex justify-center items-center min-h-screen w-full bg-cover bg-center bg-no-repeat"
@@ -114,13 +61,37 @@ const SteelframePage = () => {
         </div>
         <div className="absolute flex overflow-hidden gap-x-8 z-30 bottom-20">
           {Array.from({ length: 15 }).map((_, index) => (
-            <Image
-              src="/sika-logo.png"
-              key={index}
-              height={80}
-              width={140}
-              alt="sika-logo"
-            ></Image>
+            <>
+              {" "}
+              <Image
+                src="/alfavinil-logo.png"
+                key={index}
+                height={80}
+                width={140}
+                alt="logo"
+              />
+              <Image
+                src="/barbieri-logo.png"
+                key={index}
+                height={80}
+                width={140}
+                alt="logo"
+              />
+              <Image
+                src="/grupo-estisol-logo.png"
+                key={index}
+                height={80}
+                width={140}
+                alt="logo"
+              />
+              <Image
+                src="/isover-logo.png"
+                key={index}
+                height={80}
+                width={140}
+                alt="logo"
+              />
+            </>
           ))}
         </div>
       </div>
@@ -133,7 +104,7 @@ const SteelframePage = () => {
                   key={category.id}
                   className="hover:bg-[#4a4949] rounded-xl items-center bg-[#6D6D6D] transition-colors cursor-pointer h-[394px] flex flex-col justify-center"
                 >
-                  <h3 className="text-3xl font-bold w-[400px] text-center">
+                  <h3 className="text-3xl font-bold w-[400px] p-6 text-center">
                     {category.name}
                   </h3>
                 </div>
