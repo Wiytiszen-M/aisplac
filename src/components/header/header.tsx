@@ -1,39 +1,87 @@
+"use client";
+import { useState } from "react";
 import { Buy, ShoppingCart, User } from "@/app/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {};
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-const Header = (props: Props) => {
   return (
-    <div className="absolute top-16 flex w-full justify-between z-10">
-      <div className="flex items-center ml-[160px]">
-        <button className="p-2">
-          <svg
-            className="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+    <header className="absolute w-full z-50">
+      <div className="px-4 md:px-12 lg:px-40 py-4 grid grid-cols-3 items-center">
+        <div className="flex justify-start">
+          <button className="p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <svg
+              className="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Center: Logo */}
+        <div className="flex justify-center">
+          <Link href="/">
+            <Image
+              src="/logo.svg"
+              width={112}
+              height={64}
+              alt="logo"
+              priority
+            />
+          </Link>
+        </div>
+
+        {/* Right: Icons */}
+        <div className="hidden lg:flex justify-end items-center gap-4">
+          <ShoppingCart className="w-8 h-8 xl:w-10 xl:h-10" />
+          <Buy className="w-8 h-8 xl:w-10 xl:h-10" />
+          <User className="w-8 h-8 xl:w-10 xl:h-10" />
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed top-0 left-0 w-full max-w-[300px] h-full bg-[#1C1936] bg-opacity-95 z-40 flex flex-col items-center justify-center gap-8 text-white text-2xl">
+          <button
+            className="absolute top-6 right-6 text-white text-4xl"
+            onClick={() => setIsMenuOpen(false)}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            ></path>
-          </svg>
-        </button>
-      </div>
-      <Link href="/">
-        <Image src="/logo.svg" width={112} height={64} alt="logo" />
-      </Link>
-      <div className="flex gap-3 mr-[160px]">
-        <ShoppingCart className="w-12 h-12" />
-        <Buy className="w-12 h-12" />
-        <User className="w-12 h-12" />
-      </div>
-    </div>
+            &times;
+          </button>
+          <Link href="#valores" onClick={() => setIsMenuOpen(false)}>
+            Valores
+          </Link>
+          <Link href="#pvc" onClick={() => setIsMenuOpen(false)}>
+            PVC
+          </Link>
+          <Link href="#steelframe" onClick={() => setIsMenuOpen(false)}>
+            Steel Frame
+          </Link>
+          <Link href="#modular" onClick={() => setIsMenuOpen(false)}>
+            Modular
+          </Link>
+          <Link href="#solar" onClick={() => setIsMenuOpen(false)}>
+            Energía Solar
+          </Link>
+          <Link href="#novedades" onClick={() => setIsMenuOpen(false)}>
+            Novedades
+          </Link>
+          <Link href="#contacto" onClick={() => setIsMenuOpen(false)}>
+            Contacto
+          </Link>
+        </div>
+      )}
+    </header>
   );
 };
 

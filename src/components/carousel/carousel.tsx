@@ -71,7 +71,7 @@ export default function NewsCarousele() {
                 key={slide.id}
                 className="pl-4 basis-full md:basis-1/3 "
               >
-                <div className="bg-white  w-80 h-[359px] transition-all duration-300 ease-in-out hover:scale-150">
+                <div className="bg-white w-80 h-[359px]">
                   <div className=" flex flex-col items-center justify-center">
                     <div className="bg-slate-500 relative h-[200px] w-full overflow-hidden ">
                       <Image

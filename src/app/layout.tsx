@@ -3,8 +3,7 @@ import "./globals.css";
 
 import { Raleway } from "next/font/google";
 import Footer from "@/components/footer/footer";
-import Link from "next/link";
-import { Facebook, Instagram } from "./assets/icons";
+import Header from "@/components/header/header"; // 💡 cambio: importamos el Header
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -24,22 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className}>
-        {children}
-        <div className="bg-[#100E1F] w-full flex justify-center  py-10  items-center gap-4">
-          <Link
-            href="https://www.instagram.com/aisplacsrl/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram className="w-20 h-20 hover:text-red" />
-          </Link>
-          <Link
-            href="https://www.facebook.com/Aisplac"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Facebook className="w-20 h-20" />
-          </Link>
+        <Header />
+        <div className="pt-[96px]">
+          <main>{children}</main>
         </div>
         <Footer />
       </body>

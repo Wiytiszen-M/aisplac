@@ -73,45 +73,51 @@ const PVCPage = ({ className }: Props) => {
           imageUrl="/fake-pvc-img.png"
           onAddToCart={() => null}
         />
-      </article>
-      <div>
-        <div className="relative flex justify-center  md:py-[181px]">
-          <p className="text-3xl w-[1230px] text-center">
-            Material fabricado a partir de la extrusión de PVC, con maquinaria
-            de calidad, solidez y precisión.  Respondiendo a las normativas
-            constructivas, certificado aptitud técnica y aprobado por el SENASA
-            para su uso en establecimientos que requieren condiciones de sanidad
-            y por su excelente comportamiento a temperaturas extremas.
-          </p>
-          <Image
-            src="/pvc-logo.png"
-            width={611}
-            height={491}
-            className="absolute -right-10 top-0 h-[491px] w-[611px]"
-            alt="pvc-logo"
-          />
-        </div>
-        <Image
-          src="/pvc-fabric.png"
-          height={723}
-          width={1784}
-          alt="pvc-fabric"
-          className="w-full"
+        <ProductCard
+          name="BARBIERI"
+          description="Montante 89 Rigidiza x9 52 (1.90x12.5cm)"
+          sku="000000"
+          imageUrl="/fake-pvc-img.png"
+          onAddToCart={() => null}
         />
-        <div className="flex w-full justify-around items-center  md:py-[181px] ">
-          <Image
-            src="/pvc-logo.png"
-            width={611}
-            height={491}
-            className="h-[491px] w-[611px]"
-            alt="pvc-logo"
-          />
-          <p className="text-3xl text-left w-[630px]">
-            Perfiles plásticos para cielorrasos, con una línea de colores y
-            accesorios variada. Solución integral en revestimientos para la
-            industria, el comercio y el hogar.
-          </p>
-        </div>
+      </article>
+
+      <div className="relative flex justify-center  md:py-[181px]">
+        <p className="text-3xl w-[1230px] text-center">
+          Material fabricado a partir de la extrusión de PVC, con maquinaria de
+          calidad, solidez y precisión.  Respondiendo a las normativas
+          constructivas, certificado aptitud técnica y aprobado por el SENASA
+          para su uso en establecimientos que requieren condiciones de sanidad y
+          por su excelente comportamiento a temperaturas extremas.
+        </p>
+        <Image
+          src="/pvc-logo.png"
+          width={611}
+          height={491}
+          className="absolute -right-10 top-0 h-[491px] w-[611px]"
+          alt="pvc-logo"
+        />
+      </div>
+      <Image
+        src="/pvc-fabric.png"
+        height={723}
+        width={1784}
+        alt="pvc-fabric"
+        className="w-full"
+      />
+      <div className="flex w-full justify-around items-center  md:py-[181px] ">
+        <Image
+          src="/pvc-logo.png"
+          width={611}
+          height={491}
+          className="h-[491px] w-[611px]"
+          alt="pvc-logo"
+        />
+        <p className="text-3xl text-left w-[630px]">
+          Perfiles plásticos para cielorrasos, con una línea de colores y
+          accesorios variada. Solución integral en revestimientos para la
+          industria, el comercio y el hogar.
+        </p>
       </div>
     </section>
   );

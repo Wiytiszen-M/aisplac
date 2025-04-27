@@ -31,8 +31,7 @@ const categories = [
 
 const SteelframePage = () => {
   return (
-    <section className="py-16 overflow-hidden">
-      <Header />
+    <section className="pb-16 overflow-hidden">
       <div
         className="relative flex justify-center items-center min-h-screen w-full bg-cover bg-center bg-no-repeat"
         style={{
@@ -42,7 +41,7 @@ const SteelframePage = () => {
         <div
           className="absolute bottom-0 w-full h-full z-10"
           style={{
-            background: "linear-gradient(transparent 60%, #1c1936 78%)",
+            background: "linear-gradient(transparent 50%, #1c1936 88%)",
           }}
         />
         <Image
@@ -59,7 +58,7 @@ const SteelframePage = () => {
             </h2>
           </div>
         </div>
-        <div className="absolute flex overflow-hidden gap-x-8 z-30 bottom-20">
+        <div className="absolute flex overflow-hidden gap-x-8 z-30 bottom-0">
           {Array.from({ length: 15 }).map((_, index) => (
             <>
               {" "}
@@ -95,7 +94,7 @@ const SteelframePage = () => {
           ))}
         </div>
       </div>
-      <div className="w-full min-h-screen p-4">
+      <div className="w-full min-h-screen p-4 pt-36">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-3 auto-rows-fr gap-4">
             {categories.map((category) => (

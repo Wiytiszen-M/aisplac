@@ -10,32 +10,27 @@ type SolarEnergyProps = {
 const SolarEnergySection = ({ className }: SolarEnergyProps) => {
   return (
     <section
-      className={`relative flex flex-col items-center gap-12 w-full h-screen ${className} overflow-hidden`}
+      className={`relative flex flex-col items-center gap-12 w-full ${className} overflow-hidden`}
     >
-      <div
-        className="absolute w-[90%] right-0 h-full rounded-tl-[218px] flex flex-col"
-        style={{
-          background: "linear-gradient(0deg, transparent 20%, #1B434C 40%);",
-        }}
-      />
+      <div className="absolute w-[90%] right-0 h-full rounded-bl-[218px] bg-[#1B434C] flex flex-col" />
       <div className="z-10 mt-10 ">
         <Image
-          src="/solar-house.webp"
+          src="/solar-house.png"
           width={1277}
           height={454}
           alt="solar-house-bg"
-          className="absolute bottom-0 z-0"
+          className="absolute bottom-0 right-0 z-0"
         />
-        <div className="relative z-20 flex flex-col justify-center items-center md:w-[971px]">
+        <div className="relative z-20 flex flex-col justify-center items-center md:w-[971px] mb-[370px] px-6 sm:px-20 gap-10">
           <Image
             src="/solar-icon.svg"
             width={140}
             height={140}
             alt="solar-energy"
           />
-          <h2 className="text-3xl font-bold  mt-14  mb-20">
+          <h2 className="text-6xl font-bold  mt-14  mb-20">
             ENERGÍA{" "}
-            <span className="text-3xl font-normal text-[#42BA7D]">SOLAR</span>
+            <span className="text-6xl font-normal text-[#42BA7D]">SOLAR</span>
           </h2>
           <p className="text-3xl">
             Cada instalación es personalizada para maximizar el rendimiento,

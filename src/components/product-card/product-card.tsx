@@ -18,7 +18,7 @@ export default function ProductCard({
   return (
     <Link href={`/product/${sku}`} passHref>
       <div
-        className={`w-[457px] h-[575px] rounded-lg overflow-hidden shadow-md bg-white flex flex-col ${className}`}
+        className={`w-[412px] h-[575px] rounded-lg overflow-hidden shadow-md bg-white flex flex-col ${className}`}
       >
         <div className="relative w-full flex-1">
           <Image

@@ -42,7 +42,7 @@ const ModularSection = ({ className }: steelframeProps) => {
           alt="module architecture"
         />
       </div>
-      <div className="flex w-full mx-20 p-44 pt-16 justify-between">
+      <div className="flex w-full mx-20 p-44 pt-0 justify-between">
         <div className="w-[514px] flex flex-col gap-12 justify-start text-left">
           <p className="w-[630px] text-3xl">
             La construcción modular es la arquitectura del futuro por la rapidez
