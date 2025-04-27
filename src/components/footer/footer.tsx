@@ -8,33 +8,48 @@ import {
 import { Facebook, Instagram } from "@/app/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
+import { Youtube, LinkedIn } from "@/components/icons";
 
 const Footer = () => {
   return (
     <>
-      {/* 💡 cambio: sección redes sociales separada pero contenida en Footer */}
-      <div className="bg-transparent w-full flex justify-center py-10 items-center gap-4">
+      <div className="w-full flex flex-wrap justify-center py-10 items-center gap-2 md:gap-4">
+        <Link
+          href="https://www.instagram.com/aisplacsrl/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center"
+        >
+          <Youtube className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/aisplacsrl/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkedIn className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+        </Link>
         <Link
           href="https://www.instagram.com/aisplacsrl/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Instagram className="w-20 h-20 hover:text-red" />
+          <Instagram className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
         </Link>
         <Link
           href="https://www.facebook.com/Aisplac"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Facebook className="w-20 h-20" />
+          <Facebook className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
         </Link>
       </div>
 
-      <footer className="relative flex w-full justify-center items-center h-[472px] bg-[#100E1F]">
+      <footer className="relative flex flex-col md:flex-row w-full justify-center items-center md:h-[472px] bg-[#100E1F]">
         <div className="w-[45%] flex items-center justify-center">
           <Image src="/logo.svg" width={421} height={240} alt="aisplac" />
         </div>
-        <div className="w-[55%]">
+        <div className="w-full p-2 md:p-0 md:w-[55%] flex-wrap">
           <div className="grid grid-cols-1 md:grid-cols-2 max-w-[800px]">
             <div className="space-y-6">
               <div className="flex items-center gap-3">
@@ -80,7 +95,7 @@ const Footer = () => {
                 </Link>
               </div>
 
-              <div className="flex flex-col items-start gap-3 pl-14">
+              <div className="flex md:flex-col items-start gap-3 pl-14">
                 <Link href="#" className="hover:underline">
                   Términos y condiciones
                 </Link>
@@ -95,14 +110,14 @@ const Footer = () => {
           src="/footer.svg"
           width={200}
           height={200}
-          className="absolute w-[220] top-0 right-0"
+          className="hidden md:block absolute w-[220] top-0 right-0"
           alt="aisplac"
         />
         <Image
           src="/footer.svg"
           width={200}
           height={200}
-          className="rotate-90 absolute w-[220] -bottom-[118px] left-14"
+          className="hidden md:block rotate-90 absolute w-[220] -bottom-[118px] left-14"
           alt="aisplac"
         />
       </footer>

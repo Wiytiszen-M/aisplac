@@ -24,9 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={raleway.className}>
         <Header />
-        <div className="pt-[96px]">
-          <main>{children}</main>
-        </div>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
