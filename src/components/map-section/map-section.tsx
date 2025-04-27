@@ -8,12 +8,12 @@ type Props = {
 const MapSection = ({ className }: Props) => {
   return (
     <section
-      className={`relative flex flex-col justify-center items-center min-h-screen w-full bg-cover bg-center bg-no-repeat ${className}`}
+      className={`pt-10 md:pb-36 relative flex flex-col justify-center items-center md:min-h-screen w-full bg-cover bg-center bg-no-repeat ${className}`}
       style={{
         backgroundImage: "url(/map-bg.webp)",
       }}
     >
-      <h2 className="w-[456px] absolute bottom-28 left-40 text-3xl font-bold  uppercase ">
+      <h2 className="md:w-[456px] pb-4 md:pb-0 md:absolute bottom-36 left-40 text-3xl font-bold  uppercase ">
         MAPA DE ARGENTINA CLIENTES MAYORISTAS
       </h2>
       <Image src="/map.webp" alt="Map Marker" width={1196} height={762} />

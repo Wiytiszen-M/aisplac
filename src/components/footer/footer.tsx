@@ -5,46 +5,12 @@ import {
   Location,
   Phone,
 } from "@/app/assets/icons";
-import { Facebook, Instagram } from "@/app/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
-import { Youtube, LinkedIn } from "@/components/icons";
 
 const Footer = () => {
   return (
     <>
-      <div className="w-full flex flex-wrap justify-center py-10 items-center gap-2 md:gap-4">
-        <Link
-          href="https://www.instagram.com/aisplacsrl/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center"
-        >
-          <Youtube className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
-        </Link>
-        <Link
-          href="https://www.linkedin.com/in/aisplacsrl/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <LinkedIn className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
-        </Link>
-        <Link
-          href="https://www.instagram.com/aisplacsrl/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Instagram className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
-        </Link>
-        <Link
-          href="https://www.facebook.com/Aisplac"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Facebook className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
-        </Link>
-      </div>
-
       <footer className="relative flex flex-col md:flex-row w-full justify-center items-center md:h-[472px] bg-[#100E1F]">
         <div className="w-[45%] flex items-center justify-center">
           <Image src="/logo.svg" width={421} height={240} alt="aisplac" />

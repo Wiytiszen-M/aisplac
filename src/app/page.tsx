@@ -12,7 +12,7 @@ import HeroSection from "@/components/hero-section/hero-section";
 export default function Home() {
   return (
     <>
-      <main className="relative min-h-screen w-full">
+      <div className="relative min-h-screen w-full">
         {/* Navigation solo visible en lg+ */}
         <div className="hidden lg:block absolute left-0 top-[329px]">
           <Navigation />
@@ -21,7 +21,7 @@ export default function Home() {
         <HeroSection />
 
         <div className="flex flex-col items-center text-center">
-          <ValuesSection />
+          {/* <ValuesSection /> */}
 
           <div className="flex justify-center items-center w-full">
             <iframe
@@ -48,9 +48,9 @@ export default function Home() {
 
           <SolarEnergySection className="mt-10" />
           {/* <ModularSection /> */}
-          {/* <MapSection /> */}
+          <MapSection />
         </div>
-      </main>
+      </div>
     </>
   );
 }
