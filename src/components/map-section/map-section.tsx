@@ -13,7 +13,7 @@ const MapSection = ({ className }: Props) => {
         backgroundImage: "url(/map-bg.webp)",
       }}
     >
-      <h2 className="md:w-[456px] pb-4 md:pb-0 md:absolute bottom-36 left-40  md: font-bold  uppercase ">
+      <h2 className="md:w-[456px] pb-4 md:pb-0 md:absolute bottom-36 left-40 text-3xl font-bold  uppercase ">
         MAPA DE ARGENTINA CLIENTES MAYORISTAS
       </h2>
       <Image src="/map.webp" alt="Map Marker" width={1196} height={762} />

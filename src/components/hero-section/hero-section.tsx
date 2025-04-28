@@ -1,9 +1,10 @@
+"use client";
 import Image from "next/image";
+import AISButton from "../AISButton/AISButton";
 
 export default function HeroSection() {
   return (
     <div className="relative w-full">
-      {/* Background full width */}
       <div
         className="absolute inset-0 -z-20"
         style={{
@@ -14,7 +15,6 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Layout con contenido centrado */}
       <div className="max-w-[1440px] mx-auto flex flex-col justify-center items-center text-center px-4">
         <Image
           src="/logo.svg"
@@ -31,9 +31,7 @@ export default function HeroSection() {
             integrales para la construcción en seco, con un enfoque en la
             eficiencia y la sostenibilidad.
           </p>
-          <button className="font-bold bg-[#A9B0C3] py-4 rounded-lg w-[232px] text-[#3E3E5E]">
-            LEER MÁS
-          </button>
+          <AISButton>Leer Más</AISButton>
         </div>
       </div>
 

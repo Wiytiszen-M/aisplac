@@ -1,32 +1,61 @@
 "use client";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+
 import { Buy, ShoppingCart, User } from "@/app/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   return (
     <header className="absolute w-full z-50 overflow-x-hidden">
       <div className="px-4 md:px-12 lg:px-40 py-4 grid grid-cols-3 items-center">
-        <div className="flex justify-start">
-          <button className="p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <svg
-              className="w-8 h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
-        </div>
+        {!isHomePage ? (
+          <div className="flex justify-start">
+            <button className="p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <svg
+                className="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="hidden md:flex"></div>
+            <div className="flex md:hidden justify-start">
+              <button
+                className="p-2"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                <svg
+                  className="w-8 h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </>
+        )}
 
         {/* Center: Logo */}
         <div className="flex justify-center">
@@ -53,7 +82,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className="fixed top-0 left-0 w-full max-w-[300px] h-full bg-[#1C1936] bg-opacity-95 z-40 flex flex-col items-center justify-center gap-8 text-white ">
           <button
-            className="absolute top-6 right-6 text-white text-4xl"
+            className="absolute top-6 right-6 text-white "
             onClick={() => setIsMenuOpen(false)}
           >
             &times;

@@ -1,12 +1,10 @@
 import SingleCarrousel from "@/components/carousel/single-carousel";
 import Image from "next/image";
 
-type Props = {};
-
-const OutstandingProducts = (props: Props) => {
+const OutstandingProducts = () => {
   return (
     <>
-      <h2 className="text-center  font-bold ">PROYECTOS DESTACADOS</h2>
+      <h2 className="text-center font-bold ">PROYECTOS DESTACADOS</h2>
       <div className="flex gap-4 items-center justify-between">
         <Image
           src="/fakeoutstanding.png"

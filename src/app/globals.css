@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+/* * {
   border: 1px solid red;
-}
+} */
 
 :root {
   --background: #1c1936;
@@ -28,6 +28,12 @@ body {
 @layer base {
   p {
     @apply text-base; /* Aplica text-base por defecto */
+  }
+  footer {
+    p,
+    a {
+      @apply text-xl; /* Aplica text-base por defecto */
+    }
   }
 
   h2 {

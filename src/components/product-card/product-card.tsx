@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { IProductCard } from "@/app/types";
 import Link from "next/link";
 import AISButton from "../AISButton/AISButton";
@@ -47,9 +46,10 @@ export default function ProductCard({
               e?.preventDefault();
               onAddToCart();
             }}
-            text="AGREGAR AL CARRITO"
             color="secondary"
-          />
+          >
+            AGREGAR AL CARRITO
+          </AISButton>
         </div>
       </div>
     </Link>

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/header/header";
 
 const categories = [
   { id: 1, name: "ACCESORIOS PARA CIELORRASO PVC" },
@@ -53,7 +52,7 @@ const SteelframePage = () => {
         />
         <div className="absolute top-28 z-20 flex w-full mx-20 px-44 justify-between">
           <div className="w-[514px] flex flex-col gap-12 justify-start text-left">
-            <h2 className=" font-bold ">MATERIALES DE CONSTRUCCIÓN EN SECO</h2>
+            <h2 className="font-bold ">MATERIALES DE CONSTRUCCIÓN EN SECO</h2>
           </div>
         </div>
         <div className="absolute flex overflow-hidden gap-x-8 z-30 bottom-0">

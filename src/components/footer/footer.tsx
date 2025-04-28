@@ -11,12 +11,12 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <>
-      <footer className="relative flex flex-col md:flex-row w-full justify-center items-center md:h-[472px] bg-[#100E1F]">
+      <footer className=" relative flex flex-col md:flex-row w-full justify-center items-center md:h-[472px] bg-[#100E1F]">
         <div className="w-[45%] flex items-center justify-center">
           <Image src="/logo.svg" width={421} height={240} alt="aisplac" />
         </div>
         <div className="w-full p-2 md:p-0 md:w-[55%] flex-wrap">
-          <div className="grid grid-cols-1 md:grid-cols-2 max-w-[800px]">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 max-w-[800px]">
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <Location className="w-10 h-10 shrink-0" />
@@ -27,17 +27,17 @@ const Footer = () => {
 
               <div className="flex items-center gap-3">
                 <LocalComertial className="w-10 h-10 shrink-0" />
-                <div className="text-left">
+                <div className=" text-left">
                   <p className="font-medium">Local Comercial</p>
-                  <p className="">José Viscardis 345 - Parque Industrial</p>
+                  <p>José Viscardis 345 - Parque Industrial</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-3">
                 <Fabric className="w-10 h-10 shrink-0" />
-                <div className="text-left">
+                <div className="  text-left">
                   <p className="font-medium">Fábrica de Paneles de PVC</p>
-                  <p className="">Av. José Viscardis 1050 - Zona Franca</p>
+                  <p>Av. José Viscardis 1050 - Zona Franca</p>
                 </div>
               </div>
             </div>

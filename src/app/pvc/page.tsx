@@ -35,7 +35,7 @@ const PVCPage = ({ className }: Props) => {
         </div>
       </div>
       <div className="flex w-full justify-around md:my-[153px]">
-        <p className="se md: text-left w-[630px]">
+        <p className="se text-left w-[630px]">
           Con amplia experiencia en la industria plástica, nos dedicamos a la
           fabricación de paneles de PVC y accesorios. Ofrecemos soluciones
           integrales para cielorrasos y terminaciones, atendiendo las
@@ -84,7 +84,7 @@ const PVCPage = ({ className }: Props) => {
       </article>
 
       <div className="relative flex justify-center  md:py-[181px]">
-        <p className="md: w-[1230px] text-center">
+        <p className="w-[1230px] text-center">
           Material fabricado a partir de la extrusión de PVC, con maquinaria de
           calidad, solidez y precisión.  Respondiendo a las normativas
           constructivas, certificado aptitud técnica y aprobado por el SENASA

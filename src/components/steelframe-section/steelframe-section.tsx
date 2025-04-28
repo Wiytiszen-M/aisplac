@@ -1,7 +1,7 @@
-import ArrowRight from "@/app/assets/icons/arrow-right";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { TripleArrow } from "../icons";
 
 type steelframeProps = {
   className?: string;
@@ -15,8 +15,7 @@ const SteelframeSection = ({ className }: steelframeProps) => {
         backgroundImage: "url('/steelframe-bg.webp')",
       }}
     >
-      {/* Título */}
-      <h2 className="absolute right-[10%] bottom-[45%]  sm: md:text-4xl lg: font-bold z-20 text-white w-full max-w-[503px] text-left px-4">
+      <h2 className="md:absolute right-[10%] bottom-[45%] z-20 text-white w-full max-w-[503px] font-bold text-left px-4">
         MATERIALES DE CONSTRUCCIÓN EN SECO
       </h2>
 
@@ -27,14 +26,13 @@ const SteelframeSection = ({ className }: steelframeProps) => {
           width={956}
           height={796}
           alt="steelframe"
-          className=" sm:w-[70%] md:w-[60%] lg:w-auto mx-auto"
+          className=" w-full md:w-[60%] lg:w-auto mx-auto"
         />
       </div>
 
-      {/* Contenido inferior */}
-      <div className=" mb-[120px] z-20 flex w-full px-6 sm:px-20 gap-10 justify-around">
+      <div className=" mb-[120px] z-20 flex flex-col md:flex-row w-full px-6 sm:px-20 gap-10 justify-around">
         <div className="w-full max-w-[790px] flex flex-col gap-12 justify-start text-left">
-          <p className="se sm:text-xl lg: text-white">
+          <p>
             Ofrecemos la línea más completa de materiales para la construcción
             en seco. Innovación, calidad y un equipo que respalda cada paso de
             tu proyecto.
@@ -46,7 +44,7 @@ const SteelframeSection = ({ className }: steelframeProps) => {
             className="flex items-center gap-4 se sm:text-lg lg: font-bold text-white"
           >
             Ver Productos{" "}
-            <ArrowRight className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />
+            <TripleArrow className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14" />
           </Link>
         </div>
       </div>

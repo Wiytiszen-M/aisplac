@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Navigation from "@/components/navigation/navigation";
 import ValuesSection from "@/components/values-section/values-section";
 import SteelframeSection from "@/components/steelframe-section/steelframe-section";
@@ -14,16 +13,16 @@ export default function Home() {
     <>
       <div className="relative min-h-screen w-full">
         {/* Navigation solo visible en lg+ */}
-        <div className="hidden lg:block absolute left-0 top-[329px]">
+        <div className="hidden md:block absolute left-0 top-[329px]">
           <Navigation />
         </div>
 
         <HeroSection />
 
         <div className="flex flex-col items-center text-center">
-          {/* <ValuesSection /> */}
+          <ValuesSection />
 
-          <div className="flex justify-center items-center w-full">
+          <div className="flex mb-[115px] justify-center items-center w-full">
             <iframe
               width="1441"
               height="584"
@@ -34,20 +33,12 @@ export default function Home() {
             ></iframe>
           </div>
 
-          <div className="w-full relative mt-[115px]">
-            <Image
-              src="/pvc-tables.png"
-              alt="pvc-tables-bg"
-              width={827}
-              height={654}
-              className="hidden lg:block absolute max-h-[814px] z-10 -top-[33px]"
-            />
-            <PVCSection />
-            <SteelframeSection />
-          </div>
+          <PVCSection />
+          <SteelframeSection />
 
           <SolarEnergySection className="mt-10" />
           <ModularSection />
+          <News />
           <MapSection />
         </div>
       </div>
