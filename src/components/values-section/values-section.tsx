@@ -19,7 +19,7 @@ const ValuesSection = ({ className }: Props) => {
             }}
           >
             <div className="flex justify-center items-center bg-black/40 hover:bg-black/0 duration-300 w-full h-full">
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white text-center">
+              <p className="se sm:text-lg md:text-xl lg: xl: text-white text-center">
                 SUSTENTABILIDAD
               </p>
             </div>
@@ -38,7 +38,7 @@ const ValuesSection = ({ className }: Props) => {
               className="w-full h-full lg:-rotate-45 transform transition-transform duration-300 scale-150"
             >
               <div className="flex justify-center items-center bg-black/40 hover:bg-black/0 duration-300 w-full h-full">
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white text-center">
+                <p className="se sm:text-lg md:text-xl lg: xl: text-white text-center">
                   CONFIANZA
                 </p>
               </div>
@@ -56,7 +56,7 @@ const ValuesSection = ({ className }: Props) => {
               className="w-full h-full lg:-rotate-45 transform transition-transform duration-300 scale-150"
             >
               <div className="flex justify-center items-center bg-black/40 hover:bg-black/0 duration-300 w-full h-full">
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white text-center">
+                <p className="se sm:text-lg md:text-xl lg: xl: text-white text-center">
                   UNION
                 </p>
               </div>
@@ -65,7 +65,7 @@ const ValuesSection = ({ className }: Props) => {
         </div>
       </div>
 
-      <p className="xl:mt-0 lg:mt-20 text-3xl text-center uppercase font-light px-4">
+      <p className="xl:mt-0 lg:mt-20  text-center uppercase font-light px-4">
         Brindamos el mejor servicio de la construcción en
         <br />
         seco, <span className="font-bold">construir futuro</span>, con la

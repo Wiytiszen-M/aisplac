@@ -36,7 +36,7 @@ const Modular = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col text-center items-center gap-8 text-3xl w-[1088px] mt-[167px]">
+      <div className="flex flex-col text-center items-center gap-8  w-[1088px] mt-[167px]">
         <p>
           La arquitectura del futuro por la rapidez de ejecución, eficiencia de
           montaje y sostenibilidad.

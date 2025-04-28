@@ -5,6 +5,7 @@
 * {
   border: 1px solid red;
 }
+
 :root {
   --background: #1c1936;
   --foreground: #ffffff;
@@ -22,6 +23,25 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: "Raleway", Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  p {
+    @apply text-base; /* Aplica text-base por defecto */
+  }
+
+  h2 {
+    @apply text-3xl; /* Aplica text-2xl por defecto */
+  }
+
+  @screen md {
+    p {
+      @apply text-3xl; /* Aplica text-3xl en pantallas medianas y mayores */
+    }
+    h2 {
+      @apply text-6xl; /* Aplica text-3xl en pantallas medianas y mayores */
+    }
+  }
 }
 
 @layer utilities {

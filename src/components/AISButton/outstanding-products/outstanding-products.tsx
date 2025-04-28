@@ -6,7 +6,7 @@ type Props = {};
 const OutstandingProducts = (props: Props) => {
   return (
     <>
-      <h2 className="text-center text-6xl font-bold ">PROYECTOS DESTACADOS</h2>
+      <h2 className="text-center  font-bold ">PROYECTOS DESTACADOS</h2>
       <div className="flex gap-4 items-center justify-between">
         <Image
           src="/fakeoutstanding.png"

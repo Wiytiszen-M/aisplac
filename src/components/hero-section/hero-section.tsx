@@ -25,7 +25,7 @@ export default function HeroSection() {
           style={{ width: "486px", height: "277px" }}
         />
         <div className="flex flex-col justify-center items-center gap-12 mt-[530px] mb-44 w-full max-w-[876px]">
-          <p className="text-3xl">
+          <p className="">
             Somos una empresa familiar Pampeana fundada en el año 2000. Nuestra
             misión, desde nuestros inicios, es proporcionar soluciones
             integrales para la construcción en seco, con un enfoque en la

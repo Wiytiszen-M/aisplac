@@ -8,7 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="absolute w-full z-50">
+    <header className="absolute w-full z-50 overflow-x-hidden">
       <div className="px-4 md:px-12 lg:px-40 py-4 grid grid-cols-3 items-center">
         <div className="flex justify-start">
           <button className="p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -51,7 +51,7 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed top-0 left-0 w-full max-w-[300px] h-full bg-[#1C1936] bg-opacity-95 z-40 flex flex-col items-center justify-center gap-8 text-white text-2xl">
+        <div className="fixed top-0 left-0 w-full max-w-[300px] h-full bg-[#1C1936] bg-opacity-95 z-40 flex flex-col items-center justify-center gap-8 text-white ">
           <button
             className="absolute top-6 right-6 text-white text-4xl"
             onClick={() => setIsMenuOpen(false)}

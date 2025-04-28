@@ -47,7 +47,7 @@ export default function Home() {
           </div>
 
           <SolarEnergySection className="mt-10" />
-          {/* <ModularSection /> */}
+          <ModularSection />
           <MapSection />
         </div>
       </div>

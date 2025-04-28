@@ -22,7 +22,7 @@ const Category = () => {
       />
       <Header />
       <div className="flex flex-col justify-center gap-24 px-[144px] mt-[240px] z-10">
-        <Link href="/steelframe" className="flex items-center text-3xl gap-4">
+        <Link href="/steelframe" className="flex items-center  gap-4">
           <TripleArrowLeft />
           Nombre de la categoria
         </Link>

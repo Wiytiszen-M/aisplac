@@ -4,7 +4,7 @@ const News = () => {
   return (
     <section className="flex flex-col items-center w-full px-4 sm:px-8">
       {/* Título de la sección Novedades */}
-      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-center py-12 sm:py-16 uppercase">
+      <h2 className="text-4xl sm:text-5xl lg: font-bold text-center py-12 sm:py-16 uppercase">
         Novedades
       </h2>
 

@@ -35,7 +35,7 @@ const PVCPage = ({ className }: Props) => {
         </div>
       </div>
       <div className="flex w-full justify-around md:my-[153px]">
-        <p className="text-3xl text-left w-[630px]">
+        <p className="se md: text-left w-[630px]">
           Con amplia experiencia en la industria plástica, nos dedicamos a la
           fabricación de paneles de PVC y accesorios. Ofrecemos soluciones
           integrales para cielorrasos y terminaciones, atendiendo las
@@ -44,11 +44,12 @@ const PVCPage = ({ className }: Props) => {
 
         <div className=" flex justify-center items-center">
           <AISButton
-            text="CALCULADORA DE PVC"
             onClick={handleClick}
             color="primary"
             className="w-[400px]"
-          />
+          >
+            CALCULADORA DE PVC
+          </AISButton>
         </div>
       </div>
       <article className="flex flex-nowrap justify-center w-full gap-3">
@@ -83,7 +84,7 @@ const PVCPage = ({ className }: Props) => {
       </article>
 
       <div className="relative flex justify-center  md:py-[181px]">
-        <p className="text-3xl w-[1230px] text-center">
+        <p className="md: w-[1230px] text-center">
           Material fabricado a partir de la extrusión de PVC, con maquinaria de
           calidad, solidez y precisión.  Respondiendo a las normativas
           constructivas, certificado aptitud técnica y aprobado por el SENASA
@@ -113,7 +114,7 @@ const PVCPage = ({ className }: Props) => {
           className="h-[491px] w-[611px]"
           alt="pvc-logo"
         />
-        <p className="text-3xl text-left w-[630px]">
+        <p className=" text-left w-[630px]">
           Perfiles plásticos para cielorrasos, con una línea de colores y
           accesorios variada. Solución integral en revestimientos para la
           industria, el comercio y el hogar.

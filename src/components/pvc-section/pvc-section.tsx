@@ -26,7 +26,7 @@ const PVCSection = ({ className = "" }: PvcProps) => {
             </div>
 
             {/* Texto responsivo */}
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-left text-white">
+            <p className="se sm:text-lg md:text-xl lg: xl: text-left text-white">
               Con amplia experiencia en la industria plástica, nos dedicamos a
               la fabricación de paneles de PVC y accesorios. Ofrecemos
               soluciones integrales para cielorrasos y terminaciones, atendiendo
@@ -37,7 +37,7 @@ const PVCSection = ({ className = "" }: PvcProps) => {
             <div className="flex items-center uppercase mt-6 sm:mt-8">
               <Link
                 href="/pvc"
-                className="flex items-center gap-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white"
+                className="flex items-center gap-4 text-sm sm:se md:text-lg lg:text-xl xl: font-bold text-white"
               >
                 Ver Productos{" "}
                 <ArrowRight className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14" />
