@@ -24,15 +24,19 @@ body {
   background: var(--background);
   font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
+* {
+  border: 1px solid red;
+}
 
 @layer base {
   p {
     @apply text-base; /* Aplica text-base por defecto */
   }
+
   footer {
     p,
     a {
-      @apply text-xl; /* Aplica text-base por defecto */
+      @apply text-base; /* Aplica text-base por defecto */
     }
   }
 
@@ -46,6 +50,13 @@ body {
     }
     h2 {
       @apply text-6xl; /* Aplica text-3xl en pantallas medianas y mayores */
+    }
+
+    footer {
+      p,
+      a {
+        @apply text-xl; /* Aplica text-base por defecto */
+      }
     }
   }
 }

@@ -61,7 +61,7 @@ const Footer = () => {
                 </Link>
               </div>
 
-              <div className="flex md:flex-col items-start gap-3 pl-14">
+              <div className="flex md:flex-col items-start gap-3 md:pl-14">
                 <Link href="#" className="hover:underline">
                   Términos y condiciones
                 </Link>

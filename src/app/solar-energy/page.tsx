@@ -3,14 +3,10 @@ import Image from "next/image";
 import React from "react";
 import AISButton from "@/components/AISButton/AISButton";
 
-type SolarEnergyProps = {
-  className?: string;
-};
-
-const SolarEnergy = ({ className }: SolarEnergyProps) => {
+const SolarEnergy = () => {
   return (
     <section
-      className={`relative flex flex-col items-center  w-full h-full ${className}`}
+      className="pt-14 md:pt-0 relative flex flex-col items-center pb-[140px] w-full h-full"
       style={{
         background: "linear-gradient(0deg, transparent 0%, #024550 10%);",
       }}
@@ -29,20 +25,13 @@ const SolarEnergy = ({ className }: SolarEnergyProps) => {
       </div>
       <div className="flex flex-col text-center items-center gap-8 px-4 lg:w-[1088px] mt-20">
         <p className="md:text-xl lg: leading-relaxed">
-          La energía solar representa la vanguardia en soluciones energéticas
-          sustentables, aprovechando la tecnología más avanzada para transformar
-          la energía del sol en electricidad limpia y eficiente.
+          La energía del futuro llegó a Aisplac. Con la incorporación de energía
+          renovable podes optimizar tus espacios y reducir el impacto ambiental
+          al mismo tiempo.
         </p>
-
-        <p className="md:text-xl lg: leading-relaxed">
-          Cada instalación es personalizada para maximizar el rendimiento,
-          adaptándose a las necesidades específicas de tu proyecto.
-        </p>
-
-        <p className="mt-16 font-bold text-lg lg: mb-24">
-          ¡Acercate y te armamos el proyecto
-          <br />
-          ideal para tu empresa o vivienda!
+        <p className="mt-8 font-bold text-lg lg: mb-[60px]">
+          ¡Consultanos y descubrí cómo integrar
+          <br /> la energía solar en tus proyectos!
         </p>
 
         <AISButton
@@ -60,7 +49,7 @@ const SolarEnergy = ({ className }: SolarEnergyProps) => {
         alt="solar-energy-bg"
         className="mt-40 mb-28"
       />
-      <p className="text-center se md:text-xl lg: leading-relaxed lg:leading-[50px] px-4 lg:w-[1233px]">
+      <p className="text-center px-4 lg:w-[1233px]">
         La energía solar representa la vanguardia en soluciones energéticas
         sustentables, aprovechando la tecnología más avanzada para transformar
         la energía del sol en electricidad limpia y eficiente. Cada instalación
@@ -77,29 +66,31 @@ const SolarEnergy = ({ className }: SolarEnergyProps) => {
         alt="solar-energy-bg"
         className="mt-40 mb-28"
       />
-      <div className="flex flex-nowrapwrap justify-center gap-6 lg:gap-x-8 mb-36 px-4 overflow-hidden">
-        {Array.from({ length: 15 }).map((_, index) => (
-          <React.Fragment key={index}>
-            <Image
-              src="/logo-longi.png"
-              height={80}
-              width={140}
-              alt="logo longi"
-            />
-            <Image
-              src="/logo-sungrow.png"
-              height={80}
-              width={140}
-              alt="logo sungrow"
-            />
-          </React.Fragment>
-        ))}
+      <div className="mb-36 px-4 overflow-hidden">
+        <div className="flex flex-nowrapwrap justify-center gap-6 lg:gap-x-8 w-full">
+          {Array.from({ length: 15 }).map((_, index) => (
+            <React.Fragment key={index}>
+              <Image
+                src="/logo-longi.png"
+                height={80}
+                width={140}
+                alt="logo longi"
+              />
+              <Image
+                src="/logo-sungrow.png"
+                height={80}
+                width={140}
+                alt="logo sungrow"
+              />
+            </React.Fragment>
+          ))}
+        </div>
       </div>
 
-      <p className="text-center font-bold text-lg  leading-relaxed lg:leading-[50px] mb-36 px-4 lg:w-[760px]">
+      <h2 className="text-center font-bold  mb-36 px-4 lg:w-[1260px]">
         Tus proyectos pueden ser amigables con el medio ambiente, contactanos y
         te ayudamos a hacerlo realidad.
-      </p>
+      </h2>
       <AISButton
         color="secondary"
         className="w-[300px] h-[80px]"

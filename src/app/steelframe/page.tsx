@@ -32,7 +32,7 @@ const SteelframePage = () => {
   return (
     <section className="pb-16 overflow-hidden">
       <div
-        className="relative flex justify-center items-center min-h-screen w-full bg-cover bg-center bg-no-repeat"
+        className="relative flex flex-col-reverse md:flex-row md:justify-center items-center min-h-screen w-full bg-cover bg-center bg-no-repeat pt-[100px]"
         style={{
           backgroundImage: "url('/steelframe-bg.webp')",
         }}
@@ -48,10 +48,11 @@ const SteelframePage = () => {
           width={1080}
           height={900}
           alt="steelframe"
-          className="mx-auto absolute top-0"
+          className="mx-auto md:absolute top-0"
+          priority
         />
-        <div className="absolute top-28 z-20 flex w-full mx-20 px-44 justify-between">
-          <div className="w-[514px] flex flex-col gap-12 justify-start text-left">
+        <div className="md:absolute top-28 z-20 flex w-full mx-20 px-44">
+          <div className="md:w-[514px] flex text-left">
             <h2 className="font-bold ">MATERIALES DE CONSTRUCCIÓN EN SECO</h2>
           </div>
         </div>
@@ -93,7 +94,7 @@ const SteelframePage = () => {
       </div>
       <div className="w-full min-h-screen p-4 pt-36">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-3 auto-rows-fr gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-4">
             {categories.map((category) => (
               <Link href={`/steelframe/${category.id}`} key={category.id}>
                 <div
