@@ -1,0 +1,51 @@
+[
+  {
+    "id": "1",
+    "titulo": "Primera noticia",
+    "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    "fecha": "2024-09-12",
+    "imagen": "/image-1.png"
+  },
+  {
+    "id": "2",
+    "titulo": "Segunda noticia",
+    "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    "fecha": "2024-09-10",
+    "imagen": "/image-1.png"
+  },
+  {
+    "id": "3",
+    "titulo": "Tercera noticia",
+    "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    "fecha": "2024-09-08",
+    "imagen": "/image-2.png"
+  },
+  {
+    "id": "4",
+    "titulo": "Cuarta noticia",
+    "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    "fecha": "2024-09-05",
+    "imagen": "/image-3.png"
+  },
+  {
+    "id": "5",
+    "titulo": "Quinta noticia",
+    "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    "fecha": "2024-09-03",
+    "imagen": "/image-1.png"
+  },
+  {
+    "id": "6",
+    "titulo": "Sexta noticia",
+    "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    "fecha": "2024-09-01",
+    "imagen": "/image-3.png"
+  },
+  {
+    "id": "7",
+    "titulo": "Séptima noticia",
+    "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    "fecha": "2024-08-30",
+    "imagen": "/image-2.png"
+  }
+]

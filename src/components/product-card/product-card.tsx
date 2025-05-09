@@ -2,8 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductCardProps {
+  id: string;
   title: string;
   description: string;
   sku: string;
@@ -13,6 +15,7 @@ interface ProductCardProps {
 
 export default function ProductCard({
   title,
+  id,
   description,
   sku,
   imageUrl,
@@ -20,11 +23,11 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <div className="h-full overflow-hidden flex flex-col bg-slate-100 rounded-lg shadow">
-      <div className="p-4 pb-2 space-y-1">
+      <Link href={`/product/${id}`} className="p-4 pb-2 space-y-1">
         <h3 className="font-bold text-xl text-indigo-950">{title}</h3>
         <p className="text-sm text-slate-700">{description}</p>
         <p className="text-xs text-slate-500">SKU: {sku}</p>
-      </div>
+      </Link>
       <div className="p-0 flex-grow relative">
         <div className="relative w-full aspect-square">
           <Image

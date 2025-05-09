@@ -30,7 +30,7 @@ const categories = [
 
 const SteelframePage = () => {
   return (
-    <section className="pb-16 overflow-hidden">
+    <section className="pb-[150px] overflow-hidden">
       <div
         className="relative flex flex-col-reverse md:flex-row md:justify-center items-center min-h-screen w-full bg-cover bg-center bg-no-repeat pt-[100px]"
         style={{

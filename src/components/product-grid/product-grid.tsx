@@ -22,10 +22,7 @@ export default function ProductGrid({
       {products.map((product) => (
         <ProductCard
           key={product.id}
-          title={product.title}
-          description={product.description}
-          sku={product.sku}
-          imageUrl={product.imageUrl}
+          {...product}
           onAddToCart={() => onAddToCart(product.id)}
         />
       ))}
