@@ -40,7 +40,7 @@ const Novedades = () => {
             <p className="text-sm font-bold">{noticiaDestacada.fecha}</p>
             <Link href={`/novedades/${noticiaDestacada.id}`}>
               <p className=" text font-bold flex gap-4 ">
-                {noticiaDestacada.titulo} <TripleArrow className="w-5" />{" "}
+                {noticiaDestacada.titulo} <ChevronsRight className="w-5" />{" "}
               </p>
             </Link>
             <p className="">{noticiaDestacada.descripcion}</p>
@@ -67,7 +67,7 @@ const Novedades = () => {
                 <p className="mb-2">{slide.fecha}</p>
                 <Link href={`/novedades/${slide.id}`} className="flex gap-4">
                   <p className=" font-bold mb-2">{slide.titulo}</p>{" "}
-                  <TripleArrow className="w-5" />
+                  <ChevronsRight className="w-5" />
                 </Link>
                 <p>{slide.descripcion}</p>
               </div>

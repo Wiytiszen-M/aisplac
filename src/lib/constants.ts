@@ -13,8 +13,8 @@ export enum Routes {
 
 export const links = [
   { href: Routes.home, label: "HOME" },
-  { href: Routes.PVC, label: "PCV" },
-  { href: Routes.SteelFrame, label: "MATERIAL DE PRODUCCIÓN EN SECO" },
+  { href: Routes.PVC, label: "PVC" },
+  { href: Routes.SteelFrame, label: "MATERIAL DE CONSTRUCCIÓN EN SECO" },
   { href: Routes.Solar, label: "ENERGÍA SOLAR" },
   { href: Routes.Modular, label: "ARQUITECTURA MODULAR" },
   { href: Routes.About, label: "AISPLAC" },

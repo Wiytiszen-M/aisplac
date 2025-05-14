@@ -2,10 +2,10 @@
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-import { Buy, ShoppingCart, User } from "@/app/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { links } from "@/lib/constants";
+import { QuotePopover } from "../quote-popover.tsx/quote-popover";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -66,9 +66,7 @@ const Header = () => {
 
         {/* Right: Icons */}
         <div className="hidden lg:flex justify-end items-center gap-4">
-          <ShoppingCart className="w-8 h-8 xl:w-10 xl:h-10" />
-          <Buy className="w-8 h-8 xl:w-10 xl:h-10" />
-          <User className="w-8 h-8 xl:w-10 xl:h-10" />
+          <QuotePopover />
         </div>
       </div>
 

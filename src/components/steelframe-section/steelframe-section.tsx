@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { TripleArrow } from "../icons";
+import { ChevronsRight } from "lucide-react";
 
 type steelframeProps = {
   className?: string;
@@ -44,7 +44,7 @@ const SteelframeSection = ({ className }: steelframeProps) => {
             className="flex items-center gap-4 se sm:text-lg lg: font-bold text-white"
           >
             Ver Productos{" "}
-            <TripleArrow className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14" />
+            <ChevronsRight className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14" />
           </Link>
         </div>
       </div>

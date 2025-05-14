@@ -1,52 +1,29 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
+import { Product } from "@/app/types";
 import Image from "next/image";
-import Link from "next/link";
 
 interface ProductCardProps {
-  id: string;
-  title: string;
-  description: string;
-  sku: string;
-  imageUrl: string;
-  onAddToCart?: () => void;
+  product: Product;
 }
 
-export default function ProductCard({
-  title,
-  id,
-  description,
-  sku,
-  imageUrl,
-  onAddToCart = () => {},
-}: ProductCardProps) {
+export function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="h-full overflow-hidden flex flex-col bg-slate-100 rounded-lg shadow">
-      <Link href={`/product/${id}`} className="p-4 pb-2 space-y-1">
-        <h3 className="font-bold text-xl text-indigo-950">{title}</h3>
-        <p className="text-sm text-slate-700">{description}</p>
-        <p className="text-xs text-slate-500">SKU: {sku}</p>
-      </Link>
-      <div className="p-0 flex-grow relative">
-        <div className="relative w-full aspect-square">
-          <Image
-            src={imageUrl || "/placeholder.svg"}
-            alt={title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            style={{ objectFit: "cover" }}
-            priority
-          />
-        </div>
+    <div className="bg-white border-gray-200 rounded-lg overflow-hidden h-full transition-all duration-300 hover:scale-[1.02]">
+      <div className="relative h-64">
+        <Image
+          src={product.imageUrl || "/placeholder.svg"}
+          alt={product.description}
+          fill
+          className="object-contain"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+        />
       </div>
-      <div className="p-4 pt-2">
-        <Button
-          onClick={onAddToCart}
-          className="w-full bg-slate-400 hover:bg-slate-500 text-slate-800"
-        >
-          AGREGAR AL CARRITO
-        </Button>
+      <div className="flex flex-col p-4">
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="text-black font-bold text-lg">{product.title}</h3>
+        </div>
+        <p className="text-sm text-gray-500 mb-1">{product.description}</p>
+        <p className="text-sm text-gray-500 mb-3">SKU: {product.sku}</p>
       </div>
     </div>
   );

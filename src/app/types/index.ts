@@ -3,7 +3,15 @@ export interface IProductCard {
   description: string;
   sku: string;
   imageUrl: string;
-  onAddToCart: () => void;
-  price?: string;
   className?: string;
 }
+
+export interface Product {
+  id: string;
+  title: string;
+  description: string;
+  sku: string;
+  imageUrl: string;
+  relatedProducts?: Product[];
+}
+
