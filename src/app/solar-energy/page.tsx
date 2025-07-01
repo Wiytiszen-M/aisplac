@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import AISButton from "@/components/AISButton/AISButton";
+import { LogoBanner } from "@/components/logo-banner";
+import { PartnerLogo } from "@/components/partner-logo";
+import { CustomButton } from "@/components/ui/custom-button";
 
 const SolarEnergy = () => {
   return (
     <section
-      className="pt-14 md:pt-0 relative flex flex-col items-center pb-[140px] w-full h-full"
+      className="pt-14 md:pt-0 relative flex flex-col items-center pb-[140px] md:pb-[340px] w-full h-full"
       style={{
         background: "linear-gradient(0deg, transparent 0%, #024550 10%);",
       }}
@@ -24,23 +26,19 @@ const SolarEnergy = () => {
         />
       </div>
       <div className="flex flex-col text-center items-center gap-8 px-4 lg:w-[1088px] mt-20">
-        <p className="md:text-xl lg: leading-relaxed">
+        <p>
           La energía del futuro llegó a Aisplac. Con la incorporación de energía
           renovable podes optimizar tus espacios y reducir el impacto ambiental
           al mismo tiempo.
         </p>
-        <p className="mt-8 font-bold text-lg lg: mb-[60px]">
+        <p className="mt-8 font-bold mb-[60px]">
           ¡Consultanos y descubrí cómo integrar
           <br /> la energía solar en tus proyectos!
         </p>
 
-        <AISButton
-          color="secondary"
-          className="w-[220px] h-[64px] lg:w-[300px] lg:h-[80px]"
-          onClick={() => {}}
-        >
+        <CustomButton variant="secondary" className="w-[220px] lg:w-[300px] ">
           CONTACTANOS
-        </AISButton>
+        </CustomButton>
       </div>
       <Image
         src="/solar-panel-1.png"
@@ -66,24 +64,12 @@ const SolarEnergy = () => {
         alt="solar-energy-bg"
         className="mt-40 mb-28"
       />
-      <div className="mb-36 px-4 overflow-hidden">
+      <div className="mb-36 px-4 ">
         <div className="flex flex-nowrapwrap justify-center gap-6 lg:gap-x-8 w-full">
-          {Array.from({ length: 15 }).map((_, index) => (
-            <React.Fragment key={index}>
-              <Image
-                src="/logo-longi.png"
-                height={80}
-                width={140}
-                alt="logo longi"
-              />
-              <Image
-                src="/logo-sungrow.png"
-                height={80}
-                width={140}
-                alt="logo sungrow"
-              />
-            </React.Fragment>
-          ))}
+          <LogoBanner>
+            <PartnerLogo src="/logo-longi.png" alt="logo longi" />
+            <PartnerLogo src="/logo-sungrow.png" alt="logo sungrow" />
+          </LogoBanner>
         </div>
       </div>
 
@@ -91,13 +77,9 @@ const SolarEnergy = () => {
         Tus proyectos pueden ser amigables con el medio ambiente, contactanos y
         te ayudamos a hacerlo realidad.
       </h2>
-      <AISButton
-        color="secondary"
-        className="w-[300px] h-[80px]"
-        onClick={() => {}}
-      >
+      <CustomButton variant="secondary" className="w-[220px] lg:w-[300px] ">
         CONTACTANOS
-      </AISButton>
+      </CustomButton>
     </section>
   );
 };

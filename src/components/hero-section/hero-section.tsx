@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import AISButton from "../AISButton/AISButton";
+import { CustomButton } from "../ui/custom-button";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -31,7 +32,16 @@ export default function HeroSection() {
             integrales para la construcción en seco, con un enfoque en la
             eficiencia y la sostenibilidad.
           </p>
-          <AISButton>Leer Más</AISButton>
+          <Link href="/about">
+            <CustomButton
+              variant="secondary"
+              type="button"
+              className="w-[250px]"
+              size="lg"
+            >
+              LEER MÁS
+            </CustomButton>
+          </Link>
         </div>
       </div>
 

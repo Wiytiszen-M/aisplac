@@ -1,24 +1,174 @@
-import Image from "next/image";
-import React from "react";
+"use client";
 
-type Props = {
-  className?: string;
-};
+import { useState } from "react";
+import { IframeMap } from "@/components/map/iframe-map";
 
-const MapSection = ({ className }: Props) => {
+// Ubicaciones de AISPLAC
+const aisplacLocations = [
+  {
+    id: "oficinas",
+    name: "Oficinas AISPLAC SRL",
+    address: "José Viscardis 345, Gral. Pico, La Pampa, Argentina",
+    position: { lat: -35.6566, lng: -63.7568 },
+    type: "office",
+    phone: "+54 2302 42-1234", // Reemplazar con el teléfono real
+    hours: "Lunes a Viernes: 8:00 - 18:00",
+    url: "https://maps.app.goo.gl/u3cEEHNonN3GuoAY7",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.176491024029!2d-63.75930!3d-35.65661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c37d405e71b2e9%3A0x2c5b4b3d4a3b5f7!2sJos%C3%A9%20Viscardis%20345%2C%20L6360%20Gral.%20Pico%2C%20La%20Pampa!5e0!3m2!1ses!2sar!4v1621234567890!5m2!1ses!2sar",
+  },
+  {
+    id: "fabrica",
+    name: "Fábrica AISPLAC SRL",
+    address: "José Viscardis 1050, Gral. Pico, La Pampa, Argentina",
+    position: { lat: -35.658, lng: -63.759 },
+    type: "factory",
+    phone: "+54 2302 42-5678", // Reemplazar con el teléfono real
+    hours: "Lunes a Viernes: 7:00 - 17:00",
+    url: "https://maps.app.goo.gl/z2nFgnnmjQ7y3i92A",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.176491024029!2d-63.75901!3d-35.65801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c37d405e71b2e9%3A0x2c5b4b3d4a3b5f7!2sJos%C3%A9%20Viscardis%201050%2C%20L6360%20Gral.%20Pico%2C%20La%20Pampa!5e0!3m2!1ses!2sar!4v1621234567890!5m2!1ses!2sar",
+  },
+];
+
+// URL para el mapa que muestra ambas ubicaciones
+const combinedMapUrl =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.176491024029!2d-63.75901!3d-35.65801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c37d405e71b2e9%3A0x2c5b4b3d4a3b5f7!2sJos%C3%A9%20Viscardis%201050%2C%20L6360%20Gral.%20Pico%2C%20La%20Pampa!5e0!3m2!1ses!2sar!4v1621234567890!5m2!1ses!2sar";
+
+export default function MapSection() {
+  const [focusedLocation, setFocusedLocation] = useState<string | null>(null);
+
+  const currentMapUrl = focusedLocation
+    ? aisplacLocations.find((loc) => loc.id === focusedLocation)?.mapUrl ||
+      combinedMapUrl
+    : combinedMapUrl;
+
+  // Función para enfocar una ubicación
+  const focusLocation = (locationId: string) => {
+    setFocusedLocation(locationId);
+  };
+
   return (
-    <section
-      className={`pt-10 pb-36 relative flex flex-col justify-center items-center md:min-h-screen w-full bg-cover bg-center bg-no-repeat ${className}`}
-      style={{
-        backgroundImage: "url(/map-bg.webp)",
-      }}
-    >
-      <h2 className="md:w-[456px] pb-4 md:pb-0 md:absolute bottom-36 left-40 text-3xl font-bold  uppercase ">
-        MAPA DE ARGENTINA CLIENTES MAYORISTAS
-      </h2>
-      <Image src="/map.webp" alt="Map Marker" width={1196} height={762} />
-    </section>
-  );
-};
+    <div className="container mx-auto px-4 py-8 pb-52">
+      <h2 className="font-bold mb-24">Nuestras Ubicaciones</h2>
 
-export default MapSection;
+      {/* Contenedor principal con diseño de dos columnas */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Columna izquierda: Lista de ubicaciones */}
+        <div className="w-full lg:w-1/3 flex flex-col gap-4">
+          <div className="space-y-4">
+            {aisplacLocations.map((location) => (
+              <div
+                key={location.id}
+                onClick={() => focusLocation(location.id)}
+                className={`bg-white rounded-lg shadow-sm p-4 border ${
+                  focusedLocation === location.id
+                    ? "border-[#1D6191] border-2"
+                    : "border-gray-200"
+                } transition-all hover:shadow-md cursor-pointer`}
+              >
+                <div className="flex items-start">
+                  {/* Icono según el tipo de ubicación */}
+                  <div className="mr-3 text-[#1D6191]">
+                    {location.type === "office" ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <rect
+                          x="4"
+                          y="2"
+                          width="16"
+                          height="20"
+                          rx="2"
+                          ry="2"
+                        ></rect>
+                        <line x1="12" y1="6" x2="12" y2="6.01"></line>
+                        <line x1="12" y1="10" x2="12" y2="16"></line>
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
+                      </svg>
+                    )}
+                  </div>
+
+                  <div className="text-left flex-1">
+                    <h2 className="text-black text-lg font-semibold">
+                      {location.name}
+                    </h2>
+                    <p className="text-gray-600 text-sm">{location.address}</p>
+
+                    <div className="mt-2 text-sm text-gray-500">
+                      {location.hours}
+                    </div>
+
+                    <div className="mt-3">
+                      <a
+                        href={location.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-[#1D6191] hover:text-[#174d77] text-sm"
+                        onClick={(e) => e.stopPropagation()} // Evitar que el clic en el enlace active la tarjeta
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4 mr-1"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        Google Maps
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Columna derecha: Mapa */}
+        <div className="w-full lg:w-2/3">
+          <div className="top-4 border border-gray-200 rounded-lg overflow-hidden shadow-md">
+            <IframeMap
+              src={currentMapUrl}
+              height="600px"
+              className="w-full"
+              title={
+                focusedLocation
+                  ? `Ubicación: ${
+                      aisplacLocations.find((loc) => loc.id === focusedLocation)
+                        ?.name
+                    }`
+                  : "Ubicaciones de AISPLAC"
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

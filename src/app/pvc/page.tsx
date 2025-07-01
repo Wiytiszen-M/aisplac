@@ -1,17 +1,14 @@
 "use client";
-import AISButton from "@/components/AISButton/AISButton";
 import ProductGrid from "@/components/product-grid/product-grid";
+import { CustomButton } from "@/components/ui/custom-button";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   className?: string;
 }
 
 const PVCPage = ({ className }: Props) => {
-  const handleClick = () => {
-    alert("Button clicked!");
-  };
-
   const products = Array.from({ length: 12 }, (_, i) => ({
     id: `${i + 1}`,
     title: "BARBIERI",
@@ -47,17 +44,15 @@ const PVCPage = ({ className }: Props) => {
           necesidades de la industria, el comercio y el hogar.
         </p>
 
-        <div className=" flex justify-center items-center">
-          <AISButton
-            onClick={handleClick}
-            color="primary"
-            className="w-[400px]"
-          >
+        <Link href="/calculator" className=" flex justify-center items-center">
+          <CustomButton className="w-full md:w-[400px]" variant="primary">
             CALCULADORA DE PVC
-          </AISButton>
-        </div>
+          </CustomButton>
+        </Link>
       </div>
-      <ProductGrid products={products} />
+      <div className="container mx-auto pb-36 overflow-x-auto">
+        <ProductGrid products={products} />
+      </div>
       <div className="relative flex justify-center  md:py-[181px]">
         <p className="p-5 md:p-0 w-[1230px] text-center">
           Material fabricado a partir de la extrusión de PVC, con maquinaria de

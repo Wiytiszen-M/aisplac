@@ -5,29 +5,28 @@ export default function ModularFeatures() {
     <div className="w-full bg-[#1a1333] py-16 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-          {/* Primer módulo - Sostenibilidad */}
           <div className="w-full md:w-1/3 ">
             <div className="flex flex-col items-center justify-center p-6 text-center text-white">
               <div className="mb-4 flex justify-center">
                 <div className="relative w-12 h-12">
                   <Image
                     src="/modular/handheart.svg"
-                    alt="Sostenibilidad"
+                    alt="Sustentabilidad"
                     fill
                     className="object-contain opacity-80"
                   />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Sostenibilidad</h3>
+              <h3 className="text-xl font-semibold mb-2">Sustentables</h3>
               <p className="text-sm opacity-80">
-                Construcción con materiales ecológicos y sostenibles. Reducimos
-                el impacto ambiental en nuestros proyectos y viviendas. Los
-                materiales son reciclables y eco-amigables.
+                Construimos módulos funcionales que cumplan con altos estándares
+                de calidad, permitiendo un montaje rápido y escalable. Los
+                módulos están diseñados para ser versátiles, sostenibles y
+                eficientes.
               </p>
             </div>
           </div>
 
-          {/* Segundo módulo - Construcción Modular (enfocado) */}
           <div className="w-full md:w-1/3 md:scale-105 md:z-10">
             <div className="flex flex-col items-center justify-center p-6 text-center text-white">
               <div className="mb-4 flex justify-center">
@@ -44,14 +43,13 @@ export default function ModularFeatures() {
                 Construcción Modular
               </h3>
               <p className="text-sm opacity-80">
-                Construcción en plazos ajustados mediante módulos prefabricados,
-                recientemente innovadores, de obra. Servicios de reformas
-                integrales. Soluciones constructivas eficientes.
+                Construcción en fábrica cuidando todos los detalles  y evitas
+                los recurrentes inconvenientes de obra. Selección de materiales
+                duraderos, livianos y de fácil transporte. 
               </p>
             </div>
           </div>
 
-          {/* Tercer módulo - Automatización */}
           <div className="w-full md:w-1/3">
             <div className="flex flex-col items-center justify-center p-6 text-center text-white">
               <div className="mb-4 flex justify-center">
@@ -64,11 +62,12 @@ export default function ModularFeatures() {
                   />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Automatización</h3>
+              <h3 className="text-xl font-semibold mb-2">
+                Diseños personalizados
+              </h3>
               <p className="text-sm opacity-80">
-                Implementación de sistemas de automatización y control
-                electrónico en construcción. Soluciones inteligentes para el
-                hogar.
+                Creación de modelos digitales para validar funcionalidad,
+                estética y optimización de espacios.
               </p>
             </div>
           </div>

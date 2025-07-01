@@ -1,4 +1,5 @@
-import ProductCard from "../product-card/product-card";
+import Link from "next/link";
+import { ProductCard } from "../product-card/product-card";
 
 interface Product {
   id: string;
@@ -13,18 +14,13 @@ interface ProductGridProps {
   onAddToCart?: (productId: string) => void;
 }
 
-export default function ProductGrid({
-  products,
-  onAddToCart = () => {},
-}: ProductGridProps) {
+export default function ProductGrid({ products }: ProductGridProps) {
   return (
-    <div className="px-2 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          {...product}
-          onAddToCart={() => onAddToCart(product.id)}
-        />
+        <Link key={product.id} href={`/product/${product.id}`}>
+          <ProductCard product={product} />
+        </Link>
       ))}
     </div>
   );

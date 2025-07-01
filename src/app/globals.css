@@ -27,32 +27,32 @@ body {
 
 @layer base {
   p {
-    @apply text-base; /* Aplica text-base por defecto */
+    @apply text-base;
   }
 
   footer {
     p,
     a {
-      @apply text-base; /* Aplica text-base por defecto */
+      @apply text-base;
     }
   }
 
   h2 {
-    @apply text-3xl; /* Aplica text-2xl por defecto */
+    @apply text-3xl;
   }
 
   @screen md {
     p {
-      @apply text-3xl; /* Aplica text-3xl en pantallas medianas y mayores */
+      @apply text-3xl;
     }
     h2 {
-      @apply text-6xl; /* Aplica text-3xl en pantallas medianas y mayores */
+      @apply text-6xl;
     }
 
     footer {
       p,
       a {
-        @apply text-xl; /* Aplica text-base por defecto */
+        @apply text-xl;
       }
     }
   }
@@ -61,5 +61,25 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Animación para el desplazamiento continuo */
+  .infinite-scroll {
+    animation: infiniteScroll 40s linear infinite;
+    display: flex;
+    width: max-content;
+  }
+
+  @keyframes infiniteScroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% / 4));
+    }
+  }
+
+  .scroller:hover .scroller__inner {
+    animation-play-state: paused;
   }
 }

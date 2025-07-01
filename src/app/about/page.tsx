@@ -62,9 +62,11 @@ const About = () => {
       <div className="w-full max-w-[973px] mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 p-4">
         {valores.map(({ nombre, icono }) => (
           <div key={nombre} className="flex flex-col items-center text-center">
-            <img
+            <Image
               src={icono}
               alt={nombre}
+              width={186}
+              height={186}
               className="w-[186px] h-[186px] mb-2"
             />
             <span className="text-sm font-bold">{nombre}</span>

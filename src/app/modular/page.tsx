@@ -1,7 +1,5 @@
-import AISButton from "@/components/AISButton/AISButton";
-import BlurredCarousel from "@/components/carousel-blur/carousel-blur";
 import ModularFeatures from "@/components/modular-features/modular-features";
-import { Button } from "@/components/ui/button";
+import { CustomButton } from "@/components/ui/custom-button";
 import ResponsiveCards from "@/components/ui/responsive-cards";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,8 +38,11 @@ const Modular = () => {
           tecnología, sostenibilidad y funcionalidad, se posiciona como una
           alternativa competitiva y de alto impacto en el mercado.
         </p>
-        <Link href="/contact" className="text-base md:text-3xl font-bold">
-           ¡Contactanos para planificar tu espacio modular!
+        <Link
+          href="/contact"
+          className="text-base md:text-3xl font-bold hover:underline transition-all duration-1000"
+        >
+          ¡Contactanos para planificar tu espacio modular!
         </Link>
       </div>
       <Image
@@ -53,46 +54,13 @@ const Modular = () => {
       />
       <ModularFeatures />
       <ResponsiveCards />
-      <Button variant="default">SOLICITAR COTIZACIONES</Button>
-      <div className="relative flex flex-col mt-20 md:gap-6 gap-3">
-        <p className="md:w-[550px] absolute  p-4 md:top-20 md:left-20">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s
-        </p>
-        <Image
-          alt="modular exibition"
-          src="/modular/modular-ex.png"
-          width={1752}
-          height={1068}
-        />
 
-        <Image
-          alt="modular exibition"
-          src="/modular/zoco.png"
-          width={1752}
-          height={543}
-        />
-        <div className="flex md:gap-6 gap-3 w-full h-fit overflow-x-hidden ">
-          <Image
-            alt="modular windows"
-            src="/modular/windows.png"
-            width={1180}
-            height={543}
-            className="w-8/12"
-          />
-          <Image
-            alt="modular zoco front"
-            src="/modular/zoco-front.png"
-            width={522}
-            height={543}
-            className="w-4/12"
-          />
-        </div>
-      </div>
       <h2 className="md:w-[792px] p-8 md:p-0 md:my-[75px]">
         Contactanos y te ayudamos a hacerlo realidad. 
       </h2>
+      <Link href="/contact">
+        <CustomButton variant="secondary">SOLICITAR MÁS INFO</CustomButton>
+      </Link>
     </section>
   );
 };

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { submitContactForm } from "./actions/submitForm";
-import { Button } from "@/components/ui/button";
+import { CustomButton } from "@/components/ui/custom-button";
 
 const About = () => {
   const [form, setForm] = useState({ nombre: "", email: "", descripcion: "" });
@@ -77,9 +77,9 @@ const About = () => {
         />
 
         <div className="col-span-full flex justify-end">
-          <Button variant="secondary" type="submit" disabled={loading}>
+          <CustomButton variant="secondary" type="submit" disabled={loading}>
             {loading ? "Enviando..." : "Enviar"}
-          </Button>
+          </CustomButton>
         </div>
 
         {message && <p className="col-span-full text-sm mt-2">{message}</p>}
