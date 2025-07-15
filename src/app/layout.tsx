@@ -4,11 +4,10 @@ import "./globals.css";
 import { Raleway } from "next/font/google";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
-import { QuoteProvider } from "@/context/quote-context";
 import Link from "next/link";
 import { Facebook, Instagram } from "@/app/assets/icons";
 import { Youtube, LinkedIn } from "@/components/icons";
-import { PageTransition } from "@/components/page-transition";
+import { CotizacionWidget } from "@/components/cotizacion-widget";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -28,46 +27,45 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className}>
-        <QuoteProvider>
-          <Header />
-          <PageTransition>
-            <main className="relative">
-              {children}
-              <div className="absolute bottom-0 w-full flex flex-wrap justify-center py-10 items-center gap-2 md:gap-4">
-                <Link
-                  href="https://www.instagram.com/aisplacsrl/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center"
-                >
-                  <Youtube className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/aisplacsrl/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <LinkedIn className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
-                </Link>
-                <Link
-                  href="https://www.instagram.com/aisplacsrl/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Instagram className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
-                </Link>
-                <Link
-                  href="https://www.facebook.com/Aisplac"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Facebook className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
-                </Link>
-              </div>
-            </main>
-          </PageTransition>
-          <Footer />
-        </QuoteProvider>
+        <Header />
+
+        <main className="relative min-h-screen">
+          {children}
+          <div className="absolute bottom-0 w-full flex flex-wrap justify-center py-10 items-center gap-2 md:gap-4">
+            <Link
+              href="https://www.instagram.com/aisplacsrl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center"
+            >
+              <Youtube className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/aisplacsrl/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkedIn className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/aisplacsrl/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+            </Link>
+            <Link
+              href="https://www.facebook.com/Aisplac"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Facebook className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+            </Link>
+          </div>
+        </main>
+        <CotizacionWidget />
+
+        <Footer />
       </body>
     </html>
   );

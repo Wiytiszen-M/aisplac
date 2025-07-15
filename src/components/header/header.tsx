@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { links } from "@/lib/constants";
-import { QuotePopover } from "../quote-popover.tsx/quote-popover";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,9 +64,7 @@ const Header = () => {
         </div>
 
         {/* Right: Icons */}
-        <div className="hidden lg:flex justify-end items-center gap-4">
-          <QuotePopover />
-        </div>
+        <div className="hidden lg:flex justify-end items-center gap-4"></div>
       </div>
 
       {/* Mobile Menu Overlay */}
