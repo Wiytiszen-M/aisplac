@@ -1,22 +1,17 @@
 "use client";
-import ProductGrid from "@/components/product-grid/product-grid";
+import { CategoriasPVCGrid } from "@/components/categorias-pvc-grid";
+import { CategoriasSkeleton } from "@/components/categorias-skeleton";
+// import ProductGrid from "@/components/product-grid/product-grid";
 import { CustomButton } from "@/components/ui/custom-button";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 interface Props {
   className?: string;
 }
 
-const PVCPage = ({ className }: Props) => {
-  const products = Array.from({ length: 12 }, (_, i) => ({
-    id: `${i + 1}`,
-    title: "BARBIERI",
-    description: "Montante 69 Rigidiza e0.52 (40px122x2.6m)",
-    sku: "000000",
-    imageUrl: "/image-1.png",
-  }));
-
+const PVCPage = ({ className = "" }: Props) => {
   return (
     <section
       className={`relative pb-36  flex flex-col gap-12 w-full h-full ${className}`}
@@ -50,8 +45,11 @@ const PVCPage = ({ className }: Props) => {
           </CustomButton>
         </Link>
       </div>
-      <div className="container mx-auto pb-36 overflow-x-auto">
-        <ProductGrid products={products} />
+
+      <div className="max-w-7xl w-full mx-auto p-4 pt-36">
+        <Suspense fallback={<CategoriasSkeleton />}>
+          <CategoriasPVCGrid />
+        </Suspense>
       </div>
       <div className="relative flex justify-center  md:py-[181px]">
         <p className="p-5 md:p-0 w-[1230px] text-center">

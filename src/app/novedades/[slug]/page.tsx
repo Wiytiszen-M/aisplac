@@ -1,45 +1,63 @@
-import { NewsDetail } from "@/components/news/news-detail"
-import { getNewsItem, getNewsSlugs } from "@/lib/sanity"
-import { notFound } from "next/navigation"
+import { notFound } from "next/navigation";
+import { getPost, urlFor } from "@/sanity/client";
+import { formatDate } from "@/lib/utils";
 
-export async function generateStaticParams() {
-  const slugs = await getNewsSlugs()
-  return slugs.map((slug) => ({ slug }))
+import Image from "next/image";
+import { ShareButtons } from "@/components/share-buttons";
+import { BackButton } from "@/components/back-button";
+import { PortableTextRenderer } from "@/components/portable-text";
+
+export const revalidate = 60; // Revalidate this page every 60 seconds
+
+interface BlogPostPageProps {
+  params: {
+    slug: string;
+  };
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const newsItem = await getNewsItem(params.slug)
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = await getPost(params.slug);
 
-  if (!newsItem) {
-    return {
-      title: "Noticia no encontrada | AISPLAC",
-      description: "La noticia que buscas no existe o ha sido eliminada",
-    }
-  }
-
-  return {
-    title: `${newsItem.title} | AISPLAC`,
-    description: newsItem.excerpt,
-    openGraph: {
-      title: newsItem.title,
-      description: newsItem.excerpt,
-      images: [{ url: newsItem.mainImage }],
-    },
-  }
-}
-
-export default async function NewsItemPage({ params }: { params: { slug: string } }) {
-  const newsItem = await getNewsItem(params.slug)
-
-  if (!newsItem) {
-    notFound()
+  if (!post) {
+    notFound();
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
-        <NewsDetail newsItem={newsItem} />
-      </div>
+    <div className="mx-auto max-w-4xl py-36">
+      <BackButton url="/novedades" text="Volver a novedades" />
+
+      <article className="mt-5">
+        <h1 className=" text-4xl font-bold">{post.title}</h1>
+        <span className="mb-8 text-muted-foreground">
+          {formatDate(post.publishedAt)}
+        </span>
+
+        {post.image ? (
+          <div className="relative mb-8 w-full rounded-lg">
+            <div className="aspect-video relative">
+              <Image
+                src={urlFor(post.image).width(1200).height(630).url() || ""}
+                alt={post.title}
+                fill
+                className="object-contain rounded-lg"
+                priority
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="relative mb-8 w-full rounded-lg bg-muted">
+            <div className="aspect-video flex items-center justify-center">
+              <span className="text-muted-foreground">No image available</span>
+            </div>
+          </div>
+        )}
+
+        {post.body && <PortableTextRenderer value={post.body} />}
+
+        <div className="mt-12 border-t pt-8">
+          <ShareButtons slug={post.slug.current} title={post.title} />
+        </div>
+      </article>
     </div>
-  )
+  );
 }

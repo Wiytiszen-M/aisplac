@@ -3,7 +3,7 @@
 export interface Categoria {
   codigo: string
   descripcion: string
-  img: string
+  urlimg: string
 }
 
 export interface Producto {

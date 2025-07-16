@@ -7,6 +7,7 @@ import SolarEnergySection from "@/components/solar-energy-section/solar-energy-s
 import News from "@/components/news/news";
 import PVCSection from "@/components/pvc-section/pvc-section";
 import HeroSection from "@/components/hero-section/hero-section";
+import VideoInstitucional from "@/components/video-inst";
 
 export default function Home() {
   return (
@@ -22,15 +23,8 @@ export default function Home() {
         <div className="flex flex-col items-center text-center">
           <ValuesSection />
 
-          <div className="flex mb-[115px] justify-center items-center w-full">
-            <iframe
-              width="1441"
-              height="584"
-              src="https://www.youtube.com/embed/{VIDEO_ID}"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+          <div className="max-w-7xl mx-auto flex mb-[115px] justify-center items-center w-full">
+            <VideoInstitucional />
           </div>
 
           <PVCSection />

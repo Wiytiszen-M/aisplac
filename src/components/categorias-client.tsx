@@ -5,11 +5,12 @@ import Link from "next/link";
 import { Layers } from "lucide-react";
 import { SearchInput } from "@/components/search-input";
 import { CategoryCard } from "@/components/category-card";
+import { usePathname } from "next/navigation";
 
 interface Categoria {
   codigo: string;
   descripcion: string;
-  img: string;
+  urlimg: string;
 }
 
 interface CategoriasClientProps {
@@ -17,7 +18,10 @@ interface CategoriasClientProps {
 }
 
 export function CategoriasClient({ categorias }: CategoriasClientProps) {
+  const pathname = usePathname();
   const [searchQuery, setSearchQuery] = useState("");
+
+  const baseUrl = pathname.includes("/steelframe") ? "/steelframe" : "/pvc";
 
   // Filtrar categorías basado en la búsqueda
   const filteredCategorias = useMemo(() => {
@@ -84,7 +88,7 @@ export function CategoriasClient({ categorias }: CategoriasClientProps) {
             const isPinturas = categoria.codigo === "11";
             const linkHref = isPinturas
               ? "/pinturas"
-              : `/materiales/${categoria.codigo}`;
+              : `${baseUrl}/${categoria.codigo}`;
 
             return (
               <Link key={categoria.codigo} href={linkHref} className="group">

@@ -45,45 +45,44 @@ async function fetchWithRetry(url: string, options: RequestInit = {}, retries = 
   }
 }
 
-// Función para procesar múltiples imágenes de un producto
-function procesarImagenesProducto(producto: any): string[] {
-  const imagenes: string[] = []
 
-  // Agregar imagen principal si existe
-  if (producto.urlimg && producto.urlimg.trim() !== "") {
-    imagenes.push(producto.urlimg.trim())
-  }
 
-  // Buscar imágenes adicionales en diferentes campos posibles
-  const camposImagenes = ["urlimg2", "urlimg3", "urlimg4", "urlimg5", "imagen2", "imagen3", "imagen4", "imagen5"]
+// Obtener categorías PVC
+export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
+  try {
+    console.log("📦 Obteniendo categorías...")
+    const startTime = Date.now()
 
-  camposImagenes.forEach((campo) => {
-    if (producto[campo] && producto[campo].trim() !== "") {
-      imagenes.push(producto[campo].trim())
+    const response = await fetchWithRetry(
+      "https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/PVC/12345EIDOS2K21IO23LASO",
+    )
+
+    const responseText = await response.text()
+    const cleanedJson = cleanJsonString(responseText)
+    const data = JSON.parse(cleanedJson)
+
+    const loadTime = Date.now() - startTime
+    console.log(`✅ Categorías cargadas en ${loadTime}ms`)
+
+    if (data && data.categorias && Array.isArray(data.categorias) && data.categorias.length > 0) {
+      const categoriasNormalizadas = data.categorias.map((cat: Categoria) => ({
+        codigo: String(cat.codigo),
+        descripcion: cat.descripcion,
+        urlimg: cat.urlimg || "",
+      }))
+
+      return {
+        data: categoriasNormalizadas,
+        error: null,
+      }
+    } else {
+      return { data: [], error: "No se encontraron categorías" }
     }
-  })
-
-  // Si hay un campo 'imagenes' que sea un array
-  if (Array.isArray(producto.imagenes)) {
-    producto.imagenes.forEach((img: string) => {
-      if (img && img.trim() !== "" && !imagenes.includes(img.trim())) {
-        imagenes.push(img.trim())
-      }
-    })
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : "Error desconocido"
+    console.error("❌ Error al obtener categorías:", errorMessage)
+    return { data: null, error: errorMessage }
   }
-
-  // Si hay un campo 'imagenes' que sea un string separado por comas
-  if (typeof producto.imagenes === "string" && producto.imagenes.trim() !== "") {
-    const imagenesArray = producto.imagenes.split(",")
-    imagenesArray.forEach((img: string) => {
-      const imgTrimmed = img.trim()
-      if (imgTrimmed !== "" && !imagenes.includes(imgTrimmed)) {
-        imagenes.push(imgTrimmed)
-      }
-    })
-  }
-
-  return imagenes
 }
 
 // Obtener categorías
@@ -104,10 +103,10 @@ export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
     console.log(`✅ Categorías cargadas en ${loadTime}ms`)
 
     if (data && data.categorias && Array.isArray(data.categorias) && data.categorias.length > 0) {
-      const categoriasNormalizadas = data.categorias.map((cat: any) => ({
+      const categoriasNormalizadas = data.categorias.map((cat: Categoria) => ({
         codigo: String(cat.codigo),
         descripcion: cat.descripcion,
-        img: cat.img || "",
+        urlimg: cat.urlimg || "",
       }))
 
       return {
@@ -124,11 +123,11 @@ export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
   }
 }
 
-// Obtener información de una categoría específica
-export async function getCategoria(codigoCategoria: string): Promise<ApiResponse<Categoria>> {
-  try {
-    const { data: categorias, error } = await getCategorias()
 
+// Obtener información de una categoría específica
+export async function getCategoria(codigoCategoria: string, isPvc = false): Promise<ApiResponse<Categoria>> {
+  try {
+    const { data: categorias, error } = isPvc ? await getCategoriasPVC() : await getCategorias()
     if (error || !categorias) {
       return { data: null, error: error || "Error al obtener categorías" }
     }
@@ -168,12 +167,12 @@ export async function getProductos(codigoCategoria: string): Promise<ApiResponse
 
     try {
       data = JSON.parse(cleanedJson)
-    } catch (parseError) {
-      return { data: null, error: "Respuesta no es JSON válido" }
+    } catch (error) {
+      return { data: null, error: `Respuesta no es JSON válido: ${error}` }
     }
 
     // Intentar diferentes estructuras de respuesta
-    let productosData: any[] = []
+    let productosData: Producto[] = []
 
     if (Array.isArray(data)) {
       productosData = data
@@ -189,8 +188,8 @@ export async function getProductos(codigoCategoria: string): Promise<ApiResponse
     console.log(`✅ ${productosData.length} productos cargados en ${loadTime}ms`)
 
     if (productosData.length > 0) {
-      const productosNormalizados = productosData.map((prod: any) => {
-        const imagenes = procesarImagenesProducto(prod)
+      const productosNormalizados = productosData.map((prod: Producto) => {
+
 
         return {
           codigo: String(prod.codigo),
@@ -206,8 +205,8 @@ export async function getProductos(codigoCategoria: string): Promise<ApiResponse
           activo: Boolean(prod.activo),
           timestamp: prod.timestamp || "",
           uxf: prod.uxf || "",
-          urlimg: imagenes[0] || "", // Primera imagen como principal
-          imagenes: imagenes, // Todas las imágenes
+          urlimg: prod.urlimg || "",
+
         }
       })
 

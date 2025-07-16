@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "aisplacsrl.gestionnik.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        pathname: "/images/**",
+      },
     ],
   },
   webpack: (config) => {

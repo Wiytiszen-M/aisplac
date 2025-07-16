@@ -7,7 +7,7 @@ export enum Routes {
   Solar = "/solar-energy",
   Modular = "/modular",
   About = "/about",
-  News = "/news",
+  News = "/novedades",
   Contact = "/contact-us",
 }
 

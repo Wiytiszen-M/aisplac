@@ -1,5 +1,3 @@
-import { CalculatorForm } from "@/components/materials-calculator/calculator-form";
-
 export const metadata = {
   title: "Calculadora de Materiales | AISPLAC",
   description:
@@ -20,8 +18,6 @@ export default function CalculatorPage() {
               construcción en seco
             </p>
           </div>
-
-          <CalculatorForm />
         </div>
       </div>
     </div>

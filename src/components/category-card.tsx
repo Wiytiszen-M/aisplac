@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 import { Categoria } from "@/types";
 
 interface CategoryCardProps {
@@ -12,16 +13,12 @@ export function CategoryCard({ categoria }: CategoryCardProps) {
       <CardHeader className="pb-4">
         <div className="aspect-square relative mb-4 bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg overflow-hidden border border-gray-600">
           <Image
-            src={categoria.img || "/logo.svg"}
+            src={categoria.urlimg || "/logo.svg"}
             alt={categoria.descripcion}
             fill
             className="object-contain group-hover:scale-105 transition-transform duration-200"
           />
         </div>
-
-        <CardTitle className="text-center text-lg leading-tight group-hover:text-blue-400 transition-colors text-gray-100">
-          {categoria.descripcion}
-        </CardTitle>
       </CardHeader>
     </Card>
   );
