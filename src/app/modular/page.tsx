@@ -1,5 +1,5 @@
 import ModularFeatures from "@/components/modular-features/modular-features";
-import { CustomButton } from "@/components/ui/custom-button";
+import { Button } from "@/components/ui/button";
 import ResponsiveCards from "@/components/ui/responsive-cards";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,12 +7,7 @@ import Link from "next/link";
 const Modular = () => {
   return (
     <section className="flex flex-col items-center md:min-h-screen pb-[150px] mx-auto ">
-      <div
-        className="relative flex flex-col justify-center items-center md:min-h-screen w-full bg-cover bg-center bg-no-repeat"
-        style={{
-          background: "linear-gradient(0deg,transparent 0%, #5959A4 100%);",
-        }}
-      >
+      <div className="relative flex flex-col justify-center items-center md:min-h-screen w-full ">
         <div className="relative pt-[100px] md:pt-0 w-full max-w-[1728px] h-[452px] md:h-[852px] overflow-hidden">
           <Image
             className="absolute w-[80%] md:w-auto md:bottom-[30%] lg:left-[151px] z-10"
@@ -59,7 +54,9 @@ const Modular = () => {
         Contactanos y te ayudamos a hacerlo realidad. 
       </h2>
       <Link href="/contact">
-        <CustomButton variant="secondary">SOLICITAR MÁS INFO</CustomButton>
+        <Button variant="secundary" size="lg">
+          SOLICITAR MÁS INFO
+        </Button>
       </Link>
     </section>
   );

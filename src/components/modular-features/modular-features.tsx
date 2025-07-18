@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function ModularFeatures() {
   return (
-    <div className="w-full bg-[#1a1333] py-16 px-4">
+    <div className="w-full py-16 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-center items-center gap-6">
           <div className="w-full md:w-1/3 ">

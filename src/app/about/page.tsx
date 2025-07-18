@@ -18,7 +18,7 @@ const About = () => {
       <div className="relative w-full h-[800px] overflow-hidden">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
-          src="/about/hero-video.mp4"
+          src="/videos/hero-video.mp4"
           autoPlay
           loop
           muted

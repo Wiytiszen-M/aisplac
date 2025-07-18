@@ -19,7 +19,7 @@ const ModularSection = ({ className }: steelframeProps) => {
         }}
       />
       <div
-        className="absolute bottom-0 w-full h-full bg-no-repeat bg-contain -z-10"
+        className="absolute bottom-5 w-[95%] h-[95%] bg-no-repeat bg-contain -z-10"
         style={{
           opacity: 0.1,
           backgroundImage: "url('/module-vector.png')",
@@ -42,15 +42,16 @@ const ModularSection = ({ className }: steelframeProps) => {
           alt="module architecture"
         />
       </div>
-      <div className="flex flex-col w-full gap-8 md:gap-0 md:flex-row md:p-20 lg:p-44 pt-0 justify-between">
-        <p className="text-left w-full md:w-[630px] se md:">
+
+      <div className="flex flex-col w-full gap-8 md:gap-0 md:flex-row md:pb-20 md:pt-0 lg:px-44 pt-0 justify-between">
+        <p className="text-left w-full md:w-[630px] flex lg:w-1/2 ">
           La construcción modular es la arquitectura del futuro por la rapidez
           de ejecución, eficiencia de montaje y sostenibilidad.
         </p>
-        <div className="relative z-30 flex items-center uppercase ">
+        <div className="relative z-30 flex items-center uppercase lg:w-1/2 justify-center">
           <Link href="/modular" className="flex items-center gap-4 font-bold ">
             Ver Productos{" "}
-            <ChevronsRight className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14" />
+            <ChevronsRight className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14 " />
           </Link>
         </div>
       </div>

@@ -28,7 +28,7 @@ export default function NewsSlider({ posts }: { posts: Post[] }) {
         slideShadows: true,
       }}
       navigation
-      className="px-8"
+      className="px-8 w-[75%] "
     >
       {recentPosts.map((post, index) => (
         <SwiperSlide key={index} className="max-w-xs md:max-w-sm">

@@ -83,3 +83,10 @@ body {
     animation-play-state: paused;
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeSlide {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

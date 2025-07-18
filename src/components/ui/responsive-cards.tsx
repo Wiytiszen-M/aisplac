@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Image from "next/image";
-import { CustomButton } from "./custom-button";
 import Link from "next/link";
+import { Button } from "./button";
 
 interface CardProps {
   title: string;
@@ -17,34 +17,38 @@ interface CardProps {
 // Datos para cada tipo de proyecto
 const projectData = {
   oficina: {
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s",
-    images: {
-      main: "/modular/modular-ex.png",
-      secondary: "/modular/zoco.png",
-      left: "/modular/windows.png",
-      right: "/modular/zoco-front.png",
-    },
+    description: `Oficina modular de 28,8 m² hecha con contenedor de 40 pies HC. Estructura de acero resistente, aislación térmica y acústica, instalación eléctrica completa e iluminación LED. Lista para usar, rápida de instalar y personalizable. Ideal para oficinas, obras o coworking.`,
+    title: "Oficina Modular",
+    images: [
+      "/modular/oficina/1.jpg",
+      "/modular/oficina/2.jpg",
+      "/modular/oficina/3.jpg",
+    ],
   },
   comercial: {
-    description:
-      "Los complejos comerciales modulares ofrecen espacios versátiles y adaptables para negocios de todo tipo, con diseños modernos y funcionales.",
-    images: {
-      main: "/modular/comercial-1.png",
-      secondary: "/modular/comercial-2.png",
-      left: "/modular/comercial-3.png",
-      right: "/modular/comercial-4.png",
-    },
+    description: `ZOCO es un centro comercial modular en General Pico, La Pampa, construido con 12 contenedores por Aisplac SRL. Con 331,2 m² en dos plantas, destaca por su diseño sustentable, terrazas verdes y arquitectura eficiente. Ofrece cafeterías, cervecerías, locales gastronómicos y estudios de diseño, siendo un referente de innovación urbana en la región.`,
+    title: "Complejo Comercial",
+    images: [
+      "/modular/complejo/1.png",
+      "/modular/complejo/2.png",
+      "/modular/complejo/3.jpg",
+      "/modular/complejo/4.jpeg",
+      "/modular/complejo/5.jpeg",
+    ],
   },
   rural: {
-    description:
-      "Nuestras viviendas rurales modulares combinan la comodidad moderna con la integración al entorno natural, perfectas para el campo.",
-    images: {
-      main: "/modular/rural-1.png",
-      secondary: "/modular/rural-2.png",
-      left: "/modular/rural-3.png",
-      right: "/modular/rural-4.png",
-    },
+    description: `Vivienda rural de 57,6 m² hecha con dos contenedores de 40 pies. Estructura de acero, aislación térmica y acústica, espacios integrados (estar, cocina, dormitorios y baño), instalaciones completas y diseño personalizable. Lista para habitar, de rápida instalación y bajo impacto ambiental.`,
+    title: "Vivienda Rural",
+    images: [
+      "/modular/rural/1.jpg",
+      "/modular/rural/2.jpg",
+      "/modular/rural/3.jpg",
+      "/modular/rural/4.jpg",
+      "/modular/rural/5.jpg",
+      "/modular/rural/6.jpg",
+      "/modular/rural/7.jpg",
+      "/modular/rural/8.jpg",
+    ],
   },
 };
 
@@ -65,17 +69,17 @@ export default function ResponsiveCards() {
   const cards: (CardProps & { type: string })[] = [
     {
       title: "Oficina",
-      imageUrl: "/complejo-comercial.png",
+      imageUrl: "/modular/oficina.jpg",
       type: "oficina",
     },
     {
       title: "Complejo Comercial",
-      imageUrl: "/complejo-comercial.png",
+      imageUrl: "/modular/complejo-comercial.png",
       type: "comercial",
     },
     {
       title: "Vivienda Rural",
-      imageUrl: "/complejo-comercial.png",
+      imageUrl: "/modular/vivienda-rural.jpg",
       type: "rural",
     },
   ];
@@ -84,59 +88,69 @@ export default function ResponsiveCards() {
 
   return (
     <div className="w-full py-12 px-4">
+      <h3 className="text-base md:text-3xl font-bold  text-center duration-1000 my-9">
+        Tenemos más de 50 proyectos construidos en arquitectura modular.
+      </h3>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((card, index) => (
-            <Card
+            <div
               key={index}
-              {...card}
-              onClick={() => handleCardClick(card.type)}
-              isSelected={selectedCard === card.type}
-            />
+              className={`transition-opacity duration-300 ${
+                selectedCard === card.type ? "opacity-100" : "opacity-40"
+              } hover:opacity-100`}
+              tabIndex={0}
+              onFocus={() => handleCardClick(card.type)}
+            >
+              <Card
+                key={index}
+                {...card}
+                onClick={() => handleCardClick(card.type)}
+                isSelected={selectedCard === card.type}
+              />
+            </div>
           ))}
         </div>
       </div>
       <div className="mx-auto flex justify-center items-center mt-12">
         <Link href="/contact">
-          <CustomButton variant="secondary">SOLICITAR MÁS INFO</CustomButton>
+          <Button variant="secundary" size="lg">
+            SOLICITAR COTIZACIONES
+          </Button>
         </Link>
       </div>
-      <div
-        className={`relative flex flex-col mt-20 md:gap-6 gap-3 transition-opacity duration-300 ${
-          isTransitioning ? "opacity-0" : "opacity-100"
-        }`}
-      >
-        <p className="md:w-[550px] absolute p-4 md:top-20 md:left-20">
-          {currentProject.description}
-        </p>
+      <div className={` relative flex  flex-col mt-20 md:gap-6 gap-3`}>
         <Image
           alt="modular exibition"
-          src={currentProject.images.main || "/placeholder.svg"}
+          src={"/modular/zoco-1.png"}
           width={1752}
           height={1068}
+          className="w-full h-auto"
         />
+        <div
+          className={` flex flex-col mt-7 md:gap-6 gap-3 transition-opacity duration-300 ${
+            isTransitioning ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          <p className="md:w-[600px] absolute p-4 md:top-28 md:left-20">
+            {currentProject.description}
+          </p>
 
-        <Image
-          alt="modular exibition"
-          src={currentProject.images.secondary || "/placeholder.svg"}
-          width={1752}
-          height={543}
-        />
-        <div className="flex md:gap-6 gap-3 w-full h-fit overflow-x-hidden ">
-          <Image
-            alt="modular windows"
-            src={currentProject.images.left || "/placeholder.svg"}
-            width={1180}
-            height={543}
-            className="w-8/12"
-          />
-          <Image
-            alt="modular zoco front"
-            src={currentProject.images.right || "/placeholder.svg"}
-            width={522}
-            height={543}
-            className="w-4/12"
-          />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full justify-center">
+            <Suspense fallback={<div>Loading...</div>}>
+              {currentProject.images.map((image, index) => (
+                <div key={index} className="flex justify-center items-center">
+                  <Image
+                    alt={`${currentProject.title}-${index + 1}`}
+                    src={image}
+                    width={400}
+                    height={300}
+                    className="rounded-md object-cover w-full h-full"
+                  />
+                </div>
+              ))}
+            </Suspense>
+          </div>
         </div>
       </div>
     </div>

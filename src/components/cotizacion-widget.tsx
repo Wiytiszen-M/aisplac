@@ -15,7 +15,7 @@ export function CotizacionWidget() {
   const popoverRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const cantidadTotal = items.reduce((sum, item) => sum + item.cantidad, 0);
+  const cantidadTotal = items.length;
 
   // Cerrar popover cuando se hace click fuera
   useEffect(() => {

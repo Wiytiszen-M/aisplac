@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={raleway.className}>
         <Header />
 
-        <main className="relative min-h-screen">
+        <main className="relative min-h-dvh">
           {children}
           <div className="absolute bottom-0 w-full flex flex-wrap justify-center py-10 items-center gap-2 md:gap-4">
             <Link

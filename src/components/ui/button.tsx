@@ -4,7 +4,7 @@ import { LoadingSpinner } from "@/components/loading-spinner";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "outline" | "ghost" | "link";
+  variant?: "default" | "secundary" | "outline" | "ghost" | "link";
   size?: "default" | "sm" | "lg" | "icon";
   isLoading?: boolean;
   loadingText?: string;
@@ -33,9 +33,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cn(
-          "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none uppercase",
+          "inline-flex items-center justify-center rounded-md font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none uppercase",
           {
             "bg-[#1D6191] text-white hover:bg-[#1a5580]": variant === "default",
+            "bg-[#979aa1] text-[#3E3E5E] hover:bg-gray-100":
+              variant === "secundary",
             "bg-transparent border border-gray-300 hover:bg-gray-100":
               variant === "outline",
             "bg-transparent hover:bg-gray-100": variant === "ghost",
@@ -43,7 +45,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               variant === "link",
             "h-10 py-2 px-4": size === "default",
             "h-8 px-3 text-sm": size === "sm",
-            "h-12 px-6 text-lg": size === "lg",
+            "h-12 px-6 text-base": size === "lg",
             "h-10 w-10 p-0": size === "icon",
           },
           className

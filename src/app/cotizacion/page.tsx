@@ -189,7 +189,7 @@ export default function CotizacionPage() {
         <p className="mb-6">
           Agrega productos desde el catálogo para crear una cotización.
         </p>
-        <Button className="bg-blue-600 hover:bg-blue-700">
+        <Button>
           <Link href="/">Explorar Catálogo</Link>
         </Button>
       </div>
