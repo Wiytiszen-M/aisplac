@@ -39,7 +39,7 @@ const PVCPage = ({ className = "" }: Props) => {
           necesidades de la industria, el comercio y el hogar.
         </p>
 
-        <Link href="/calculator" className=" flex justify-center items-center">
+        <Link href="/calculadora" className=" flex justify-center items-center">
           <CustomButton className="w-full md:w-[400px]" variant="primary">
             CALCULADORA DE PVC
           </CustomButton>

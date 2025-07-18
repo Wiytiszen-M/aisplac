@@ -98,10 +98,10 @@ export default function CotizacionPage() {
   // Si la cotización fue enviada exitosamente, mostrar mensaje de confirmación
   if (cotizacionEnviada && ultimoEnvio) {
     return (
-      <div className="max-w-7xl mx-auto space-y-8 py-36 text-center ">
-        <div className=" border-2 border-green-700 rounded-lg p-8">
-          <CheckCircle className="h-16 w-16 text-green-400 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold text-green-400 mb-4">
+      <div className="max-w-7xl mx-auto space-y-8 px-1 py-36 text-center ">
+        <div className=" border-2 border-blue-300 rounded-lg p-8">
+          <CheckCircle className="h-16 w-16 text-blue-300 mx-auto mb-4" />
+          <h1 className="text-3xl font-bold text-white mb-4">
             ¡Cotización Enviada Exitosamente!
           </h1>
 
@@ -112,7 +112,7 @@ export default function CotizacionPage() {
             </p>
 
             <div className="bg-gray-800 rounded-lg p-4 space-y-2">
-              <div className="flex items-center justify-center gap-2 text-green-400">
+              <div className="flex items-center justify-center gap-2 text-white">
                 <Mail className="h-5 w-5" />
                 <span className="font-medium">
                   Recibirás un email de confirmación
@@ -152,10 +152,7 @@ export default function CotizacionPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             {urlComprobante && (
-              <Button
-                variant="outline"
-                className=" border-green-600 text-green-400 hover:bg-green-900/30 bg-transparent"
-              >
+              <Button variant="outline">
                 <a
                   href={urlComprobante}
                   target="_blank"
@@ -166,13 +163,7 @@ export default function CotizacionPage() {
               </Button>
             )}
 
-            <Button
-              variant="outline"
-              className="  bg-transparent"
-              onClick={handleSeguirComprando}
-            >
-              Explorar Catálogo
-            </Button>
+            <Button onClick={handleSeguirComprando}>Explorar Catálogo</Button>
           </div>
         </div>
       </div>
@@ -197,7 +188,7 @@ export default function CotizacionPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 py-36">
+    <div className="max-w-7xl mx-auto space-y-8  py-36">
       <div className="text-center">
         <h1 className="text-3xl font-bold text-white mb-4">Mi Cotización</h1>
         <p className="text-gray-300">
