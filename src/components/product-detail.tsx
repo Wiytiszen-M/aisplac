@@ -289,12 +289,9 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                     {isProcessing ? (
                       <>
                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Agregando...
                       </>
                     ) : (
-                      <>
-                        Agregar {quantity > 1 ? `${quantity} ` : ""}a Cotización
-                      </>
+                      <>Agregar a Cotización</>
                     )}
                   </Button>
                 </div>

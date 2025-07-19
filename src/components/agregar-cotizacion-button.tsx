@@ -92,12 +92,4 @@ export function AgregarCotizacionButton({
       </div>
     );
   }
-
-  // Versión simple para las cards de productos
-  return (
-    <Button onClick={handleAgregarACotizacion} size="lg" className="w-full">
-      <FileText className="h-4 w-4 mr-2" />
-      {enCotizacion ? "agregar más" : "agregar a cotización"}
-    </Button>
-  );
 }

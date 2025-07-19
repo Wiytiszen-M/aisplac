@@ -29,37 +29,37 @@ export default function RootLayout({
       <body className={raleway.className}>
         <Header />
 
-        <main className="relative min-h-dvh">
+        <main className="relative ">
           {children}
-          <div className="absolute bottom-0 w-full flex flex-wrap justify-center py-10 items-center gap-2 md:gap-4">
+          <div className="absolute bottom-0 w-full flex  justify-center py-10 items-center gap-2 md:gap-4">
             <Link
-              href="https://www.instagram.com/aisplacsrl/"
+              href="https://www.youtube.com/@aisplacsrl"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center"
             >
-              <Youtube className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+              <Youtube className="w-14 h-14 hover:text-red-500" />
             </Link>
             <Link
               href="https://www.linkedin.com/in/aisplacsrl/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <LinkedIn className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+              <LinkedIn className="w-14 h-14 hover:text-red-500" />
             </Link>
             <Link
               href="https://www.instagram.com/aisplacsrl/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Instagram className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+              <Instagram className="w-14 h-14 hover:text-red-500" />
             </Link>
             <Link
               href="https://www.facebook.com/Aisplac"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Facebook className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 hover:text-red-500" />
+              <Facebook className="w-14 h-14 hover:text-red-500" />
             </Link>
           </div>
         </main>

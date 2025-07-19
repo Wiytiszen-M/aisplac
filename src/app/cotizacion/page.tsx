@@ -21,6 +21,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCotizacionStore } from "@/stores/cotizacion-store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { scrollToTop } from "@/lib/utils";
 
 export default function CotizacionPage() {
   const router = useRouter();
@@ -97,6 +98,7 @@ export default function CotizacionPage() {
 
   // Si la cotización fue enviada exitosamente, mostrar mensaje de confirmación
   if (cotizacionEnviada && ultimoEnvio) {
+    scrollToTop();
     return (
       <div className="max-w-7xl mx-auto space-y-8 px-1 py-36 text-center ">
         <div className=" border-2 border-blue-300 rounded-lg p-8">
@@ -171,6 +173,7 @@ export default function CotizacionPage() {
   }
 
   if (items.length === 0) {
+    scrollToTop();
     return (
       <div className="text-center py-60">
         <FileText className="h-16 w-16 mx-auto mb-4" />

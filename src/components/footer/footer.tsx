@@ -11,8 +11,8 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <>
-      <footer className=" relative flex flex-col md:flex-row w-full justify-center items-center md:h-[472px] bg-[#100E1F]">
-        <div className="w-[45%] flex items-center justify-center">
+      <footer className="p-4 md:p-0 md:mt-0 relative flex flex-col md:flex-row w-full justify-center items-center md:h-[472px] bg-[#100E1F]">
+        <div className="w-[45%] mb-5 flex items-center justify-center">
           <Image src="/logo.svg" width={421} height={240} alt="aisplac" />
         </div>
         <div className="w-full p-2 md:p-0 md:w-[55%] flex-wrap">
@@ -61,11 +61,11 @@ const Footer = () => {
                 </Link>
               </div>
 
-              <div className="flex md:flex-col items-start gap-3 md:pl-14">
-                <Link href="#" className="hover:underline">
+              <div className="flex md:flex-col  md:items-start gap-3 md:pl-14">
+                <Link href="#" className="hover:underline text-center">
                   Términos y condiciones
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="#" className="hover:underline text-center">
                   Preguntas Frecuentes
                 </Link>
               </div>

@@ -35,7 +35,7 @@ export default function NewsSlider({ posts }: { posts: Post[] }) {
           <div className="bg-white rounded-lg overflow-hidden shadow-xl relative h-[519px]">
             <Image
               src={
-                urlFor(post.image).width(622).height(519).url() || "logo.png"
+                urlFor(post.image).width(622).height(519).url() || "/logo.png"
               }
               alt={post.title}
               fill

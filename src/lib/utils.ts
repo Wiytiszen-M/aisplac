@@ -30,3 +30,9 @@ export function getExcerpt(body: PortableTextBlock[], maxLength = 100): string {
     ? fullText.slice(0, maxLength).trim() + '…'
     : fullText
 }
+
+export function scrollToTop({ smooth = true } = {}) {
+  if (typeof window !== 'undefined') {
+    window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+  }
+}

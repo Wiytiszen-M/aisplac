@@ -143,7 +143,7 @@ export default function PinturasPage() {
             className="border-orange-500 text-orange-300 hover:bg-orange-900/20 bg-transparent"
             size="lg"
           >
-            <Link href="/materiales">Ver Otras Categorías</Link>
+            <Link href="/steelframe">Ver Otras Categorías</Link>
           </Button>
         </div>
       </div>

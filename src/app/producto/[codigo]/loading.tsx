@@ -5,7 +5,7 @@ import { BackButton } from "@/components/back-button";
 
 export default function ProductoLoading() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
       <div className="mb-8">
         <Link href={"/"} className="mb-8">
           <BackButton text="Volver a Productos" />

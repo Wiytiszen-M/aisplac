@@ -1,9 +1,14 @@
+import { BackButton } from "@/components/back-button";
 import { Loader2, Package } from "lucide-react";
+import Link from "next/link";
 
 export default function MaterialesLoading() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
       <div className="mb-8">
+        <Link href="/steelframe">
+          <BackButton text=" Volver a Categorías" />
+        </Link>
         <h1 className="text-3xl font-bold text-gray-100 mb-4">
           Materiales de Construcción en Seco
         </h1>
@@ -26,7 +31,7 @@ export default function MaterialesLoading() {
       </div>
 
       {/* Skeleton para categorías */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={i}

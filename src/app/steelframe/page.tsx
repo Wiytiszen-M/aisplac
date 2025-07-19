@@ -32,7 +32,7 @@ const SteelframePage = async () => {
   return (
     <section className="pb-[150px] overflow-hidden pt-36">
       <div
-        className="relative flex flex-col-reverse md:flex-row md:justify-center items-center md:min-h-screen lg:w-full bg-cover bg-center bg-no-repeat pt-[100px]"
+        className="relative flex flex-col-reverse md:flex-row md:justify-center items-center md:min-h-screen lg:w-full bg-cover bg-center bg-no-repeat md:pt-[100px]"
         style={{
           backgroundImage: "url('/steelframe-bg.webp')",
         }}
@@ -48,10 +48,10 @@ const SteelframePage = async () => {
           width={1080}
           height={900}
           alt="steelframe"
-          className="mx-auto md:absolute top-0"
+          className="mx-auto w-[90%] md:w-auto md:absolute mt-10 md:top-0"
           priority
         />
-        <div className="absolute top-28 z-20 flex w-full mx-20 md:px-44 px-12">
+        <div className="absolute top-0 md:top-28 z-20 flex w-full mx-20 md:px-44 px-12">
           <div className="md:w-[514px] flex text-left">
             <h2 className="font-bold ">MATERIALES DE CONSTRUCCIÓN EN SECO</h2>
           </div>

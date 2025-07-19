@@ -83,7 +83,7 @@ export function CategoriasClient({ categorias }: CategoriasClientProps) {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredCategorias.map((categoria) => {
             const isPinturas = categoria.codigo === "11";
             const linkHref = isPinturas

@@ -28,21 +28,21 @@ export default function Home() {
             <VideoInstitucional />
           </div>
 
-          <FadeIn delay={300}>
+          <FadeIn>
             <PVCSection />
           </FadeIn>
 
-          <FadeIn delay={300}>
+          <FadeIn>
             <SteelframeSection />
           </FadeIn>
 
-          <FadeIn delay={300}>
-            <SolarEnergySection className="mt-10" />
+          <FadeIn>
+            <SolarEnergySection />
           </FadeIn>
-          <FadeIn delay={300}>
+          <FadeIn>
             <ModularSection />
           </FadeIn>
-          <FadeIn delay={300}>
+          <FadeIn>
             <News />
           </FadeIn>
 

@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCotizacionStore } from "@/stores/cotizacion-store";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function CotizacionWidget() {
   const { items, total, removerProducto, actualizarCantidad } =
@@ -14,6 +15,7 @@ export function CotizacionWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
 
   const cantidadTotal = items.length;
 
@@ -58,7 +60,7 @@ export function CotizacionWidget() {
     setIsOpen(false);
   };
 
-  if (cantidadTotal === 0) return null;
+  if (cantidadTotal === 0 || pathname.includes("/cotizacion")) return null;
 
   return (
     <div className="fixed bottom-4 left-4 z-50">
@@ -66,7 +68,7 @@ export function CotizacionWidget() {
       <Button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className="rounded-full w-14 h-14 shadow-lg bg-orange-600 hover:bg-orange-700"
+        className="rounded-full w-14 h-14 shadow-lg bg-blue-500 hover:bg-blue-800"
       >
         <FileText className="h-5 w-5" />
         {cantidadTotal > 0 && (
@@ -80,9 +82,10 @@ export function CotizacionWidget() {
       {isOpen && (
         <Card
           ref={popoverRef}
-          className="absolute bottom-16 left-0 w-96 max-h-[500px] overflow-hidden shadow-xl bg-gray-800 border-gray-700"
+          style={{ width: "calc(100vw - 30px)" }}
+          className="absolute bottom-16 left-0 max-h-[500px] overflow-hidden shadow-xl bg-gray-800 border-gray-700"
         >
-          <CardHeader className="pb-3 bg-orange-900/20 border-b border-gray-700">
+          <CardHeader className="pb-3  border-b border-gray-700">
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg text-white flex items-center gap-2">
                 Cotización
@@ -91,7 +94,8 @@ export function CotizacionWidget() {
                 variant="ghost"
                 size="sm"
                 onClick={handleClosePopover}
-                className="text-gray-400 hover:text-gray-200"
+                className="text-white
+                 hover:text-gray-200"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -154,7 +158,7 @@ export function CotizacionWidget() {
             ))}
           </CardContent>
 
-          <div className="p-4 border-t bg-orange-900/20 border-gray-700">
+          <div className="p-4 border-t  border-gray-700">
             <div className="flex justify-between items-center mb-3">
               <span className="font-semibold text-white">Total:</span>
               <span className="font-bold text-xl text-blue-300">

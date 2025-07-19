@@ -18,17 +18,18 @@ export default function HeroSection() {
       />
 
       <div className="max-w-[1440px] mx-auto flex flex-col justify-center items-center text-center px-4">
-        <FadeIn delay={100} className="w-[486px]">
-          <Image
-            src="/logo.svg"
-            width={486}
-            height={277}
-            alt="logo"
-            className="mt-[430px] z-30"
-            style={{ width: "486px", height: "277px" }}
-          />
+        <FadeIn className="w-full max-w-[486px] px-4 mt-[180px] md:mt-[430px]">
+          <div className="relative w-full aspect-[486/277]">
+            <Image
+              src="/logo.svg"
+              alt="logo"
+              fill
+              sizes="(max-width: 640px) 100vw, 486px"
+              className="object-contain"
+            />
+          </div>
         </FadeIn>
-        <div className="flex flex-col justify-center items-center gap-12 mt-[530px] mb-44 w-full max-w-[876px]">
+        <div className="flex flex-col justify-center items-center gap-12 mt-[250px] md:mt-[530px] mb-44 w-full max-w-[876px]">
           <FadeIn delay={200}>
             <p>
               Somos una empresa familiar Pampeana fundada en el año 2000.
@@ -40,7 +41,7 @@ export default function HeroSection() {
               <Button
                 variant="secundary"
                 type="button"
-                className="w-[250px] md:mt-14"
+                className="w-[250px] mt-7 md:mt-14"
                 size="lg"
               >
                 LEER MÁS
