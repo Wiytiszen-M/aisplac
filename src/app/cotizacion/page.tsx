@@ -191,60 +191,65 @@ export default function CotizacionPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8  py-36">
+    <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8 px-4 sm:px-6 py-36">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-white mb-4">Mi Cotización</h1>
-        <p className="text-gray-300">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-4">
+          Mi Cotización
+        </h1>
+        <p className="text-sm sm:text-base text-gray-300">
           Revisa los productos seleccionados y completa tus datos para enviar la
           cotización.
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {/* Lista de productos */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
           <Card className="bg-gray-800 border-gray-700">
-            <CardHeader>
-              <CardTitle className="text-white">
+            <CardHeader className="pb-3 sm:pb-4">
+              <CardTitle className="text-base sm:text-lg text-white">
                 Productos Seleccionados ({items.length})
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3 sm:space-y-4 p-1">
               {items.map((item) => (
                 <div
                   key={item.codigo}
-                  className="flex gap-4 p-4 bg-gray-700 rounded-lg"
+                  className="flex gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-700 rounded-lg"
                 >
-                  <div className="w-16 h-16 bg-gray-600 rounded-lg overflow-hidden flex-shrink-0">
+                  {/* Imagen - siempre a la izquierda, tamaño reducido en móvil */}
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gray-600 rounded-lg overflow-hidden flex-shrink-0">
                     {item.urlimg ? (
                       <Image
                         src={item.urlimg || "/placeholder.svg"}
                         alt={item.descripcion}
                         width={64}
                         height={64}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <FileText className="h-6 w-6 text-gray-400" />
+                        <FileText className="h-4 w-4 sm:h-6 sm:w-6 text-gray-400" />
                       </div>
                     )}
                   </div>
 
+                  {/* Contenido - siempre a la derecha */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-white truncate">
+                    <h3 className="text-sm sm:text-base font-medium text-white truncate">
                       {item.descripcion}
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-xs sm:text-sm text-gray-400">
                       Código: {item.codigo}
                     </p>
 
-                    <div className="flex items-center gap-4 mt-3">
+                    <div className="flex flex-col gap-2 mt-2 sm:mt-3">
+                      {/* Controles de cantidad */}
                       <div className="flex items-center gap-2">
-                        <Label className="text-sm text-gray-300">
+                        <Label className="text-xs sm:text-sm text-gray-300 whitespace-nowrap">
                           Cantidad:
                         </Label>
-                        <div className="flex items-center border border-gray-600 rounded-lg overflow-hidden bg-gray-600">
+                        <div className="flex items-center border border-gray-600 rounded-md overflow-hidden bg-gray-600">
                           <Button
                             variant="ghost"
                             size="sm"
@@ -252,11 +257,11 @@ export default function CotizacionPage() {
                               decrementarCantidad(item.codigo, item.cantidad)
                             }
                             disabled={item.cantidad <= 1}
-                            className="h-8 w-8 p-0 text-gray-300 hover:text-white hover:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="h-6 w-6 sm:h-8 sm:w-8 p-0 text-gray-300 hover:text-white hover:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
-                            <Minus className="h-3 w-3" />
+                            <Minus className="h-2 w-2 sm:h-3 sm:w-3" />
                           </Button>
-                          <span className="px-3 py-1 text-white text-sm min-w-[40px] text-center border-x border-gray-500">
+                          <span className="px-2 sm:px-3 py-1 text-white text-xs sm:text-sm min-w-[30px] sm:min-w-[40px] text-center border-x border-gray-500">
                             {item.cantidad}
                           </span>
                           <Button
@@ -265,18 +270,19 @@ export default function CotizacionPage() {
                             onClick={() =>
                               incrementarCantidad(item.codigo, item.cantidad)
                             }
-                            className="h-8 w-8 p-0 text-gray-300 hover:text-white hover:bg-gray-500"
+                            className="h-6 w-6 sm:h-8 sm:w-8 p-0 text-gray-300 hover:text-white hover:bg-gray-500"
                           >
-                            <Plus className="h-3 w-3" />
+                            <Plus className="h-2 w-2 sm:h-3 sm:w-3" />
                           </Button>
                         </div>
-                        <span className="text-sm text-gray-400">
+                        <span className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">
                           {item.unmedida}
                         </span>
                       </div>
 
+                      {/* Subtotal */}
                       {item.precio > 0 && (
-                        <div className="text-sm">
+                        <div className="text-xs sm:text-sm">
                           <span className="text-gray-400">Subtotal: </span>
                           <span className="text-green-400 font-medium">
                             $
@@ -289,25 +295,26 @@ export default function CotizacionPage() {
                     </div>
                   </div>
 
+                  {/* Botón eliminar */}
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => removerProducto(item.codigo)}
-                    className="text-red-400 hover:text-red-300 hover:bg-red-900/20 self-start"
+                    className="text-red-400 hover:text-red-300 hover:bg-red-900/20 self-start h-6 w-6 sm:h-8 sm:w-8 p-0"
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
                 </div>
               ))}
 
               {/* Total */}
               {total > 0 && (
-                <div className="border-t border-gray-600 pt-4">
+                <div className="border-t border-gray-600 pt-3 sm:pt-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-lg font-medium text-white">
+                    <span className="text-base sm:text-lg font-medium text-white">
                       Total:
                     </span>
-                    <span className="text-2xl font-bold text-green-400">
+                    <span className="text-xl sm:text-2xl font-bold text-green-400">
                       ${total.toLocaleString("es-AR")}
                     </span>
                   </div>
@@ -318,38 +325,42 @@ export default function CotizacionPage() {
         </div>
 
         {/* Datos del cliente y envío */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           <Card className="bg-gray-800 border-gray-700">
-            <CardHeader>
-              <CardTitle className="text-white">Datos del Cliente</CardTitle>
+            <CardHeader className="pb-3 sm:pb-4">
+              <CardTitle className="text-base sm:text-lg text-white">
+                Datos del Cliente
+              </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3 sm:space-y-4">
               <div>
-                <Label className="text-gray-300">Nombre de la Empresa</Label>
+                <Label className="text-sm text-gray-300">
+                  Nombre de la Empresa
+                </Label>
                 <Input
                   value={datosCotizacion.nombreEmpresa}
                   onChange={(e) =>
                     actualizarDatosCotizacion({ nombreEmpresa: e.target.value })
                   }
-                  className="bg-gray-700 border-gray-600 text-white"
+                  className="bg-gray-700 border-gray-600 text-white text-sm h-9 sm:h-10"
                   placeholder="Nombre de tu empresa"
                 />
               </div>
 
               <div>
-                <Label className="text-gray-300">Contacto</Label>
+                <Label className="text-sm text-gray-300">Contacto</Label>
                 <Input
                   value={datosCotizacion.contacto}
                   onChange={(e) =>
                     actualizarDatosCotizacion({ contacto: e.target.value })
                   }
-                  className="bg-gray-700 border-gray-600 text-white"
+                  className="bg-gray-700 border-gray-600 text-white text-sm h-9 sm:h-10"
                   placeholder="Nombre del contacto"
                 />
               </div>
 
               <div>
-                <Label className="text-gray-300">Email *</Label>
+                <Label className="text-sm text-gray-300">Email *</Label>
                 <Input
                   type="email"
                   value={datosCotizacion.email}
@@ -357,82 +368,85 @@ export default function CotizacionPage() {
                     actualizarDatosCotizacion({ email: e.target.value });
                     setEmailError("");
                   }}
-                  className="bg-gray-700 border-gray-600 text-white"
+                  className="bg-gray-700 border-gray-600 text-white text-sm h-9 sm:h-10"
                   placeholder="tu@email.com"
                 />
                 {emailError && (
-                  <p className="text-red-400 text-sm mt-1">{emailError}</p>
+                  <p className="text-red-400 text-xs mt-1">{emailError}</p>
                 )}
               </div>
 
               <div>
-                <Label className="text-gray-300">Teléfono</Label>
+                <Label className="text-sm text-gray-300">Teléfono</Label>
                 <Input
                   value={datosCotizacion.telefono}
                   onChange={(e) =>
                     actualizarDatosCotizacion({ telefono: e.target.value })
                   }
-                  className="bg-gray-700 border-gray-600 text-white"
+                  className="bg-gray-700 border-gray-600 text-white text-sm h-9 sm:h-10"
                   placeholder="Número de teléfono"
                 />
               </div>
 
               <div>
-                <Label className="text-gray-300">Código Postal</Label>
+                <Label className="text-sm text-gray-300">Código Postal</Label>
                 <Input
                   value={datosCotizacion.codigoPostal}
                   onChange={(e) =>
                     actualizarDatosCotizacion({ codigoPostal: e.target.value })
                   }
-                  className="bg-gray-700 border-gray-600 text-white"
+                  className="bg-gray-700 border-gray-600 text-white text-sm h-9 sm:h-10"
                   placeholder="Código postal"
                 />
               </div>
 
               <div>
-                <Label className="text-gray-300">Dirección</Label>
+                <Label className="text-sm text-gray-300">Dirección</Label>
                 <Input
                   value={datosCotizacion.direccion}
                   onChange={(e) =>
                     actualizarDatosCotizacion({ direccion: e.target.value })
                   }
-                  className="bg-gray-700 border-gray-600 text-white"
+                  className="bg-gray-700 border-gray-600 text-white text-sm h-9 sm:h-10"
                   placeholder="Dirección completa"
                 />
               </div>
 
               <div>
-                <Label className="text-gray-300">Observaciones</Label>
+                <Label className="text-sm text-gray-300">Observaciones</Label>
                 <Textarea
                   value={datosCotizacion.observaciones}
                   onChange={(e) =>
                     actualizarDatosCotizacion({ observaciones: e.target.value })
                   }
-                  className="bg-gray-700 border-gray-600 text-white"
+                  className="bg-gray-700 border-gray-600 text-white text-sm min-h-[60px] sm:min-h-[80px]"
                   placeholder="Observaciones adicionales..."
-                  rows={3}
+                  rows={2}
                 />
               </div>
             </CardContent>
           </Card>
+
           {errorEnvio && (
             <Card className="bg-red-900/20 border-red-700">
-              <CardContent className="pt-6">
+              <CardContent className="pt-4 sm:pt-6">
                 <div className="flex items-center gap-2 text-red-400 mb-2">
-                  <AlertCircle className="h-5 w-5" />
-                  <span className="font-medium">Error al enviar</span>
+                  <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span className="text-sm sm:text-base font-medium">
+                    Error al enviar
+                  </span>
                 </div>
-                <p className="text-sm text-red-300">{errorEnvio}</p>
+                <p className="text-xs sm:text-sm text-red-300">{errorEnvio}</p>
               </CardContent>
             </Card>
           )}
 
           {/* Botones de acción */}
-          <div className="space-y-3">
+          <div className="space-y-3 sticky bottom-4 sm:static bg-gray-900 sm:bg-transparent p-3 sm:p-0 -mx-4 sm:mx-0 rounded-t-lg sm:rounded-none border-t sm:border-t-0 border-gray-700">
             <Button
               onClick={handleEnviarCotizacion}
               disabled={enviando || items.length === 0}
-              className="w-full bg-orange-600 hover:bg-orange-700 text-white"
+              className="w-full bg-orange-600 hover:bg-orange-700 text-white h-10 sm:h-11 text-sm sm:text-base"
               size="lg"
             >
               {enviando ? (
@@ -448,7 +462,7 @@ export default function CotizacionPage() {
             <Button
               onClick={limpiarCotizacion}
               variant="outline"
-              className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent"
+              className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent h-9 sm:h-10 text-sm"
             >
               Limpiar Cotización
             </Button>

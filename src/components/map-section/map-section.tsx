@@ -29,6 +29,19 @@ const aisplacLocations = [
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.176491024029!2d-63.75901!3d-35.65801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c37d405e71b2e9%3A0x2c5b4b3d4a3b5f7!2sJos%C3%A9%20Viscardis%201050%2C%20L6360%20Gral.%20Pico%2C%20La%20Pampa!5e0!3m2!1ses!2sar!4v1621234567890!5m2!1ses!2sar",
   },
+  {
+    id: "modular-solar",
+    name: "Arquitectura Modular - Energía Solar",
+    address:
+      "Sampayo N° 90 - Parque Industrial Gral. Pico, La Pampa, Argentina",
+    position: { lat: -35.6816315, lng: -63.7814777 },
+    type: "store",
+    phone: "+54 02302 204056",
+    hours: "Lunes a Viernes: 8:00 - 17:00",
+    url: "https://www.google.com.ar/maps/place/Aisplac+SRL.+Arquitectura+Modular+-+Solar/@-35.6816556,-63.7820771,441m/data=!3m1!1e3!4m6!3m5!1s0x95c36368e2bc86b3:0xec4f330bd58ea45a!8m2!3d-35.6816315!4d-63.7814777!16s%2Fg%2F11xm1057nq?entry=ttu&g_ep=EgoyMDI1MDcyMC4wIKXMDSoASAFQAw%3D%3D",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1611.1!2d-63.7820771!3d-35.6816556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c36368e2bc86b3:0xec4f330bd58ea45a!2sAisplac+SRL.+Arquitectura+Modular+-+Solar!5e0!3m2!1ses!2sar!4v1621234567890!5m2!1ses!2sar",
+  },
 ];
 
 // URL para el mapa que muestra ambas ubicaciones
@@ -70,44 +83,85 @@ export default function MapSection() {
                 <div className="flex items-start">
                   {/* Icono según el tipo de ubicación */}
                   <div className="mr-3 text-[#1D6191]">
-                    {location.type === "office" ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <rect
-                          x="4"
-                          y="2"
-                          width="16"
-                          height="20"
-                          rx="2"
-                          ry="2"
-                        ></rect>
-                        <line x1="12" y1="6" x2="12" y2="6.01"></line>
-                        <line x1="12" y1="10" x2="12" y2="16"></line>
-                      </svg>
-                    ) : (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
-                      </svg>
-                    )}
+                    {(() => {
+                      switch (location.type) {
+                        case "office":
+                          return (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <rect
+                                x="4"
+                                y="2"
+                                width="16"
+                                height="20"
+                                rx="2"
+                                ry="2"
+                              ></rect>
+                              <line x1="12" y1="6" x2="12" y2="6.01"></line>
+                              <line x1="12" y1="10" x2="12" y2="16"></line>
+                            </svg>
+                          );
+                        case "factory":
+                          return (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
+                            </svg>
+                          );
+                        case "store":
+                          return (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                          );
+                        default:
+                          return (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <path d="M12 6v6l4 2"></path>
+                            </svg>
+                          );
+                      }
+                    })()}
                   </div>
 
                   <div className="text-left flex-1">

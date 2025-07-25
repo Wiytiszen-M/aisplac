@@ -2,7 +2,7 @@ import { Loader2, Package } from "lucide-react";
 
 export default function MaterialesLoading() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-100 mb-4">
           Materiales de Construcción en Seco

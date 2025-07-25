@@ -21,7 +21,7 @@ export function FadeIn({ children, delay = 0, className }: FadeInProps) {
           setIsInView(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.0 }
     );
 
     const currentRef = ref.current;
@@ -40,7 +40,7 @@ export function FadeIn({ children, delay = 0, className }: FadeInProps) {
     <div
       ref={ref}
       className={cn(
-        "w-full transition-all duration-1000 ease-out",
+        "w-full transition-all duration-500 ease-out",
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16",
         className
       )}

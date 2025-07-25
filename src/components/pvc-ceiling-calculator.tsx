@@ -480,7 +480,7 @@ export function PVCCeilingCalculator() {
 
   return (
     <div className="space-y-8">
-      <div className=" p-6 ">
+      <div>
         {loadingProducts && (
           <div className="mb-6 p-4 bg-blue-900/20 border border-blue-600 rounded-md">
             <div className="flex items-center gap-2 text-blue-400">
@@ -500,7 +500,7 @@ export function PVCCeilingCalculator() {
             {rooms.map((room) => (
               <button
                 key={room.id}
-                className={`px-4 py-2 mr-2 rounded-t-lg text-sm font-medium transition-colors ${
+                className={`shrink-0 px-4 py-2 mr-2 rounded-t-lg text-sm font-medium transition-colors ${
                   selectedTab === room.id
                     ? "bg-gray-800 border-b-2 border-blue-300-500 "
                     : "bg-gray-900 hover:bg-gray-800 text-gray-300"
@@ -793,8 +793,8 @@ export function PVCCeilingCalculator() {
                     <h4 className="font-medium mb-3  text-lg">
                       Materiales necesarios (Total consolidado):
                     </h4>
-                    <div className="border border-gray-600 rounded-lg overflow-hidden">
-                      <table className="min-w-full divide-y divide-gray-700">
+                    <div className="border border-gray-600 rounded-lg overflow-x-auto">
+                      <table className="shrink-0 min-w-full divide-y divide-gray-700">
                         <thead className="bg-gray-900">
                           <tr>
                             <th className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
@@ -935,7 +935,6 @@ export function PVCCeilingCalculator() {
             onClick={calculateMaterials}
             disabled={isCalculating || loadingProducts}
             className="flex-1"
-            size="lg"
           >
             {isCalculating ? (
               <>

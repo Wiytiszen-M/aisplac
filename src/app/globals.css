@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  border: 1px solid red;
-  section {
-    border: 3px solid blue;
-  }
-}
-
 :root {
   --background: #1c1936;
   --foreground: #ffffff;

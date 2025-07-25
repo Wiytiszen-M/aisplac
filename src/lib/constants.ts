@@ -19,5 +19,5 @@ export const links = [
   { href: Routes.Modular, label: "ARQUITECTURA MODULAR" },
   { href: Routes.About, label: "AISPLAC" },
   { href: Routes.News, label: "NOVEDADES" },
-  { href: Routes.Contact, label: "CONTACT US" },
+  { href: Routes.Contact, label: "CONTACTENOS" },
 ];
