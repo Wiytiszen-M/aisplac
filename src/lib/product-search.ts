@@ -1,6 +1,6 @@
 import type { Producto } from "@/types";
 
-const NIK_TOKEK = process.env.NIK_TOKEK;
+const NIK_TOKEN = process.env.NIK_TOKEN;
 export async function getPVCProducts(): Promise<Map<string, Producto>> {
   const productMap = new Map<string, Producto>();
 
@@ -8,7 +8,7 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
     console.log("🔍 Cargando productos PVC desde endpoint específico...");
     const startTime = Date.now();
 
-    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/0/0/${NIK_TOKEK}/PVC`;
+    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/0/0/${NIK_TOKEN}/PVC`;
 
     const response = await fetch(url, {
       headers: {

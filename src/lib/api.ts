@@ -1,6 +1,6 @@
 import type { Categoria, Producto, ApiResponse } from "@/types";
 
-const NIK_TOKEK = process.env.NIK_TOKEK;
+const NIK_TOKEN = process.env.NIK_TOKEN;
 
 // Función para limpiar JSON malformado
 function cleanJsonString(jsonString: string): string {
@@ -65,7 +65,7 @@ export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
     const startTime = Date.now();
 
     const response = await fetchWithRetry(
-      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/PVC/${NIK_TOKEK}`
+      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/PVC/${NIK_TOKEN}`
     );
 
     const responseText = await response.text();
@@ -120,7 +120,7 @@ export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
     const startTime = Date.now();
 
     const response = await fetchWithRetry(
-      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/MPC/${NIK_TOKEK}`
+      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/MPC/${NIK_TOKEN}`
     );
 
     const responseText = await response.text();
@@ -208,7 +208,7 @@ export async function getProductos(
     console.log(`📦 Obteniendo productos para categoría ${codigoCategoria}...`);
     const startTime = Date.now();
 
-    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEK}`;
+    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}`;
 
     const response = await fetchWithRetry(url);
 

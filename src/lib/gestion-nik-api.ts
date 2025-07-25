@@ -79,7 +79,7 @@ function construirJsonGestionNik(
     Nota:
       cotizacion.datosCotizacion.observaciones ||
       "Cotización generada desde Aisplac App",
-    Token: process.env.NIK_TOKEK,
+    Token: process.env.NIK_TOKEN,
     Productos: productos,
     Servicios: [], // Sin servicios por ahora
   };
