@@ -1,7 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { ChevronsRight } from 'lucide-react';
+import Image from "next/image";
+import React from "react";
+import { FowardButton } from "../foward-button";
 
 const PVCSection = () => {
   return (
@@ -26,10 +25,7 @@ const PVCSection = () => {
             </p>
 
             <div className="mt-6 flex items-center uppercase sm:mt-8">
-              <Link href="/pvc" className="flex items-center gap-4 font-bold">
-                Ver Productos{' '}
-                <ChevronsRight className="h-10 w-10 sm:h-12 sm:w-12 lg:h-12 lg:w-12 xl:h-14 xl:w-14" />
-              </Link>
+              <FowardButton text="Ver Productos" url="/pvc" />
             </div>
           </div>
         </div>

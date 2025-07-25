@@ -1,12 +1,35 @@
-import { CategoriasGrid } from '@/components/categorias-grid';
-import { CategoriasSkeleton } from '@/components/categorias-skeleton';
-import { LogoBanner } from '@/components/logo-banner';
-import { PartnerLogo } from '@/components/partner-logo';
-import { getCategorias } from '@/lib/api';
-import { Layers } from 'lucide-react';
+import { CategoriasGrid } from "@/components/categorias-grid";
+import { CategoriasSkeleton } from "@/components/categorias-skeleton";
+import InfiniteBrandBanner from "@/components/infinite-brand-banner";
 
-import Image from 'next/image';
-import { Suspense } from 'react';
+import { getCategorias } from "@/lib/api";
+import { Layers } from "lucide-react";
+
+import Image from "next/image";
+import { Suspense } from "react";
+
+const partnerLogos = [
+  {
+    src: "/alfavinil-logo.png",
+    alt: "alfavinil-logo",
+    name: "Alfavinil",
+  },
+  {
+    src: "/barbieri-logo.png",
+    alt: "barbieri-logo",
+    name: "Barbieri",
+  },
+  {
+    src: "/grupo-estisol-logo.png",
+    alt: "grupo-estisol-logo",
+    name: "Grupo Estisol",
+  },
+  {
+    src: "/isover-logo.png",
+    alt: "isover-logo",
+    name: "Isover",
+  },
+];
 
 const SteelframePage = async () => {
   const { data: categorias, error } = await getCategorias();
@@ -31,41 +54,34 @@ const SteelframePage = async () => {
 
   return (
     <section className="overflow-hidden pb-[150px] pt-36">
-      <div
-        className="relative flex flex-col-reverse items-center bg-cover bg-center bg-no-repeat md:min-h-screen md:flex-row md:justify-center md:pt-[100px] lg:w-full"
-        style={{
-          backgroundImage: "url('/steelframe-bg.webp')",
-        }}
-      >
+      <div className="relative  overflow-hidden flex w-full flex-col items-center">
         <div
-          className="absolute bottom-[-80px] z-10 h-full w-full md:bottom-0"
+          className="flex flex-col-reverse items-center bg-cover bg-center bg-no-repeat h-[80vh] md:min-h-screen md:flex-row md:justify-center md:pt-[100px] lg:w-full"
           style={{
-            background: 'linear-gradient(transparent 50%, #1c1936 88%)',
+            backgroundImage: "url('/steelframe-bg.webp')",
           }}
-        />
-        <Image
-          src="/steelframe.webp"
-          width={1080}
-          height={900}
-          alt="steelframe"
-          className="mx-auto mt-10 w-[90%] md:absolute md:top-0 md:w-auto"
-          priority
-        />
-        <div className="absolute top-0 z-20 mx-20 flex w-full px-12 md:top-28 md:px-44">
-          <div className="flex text-left md:w-[514px]">
-            <h2 className="font-bold">MATERIALES DE CONSTRUCCIÓN EN SECO</h2>
+        >
+          <div
+            className="absolute bottom-0 z-10 h-full w-full md:bottom-0"
+            style={{
+              background: "linear-gradient(transparent 50%, #1c1936 88%)",
+            }}
+          />
+          <Image
+            src="/steelframe.webp"
+            fill
+            alt="steelframe-obra"
+            className="md:mx-auto mt-10 w-full md:max-w-[1270] md:absolute top-0 object-contain"
+            priority
+          />
+          <div className="absolute top-0 z-20 mx-20 flex w-full px-12 md:top-28 md:px-44">
+            <div className="flex text-left md:w-[514px]">
+              <h2 className="font-bold">MATERIALES DE CONSTRUCCIÓN EN SECO</h2>
+            </div>
           </div>
-        </div>
-        <div className="absolute bottom-[-102px] z-30 flex gap-x-8 overflow-hidden md:bottom-0">
-          <LogoBanner>
-            <PartnerLogo src="/alfavinil-logo.png" alt="alfavinil-logo" />
-            <PartnerLogo src="/barbieri-logo.png" alt="barbieri-logo" />
-            <PartnerLogo
-              src="/grupo-estisol-logo.png"
-              alt="grupo-estisol-logo"
-            />
-            <PartnerLogo src="/isover-logo.png" alt="isover-logo" />
-          </LogoBanner>
+          <div className=" absolute z-30 flex gap-x-8 overflow-hidden bottom-0">
+            <InfiniteBrandBanner brands={partnerLogos} />
+          </div>
         </div>
       </div>
       <div className="mx-auto min-h-screen max-w-7xl p-4 pt-36">

@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { FileText, X, Plus, Minus, Send, Trash2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useCotizacionStore } from '@/stores/cotizacion-store';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { FileText, X, Plus, Minus, Send, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useCotizacionStore } from "@/stores/cotizacion-store";
+import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function CotizacionWidget() {
   const { items, total, removerProducto, actualizarCantidad } =
@@ -33,9 +33,9 @@ export function CotizacionWidget() {
     }
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
       return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener("mousedown", handleClickOutside);
       };
     }
   }, [isOpen]);
@@ -43,15 +43,15 @@ export function CotizacionWidget() {
   // Cerrar popover con tecla Escape
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         setIsOpen(false);
       }
     }
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener("keydown", handleEscape);
       return () => {
-        document.removeEventListener('keydown', handleEscape);
+        document.removeEventListener("keydown", handleEscape);
       };
     }
   }, [isOpen]);
@@ -60,7 +60,7 @@ export function CotizacionWidget() {
     setIsOpen(false);
   };
 
-  if (cantidadTotal === 0 || pathname.includes('/cotizacion')) return null;
+  if (cantidadTotal === 0 || pathname.includes("/cotizacion")) return null;
 
   return (
     <div className="fixed bottom-4 left-4 z-50">
@@ -82,8 +82,7 @@ export function CotizacionWidget() {
       {isOpen && (
         <Card
           ref={popoverRef}
-          style={{ width: 'calc(100vw - 30px)' }}
-          className="absolute bottom-16 left-0 max-h-[500px] overflow-hidden border-gray-700 bg-gray-800 shadow-xl"
+          className="w-[95vw] md:max-w-[500px] absolute bottom-16 left-0 max-h-[500px] overflow-hidden border-gray-700 bg-gray-800 shadow-xl"
         >
           <CardHeader className="border-b border-gray-700 pb-3">
             <div className="flex items-center justify-between">

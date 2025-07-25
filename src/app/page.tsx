@@ -1,14 +1,14 @@
-import Navigation from '@/components/navigation/navigation';
-import ValuesSection from '@/components/values-section/values-section';
-import SteelframeSection from '@/components/steelframe-section/steelframe-section';
-import ModularSection from '@/components/modular-section/modular-section';
-import MapSection from '@/components/map-section/map-section';
-import SolarEnergySection from '@/components/solar-energy-section/solar-energy-section';
-import News from '@/components/news/news';
-import PVCSection from '@/components/pvc-section/pvc-section';
-import HeroSection from '@/components/hero-section/hero-section';
-import VideoInstitucional from '@/components/video-inst';
-import { FadeIn } from '@/components/fade-in';
+import Navigation from "@/components/navigation/navigation";
+import ValuesSection from "@/components/values-section/values-section";
+import SteelframeSection from "@/components/steelframe-section/steelframe-section";
+import ModularSection from "@/components/modular-section/modular-section";
+import MapSection from "@/components/map-section/map-section";
+import SolarEnergySection from "@/components/solar-energy-section/solar-energy-section";
+import News from "@/components/news/news";
+import PVCSection from "@/components/pvc-section/pvc-section";
+import HeroSection from "@/components/hero-section/hero-section";
+import VideoInstitucional from "@/components/video-inst";
+import { FadeIn } from "@/components/fade-in";
 
 export default function Home() {
   return (
