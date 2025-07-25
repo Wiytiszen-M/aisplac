@@ -1,10 +1,12 @@
-import type { Categoria, Producto, ApiResponse } from '@/types';
+import type { Categoria, Producto, ApiResponse } from "@/types";
+
+const NIK_TOKEK = process.env.NIK_TOKEK;
 
 // Función para limpiar JSON malformado
 function cleanJsonString(jsonString: string): string {
-  let cleaned = jsonString.replace(/,(\s*[}\]])/g, '$1');
-  cleaned = cleaned.replace(/,,+/g, ',');
-  cleaned = cleaned.replace(/\s+/g, ' ').trim();
+  let cleaned = jsonString.replace(/,(\s*[}\]])/g, "$1");
+  cleaned = cleaned.replace(/,,+/g, ",");
+  cleaned = cleaned.replace(/\s+/g, " ").trim();
   return cleaned;
 }
 
@@ -22,9 +24,9 @@ async function fetchWithRetry(
       ...options,
       signal: controller.signal,
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'User-Agent': 'Aisplac-App/1.0',
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "User-Agent": "Aisplac-App/1.0",
         ...options.headers,
       },
     });
@@ -42,7 +44,7 @@ async function fetchWithRetry(
     if (
       retries > 0 &&
       error instanceof Error &&
-      !error.name.includes('AbortError')
+      !error.name.includes("AbortError")
     ) {
       console.warn(
         `🔄 Reintentando fetch (${retries} intentos restantes):`,
@@ -59,11 +61,11 @@ async function fetchWithRetry(
 // Obtener categorías PVC
 export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
   try {
-    console.log('📦 Obteniendo categorías...');
+    console.log("📦 Obteniendo categorías...");
     const startTime = Date.now();
 
     const response = await fetchWithRetry(
-      'https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/PVC/12345EIDOS2K21IO23LASO'
+      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/PVC/${NIK_TOKEK}`
     );
 
     const responseText = await response.text();
@@ -82,7 +84,7 @@ export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
       const categoriasNormalizadas = data.categorias.map((cat: Categoria) => ({
         codigo: String(cat.codigo),
         descripcion: cat.descripcion,
-        urlimg: cat.urlimg || '',
+        urlimg: cat.urlimg || "",
       }));
 
       return {
@@ -90,12 +92,12 @@ export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
         error: null,
       };
     } else {
-      return { data: [], error: 'No se encontraron categorías' };
+      return { data: [], error: "No se encontraron categorías" };
     }
   } catch (err) {
     const errorMessage =
-      err instanceof Error ? err.message : 'Error desconocido';
-    console.error('❌ Error al obtener categorías:', errorMessage);
+      err instanceof Error ? err.message : "Error desconocido";
+    console.error("❌ Error al obtener categorías:", errorMessage);
     return { data: null, error: errorMessage };
   }
 }
@@ -103,11 +105,11 @@ export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
 // Obtener categorías
 export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
   try {
-    console.log('📦 Obteniendo categorías...');
+    console.log("📦 Obteniendo categorías...");
     const startTime = Date.now();
 
     const response = await fetchWithRetry(
-      'https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/MPC/12345EIDOS2K21IO23LASO'
+      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/MPC/${NIK_TOKEK}`
     );
 
     const responseText = await response.text();
@@ -126,7 +128,7 @@ export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
       const categoriasNormalizadas = data.categorias.map((cat: Categoria) => ({
         codigo: String(cat.codigo),
         descripcion: cat.descripcion,
-        urlimg: cat.urlimg || '',
+        urlimg: cat.urlimg || "",
       }));
 
       return {
@@ -134,12 +136,12 @@ export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
         error: null,
       };
     } else {
-      return { data: [], error: 'No se encontraron categorías' };
+      return { data: [], error: "No se encontraron categorías" };
     }
   } catch (err) {
     const errorMessage =
-      err instanceof Error ? err.message : 'Error desconocido';
-    console.error('❌ Error al obtener categorías:', errorMessage);
+      err instanceof Error ? err.message : "Error desconocido";
+    console.error("❌ Error al obtener categorías:", errorMessage);
     return { data: null, error: errorMessage };
   }
 }
@@ -154,7 +156,7 @@ export async function getCategoria(
       ? await getCategoriasPVC()
       : await getCategorias();
     if (error || !categorias) {
-      return { data: null, error: error || 'Error al obtener categorías' };
+      return { data: null, error: error || "Error al obtener categorías" };
     }
 
     const foundCategoria = categorias.find(
@@ -171,7 +173,7 @@ export async function getCategoria(
     }
   } catch (err) {
     const errorMessage =
-      err instanceof Error ? err.message : 'Error desconocido';
+      err instanceof Error ? err.message : "Error desconocido";
     return { data: null, error: errorMessage };
   }
 }
@@ -184,15 +186,15 @@ export async function getProductos(
     console.log(`📦 Obteniendo productos para categoría ${codigoCategoria}...`);
     const startTime = Date.now();
 
-    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/12345EIDOS2K21IO23LASO`;
+    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEK}`;
 
     const response = await fetchWithRetry(url);
 
     const responseText = await response.text();
     const loadTime = Date.now() - startTime;
 
-    if (!responseText || responseText.trim() === '') {
-      return { data: [], error: 'La API devolvió una respuesta vacía' };
+    if (!responseText || responseText.trim() === "") {
+      return { data: [], error: "La API devolvió una respuesta vacía" };
     }
 
     const cleanedJson = cleanJsonString(responseText);
@@ -211,7 +213,7 @@ export async function getProductos(
       productosData = data;
     } else if (data && data.productos && Array.isArray(data.productos)) {
       productosData = data.productos;
-    } else if (data && typeof data === 'object') {
+    } else if (data && typeof data === "object") {
       const arrayKeys = Object.keys(data).filter((key) =>
         Array.isArray(data[key])
       );
@@ -228,9 +230,9 @@ export async function getProductos(
       const productosNormalizados = productosData.map((prod: Producto) => {
         return {
           codigo: String(prod.codigo),
-          personal: prod.personal || '',
-          descripcion: prod.descripcion || '',
-          unmedida: prod.unmedida || 'UN',
+          personal: prod.personal || "",
+          descripcion: prod.descripcion || "",
+          unmedida: prod.unmedida || "UN",
           precio: Number(prod.precio) || 0,
           codcategoria: String(prod.codcategoria),
           pesogramos: Number(prod.pesogramos) || 0,
@@ -238,9 +240,9 @@ export async function getProductos(
           uxb: Number(prod.uxb) || 0,
           stock: Number(prod.stock) || 0,
           activo: Boolean(prod.activo),
-          timestamp: prod.timestamp || '',
-          uxf: prod.uxf || '',
-          urlimg: prod.urlimg || '',
+          timestamp: prod.timestamp || "",
+          uxf: prod.uxf || "",
+          urlimg: prod.urlimg || "",
         };
       });
 
@@ -251,12 +253,12 @@ export async function getProductos(
     } else {
       return {
         data: [],
-        error: 'No se encontraron productos en esta categoría',
+        error: "No se encontraron productos en esta categoría",
       };
     }
   } catch (err) {
     const errorMessage =
-      err instanceof Error ? err.message : 'Error desconocido';
+      err instanceof Error ? err.message : "Error desconocido";
     console.error(
       `❌ Error al obtener productos de ${codigoCategoria}:`,
       errorMessage
@@ -274,7 +276,7 @@ export async function getProducto(
     const { data: productos, error } = await getProductos(codigoCategoria);
 
     if (error || !productos) {
-      return { data: null, error: error || 'Error al obtener productos' };
+      return { data: null, error: error || "Error al obtener productos" };
     }
 
     const producto = productos.find((p) => p.codigo === codigoProducto);
@@ -289,7 +291,7 @@ export async function getProducto(
     }
   } catch (err) {
     const errorMessage =
-      err instanceof Error ? err.message : 'Error desconocido';
+      err instanceof Error ? err.message : "Error desconocido";
     return { data: null, error: errorMessage };
   }
 }

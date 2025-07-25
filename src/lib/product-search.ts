@@ -1,20 +1,20 @@
-import type { Producto } from '@/types';
+import type { Producto } from "@/types";
 
+const NIK_TOKEK = process.env.NIK_TOKEK;
 export async function getPVCProducts(): Promise<Map<string, Producto>> {
   const productMap = new Map<string, Producto>();
 
   try {
-    console.log('🔍 Cargando productos PVC desde endpoint específico...');
+    console.log("🔍 Cargando productos PVC desde endpoint específico...");
     const startTime = Date.now();
 
-    const url =
-      'https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/0/0/12345EIDOS2K21IO23LASO/PVC';
+    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/0/0/${NIK_TOKEK}/PVC`;
 
     const response = await fetch(url, {
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'User-Agent': 'Aisplac-App/1.0',
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "User-Agent": "Aisplac-App/1.0",
       },
     });
 
@@ -24,8 +24,8 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
 
     const responseText = await response.text();
 
-    if (!responseText || responseText.trim() === '') {
-      console.warn('⚠️ Respuesta vacía del endpoint PVC');
+    if (!responseText || responseText.trim() === "") {
+      console.warn("⚠️ Respuesta vacía del endpoint PVC");
       return productMap;
     }
 
@@ -33,13 +33,13 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
     try {
       // Limpiar JSON si es necesario
       const cleanedJson = responseText
-        .replace(/,(\s*[}\]])/g, '$1')
-        .replace(/,,+/g, ',')
-        .replace(/\s+/g, ' ')
+        .replace(/,(\s*[}\]])/g, "$1")
+        .replace(/,,+/g, ",")
+        .replace(/\s+/g, " ")
         .trim();
       data = JSON.parse(cleanedJson);
     } catch (parseError) {
-      console.error('❌ Error al parsear JSON de productos PVC:', parseError);
+      console.error("❌ Error al parsear JSON de productos PVC:", parseError);
       return productMap;
     }
 
@@ -50,7 +50,7 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
       productosData = data;
     } else if (data && data.productos && Array.isArray(data.productos)) {
       productosData = data.productos;
-    } else if (data && typeof data === 'object') {
+    } else if (data && typeof data === "object") {
       const arrayKeys = Object.keys(data).filter((key) =>
         Array.isArray(data[key])
       );
@@ -69,31 +69,31 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
       const imagenes: string[] = [];
 
       // Procesar imágenes
-      if (prod.urlimg && prod.urlimg.trim() !== '') {
+      if (prod.urlimg && prod.urlimg.trim() !== "") {
         imagenes.push(prod.urlimg.trim());
       }
 
       const camposImagenes = [
-        'urlimg2',
-        'urlimg3',
-        'urlimg4',
-        'urlimg5',
-        'imagen2',
-        'imagen3',
-        'imagen4',
-        'imagen5',
+        "urlimg2",
+        "urlimg3",
+        "urlimg4",
+        "urlimg5",
+        "imagen2",
+        "imagen3",
+        "imagen4",
+        "imagen5",
       ];
       camposImagenes.forEach((campo) => {
-        if (prod[campo] && prod[campo].trim() !== '') {
+        if (prod[campo] && prod[campo].trim() !== "") {
           imagenes.push(prod[campo].trim());
         }
       });
 
       const producto: Producto = {
         codigo: String(prod.codigo),
-        personal: prod.personal || '',
-        descripcion: prod.descripcion || '',
-        unmedida: prod.unmedida || 'UN',
+        personal: prod.personal || "",
+        descripcion: prod.descripcion || "",
+        unmedida: prod.unmedida || "UN",
         precio: Number(prod.precio) || 0,
         codcategoria: String(prod.codcategoria),
         pesogramos: Number(prod.pesogramos) || 0,
@@ -101,9 +101,9 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
         uxb: Number(prod.uxb) || 0,
         stock: Number(prod.stock) || 0,
         activo: Boolean(prod.activo),
-        timestamp: prod.timestamp || '',
-        uxf: prod.uxf || '',
-        urlimg: imagenes[0] || '',
+        timestamp: prod.timestamp || "",
+        uxf: prod.uxf || "",
+        urlimg: imagenes[0] || "",
       };
 
       productMap.set(producto.codigo, producto);
@@ -112,7 +112,7 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
     console.log(`📦 Productos PVC mapeados: ${productMap.size}`);
     return productMap;
   } catch (error) {
-    console.error('❌ Error cargando productos PVC:', error);
+    console.error("❌ Error cargando productos PVC:", error);
     return productMap;
   }
 }

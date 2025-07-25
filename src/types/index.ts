@@ -83,7 +83,7 @@ export interface GestionNikRequest {
   VerifStock: string;
   IdApExterna: string;
   Nota: string;
-  Token: string;
+  Token: string | undefined;
   Productos: GestionNikProducto[];
   Servicios: GestionNikServicio[];
 }
@@ -151,7 +151,7 @@ export interface ProductosRelacionadosProps {
 }
 
 export interface AgregarCotizacionButtonProps {
-  producto: Omit<ProductoCotizacion, 'cantidad' | 'observaciones'>;
+  producto: Omit<ProductoCotizacion, "cantidad" | "observaciones">;
   showQuantityControls?: boolean;
 }
 
@@ -171,7 +171,7 @@ export interface EnvioResult {
 export interface CotizacionActions {
   // Acciones para productos
   agregarProducto: (
-    producto: Omit<ProductoCotizacion, 'cantidad' | 'observaciones'>,
+    producto: Omit<ProductoCotizacion, "cantidad" | "observaciones">,
     cantidad?: number
   ) => void;
   removerProducto: (codigo: string) => void;
@@ -232,7 +232,7 @@ export interface ErrorProps {
   reset: () => void;
 }
 
-import type { Image as SanityImage, PortableTextBlock, Slug } from 'sanity';
+import type { Image as SanityImage, PortableTextBlock, Slug } from "sanity";
 
 // Interfaz para los campos de imagen personalizados
 export interface ImageWithAlt extends SanityImage {
@@ -242,26 +242,26 @@ export interface ImageWithAlt extends SanityImage {
 
 // Interfaz para los bloques de video embebido en el contenido
 export interface VideoEmbedBlock {
-  _type: 'videoEmbed';
+  _type: "videoEmbed";
   _key: string;
   url: string;
   caption?: string;
-  aspectRatio?: '16:9' | '9:16' | '1:1';
+  aspectRatio?: "16:9" | "9:16" | "1:1";
 }
 
 // Interfaz para los bloques de separador en el contenido
 export interface SeparatorBlock {
-  _type: 'separator';
+  _type: "separator";
   _key: string;
-  style?: 'line' | 'thick' | 'dots';
+  style?: "line" | "thick" | "dots";
 }
 
 // Interfaz para las imágenes dentro del contenido
 export interface ContentImageBlock extends ImageWithAlt {
-  _type: 'image';
+  _type: "image";
   _key: string;
-  size?: 'small' | 'medium' | 'large' | 'full';
-  alignment?: 'left' | 'center' | 'right';
+  size?: "small" | "medium" | "large" | "full";
+  alignment?: "left" | "center" | "right";
 }
 
 // Unión de todos los tipos de bloques de contenido posibles
