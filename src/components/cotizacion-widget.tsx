@@ -82,7 +82,7 @@ export function CotizacionWidget() {
       {isOpen && (
         <Card
           ref={popoverRef}
-          className="w-[95vw] md:max-Dw-[500px] absolute bottom-16 left-0 max-h-[500px] overflow-hidden border-gray-700 bg-gray-800 shadow-xl"
+          className="w-[95vw] md:max-w-[500px] absolute bottom-16 left-0 max-h-[500px] overflow-hidden border-gray-700 bg-gray-800 shadow-xl"
         >
           <CardHeader className="border-b border-gray-700 pb-3">
             <div className="flex items-center justify-between">

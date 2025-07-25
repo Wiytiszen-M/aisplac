@@ -28,10 +28,9 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
       console.warn("⚠️ Respuesta vacía del endpoint PVC");
       return productMap;
     }
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let data: any;
     try {
-      // Limpiar JSON si es necesario
       const cleanedJson = responseText
         .replace(/,(\s*[}\]])/g, "$1")
         .replace(/,,+/g, ",")
@@ -43,7 +42,7 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
       return productMap;
     }
 
-    // Procesar productos
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let productosData: any[] = [];
 
     if (Array.isArray(data)) {
@@ -64,7 +63,7 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
       `✅ ${productosData.length} productos PVC cargados en ${loadTime}ms`
     );
 
-    // Normalizar y mapear productos
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     productosData.forEach((prod: any) => {
       const imagenes: string[] = [];
 
