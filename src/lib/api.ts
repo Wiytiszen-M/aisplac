@@ -69,8 +69,19 @@ export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
     );
 
     const responseText = await response.text();
+
+    if (!responseText || responseText.trim() === "") {
+      throw new Error("Respuesta vacía al obtener categorías");
+    }
+
     const cleanedJson = cleanJsonString(responseText);
-    const data = JSON.parse(cleanedJson);
+
+    let data;
+    try {
+      data = JSON.parse(cleanedJson);
+    } catch (error) {
+      throw new Error(`Error al parsear JSON: ${error}`);
+    }
 
     const loadTime = Date.now() - startTime;
     console.log(`✅ Categorías cargadas en ${loadTime}ms`);
@@ -113,8 +124,19 @@ export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
     );
 
     const responseText = await response.text();
+
+    if (!responseText || responseText.trim() === "") {
+      throw new Error("Respuesta vacía al obtener categorías");
+    }
+
     const cleanedJson = cleanJsonString(responseText);
-    const data = JSON.parse(cleanedJson);
+
+    let data;
+    try {
+      data = JSON.parse(cleanedJson);
+    } catch (error) {
+      throw new Error(`Error al parsear JSON: ${error}`);
+    }
 
     const loadTime = Date.now() - startTime;
     console.log(`✅ Categorías cargadas en ${loadTime}ms`);
