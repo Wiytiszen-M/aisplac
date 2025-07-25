@@ -1,16 +1,16 @@
-import ModularFeatures from "@/components/modular-features/modular-features";
-import { Button } from "@/components/ui/button";
-import ResponsiveCards from "@/components/ui/responsive-cards";
-import Image from "next/image";
-import Link from "next/link";
+import ModularFeatures from '@/components/modular-features/modular-features';
+import { Button } from '@/components/ui/button';
+import ResponsiveCards from '@/components/ui/responsive-cards';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Modular = () => {
   return (
-    <section className="flex flex-col items-center md:min-h-screen pb-[150px] mx-auto ">
-      <div className="relative flex flex-col justify-center items-center md:min-h-screen w-full ">
-        <div className="relative pt-[100px] md:pt-0 w-full max-w-[1728px] h-[452px] md:h-[852px] overflow-hidden">
+    <section className="mx-auto flex flex-col items-center pb-[150px] md:min-h-screen">
+      <div className="relative flex w-full flex-col items-center justify-center md:min-h-screen">
+        <div className="relative h-[452px] w-full max-w-[1728px] overflow-hidden pt-[100px] md:h-[852px] md:pt-0">
           <Image
-            className="absolute w-[80%] md:w-auto md:bottom-[30%] lg:left-[151px] z-10"
+            className="absolute z-10 w-[80%] md:bottom-[30%] md:w-auto lg:left-[151px]"
             src="/modular/modular-title.svg"
             alt="modular title"
             width={539}
@@ -18,7 +18,7 @@ const Modular = () => {
           />
 
           <Image
-            className="absolute lg:-right-32 lg:-bottom-40 bottom-0 "
+            className="absolute bottom-0 lg:-bottom-40 lg:-right-32"
             src="/modular/modular-building.png"
             width={1376}
             height={1022}
@@ -26,7 +26,7 @@ const Modular = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col text-center items-center gap-8  md:w-[1088px] md:mt-[167px]">
+      <div className="flex flex-col items-center gap-8 text-center md:mt-[167px] md:w-[1088px]">
         <p>
           El diseño modular representa una solución innovadora para abordar las
           necesidades de infraestructura del presente y futuro. Combinando
@@ -35,7 +35,7 @@ const Modular = () => {
         </p>
         <Link
           href="/contact"
-          className="text-base md:text-3xl font-bold hover:underline transition-all duration-1000"
+          className="text-base font-bold transition-all duration-1000 hover:underline md:text-3xl"
         >
           ¡Contactanos para planificar tu espacio modular!
         </Link>
@@ -50,7 +50,7 @@ const Modular = () => {
       <ModularFeatures />
       <ResponsiveCards />
 
-      <h2 className="md:w-[792px] p-8 md:p-0 md:my-[75px]">
+      <h2 className="p-8 md:my-[75px] md:w-[792px] md:p-0">
         Contactanos y te ayudamos a hacerlo realidad. 
       </h2>
       <Link href="/contact">

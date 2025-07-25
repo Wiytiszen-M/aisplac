@@ -1,18 +1,18 @@
-import { Package } from "lucide-react";
+import { Package } from 'lucide-react';
 
 export function CategoriasSkeleton() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {Array.from({ length: 8 }).map((_, i) => (
         <div
           key={i}
-          className="bg-gray-800 border border-gray-700 rounded-lg p-6 animate-pulse"
+          className="animate-pulse rounded-lg border border-gray-700 bg-gray-800 p-6"
         >
-          <div className="aspect-square bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+          <div className="mb-4 flex aspect-square items-center justify-center rounded-lg bg-gray-700">
             <Package className="h-16 w-16 text-gray-600" />
           </div>
-          <div className="h-6 bg-gray-700 rounded mb-2"></div>
-          <div className="h-4 bg-gray-700 rounded w-16 mx-auto"></div>
+          <div className="mb-2 h-6 rounded bg-gray-700"></div>
+          <div className="mx-auto h-4 w-16 rounded bg-gray-700"></div>
         </div>
       ))}
     </div>

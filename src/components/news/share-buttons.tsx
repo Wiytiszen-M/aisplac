@@ -1,37 +1,43 @@
-"use client"
+'use client';
 
-import { Facebook, Linkedin, Share2, Twitter } from "lucide-react"
-import { useState } from "react"
-import { toast } from "sonner"
+import { Facebook, Linkedin, Share2, Twitter } from 'lucide-react';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 type ShareButtonsProps = {
-  url: string
-  title: string
-}
+  url: string;
+  title: string;
+};
 
 export function ShareButtons({ url, title }: ShareButtonsProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const shareToFacebook = () => {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, "_blank")
-  }
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      '_blank'
+    );
+  };
 
   const shareToTwitter = () => {
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
-      "_blank",
-    )
-  }
+      '_blank'
+    );
+  };
 
   const shareToLinkedin = () => {
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, "_blank")
-  }
+    window.open(
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+      '_blank'
+    );
+  };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(url)
-    toast.success("Enlace copiado al portapapeles")
-    setIsOpen(false)
-  }
+    navigator.clipboard.writeText(url);
+    toast.success('Enlace copiado al portapapeles');
+    setIsOpen(false);
+  };
 
   return (
     <div className="relative">
@@ -40,7 +46,7 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
 
         <button
           onClick={shareToFacebook}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-gray-200"
           aria-label="Compartir en Facebook"
         >
           <Facebook className="h-4 w-4" />
@@ -48,7 +54,7 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
 
         <button
           onClick={shareToTwitter}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-gray-200"
           aria-label="Compartir en Twitter"
         >
           <Twitter className="h-4 w-4" />
@@ -56,7 +62,7 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
 
         <button
           onClick={shareToLinkedin}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-gray-200"
           aria-label="Compartir en LinkedIn"
         >
           <Linkedin className="h-4 w-4" />
@@ -64,7 +70,7 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-gray-200"
           aria-label="Más opciones para compartir"
         >
           <Share2 className="h-4 w-4" />
@@ -72,11 +78,11 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
       </div>
 
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 border overflow-hidden">
+        <div className="absolute left-0 z-10 mt-2 w-48 overflow-hidden rounded-md border bg-white shadow-lg">
           <div className="py-1">
             <button
               onClick={copyToClipboard}
-              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-left hover:bg-gray-100"
+              className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm hover:bg-gray-100"
             >
               Copiar enlace
             </button>
@@ -84,5 +90,5 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
         </div>
       )}
     </div>
-  )
+  );
 }

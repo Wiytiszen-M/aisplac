@@ -1,62 +1,62 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Palette } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { BackButton } from "@/components/back-button";
+import Link from 'next/link';
+import Image from 'next/image';
+import { Palette } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { BackButton } from '@/components/back-button';
 
 export default function PinturasPage() {
   const pinturas = [
     {
       id: 1,
-      imagen: "/placeholder.svg?height=300&width=400",
-      titulo: "Pinturas Látex Interior",
+      imagen: '/placeholder.svg?height=300&width=400',
+      titulo: 'Pinturas Látex Interior',
       descripcion:
-        "Pinturas de alta calidad para interiores, acabado mate y satinado",
+        'Pinturas de alta calidad para interiores, acabado mate y satinado',
     },
     {
       id: 2,
-      imagen: "/placeholder.svg?height=300&width=400",
-      titulo: "Esmaltes Sintéticos",
+      imagen: '/placeholder.svg?height=300&width=400',
+      titulo: 'Esmaltes Sintéticos',
       descripcion:
-        "Esmaltes de alta resistencia para madera y metal, múltiples colores",
+        'Esmaltes de alta resistencia para madera y metal, múltiples colores',
     },
     {
       id: 3,
-      imagen: "/placeholder.svg?height=300&width=400",
-      titulo: "Pinturas Exteriores",
+      imagen: '/placeholder.svg?height=300&width=400',
+      titulo: 'Pinturas Exteriores',
       descripcion:
-        "Revestimientos impermeabilizantes para fachadas y exteriores",
+        'Revestimientos impermeabilizantes para fachadas y exteriores',
     },
     {
       id: 4,
-      imagen: "/placeholder.svg?height=300&width=400",
-      titulo: "Antióxidos y Primers",
+      imagen: '/placeholder.svg?height=300&width=400',
+      titulo: 'Antióxidos y Primers',
       descripcion:
-        "Tratamientos anticorrosivos y fondos preparadores de superficie",
+        'Tratamientos anticorrosivos y fondos preparadores de superficie',
     },
     {
       id: 5,
-      imagen: "/placeholder.svg?height=300&width=400",
-      titulo: "Pinturas Especiales",
+      imagen: '/placeholder.svg?height=300&width=400',
+      titulo: 'Pinturas Especiales',
       descripcion:
-        "Pinturas decorativas: pizarra, magnética, texturada y efectos",
+        'Pinturas decorativas: pizarra, magnética, texturada y efectos',
     },
     {
       id: 6,
-      imagen: "/placeholder.svg?height=300&width=400",
-      titulo: "Accesorios de Pintura",
-      descripcion: "Rodillos, pinceles, brochas y herramientas para aplicación",
+      imagen: '/placeholder.svg?height=300&width=400',
+      titulo: 'Accesorios de Pintura',
+      descripcion: 'Rodillos, pinceles, brochas y herramientas para aplicación',
     },
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
+    <section className="mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8">
       {/* Header */}
       <BackButton text="Volver a Productos" />
-      <div className="flex items-center gap-4 mb-8">
+      <div className="mb-8 flex items-center gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
+          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-red-600">
             <Palette className="h-6 w-6 text-white" />
           </div>
           <div>
@@ -71,11 +71,11 @@ export default function PinturasPage() {
       </div>
 
       {/* Descripción */}
-      <div className="bg-gradient-to-r from-orange-900/20 to-red-900/20 border border-orange-500/20 rounded-lg p-6 mb-8">
-        <h2 className="text-xl font-semibold text-orange-300 mb-3">
+      <div className="mb-8 rounded-lg border border-orange-500/20 bg-gradient-to-r from-orange-900/20 to-red-900/20 p-6">
+        <h2 className="mb-3 text-xl font-semibold text-orange-300">
           Soluciones Completas en Pintura
         </h2>
-        <p className="text-gray-300 leading-relaxed">
+        <p className="leading-relaxed text-gray-300">
           Ofrecemos una línea completa de pinturas y revestimientos para todo
           tipo de proyectos. Desde pinturas para interiores y exteriores hasta
           productos especializados y accesorios profesionales. Todas nuestras
@@ -85,31 +85,31 @@ export default function PinturasPage() {
       </div>
 
       {/* Grid de Pinturas */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {pinturas.map((pintura) => (
           <Card
             key={pintura.id}
-            className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-gray-800 border-gray-700 overflow-hidden"
+            className="group overflow-hidden border-gray-700 bg-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
           >
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src={pintura.imagen || "/placeholder.svg"}
+                src={pintura.imagen || '/placeholder.svg'}
                 alt={pintura.titulo}
                 fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <CardContent className="p-6">
-              <h3 className="text-xl font-semibold text-gray-100 mb-3 group-hover:text-orange-300 transition-colors">
+              <h3 className="mb-3 text-xl font-semibold text-gray-100 transition-colors group-hover:text-orange-300">
                 {pintura.titulo}
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="leading-relaxed text-gray-400">
                 {pintura.descripcion}
               </p>
 
               {/* Badge decorativo */}
-              <div className="mt-4 inline-flex items-center gap-2 bg-orange-900/30 text-orange-300 px-3 py-1 rounded-full text-sm">
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-orange-900/30 px-3 py-1 text-sm text-orange-300">
                 <Palette className="h-3 w-3" />
                 <span>Disponible</span>
               </div>
@@ -119,28 +119,28 @@ export default function PinturasPage() {
       </div>
 
       {/* Call to Action */}
-      <div className="bg-gradient-to-r from-orange-900/30 to-red-900/30 border border-orange-500/30 rounded-lg p-8 text-center mt-12">
-        <h2 className="text-2xl font-bold text-gray-100 mb-4">
+      <div className="mt-12 rounded-lg border border-orange-500/30 bg-gradient-to-r from-orange-900/30 to-red-900/30 p-8 text-center">
+        <h2 className="mb-4 text-2xl font-bold text-gray-100">
           ¿Necesitas asesoramiento?
         </h2>
-        <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+        <p className="mx-auto mb-6 max-w-2xl text-gray-300">
           Nuestro equipo de expertos puede ayudarte a elegir la pintura perfecta
           para tu proyecto. Contáctanos para recibir asesoramiento personalizado
           y cotizaciones especiales.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col justify-center gap-4 sm:flex-row">
           <Button
-            className="bg-orange-600 hover:bg-orange-700 text-white"
+            className="bg-orange-600 text-white hover:bg-orange-700"
             size="lg"
           >
             <Link href="/cotizacion">
-              <Palette className="h-4 w-4 mr-2" />
+              <Palette className="mr-2 h-4 w-4" />
               Solicitar Cotización
             </Link>
           </Button>
           <Button
             variant="outline"
-            className="border-orange-500 text-orange-300 hover:bg-orange-900/20 bg-transparent"
+            className="border-orange-500 bg-transparent text-orange-300 hover:bg-orange-900/20"
             size="lg"
           >
             <Link href="/steelframe">Ver Otras Categorías</Link>
@@ -149,9 +149,9 @@ export default function PinturasPage() {
       </div>
 
       {/* Información adicional */}
-      <div className="grid md:grid-cols-3 gap-6 mt-12">
-        <div className="text-center p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-          <div className="w-12 h-12 bg-green-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+      <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="rounded-lg border border-gray-700 bg-gray-800/50 p-6 text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-green-900">
             <svg
               className="h-6 w-6 text-green-400"
               fill="none"
@@ -166,16 +166,16 @@ export default function PinturasPage() {
               />
             </svg>
           </div>
-          <h3 className="font-semibold text-gray-100 mb-2">
+          <h3 className="mb-2 font-semibold text-gray-100">
             Calidad Garantizada
           </h3>
-          <p className="text-gray-400 text-sm">
+          <p className="text-sm text-gray-400">
             Productos de primeras marcas con garantía de fábrica
           </p>
         </div>
 
-        <div className="text-center p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-          <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <div className="rounded-lg border border-gray-700 bg-gray-800/50 p-6 text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-900">
             <svg
               className="h-6 w-6 text-blue-400"
               fill="none"
@@ -190,14 +190,14 @@ export default function PinturasPage() {
               />
             </svg>
           </div>
-          <h3 className="font-semibold text-gray-100 mb-2">Entrega Rápida</h3>
-          <p className="text-gray-400 text-sm">
+          <h3 className="mb-2 font-semibold text-gray-100">Entrega Rápida</h3>
+          <p className="text-sm text-gray-400">
             Disponibilidad inmediata en la mayoría de productos
           </p>
         </div>
 
-        <div className="text-center p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-          <div className="w-12 h-12 bg-purple-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <div className="rounded-lg border border-gray-700 bg-gray-800/50 p-6 text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900">
             <svg
               className="h-6 w-6 text-purple-400"
               fill="none"
@@ -212,8 +212,8 @@ export default function PinturasPage() {
               />
             </svg>
           </div>
-          <h3 className="font-semibold text-gray-100 mb-2">Asesoramiento</h3>
-          <p className="text-gray-400 text-sm">
+          <h3 className="mb-2 font-semibold text-gray-100">Asesoramiento</h3>
+          <p className="text-sm text-gray-400">
             Consulta técnica especializada sin costo adicional
           </p>
         </div>

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ChevronsLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { ChevronsLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 type BackButtonProps = {
   text?: string;
@@ -11,18 +11,18 @@ type BackButtonProps = {
 };
 
 export function BackButton({
-  text = "Volver",
+  text = 'Volver',
   url,
-  className = "",
+  className = '',
 }: BackButtonProps) {
   const router = useRouter();
   return (
     <Button
       variant="link"
-      className={`mb-4 px-0 text-white hover:text-gray-100  ${className}`}
+      className={`mb-4 px-0 text-white hover:text-gray-100 ${className}`}
       onClick={() => (url ? router.push(url) : router.back())}
     >
-      <ChevronsLeft className="w-8 h-8" />
+      <ChevronsLeft className="h-8 w-8" />
       {text}
     </Button>
   );

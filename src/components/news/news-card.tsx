@@ -1,26 +1,32 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Calendar } from "lucide-react"
-import type { NewsItem } from "@/lib/sanity"
+import Image from 'next/image';
+import Link from 'next/link';
+import { Calendar } from 'lucide-react';
+import type { NewsItem } from '@/lib/sanity';
 
 type NewsCardProps = {
-  newsItem: NewsItem
-}
+  newsItem: NewsItem;
+};
 
 export function NewsCard({ newsItem }: NewsCardProps) {
   // Formatear la fecha
-  const formattedDate = new Date(newsItem.publishedAt).toLocaleDateString("es-ES", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  })
+  const formattedDate = new Date(newsItem.publishedAt).toLocaleDateString(
+    'es-ES',
+    {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }
+  );
 
   return (
     <Link href={`/novedades/${newsItem.slug}`}>
-      <div className="border rounded-lg overflow-hidden h-full transition-all duration-300 hover:shadow-md hover:border-gray-400">
+      <div className="h-full overflow-hidden rounded-lg border transition-all duration-300 hover:border-gray-400 hover:shadow-md">
         <div className="relative h-48 w-full">
           <Image
-            src={newsItem.mainImage || "/placeholder.svg?height=400&width=600&query=news"}
+            src={
+              newsItem.mainImage ||
+              '/placeholder.svg?height=400&width=600&query=news'
+            }
             alt={newsItem.title}
             fill
             className="object-cover"
@@ -28,15 +34,21 @@ export function NewsCard({ newsItem }: NewsCardProps) {
           />
         </div>
         <div className="p-4">
-          <div className="flex items-center text-sm text-gray-500 mb-2">
-            <Calendar className="h-4 w-4 mr-1" />
+          <div className="mb-2 flex items-center text-sm text-gray-500">
+            <Calendar className="mr-1 h-4 w-4" />
             <span>{formattedDate}</span>
           </div>
-          <h3 className="font-bold text-lg mb-2 line-clamp-2">{newsItem.title}</h3>
-          <p className="text-gray-600 text-sm line-clamp-3">{newsItem.excerpt}</p>
-          <div className="mt-3 text-sm font-medium text-[#1D6191]">Leer más</div>
+          <h3 className="mb-2 line-clamp-2 text-lg font-bold">
+            {newsItem.title}
+          </h3>
+          <p className="line-clamp-3 text-sm text-gray-600">
+            {newsItem.excerpt}
+          </p>
+          <div className="mt-3 text-sm font-medium text-[#1D6191]">
+            Leer más
+          </div>
         </div>
       </div>
     </Link>
-  )
+  );
 }

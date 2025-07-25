@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useMemo, useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Twitter,
   Facebook,
@@ -10,13 +10,13 @@ import {
   Copy,
   Check,
   MessageCircle,
-} from "lucide-react";
+} from 'lucide-react';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from '@/components/ui/tooltip';
 
 interface ShareButtonsProps {
   title: string;
@@ -24,16 +24,16 @@ interface ShareButtonsProps {
 }
 export function ShareButtons({ title, slug }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
-  const [baseURL, setBaseURL] = useState("");
+  const [baseURL, setBaseURL] = useState('');
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       setBaseURL(window.location.origin);
     }
   }, []);
 
   const url = useMemo(() => {
-    return baseURL ? `${baseURL}/novedades/${slug}` : "";
+    return baseURL ? `${baseURL}/novedades/${slug}` : '';
   }, [baseURL, slug]);
 
   const encodedTitle = useMemo(() => encodeURIComponent(title), [title]);
@@ -44,28 +44,28 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
 
     return [
       {
-        name: "Twitter",
+        name: 'Twitter',
         icon: <Twitter className="h-4 w-4" />,
         url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
-        color: "bg-[#1DA1F2] hover:bg-[#1a94df] text-white",
+        color: 'bg-[#1DA1F2] hover:bg-[#1a94df] text-white',
       },
       {
-        name: "Facebook",
+        name: 'Facebook',
         icon: <Facebook className="h-4 w-4" />,
         url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-        color: "bg-[#4267B2] hover:bg-[#3b5998] text-white",
+        color: 'bg-[#4267B2] hover:bg-[#3b5998] text-white',
       },
       {
-        name: "LinkedIn",
+        name: 'LinkedIn',
         icon: <Linkedin className="h-4 w-4" />,
         url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-        color: "bg-[#0077B5] hover:bg-[#006699] text-white",
+        color: 'bg-[#0077B5] hover:bg-[#006699] text-white',
       },
       {
-        name: "WhatsApp",
+        name: 'WhatsApp',
         icon: <MessageCircle className="h-4 w-4" />,
         url: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
-        color: "bg-[#25D366] hover:bg-[#20bd5a] text-white",
+        color: 'bg-[#25D366] hover:bg-[#20bd5a] text-white',
       },
     ];
   }, [encodedUrl, encodedTitle]);
@@ -76,7 +76,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy: ", err);
+      console.error('Failed to copy: ', err);
     }
   };
 
@@ -96,7 +96,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
                     size="sm"
                     variant="outline"
                     className={link.color}
-                    onClick={() => window.open(link.url, "_blank")}
+                    onClick={() => window.open(link.url, '_blank')}
                   >
                     {link.icon}
                     <span className="ml-2">{link.name}</span>
@@ -117,7 +117,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
                     <Copy className="h-4 w-4" />
                   )}
                   <span className="ml-2">
-                    {copied ? "¡Copiado!" : "Copiar enlace"}
+                    {copied ? '¡Copiado!' : 'Copiar enlace'}
                   </span>
                 </Button>
               </TooltipTrigger>

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState, useMemo } from "react";
-import { ShoppingBag } from "lucide-react";
-import { ProductCard } from "@/components/product-card";
-import { SearchInput } from "@/components/search-input";
-import { Producto } from "@/types";
+import { useState, useMemo } from 'react';
+import { ShoppingBag } from 'lucide-react';
+import { ProductCard } from '@/components/product-card';
+import { SearchInput } from '@/components/search-input';
+import { Producto } from '@/types';
 
 interface ProductosClientProps {
   productos: Producto[];
@@ -15,7 +15,7 @@ export function ProductosClient({
   productos,
   codigoCategoria,
 }: ProductosClientProps) {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Filtrar productos basado en la búsqueda
   const filteredProductos = useMemo(() => {
@@ -28,7 +28,7 @@ export function ProductosClient({
     return productos.filter((producto) => {
       const descripcion = producto.descripcion.toLowerCase();
       const codigo = producto.codigo.toLowerCase();
-      const personal = producto.personal?.toLowerCase() || "";
+      const personal = producto.personal?.toLowerCase() || '';
 
       // Buscar en descripción, código y código personal
       return (
@@ -45,9 +45,9 @@ export function ProductosClient({
 
   if (!productos || productos.length === 0) {
     return (
-      <div className="text-center py-12">
-        <ShoppingBag className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-        <h3 className="text-lg font-medium text-gray-100 mb-2">
+      <div className="py-12 text-center">
+        <ShoppingBag className="mx-auto mb-4 h-16 w-16 text-gray-500" />
+        <h3 className="mb-2 text-lg font-medium text-gray-100">
           No hay productos disponibles
         </h3>
         <p className="text-gray-400">
@@ -71,18 +71,18 @@ export function ProductosClient({
       {searchQuery &&
       searchQuery.length >= 3 &&
       filteredProductos.length === 0 ? (
-        <div className="text-center py-12">
-          <ShoppingBag className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-100 mb-2">
+        <div className="py-12 text-center">
+          <ShoppingBag className="mx-auto mb-4 h-16 w-16 text-gray-500" />
+          <h3 className="mb-2 text-lg font-medium text-gray-100">
             No se encontraron productos
           </h3>
           <p className="text-gray-400">No hay productos que coincidan</p>
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="mt-2 text-sm text-gray-500">
             Intenta con otros términos de búsqueda
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredProductos.map((producto) => (
             <ProductCard
               key={producto.codigo}

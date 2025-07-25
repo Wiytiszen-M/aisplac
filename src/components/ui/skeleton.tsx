@@ -1,5 +1,5 @@
-import type React from "react";
-import { cn } from "@/lib/utils";
+import type React from 'react';
+import { cn } from '@/lib/utils';
 
 interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -8,7 +8,7 @@ interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Skeleton({ className, ...props }: SkeletonProps) {
   return (
     <div
-      className={cn("animate-pulse rounded bg-gray-200", className)}
+      className={cn('animate-pulse rounded bg-gray-200', className)}
       {...props}
     />
   );

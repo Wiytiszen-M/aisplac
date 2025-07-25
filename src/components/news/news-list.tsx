@@ -1,17 +1,17 @@
-import { NewsCard } from "@/components/news/news-card"
-import { FeaturedNewsItem } from "@/components/news/featured-news-item"
-import type { NewsItem } from "@/lib/sanity"
+import { NewsCard } from '@/components/news/news-card';
+import { FeaturedNewsItem } from '@/components/news/featured-news-item';
+import type { NewsItem } from '@/lib/sanity';
 
 type NewsListProps = {
-  news: NewsItem[]
-}
+  news: NewsItem[];
+};
 
 export function NewsList({ news }: NewsListProps) {
   // Si no hay noticias, no renderizamos nada
-  if (news.length === 0) return null
+  if (news.length === 0) return null;
 
   // Separamos la primera noticia para destacarla
-  const [featuredNews, ...restNews] = news
+  const [featuredNews, ...restNews] = news;
 
   return (
     <div>
@@ -24,8 +24,8 @@ export function NewsList({ news }: NewsListProps) {
       {/* Resto de noticias en grid */}
       {restNews.length > 0 && (
         <div>
-          <h2 className="text-xl font-semibold mb-6">Más noticias</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="mb-6 text-xl font-semibold">Más noticias</h2>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {restNews.map((item) => (
               <NewsCard key={item.slug} newsItem={item} />
             ))}
@@ -33,5 +33,5 @@ export function NewsList({ news }: NewsListProps) {
         </div>
       )}
     </div>
-  )
+  );
 }

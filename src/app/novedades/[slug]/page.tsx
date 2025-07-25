@@ -1,15 +1,15 @@
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
-import PortableText from "@/components/portable-text";
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
+import PortableText from '@/components/portable-text';
 
-import type { ImageWithAlt } from "@/types";
-import { formatDate } from "@/lib/utils";
-import { articleSlugsQuery } from "@/sanity/lib/queries";
-import { client } from "@/sanity/lib/sanity.client";
-import { getArticle } from "@/sanity/lib/sanity.api";
-import { urlForImage } from "@/sanity/lib/sanity.image";
+import type { ImageWithAlt } from '@/types';
+import { formatDate } from '@/lib/utils';
+import { articleSlugsQuery } from '@/sanity/lib/queries';
+import { client } from '@/sanity/lib/sanity.client';
+import { getArticle } from '@/sanity/lib/sanity.api';
+import { urlForImage } from '@/sanity/lib/sanity.image';
 
 type Props = {
   params: { slug: string };
@@ -38,42 +38,42 @@ export default async function ArticlePage({ params }: Props) {
         <div className="mb-8">
           <Link
             href="/novedades"
-            className="inline-flex items-center gap-2 text-sm font-medium hover:text-gray-900 transition-colors duration-200 group"
+            className="group inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200 hover:text-gray-900"
           >
             <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
             Volver a todos los artículos
           </Link>
         </div>
 
-        <header className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4">
+        <header className="mb-12 text-center">
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tighter md:text-6xl">
             {article.title}
           </h1>
           {article.subtitle && (
-            <p className="text-xl  mb-6">{article.subtitle}</p>
+            <p className="mb-6 text-xl">{article.subtitle}</p>
           )}
           <div className="text-md text-gray-400">
-            <span>Por {article.author || "Aisplac"}</span>
+            <span>Por {article.author || 'Aisplac'}</span>
             <span className="mx-2">•</span>
             <span>{formatDate(article.publishedAt)}</span>
           </div>
         </header>
 
         {mainImageUrl ? (
-          <div className="relative h-64  md:h-96 w-full mb-12 rounded-lg overflow-hidden shadow-lg">
+          <div className="relative mb-12 h-64 w-full overflow-hidden rounded-lg shadow-lg md:h-96">
             <Image
-              src={mainImageUrl || "/placeholder.svg"}
-              alt={article.mainImage?.alt || "Imagen principal del artículo"}
+              src={mainImageUrl || '/placeholder.svg'}
+              alt={article.mainImage?.alt || 'Imagen principal del artículo'}
               fill
               className="object-contain"
               priority
             />
           </div>
         ) : (
-          <div className="h-64 md:h-96 w-full mb-12 rounded-lg bg-gray-200 flex items-center justify-center">
-            <div className="text-gray-400 text-center">
+          <div className="mb-12 flex h-64 w-full items-center justify-center rounded-lg bg-gray-200 md:h-96">
+            <div className="text-center text-gray-400">
               <svg
-                className="w-16 h-16 mx-auto mb-4"
+                className="mx-auto mb-4 h-16 w-16"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -88,14 +88,14 @@ export default async function ArticlePage({ params }: Props) {
           </div>
         )}
 
-        <div className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:underline">
+        <div className="prose prose-lg prose-headings:font-bold prose-a:text-primary hover:prose-a:underline max-w-none">
           <PortableText value={article.content} />
         </div>
 
         {article.gallery && article.gallery.length > 0 && (
           <section className="mt-16 border-t pt-12">
-            <h2 className="text-3xl font-bold text-center mb-8">Galería</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <h2 className="mb-8 text-center text-3xl font-bold">Galería</h2>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
               {article.gallery.map((image: ImageWithAlt, index) => {
                 const galleryImageUrl = urlForImage(image)
                   ?.width(600)
@@ -105,19 +105,19 @@ export default async function ArticlePage({ params }: Props) {
                 return (
                   <div
                     key={index}
-                    className="relative h-52 md:h-64 rounded-lg overflow-hidden group bg-gray-200"
+                    className="group relative h-52 overflow-hidden rounded-lg bg-gray-200 md:h-64"
                   >
                     {galleryImageUrl ? (
                       <Image
-                        src={galleryImageUrl || "/placeholder.svg"}
-                        alt={image.alt || "Imagen de la galería"}
+                        src={galleryImageUrl || '/placeholder.svg'}
+                        alt={image.alt || 'Imagen de la galería'}
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="flex items-center justify-center h-full text-gray-400">
+                      <div className="flex h-full items-center justify-center text-gray-400">
                         <svg
-                          className="w-8 h-8"
+                          className="h-8 w-8"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -136,10 +136,10 @@ export default async function ArticlePage({ params }: Props) {
           </section>
         )}
 
-        <div className="mt-16 pt-8 border-t text-center">
+        <div className="mt-16 border-t pt-8 text-center">
           <Link
             href="/novedades"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg transition-colors duration-200"
+            className="inline-flex items-center gap-2 rounded-lg bg-gray-100 px-6 py-3 font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-200"
           >
             <ArrowLeft className="h-4 w-4" />
             Ver más artículos

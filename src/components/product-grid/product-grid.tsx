@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { ProductCard } from "../product-card/product-card";
+import Link from 'next/link';
+import { ProductCard } from '../product-card/product-card';
 
 interface Product {
   id: string;
@@ -16,7 +16,7 @@ interface ProductGridProps {
 
 export default function ProductGrid({ products }: ProductGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {products.map((product) => (
         <Link key={product.id} href={`/product/${product.id}`}>
           <ProductCard product={product} />

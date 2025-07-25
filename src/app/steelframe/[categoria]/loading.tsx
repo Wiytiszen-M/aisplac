@@ -1,15 +1,15 @@
-import { BackButton } from "@/components/back-button";
-import { Loader2, Package } from "lucide-react";
-import Link from "next/link";
+import { BackButton } from '@/components/back-button';
+import { Loader2, Package } from 'lucide-react';
+import Link from 'next/link';
 
 export default function MaterialesLoading() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
+    <div className="mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8">
       <div className="mb-8">
         <Link href="/steelframe">
           <BackButton text=" Volver a Categorías" />
         </Link>
-        <h1 className="text-3xl font-bold text-gray-100 mb-4">
+        <h1 className="mb-4 text-3xl font-bold text-gray-100">
           Materiales de Construcción en Seco
         </h1>
         <p className="text-lg text-gray-400">
@@ -18,10 +18,10 @@ export default function MaterialesLoading() {
       </div>
 
       {/* Loading state para categorías */}
-      <div className="flex items-center justify-center min-h-[400px]">
+      <div className="flex min-h-[400px] items-center justify-center">
         <div className="text-center">
-          <Loader2 className="h-12 w-12 animate-spin text-blue-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-100 mb-2">
+          <Loader2 className="mx-auto mb-4 h-12 w-12 animate-spin text-blue-400" />
+          <h3 className="mb-2 text-lg font-medium text-gray-100">
             Cargando categorías...
           </h3>
           <p className="text-gray-400">
@@ -31,17 +31,17 @@ export default function MaterialesLoading() {
       </div>
 
       {/* Skeleton para categorías */}
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
+      <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={i}
-            className="bg-gray-800 border border-gray-700 rounded-lg p-6 animate-pulse"
+            className="animate-pulse rounded-lg border border-gray-700 bg-gray-800 p-6"
           >
-            <div className="aspect-square bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+            <div className="mb-4 flex aspect-square items-center justify-center rounded-lg bg-gray-700">
               <Package className="h-16 w-16 text-gray-600" />
             </div>
-            <div className="h-6 bg-gray-700 rounded mb-2"></div>
-            <div className="h-4 bg-gray-700 rounded w-16 mx-auto"></div>
+            <div className="mb-2 h-6 rounded bg-gray-700"></div>
+            <div className="mx-auto h-4 w-16 rounded bg-gray-700"></div>
           </div>
         ))}
       </div>

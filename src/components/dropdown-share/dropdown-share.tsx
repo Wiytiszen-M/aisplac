@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useRef, useEffect } from "react";
-import { Share2, Copy, X } from "lucide-react";
-import Image from "next/image";
+import { useState, useRef, useEffect } from 'react';
+import { Share2, Copy, X } from 'lucide-react';
+import Image from 'next/image';
 
 type ShareDropdownProps = {
   title: string;
@@ -25,9 +25,9 @@ export function ShareDropdown({ title, url }: ShareDropdownProps) {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -45,7 +45,7 @@ export function ShareDropdown({ title, url }: ShareDropdownProps) {
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
       `${title} - ${url}`
     )}`;
-    window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, '_blank');
     setIsOpen(false);
   };
 
@@ -67,13 +67,13 @@ export function ShareDropdown({ title, url }: ShareDropdownProps) {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 border overflow-hidden">
+        <div className="absolute right-0 z-10 mt-2 w-48 overflow-hidden rounded-md border bg-white shadow-lg">
           <div className="py-1">
             <button
               onClick={shareToWhatsApp}
-              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-left hover:bg-gray-100"
+              className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm hover:bg-gray-100"
             >
-              <div className="h-4 w-4 relative">
+              <div className="relative h-4 w-4">
                 <Image
                   src="/placeholder.svg?height=16&width=16"
                   alt="WhatsApp"
@@ -86,7 +86,7 @@ export function ShareDropdown({ title, url }: ShareDropdownProps) {
             </button>
             <button
               onClick={copyToClipboard}
-              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-left hover:bg-gray-100"
+              className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm hover:bg-gray-100"
             >
               {copied ? (
                 <>

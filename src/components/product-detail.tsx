@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import { Minus, Plus, Share2, Copy, Check, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useCotizacionStore } from "@/stores/cotizacion-store";
-import { useClickProtection } from "@/hooks/use-click-protection";
+import { useState } from 'react';
+import Image from 'next/image';
+import { Minus, Plus, Share2, Copy, Check, Loader2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useCotizacionStore } from '@/stores/cotizacion-store';
+import { useClickProtection } from '@/hooks/use-click-protection';
 
 import {
   DropdownMenu,
@@ -13,9 +13,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
-import type { Producto } from "@/types";
-import { Separator } from "@radix-ui/react-separator";
+} from '@/components/ui/dropdown-menu';
+import type { Producto } from '@/types';
+import { Separator } from '@radix-ui/react-separator';
 
 interface ProductDetailProps {
   producto: Producto;
@@ -34,7 +34,7 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
   });
 
   // Generate multiple views of the product image
-  const productImages = [producto?.urlimg || "/logo.svg"];
+  const productImages = [producto?.urlimg || '/logo.svg'];
 
   const incrementQuantity = () => {
     setQuantity((prev) => Math.min(prev + 1, producto?.stock || 999));
@@ -45,9 +45,9 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("es-AR", {
-      style: "currency",
-      currency: "ARS",
+    return new Intl.NumberFormat('es-AR', {
+      style: 'currency',
+      currency: 'ARS',
     }).format(price);
   };
 
@@ -75,16 +75,16 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
     });
 
     if (!success && !isProcessing) {
-      console.log("Click bloqueado por protección - demasiado rápido");
+      console.log('Click bloqueado por protección - demasiado rápido');
     }
   };
 
   // Funciones de compartir
   const getShareData = () => {
-    const url = typeof window !== "undefined" ? window.location.href : "";
+    const url = typeof window !== 'undefined' ? window.location.href : '';
     const title = producto.descripcion;
     const price =
-      producto.precio > 0 ? formatPrice(producto.precio) : "Consultar precio";
+      producto.precio > 0 ? formatPrice(producto.precio) : 'Consultar precio';
     const text = `🏗️ ${title}\n💰 ${price}\n📦 SKU: ${producto.codigo}\n\n¡Mira este producto de construcción!`;
 
     return { url, title, text, price };
@@ -95,7 +95,7 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
       `${text}\n\n${url}`
     )}`;
-    window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, '_blank');
   };
 
   const copiarUrl = async () => {
@@ -106,39 +106,39 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
         await navigator.clipboard.writeText(url);
       } else {
         // Fallback para navegadores más antiguos
-        const textArea = document.createElement("textarea");
+        const textArea = document.createElement('textarea');
         textArea.value = url;
         document.body.appendChild(textArea);
         textArea.select();
-        document.execCommand("copy");
+        document.execCommand('copy');
         document.body.removeChild(textArea);
       }
 
       setUrlCopiada(true);
       setTimeout(() => setUrlCopiada(false), 2000);
     } catch (err) {
-      console.error("Error al copiar URL:", err);
-      alert("No se pudo copiar la URL");
+      console.error('Error al copiar URL:', err);
+      alert('No se pudo copiar la URL');
     }
   };
 
   return (
-    <div className="min-h-screen  p-4 md:p-8  text-transparent">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+    <div className="min-h-screen p-4 text-transparent md:p-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
           {/* Image Gallery Section */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="relative aspect-square bg-white rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-square overflow-hidden rounded-2xl bg-white shadow-2xl">
               <Image
-                src={productImages[currentImageIndex] || "/placeholder.svg"}
+                src={productImages[currentImageIndex] || '/placeholder.svg'}
                 alt={producto.descripcion}
                 fill
                 className="object-cover"
                 priority
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "/logo.svg";
+                  target.src = '/logo.svg';
                 }}
               />
             </div>
@@ -149,20 +149,20 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`relative aspect-square bg-white rounded-lg overflow-hidden transition-all duration-200 ${
+                  className={`relative aspect-square overflow-hidden rounded-lg bg-white transition-all duration-200 ${
                     currentImageIndex === index
-                      ? "ring-3 ring-blue-400 ring-offset-2 ring-offset-slate-900"
-                      : "hover:ring-2 hover:ring-blue-300 hover:ring-offset-1 hover:ring-offset-slate-900"
+                      ? 'ring-3 ring-blue-400 ring-offset-2 ring-offset-slate-900'
+                      : 'hover:ring-2 hover:ring-blue-300 hover:ring-offset-1 hover:ring-offset-slate-900'
                   }`}
                 >
                   <Image
-                    src={image || "/placeholder.svg"}
+                    src={image || '/placeholder.svg'}
                     alt={`${producto.descripcion} vista ${index + 1}`}
                     fill
                     className="object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = "/placeholder.svg?height=100&width=100";
+                      target.src = '/placeholder.svg?height=100&width=100';
                     }}
                   />
                 </button>
@@ -171,11 +171,11 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
           </div>
 
           {/* Product Information Section */}
-          <div className="text-white space-y-6">
+          <div className="space-y-6 text-white">
             {/* Header */}
             <div className="space-y-4">
               <div className="flex items-start justify-between">
-                <h1 className="text-3xl md:text-4xl font-bold tracking-wide flex-1">
+                <h1 className="flex-1 text-3xl font-bold tracking-wide md:text-4xl">
                   {producto.descripcion}
                 </h1>
 
@@ -185,22 +185,22 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="text-blue-200 hover:text-white hover:bg-blue-800/30 transition-colors ml-4"
+                      className="ml-4 text-blue-200 transition-colors hover:bg-blue-800/30 hover:text-white"
                     >
-                      <Share2 className="w-4 h-4 mr-2" />
+                      <Share2 className="mr-2 h-4 w-4" />
                       <span className="text-sm">Compartir</span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent
                     align="end"
-                    className="w-56 bg-slate-800 border-slate-700"
+                    className="w-56 border-slate-700 bg-slate-800"
                   >
                     <DropdownMenuItem
                       onClick={compartirWhatsApp}
-                      className="text-green-400 hover:text-green-300 hover:bg-slate-700 cursor-pointer"
+                      className="cursor-pointer text-green-400 hover:bg-slate-700 hover:text-green-300"
                     >
                       <svg
-                        className="w-4 h-4 mr-2"
+                        className="mr-2 h-4 w-4"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                       >
@@ -213,41 +213,41 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
 
                     <DropdownMenuItem
                       onClick={copiarUrl}
-                      className="text-blue-400 hover:text-blue-300 hover:bg-slate-700 cursor-pointer"
+                      className="cursor-pointer text-blue-400 hover:bg-slate-700 hover:text-blue-300"
                     >
                       {urlCopiada ? (
-                        <Check className="w-4 h-4 mr-2 text-green-400" />
+                        <Check className="mr-2 h-4 w-4 text-green-400" />
                       ) : (
-                        <Copy className="w-4 h-4 mr-2" />
+                        <Copy className="mr-2 h-4 w-4" />
                       )}
-                      {urlCopiada ? "¡URL Copiada!" : "Copiar URL"}
+                      {urlCopiada ? '¡URL Copiada!' : 'Copiar URL'}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
               {/* Price */}
               {producto.precio && producto.precio > 0 ? (
-                <div className="text-2xl md:text-3xl font-bold text-blue-300">
+                <div className="text-2xl font-bold text-blue-300 md:text-3xl">
                   {formatPrice(producto.precio)}
                 </div>
               ) : (
-                <div className="text-2xl md:text-3xl font-bold text-orange-300">
+                <div className="text-2xl font-bold text-orange-300 md:text-3xl">
                   CONSULTAR PRECIO
                 </div>
               )}
-              <Separator className="h-[1px] bg-[#A7A7A7] my-4" />
+              <Separator className="my-4 h-[1px] bg-[#A7A7A7]" />
 
               <div className="space-y-2 text-blue-200">
                 <p className="text-sm uppercase tracking-wider">
                   <span className="font-semibold">SKU</span> {producto.codigo}
                 </p>
                 <p className="text-sm">
-                  <span className="font-semibold">Unidad:</span>{" "}
+                  <span className="font-semibold">Unidad:</span>{' '}
                   {producto.unmedida}
                 </p>
                 {producto.pesogramos > 0 && (
                   <p className="text-sm">
-                    <span className="font-semibold">Peso:</span>{" "}
+                    <span className="font-semibold">Peso:</span>{' '}
                     {producto.pesogramos}g
                   </p>
                 )}
@@ -258,23 +258,23 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 {/* Quantity Selector */}
-                <div className="flex items-center border border-[#A7A7A7] rounded-lg overflow-hidden">
+                <div className="flex items-center overflow-hidden rounded-lg border border-[#A7A7A7]">
                   <button
                     onClick={decrementQuantity}
-                    className="p-3  hover:bg-blue-400/20 transition-colors disabled:opacity-50"
+                    className="p-3 transition-colors hover:bg-blue-400/20 disabled:opacity-50"
                     disabled={quantity <= 1}
                   >
-                    <Minus className="w-4 h-4" />
+                    <Minus className="h-4 w-4" />
                   </button>
-                  <span className="px-6 py-3  min-w-[60px] text-center">
+                  <span className="min-w-[60px] px-6 py-3 text-center">
                     {quantity}
                   </span>
                   <button
                     onClick={incrementQuantity}
-                    className="p-3 hover:bg-blue-400/20 transition-colors disabled:opacity-50"
+                    className="p-3 transition-colors hover:bg-blue-400/20 disabled:opacity-50"
                     disabled={quantity >= (producto.stock || 999)}
                   >
-                    <Plus className="w-4 h-4" />
+                    <Plus className="h-4 w-4" />
                   </button>
                 </div>
 
@@ -288,7 +288,7 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                   >
                     {isProcessing ? (
                       <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                       </>
                     ) : (
                       <>Agregar a Cotización</>
@@ -315,19 +315,19 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                 </div>
               )}
             </div>
-            <Separator className="h-[1px] bg-[#A7A7A7] my-4" />
+            <Separator className="my-4 h-[1px] bg-[#A7A7A7]" />
 
             {/* Product Details */}
             <div className="space-y-4 pt-6">
               <h3 className="text-2xl font-semibold">DETALLES DEL PRODUCTO</h3>
               <div className="space-y-2 text-blue-100">
                 <p className="text-2xl">
-                  <span className="font-light">Descripción:</span>{" "}
+                  <span className="font-light">Descripción:</span>{' '}
                   {producto.descripcion}
                 </p>
                 {producto.uxb > 0 && (
                   <p className="text-2xl">
-                    <span className="font-light">Unidades por bulto:</span>{" "}
+                    <span className="font-light">Unidades por bulto:</span>{' '}
                     {producto.uxb}
                   </p>
                 )}

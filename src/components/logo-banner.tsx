@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from 'react';
 
 type LogoBannerProps = {
   children: ReactNode;
@@ -24,10 +24,10 @@ export function LogoBanner({ children }: LogoBannerProps) {
 
     // Detectamos si la animación debe pausarse (reducción de movimiento)
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      '(prefers-reduced-motion: reduce)'
     ).matches;
     if (prefersReducedMotion) {
-      scrollerInnerRef.current.style.animationPlayState = "paused";
+      scrollerInnerRef.current.style.animationPlayState = 'paused';
     }
   }, []);
 
@@ -40,7 +40,7 @@ export function LogoBanner({ children }: LogoBannerProps) {
       >
         <div
           ref={scrollerInnerRef}
-          className="scroller__inner flex items-center space-x-8 animate-scroll"
+          className="scroller__inner animate-scroll flex items-center space-x-8"
           aria-hidden="true"
         >
           {children}

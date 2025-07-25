@@ -1,11 +1,16 @@
 type IframeMapProps = {
-  src: string
-  height?: string
-  className?: string
-  title?: string
-}
+  src: string;
+  height?: string;
+  className?: string;
+  title?: string;
+};
 
-export function IframeMap({ src, height = "400px", className = "", title = "Mapa" }: IframeMapProps) {
+export function IframeMap({
+  src,
+  height = '400px',
+  className = '',
+  title = 'Mapa',
+}: IframeMapProps) {
   return (
     <div className={className} style={{ height }}>
       <iframe
@@ -20,5 +25,5 @@ export function IframeMap({ src, height = "400px", className = "", title = "Mapa
         className="rounded-lg"
       ></iframe>
     </div>
-  )
+  );
 }

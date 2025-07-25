@@ -1,14 +1,14 @@
-import Link from "next/link";
+import Link from 'next/link';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { urlFor, type Post } from "@/sanity/client";
-import { formatDate, getExcerpt } from "@/lib/utils";
-import Image from "next/image";
+} from '@/components/ui/card';
+import { urlFor, type Post } from '@/sanity/client';
+import { formatDate, getExcerpt } from '@/lib/utils';
+import Image from 'next/image';
 interface PostCardProps {
   post: Post;
   isWide?: boolean;
@@ -16,27 +16,27 @@ interface PostCardProps {
 
 export function PostCard({ post, isWide = false }: PostCardProps) {
   return isWide ? (
-    <Card className="overflow-hidden md:flex h-[550px] ">
-      <div className="relative md:h-full w-full h-48">
+    <Card className="h-[550px] overflow-hidden md:flex">
+      <div className="relative h-48 w-full md:h-full">
         {post.image ? (
           <Image
-            src={urlFor(post.image).url() || ""}
+            src={urlFor(post.image).url() || ''}
             alt={post.title}
             fill
             className="object-contain"
           />
         ) : (
-          <div className="md:flex h-full w-full md:items-center md:justify-center bg-muted">
+          <div className="bg-muted h-full w-full md:flex md:items-center md:justify-center">
             <span className="text-muted-foreground">No image</span>
           </div>
         )}
       </div>
-      <div className="block md:flex md:justify-center flex-col justify w-1/2">
+      <div className="justify block w-1/2 flex-col md:flex md:justify-center">
         <CardHeader className="p-4">
           <CardTitle className="line-clamp-2">{post.title}</CardTitle>
         </CardHeader>
         <CardContent className="p-4 pt-0">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             {formatDate(post.publishedAt)}
           </p>
           {post.body && (
@@ -48,7 +48,7 @@ export function PostCard({ post, isWide = false }: PostCardProps) {
         <CardFooter className="p-4 pt-0">
           <Link
             href={`/blog/${post.slug.current}`}
-            className="text-sm font-medium text-primary hover:underline"
+            className="text-primary text-sm font-medium hover:underline"
           >
             Read more
           </Link>
@@ -61,13 +61,13 @@ export function PostCard({ post, isWide = false }: PostCardProps) {
       <div className="relative h-48 w-full">
         {post.image ? (
           <Image
-            src={urlFor(post.image).url() || ""}
+            src={urlFor(post.image).url() || ''}
             alt={post.title}
             fill
             className="object-contain"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-muted">
+          <div className="bg-muted flex h-full w-full items-center justify-center">
             <span className="text-muted-foreground">No image</span>
           </div>
         )}
@@ -76,7 +76,7 @@ export function PostCard({ post, isWide = false }: PostCardProps) {
         <CardTitle className="line-clamp-2">{post.title}</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           {formatDate(post.publishedAt)}
         </p>
         {post.body && (
@@ -86,7 +86,7 @@ export function PostCard({ post, isWide = false }: PostCardProps) {
       <CardFooter className="p-4 pt-0">
         <Link
           href={`/blog/${post.slug.current}`}
-          className="text-sm font-medium text-primary hover:underline"
+          className="text-primary text-sm font-medium hover:underline"
         >
           Read more
         </Link>

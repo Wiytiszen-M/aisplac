@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 const Fabric: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg

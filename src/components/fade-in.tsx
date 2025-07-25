@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
+import type { ReactNode } from 'react';
 
 interface FadeInProps {
   children: ReactNode;
@@ -40,8 +40,8 @@ export function FadeIn({ children, delay = 0, className }: FadeInProps) {
     <div
       ref={ref}
       className={cn(
-        "w-full transition-all duration-500 ease-out",
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16",
+        'w-full transition-all duration-500 ease-out',
+        isInView ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0',
         className
       )}
       style={{ transitionDelay: `${delay}ms` }}

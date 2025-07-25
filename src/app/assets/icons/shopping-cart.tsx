@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 const ShoppingCart: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg

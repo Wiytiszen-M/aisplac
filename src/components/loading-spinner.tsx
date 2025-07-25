@@ -1,4 +1,4 @@
-import { Loader2 } from "lucide-react";
+import { Loader2 } from 'lucide-react';
 
 type LoadingSpinnerProps = {
   size?: number;
@@ -7,7 +7,7 @@ type LoadingSpinnerProps = {
 
 export function LoadingSpinner({
   size = 24,
-  className = "",
+  className = '',
 }: LoadingSpinnerProps) {
   return <Loader2 className={`animate-spin ${className}`} size={size} />;
 }

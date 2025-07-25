@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { FileText, X, Plus, Minus, Send, Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useCotizacionStore } from "@/stores/cotizacion-store";
-import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { FileText, X, Plus, Minus, Send, Trash2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useCotizacionStore } from '@/stores/cotizacion-store';
+import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function CotizacionWidget() {
   const { items, total, removerProducto, actualizarCantidad } =
@@ -33,9 +33,9 @@ export function CotizacionWidget() {
     }
 
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
       return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener('mousedown', handleClickOutside);
       };
     }
   }, [isOpen]);
@@ -43,15 +43,15 @@ export function CotizacionWidget() {
   // Cerrar popover con tecla Escape
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         setIsOpen(false);
       }
     }
 
     if (isOpen) {
-      document.addEventListener("keydown", handleEscape);
+      document.addEventListener('keydown', handleEscape);
       return () => {
-        document.removeEventListener("keydown", handleEscape);
+        document.removeEventListener('keydown', handleEscape);
       };
     }
   }, [isOpen]);
@@ -60,7 +60,7 @@ export function CotizacionWidget() {
     setIsOpen(false);
   };
 
-  if (cantidadTotal === 0 || pathname.includes("/cotizacion")) return null;
+  if (cantidadTotal === 0 || pathname.includes('/cotizacion')) return null;
 
   return (
     <div className="fixed bottom-4 left-4 z-50">
@@ -68,11 +68,11 @@ export function CotizacionWidget() {
       <Button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className="rounded-full w-14 h-14 shadow-lg bg-blue-500 hover:bg-blue-800"
+        className="h-14 w-14 rounded-full bg-blue-500 shadow-lg hover:bg-blue-800"
       >
         <FileText className="h-5 w-5" />
         {cantidadTotal > 0 && (
-          <Badge className="absolute -top-2 -right-2 bg-red-500 text-white">
+          <Badge className="absolute -right-2 -top-2 bg-red-500 text-white">
             {cantidadTotal}
           </Badge>
         )}
@@ -82,38 +82,37 @@ export function CotizacionWidget() {
       {isOpen && (
         <Card
           ref={popoverRef}
-          style={{ width: "calc(100vw - 30px)" }}
-          className="absolute bottom-16 left-0 max-h-[500px] overflow-hidden shadow-xl bg-gray-800 border-gray-700"
+          style={{ width: 'calc(100vw - 30px)' }}
+          className="absolute bottom-16 left-0 max-h-[500px] overflow-hidden border-gray-700 bg-gray-800 shadow-xl"
         >
-          <CardHeader className="pb-3  border-b border-gray-700">
+          <CardHeader className="border-b border-gray-700 pb-3">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-lg text-white flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-lg text-white">
                 Cotización
               </CardTitle>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={handleClosePopover}
-                className="text-white
-                 hover:text-gray-200"
+                className="text-white hover:text-gray-200"
               >
                 <X className="h-4 w-4" />
               </Button>
             </div>
           </CardHeader>
 
-          <CardContent className="space-y-3 max-h-80 overflow-y-auto p-4">
+          <CardContent className="max-h-80 space-y-3 overflow-y-auto p-4">
             {items.map((item) => (
               <div
                 key={item.codigo}
-                className="flex items-start gap-3 p-3 border rounded-lg bg-gray-700 border-gray-600"
+                className="flex items-start gap-3 rounded-lg border border-gray-600 bg-gray-700 p-3"
               >
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate text-gray-100">
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-medium text-gray-100">
                     {item.descripcion}
                   </p>
-                  <p className="text-xs text-gray-400 mb-1">{item.unmedida}</p>
-                  <p className="text-xs text-white font-medium">
+                  <p className="mb-1 text-xs text-gray-400">{item.unmedida}</p>
+                  <p className="text-xs font-medium text-white">
                     ${item.precio.toLocaleString()} x {item.cantidad} = $
                     {(item.precio * item.cantidad).toLocaleString()}
                   </p>
@@ -124,20 +123,20 @@ export function CotizacionWidget() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="h-6 w-6 p-0 bg-transparent border-gray-600 text-gray-300"
+                      className="h-6 w-6 border-gray-600 bg-transparent p-0 text-gray-300"
                       onClick={() =>
                         actualizarCantidad(item.codigo, item.cantidad - 1)
                       }
                     >
                       <Minus className="h-3 w-3" />
                     </Button>
-                    <span className="text-sm w-8 text-center font-medium text-gray-100">
+                    <span className="w-8 text-center text-sm font-medium text-gray-100">
                       {item.cantidad}
                     </span>
                     <Button
                       variant="outline"
                       size="sm"
-                      className="h-6 w-6 p-0 bg-transparent border-gray-600 text-gray-300"
+                      className="h-6 w-6 border-gray-600 bg-transparent p-0 text-gray-300"
                       onClick={() =>
                         actualizarCantidad(item.codigo, item.cantidad + 1)
                       }
@@ -158,10 +157,10 @@ export function CotizacionWidget() {
             ))}
           </CardContent>
 
-          <div className="p-4 border-t  border-gray-700">
-            <div className="flex justify-between items-center mb-3">
+          <div className="border-t border-gray-700 p-4">
+            <div className="mb-3 flex items-center justify-between">
               <span className="font-semibold text-white">Total:</span>
-              <span className="font-bold text-xl text-blue-300">
+              <span className="text-xl font-bold text-blue-300">
                 ${total.toLocaleString()}
               </span>
             </div>
@@ -173,7 +172,7 @@ export function CotizacionWidget() {
                 onClick={handleClosePopover}
               >
                 <Button className="w-full" size="default">
-                  <Send className="h-4 w-4 mr-2" />
+                  <Send className="mr-2 h-4 w-4" />
                   Finalizar cotización
                 </Button>
               </Link>

@@ -1,9 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import type { ArticlePreview } from "@/types";
-import { getAllArticles } from "@/sanity/lib/sanity.api";
-import { urlForImage } from "@/sanity/lib/sanity.image";
+import Link from 'next/link';
+import Image from 'next/image';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import type { ArticlePreview } from '@/types';
+import { getAllArticles } from '@/sanity/lib/sanity.api';
+import { urlForImage } from '@/sanity/lib/sanity.image';
 
 export const revalidate = 3600;
 
@@ -14,9 +14,9 @@ export default async function NovedadesPage() {
   const [featuredArticle, ...remainingArticles] = articles;
 
   return (
-    <main className="container min-h-screen py-36 mx-auto p-4 ">
-      <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+    <main className="container mx-auto min-h-screen p-4 py-36">
+      <header className="mb-12 text-center">
+        <h1 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
           Novedades
         </h1>
         <p className="mt-4 text-lg text-gray-300">
@@ -28,10 +28,10 @@ export default async function NovedadesPage() {
       {featuredArticle && (
         <div className="mb-16">
           <Link href={`/novedades/${featuredArticle.slug}`}>
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:bg-white/15 hover:shadow-2xl hover:scale-[1.02] group">
+            <div className="group overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:bg-white/15 hover:shadow-2xl">
               <div className="flex flex-col lg:flex-row">
                 {/* Imagen - Lado izquierdo */}
-                <div className="lg:w-1/2 relative h-64 lg:h-96">
+                <div className="relative h-64 lg:h-96 lg:w-1/2">
                   {featuredArticle.mainImage &&
                   urlForImage(featuredArticle.mainImage)
                     ?.width(800)
@@ -42,20 +42,20 @@ export default async function NovedadesPage() {
                         urlForImage(featuredArticle.mainImage)
                           ?.width(800)
                           .height(600)
-                          .url() || "/placeholder.svg"
+                          .url() || '/placeholder.svg'
                       }
                       alt={
                         featuredArticle.mainImage?.alt ||
-                        "Imagen del artículo destacado"
+                        'Imagen del artículo destacado'
                       }
                       fill
                       className="object-cover"
                       priority
                     />
                   ) : (
-                    <div className="flex items-center justify-center h-full bg-gray-800/50 text-gray-400">
+                    <div className="flex h-full items-center justify-center bg-gray-800/50 text-gray-400">
                       <svg
-                        className="w-16 h-16"
+                        className="h-16 w-16"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -70,34 +70,34 @@ export default async function NovedadesPage() {
                 </div>
 
                 {/* Contenido - Lado derecho */}
-                <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                <div className="flex flex-col justify-center p-8 lg:w-1/2 lg:p-12">
                   <div className="space-y-4">
-                    <p className="text-sm text-blue-400 font-semibold uppercase tracking-wide">
+                    <p className="text-sm font-semibold uppercase tracking-wide text-blue-400">
                       {new Date(featuredArticle.publishedAt).toLocaleDateString(
-                        "es-AR",
+                        'es-AR',
                         {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
                         }
                       )}
                     </p>
 
-                    <h2 className="text-3xl lg:text-4xl font-bold text-white leading-tight group-hover:text-blue-300 transition-colors duration-200">
+                    <h2 className="text-3xl font-bold leading-tight text-white transition-colors duration-200 group-hover:text-blue-300 lg:text-4xl">
                       {featuredArticle.title}
                     </h2>
 
                     {featuredArticle.subtitle && (
-                      <p className="text-lg text-gray-300 leading-relaxed line-clamp-3">
+                      <p className="line-clamp-3 text-lg leading-relaxed text-gray-300">
                         {featuredArticle.subtitle}
                       </p>
                     )}
 
                     <div className="pt-4">
-                      <span className="inline-flex items-center text-blue-400 font-medium group-hover:text-blue-300 transition-colors duration-200">
+                      <span className="inline-flex items-center font-medium text-blue-400 transition-colors duration-200 group-hover:text-blue-300">
                         Leer artículo completo
                         <svg
-                          className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200"
+                          className="ml-2 h-5 w-5 transform transition-transform duration-200 group-hover:translate-x-1"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -121,7 +121,7 @@ export default async function NovedadesPage() {
 
       {/* Resto de artículos - Grid normal */}
       {remainingArticles.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {remainingArticles.map((article) => {
             const imageUrl = article.mainImage
               ? urlForImage(article.mainImage)?.width(600).height(400).url()
@@ -129,20 +129,20 @@ export default async function NovedadesPage() {
 
             return (
               <Link href={`/novedades/${article.slug}`} key={article._id}>
-                <Card className="h-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15">
+                <Card className="h-full overflow-hidden border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/15 hover:shadow-2xl">
                   <CardHeader className="p-0">
                     <div className="relative h-56 w-full bg-gray-800/50">
                       {imageUrl ? (
                         <Image
-                          src={imageUrl || "/placeholder.svg"}
-                          alt={article.mainImage?.alt || "Imagen del artículo"}
+                          src={imageUrl || '/placeholder.svg'}
+                          alt={article.mainImage?.alt || 'Imagen del artículo'}
                           fill
                           className="object-cover"
                         />
                       ) : (
-                        <div className="flex items-center justify-center h-full text-gray-400">
+                        <div className="flex h-full items-center justify-center text-gray-400">
                           <svg
-                            className="w-12 h-12"
+                            className="h-12 w-12"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -157,20 +157,20 @@ export default async function NovedadesPage() {
                     </div>
                   </CardHeader>
                   <CardContent className="p-6">
-                    <p className="text-sm text-gray-400 mb-2">
+                    <p className="mb-2 text-sm text-gray-400">
                       {new Date(article.publishedAt).toLocaleDateString(
-                        "es-AR",
+                        'es-AR',
                         {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
                         }
                       )}
                     </p>
-                    <CardTitle className="text-xl font-semibold text-white hover:text-blue-300 transition-colors duration-200">
+                    <CardTitle className="text-xl font-semibold text-white transition-colors duration-200 hover:text-blue-300">
                       {article.title}
                     </CardTitle>
-                    <p className="mt-2 text-gray-300 line-clamp-3">
+                    <p className="mt-2 line-clamp-3 text-gray-300">
                       {article.subtitle}
                     </p>
                   </CardContent>
@@ -183,10 +183,10 @@ export default async function NovedadesPage() {
 
       {/* Mensaje cuando no hay artículos */}
       {articles.length === 0 && (
-        <div className="text-center py-16">
-          <div className="bg-white/5 rounded-2xl p-12 border border-white/10">
+        <div className="py-16 text-center">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-12">
             <svg
-              className="w-16 h-16 mx-auto mb-4 text-gray-500"
+              className="mx-auto mb-4 h-16 w-16 text-gray-500"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -198,7 +198,7 @@ export default async function NovedadesPage() {
                 d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
               />
             </svg>
-            <h3 className="text-xl font-semibold text-white mb-2">
+            <h3 className="mb-2 text-xl font-semibold text-white">
               No hay artículos disponibles
             </h3>
             <p className="text-gray-400">

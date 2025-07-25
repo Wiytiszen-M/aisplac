@@ -1,11 +1,11 @@
-import { Package } from "lucide-react";
+import { Package } from 'lucide-react';
 
-import { getProducto } from "@/lib/api";
+import { getProducto } from '@/lib/api';
 // import { AgregarCotizacionButton } from "@/components/agregar-cotizacion-button";
-import { BackButton } from "@/components/back-button";
-import ProductDetail from "@/components/product-detail";
-import { Suspense } from "react";
-import ProductDetailSkeleton from "@/components/product-detail-skeleton";
+import { BackButton } from '@/components/back-button';
+import ProductDetail from '@/components/product-detail';
+import { Suspense } from 'react';
+import ProductDetailSkeleton from '@/components/product-detail-skeleton';
 
 export default async function ProductoPage({
   params,
@@ -14,7 +14,7 @@ export default async function ProductoPage({
   params: { codigo: string };
   searchParams: { categoria?: string };
 }) {
-  const categoria = searchParams.categoria || "";
+  const categoria = searchParams.categoria || '';
   const { data: producto, error } = await getProducto(categoria, params.codigo);
 
   if (error) {
@@ -23,10 +23,10 @@ export default async function ProductoPage({
 
   if (!producto) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
-        <div className="text-center py-12">
-          <Package className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-100 mb-2">
+      <div className="mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8">
+        <div className="py-12 text-center">
+          <Package className="mx-auto mb-4 h-16 w-16 text-gray-500" />
+          <h3 className="mb-2 text-lg font-medium text-gray-100">
             Producto no encontrado
           </h3>
           <p className="text-gray-400">El producto solicitado no existe.</p>
@@ -36,7 +36,7 @@ export default async function ProductoPage({
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
+    <div className="mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8">
       <div className="mb-8">
         <BackButton text="Volver a productos" />
         <Suspense fallback={<ProductDetailSkeleton />}>

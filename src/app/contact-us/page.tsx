@@ -1,13 +1,13 @@
-"use client";
-import Image from "next/image";
-import { useState } from "react";
-import { submitContactForm } from "./actions/submitForm";
-import { CustomButton } from "@/components/ui/custom-button";
+'use client';
+import Image from 'next/image';
+import { useState } from 'react';
+import { submitContactForm } from './actions/submitForm';
+import { CustomButton } from '@/components/ui/custom-button';
 
 const About = () => {
-  const [form, setForm] = useState({ nombre: "", email: "", descripcion: "" });
+  const [form, setForm] = useState({ nombre: '', email: '', descripcion: '' });
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -20,20 +20,20 @@ const About = () => {
     setLoading(true);
     try {
       await submitContactForm(form);
-      setMessage("Enviado correctamente");
-      setForm({ nombre: "", email: "", descripcion: "" });
+      setMessage('Enviado correctamente');
+      setForm({ nombre: '', email: '', descripcion: '' });
     } catch {
-      setMessage("Error al enviar, intenta de nuevo");
+      setMessage('Error al enviar, intenta de nuevo');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section className="w-full pb-[180px]  overflow-hidden">
-      <div className="relative w-full h-[597px] overflow-hidden">
+    <section className="w-full overflow-hidden pb-[180px]">
+      <div className="relative h-[597px] w-full overflow-hidden">
         <Image
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="absolute left-0 top-0 h-full w-full object-cover"
           src="/contact/hero.png"
           fill
           priority
@@ -42,7 +42,7 @@ const About = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="mx-auto px-5 my-24 grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-[800px]"
+        className="mx-auto my-24 grid w-full max-w-[800px] grid-cols-1 gap-4 px-5 md:grid-cols-2"
       >
         {/* Nombre */}
         <input
@@ -52,7 +52,7 @@ const About = () => {
           value={form.nombre}
           onChange={handleChange}
           required
-          className="border border-blue-500 bg-transparent px-4 py-2 rounded w-full"
+          className="w-full rounded border border-blue-500 bg-transparent px-4 py-2"
         />
 
         {/* E-mail */}
@@ -63,7 +63,7 @@ const About = () => {
           value={form.email}
           onChange={handleChange}
           required
-          className="border border-blue-500 bg-transparent px-4 py-2 rounded w-full"
+          className="w-full rounded border border-blue-500 bg-transparent px-4 py-2"
         />
 
         {/* Descripción (span 2 columnas) */}
@@ -73,16 +73,16 @@ const About = () => {
           value={form.descripcion}
           onChange={handleChange}
           required
-          className="col-span-full border border-blue-500 bg-transparent px-4 py-2 rounded w-full h-32 resize-none"
+          className="col-span-full h-32 w-full resize-none rounded border border-blue-500 bg-transparent px-4 py-2"
         />
 
         <div className="col-span-full flex justify-end">
           <CustomButton variant="secondary" type="submit" disabled={loading}>
-            {loading ? "Enviando..." : "Enviar"}
+            {loading ? 'Enviando...' : 'Enviar'}
           </CustomButton>
         </div>
 
-        {message && <p className="col-span-full text-sm mt-2">{message}</p>}
+        {message && <p className="col-span-full mt-2 text-sm">{message}</p>}
       </form>
     </section>
   );

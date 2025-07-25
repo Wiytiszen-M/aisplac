@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import type React from "react";
+import type React from 'react';
 
-import { useState, useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
-import { LoadingSpinner } from "@/components/loading-spinner";
+import { useState, useEffect } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { LoadingSpinner } from '@/components/loading-spinner';
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -44,15 +44,15 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     <div className="relative min-h-screen">
       {/* Loading overlay */}
       {isLoading && (
-        <div className="fixed inset-0 bg-white bg-opacity-80 z-50 flex items-center justify-center transition-opacity duration-300">
-          <LoadingSpinner size={60} className="text-black mb-2" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-80 transition-opacity duration-300">
+          <LoadingSpinner size={60} className="mb-2 text-black" />
         </div>
       )}
 
       {/* Page content with fade-in effect */}
       <div
         className={`transition-opacity duration-300 ${
-          isLoading ? "opacity-0" : "opacity-100"
+          isLoading ? 'opacity-0' : 'opacity-100'
         }`}
       >
         {content}

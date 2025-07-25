@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectCoverflow } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-coverflow";
-import Image from "next/image";
-import Link from "next/link";
-import { formatDate } from "@/lib/utils";
-import type { ArticlePreview } from "@/types";
-import { urlForImage } from "@/sanity/lib/sanity.image";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, EffectCoverflow } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-coverflow';
+import Image from 'next/image';
+import Link from 'next/link';
+import { formatDate } from '@/lib/utils';
+import type { ArticlePreview } from '@/types';
+import { urlForImage } from '@/sanity/lib/sanity.image';
 
 export default function NewsSlider({
   articles,
@@ -22,8 +22,8 @@ export default function NewsSlider({
   // Si no hay artículos, no renderizamos nada
   if (recentArticles.length === 0) {
     return (
-      <div className="text-center py-12">
-        <p className="text-gray-500 text-lg">
+      <div className="py-12 text-center">
+        <p className="text-lg text-gray-500">
           No hay artículos disponibles para mostrar.
         </p>
       </div>
@@ -58,20 +58,20 @@ export default function NewsSlider({
 
         return (
           <SwiperSlide key={article._id} className="max-w-xs md:max-w-sm">
-            <div className="bg-white rounded-lg overflow-hidden shadow-xl relative h-[520px] group">
+            <div className="group relative h-[520px] overflow-hidden rounded-lg bg-white shadow-xl">
               {/* Contenedor de la imagen */}
               <div className="relative h-[320px] w-full bg-gray-200">
                 {imageUrl ? (
                   <Image
-                    src={imageUrl || "/placeholder.svg"}
+                    src={imageUrl || '/placeholder.svg'}
                     alt={article.mainImage?.alt || article.title}
                     fill
                     className="object-cover"
                   />
                 ) : (
-                  <div className="flex items-center justify-center h-full text-gray-400">
+                  <div className="flex h-full items-center justify-center text-gray-400">
                     <svg
-                      className="w-16 h-16"
+                      className="h-16 w-16"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -86,21 +86,21 @@ export default function NewsSlider({
               </div>
 
               {/* Contenido del artículo */}
-              <div className="absolute bottom-0 min-h-[200px] bg-white w-full p-4 text-[#1C1936] transition-all duration-300 group-hover:min-h-[220px]">
-                <p className="text-xs font-bold mb-2 text-gray-500">
+              <div className="absolute bottom-0 min-h-[200px] w-full bg-white p-4 text-[#1C1936] transition-all duration-300 group-hover:min-h-[220px]">
+                <p className="mb-2 text-xs font-bold text-gray-500">
                   {formatDate(article.publishedAt)}
                 </p>
-                <h3 className="text-lg font-bold mb-2 uppercase line-clamp-2">
+                <h3 className="mb-2 line-clamp-2 text-lg font-bold uppercase">
                   {article.title}
                 </h3>
                 {article.subtitle && (
-                  <p className="text-sm text-gray-500 line-clamp-3 mb-4">
+                  <p className="mb-4 line-clamp-3 text-sm text-gray-500">
                     {article.subtitle}
                   </p>
                 )}
                 <Link
                   href={`/novedades/${article.slug}`}
-                  className="absolute bottom-5 right-5 text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200"
+                  className="absolute bottom-5 right-5 text-sm font-medium text-blue-600 transition-colors duration-200 hover:text-blue-800 hover:underline"
                 >
                   Leer más
                 </Link>

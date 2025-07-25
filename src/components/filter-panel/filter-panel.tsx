@@ -1,6 +1,6 @@
 const FiltersPanel = () => {
   return (
-    <div className="w-[295px] h-fit bg-slate-200/80 rounded-lg p-6 pb-24 space-y-6">
+    <div className="h-fit w-[295px] space-y-6 rounded-lg bg-slate-200/80 p-6 pb-24">
       <h2 className="text-lg font-medium tracking-wide text-white">FILTROS</h2>
 
       <div className="space-y-6 divide-y divide-slate-300">
@@ -28,15 +28,15 @@ const FiltersPanel = () => {
           </h3>
         </div>
 
-        <div className="pt-4 space-y-4">
+        <div className="space-y-4 pt-4">
           <h3 className="text-sm font-medium tracking-wide text-white">
             GAMA DE PRECIOS
           </h3>
-          <div className="relative w-full h-1 bg-slate-300 rounded">
-            <div className="absolute h-1 bg-blue-500 w-1/2"></div>
+          <div className="relative h-1 w-full rounded bg-slate-300">
+            <div className="absolute h-1 w-1/2 bg-blue-500"></div>
             <div
-              className="absolute w-4 h-4 bg-blue-500 rounded-full -mt-1.5 cursor-pointer"
-              style={{ left: "50%" }}
+              className="absolute -mt-1.5 h-4 w-4 cursor-pointer rounded-full bg-blue-500"
+              style={{ left: '50%' }}
             ></div>
           </div>
         </div>

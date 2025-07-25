@@ -1,11 +1,11 @@
-import Image from "next/image";
-import React from "react";
-import { FowardButton } from "../foward-button";
+import Image from 'next/image';
+import React from 'react';
+import { FowardButton } from '../foward-button';
 
 const SteelframeSection = () => {
   return (
-    <section className="bg-[url('/steelframe-bg.webp')] relative flex flex-col justify-center items-center min-h-screen w-full bg-cover bg-center bg-no-repeat">
-      <h2 className="md:absolute right-[10%] bottom-[45%] z-20 text-white w-full max-w-[503px] font-bold text-left px-4">
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-center bg-[url('/steelframe-bg.webp')] bg-cover bg-center bg-no-repeat">
+      <h2 className="bottom-[45%] right-[10%] z-20 w-full max-w-[503px] px-4 text-left font-bold text-white md:absolute">
         MATERIALES DE CONSTRUCCIÓN EN SECO
       </h2>
 
@@ -14,11 +14,11 @@ const SteelframeSection = () => {
         width={956}
         height={796}
         alt="steelframe"
-        className="relative md:left-[-150px] w-full md:w-[60%] lg:w-auto mx-auto px-4 md:px-0"
+        className="relative mx-auto w-full px-4 md:left-[-150px] md:w-[60%] md:px-0 lg:w-auto"
       />
 
-      <div className=" md:mb-[120px] z-20 flex flex-col md:flex-row w-full px-4 gap-10 justify-around">
-        <div className="w-full max-w-[790px] flex flex-col gap-12 justify-start text-left">
+      <div className="z-20 flex w-full flex-col justify-around gap-10 px-4 md:mb-[120px] md:flex-row">
+        <div className="flex w-full max-w-[790px] flex-col justify-start gap-12 text-left">
           <p>
             Ofrecemos la línea más completa de materiales para la construcción
             en seco. Innovación, calidad y un equipo que respalda cada paso de

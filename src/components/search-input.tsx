@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useState } from "react";
-import { Search, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useDebounce } from "@/hooks/use-debounce";
+import React from 'react';
+import { useState } from 'react';
+import { Search, X } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { useDebounce } from '@/hooks/use-debounce';
 
 interface SearchInputProps {
   onSearch: (query: string) => void;
@@ -15,10 +15,10 @@ interface SearchInputProps {
 
 export function SearchInput({
   onSearch,
-  placeholder = "Buscar...",
-  className = "",
+  placeholder = 'Buscar...',
+  className = '',
 }: SearchInputProps) {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const debouncedQuery = useDebounce(searchQuery, 300); // 300ms de debounce
 
   // Ejecutar búsqueda cuando el valor debounced cambie
@@ -30,26 +30,26 @@ export function SearchInput({
   }, [debouncedQuery, onSearch]);
 
   const handleClear = () => {
-    setSearchQuery("");
+    setSearchQuery('');
   };
 
   return (
     <div className={`relative ${className}`}>
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
         <Input
           type="text"
           placeholder={placeholder}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-10 pr-10 bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+          className="border-gray-600 bg-gray-800 pl-10 pr-10 text-gray-100 placeholder-gray-400 focus:border-blue-500"
         />
         {searchQuery && (
           <Button
             variant="ghost"
             size="sm"
             onClick={handleClear}
-            className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 text-gray-400 hover:text-gray-200"
+            className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 transform p-0 text-gray-400 hover:text-gray-200"
           >
             <X className="h-4 w-4" />
           </Button>

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { FileText, Plus, Minus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useCotizacionStore } from "@/stores/cotizacion-store";
-import type { AgregarCotizacionButtonProps } from "@/types";
+import { useState } from 'react';
+import { FileText, Plus, Minus } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useCotizacionStore } from '@/stores/cotizacion-store';
+import type { AgregarCotizacionButtonProps } from '@/types';
 
 export function AgregarCotizacionButton({
   producto,
@@ -40,17 +40,17 @@ export function AgregarCotizacionButton({
 
   if (showQuantityControls) {
     return (
-      <div className="space-y-4 p-4 bg-gray-800 border border-gray-700 rounded-lg">
+      <div className="space-y-4 rounded-lg border border-gray-700 bg-gray-800 p-4">
         <div>
           <Label className="text-sm font-medium text-gray-300">
             cantidad a agregar
           </Label>
-          <div className="flex items-center gap-2 mt-2">
+          <div className="mt-2 flex items-center gap-2">
             <Button
               variant="outline"
               size="sm"
               onClick={decrementarCantidad}
-              className="bg-transparent border-gray-600 text-gray-300 hover:bg-gray-700"
+              className="border-gray-600 bg-transparent text-gray-300 hover:bg-gray-700"
             >
               <Minus className="h-4 w-4" />
             </Button>
@@ -58,34 +58,34 @@ export function AgregarCotizacionButton({
               type="number"
               value={cantidad}
               onChange={(e) => handleCantidadChange(e.target.value)}
-              className="w-20 text-center bg-gray-700 border-gray-600 text-gray-100"
+              className="w-20 border-gray-600 bg-gray-700 text-center text-gray-100"
               min="1"
             />
             <Button
               variant="outline"
               size="sm"
               onClick={incrementarCantidad}
-              className="bg-transparent border-gray-600 text-gray-300 hover:bg-gray-700"
+              className="border-gray-600 bg-transparent text-gray-300 hover:bg-gray-700"
             >
               <Plus className="h-4 w-4" />
             </Button>
           </div>
-          <p className="text-xs text-gray-500 mt-1">por {producto.unmedida}</p>
+          <p className="mt-1 text-xs text-gray-500">por {producto.unmedida}</p>
         </div>
 
         <Button
           onClick={handleAgregarACotizacion}
-          className="w-full bg-orange-600 hover:bg-orange-700 text-white"
+          className="w-full bg-orange-600 text-white hover:bg-orange-700"
           size="lg"
         >
-          <FileText className="h-4 w-4 mr-2" />
+          <FileText className="mr-2 h-4 w-4" />
           {enCotizacion
             ? `agregar ${cantidad} dffdfmás`
             : `agregar ${cantidad} a cotización`}
         </Button>
 
         {enCotizacion && (
-          <p className="text-xs text-orange-400 text-center">
+          <p className="text-center text-xs text-orange-400">
             este producto ya está en tu cotización
           </p>
         )}

@@ -6,7 +6,7 @@ export default function Layout({
   return (
     <>
       <div
-        className="absolute md:min-h-screen lg:w-full bg-cover bg-center bg-no-repeat -z-10"
+        className="absolute -z-10 bg-cover bg-center bg-no-repeat md:min-h-screen lg:w-full"
         style={{
           backgroundImage: "url('/steelframe-bg.webp')",
         }}

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState, useMemo } from "react";
-import Link from "next/link";
-import { Layers } from "lucide-react";
-import { SearchInput } from "@/components/search-input";
-import { CategoryCard } from "@/components/category-card";
-import { usePathname } from "next/navigation";
+import { useState, useMemo } from 'react';
+import Link from 'next/link';
+import { Layers } from 'lucide-react';
+import { SearchInput } from '@/components/search-input';
+import { CategoryCard } from '@/components/category-card';
+import { usePathname } from 'next/navigation';
 
 interface Categoria {
   codigo: string;
@@ -19,9 +19,9 @@ interface CategoriasClientProps {
 
 export function CategoriasClient({ categorias }: CategoriasClientProps) {
   const pathname = usePathname();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const baseUrl = pathname.includes("/steelframe") ? "/steelframe" : "/pvc";
+  const baseUrl = pathname.includes('/steelframe') ? '/steelframe' : '/pvc';
 
   // Filtrar categorías basado en la búsqueda
   const filteredCategorias = useMemo(() => {
@@ -46,9 +46,9 @@ export function CategoriasClient({ categorias }: CategoriasClientProps) {
 
   if (!categorias || categorias.length === 0) {
     return (
-      <div className="text-center py-12">
-        <Layers className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-        <h3 className="text-lg font-medium text-gray-100 mb-2">
+      <div className="py-12 text-center">
+        <Layers className="mx-auto mb-4 h-16 w-16 text-gray-500" />
+        <h3 className="mb-2 text-lg font-medium text-gray-100">
           No se encontraron categorías
         </h3>
         <p className="text-gray-400">
@@ -72,22 +72,22 @@ export function CategoriasClient({ categorias }: CategoriasClientProps) {
       {searchQuery &&
       searchQuery.length >= 3 &&
       filteredCategorias.length === 0 ? (
-        <div className="text-center py-12">
-          <Layers className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-100 mb-2">
+        <div className="py-12 text-center">
+          <Layers className="mx-auto mb-4 h-16 w-16 text-gray-500" />
+          <h3 className="mb-2 text-lg font-medium text-gray-100">
             No se encontraron categorías
           </h3>
           <p className="text-gray-400">No hay categorías que coincidan</p>
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="mt-2 text-sm text-gray-500">
             Intenta con otros términos de búsqueda
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredCategorias.map((categoria) => {
-            const isPinturas = categoria.codigo === "11";
+            const isPinturas = categoria.codigo === '11';
             const linkHref = isPinturas
-              ? "/pinturas"
+              ? '/pinturas'
               : `${baseUrl}/${categoria.codigo}`;
 
             return (

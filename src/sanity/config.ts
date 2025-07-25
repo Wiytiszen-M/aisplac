@@ -1,31 +1,35 @@
-import { defineConfig } from "sanity"
-import { structureTool } from "sanity/structure"
-import { visionTool } from "@sanity/vision"
-import { schemaTypes } from "./schemas"
+import { defineConfig } from 'sanity';
+import { structureTool } from 'sanity/structure';
+import { visionTool } from '@sanity/vision';
+import { schemaTypes } from './schemas';
 
 export default defineConfig({
-  name: "default",
-  title: "Mi Blog Studio",
+  name: 'default',
+  title: 'Mi Blog Studio',
 
-  projectId: "mehr72rv",
-  dataset: "production",
+  projectId: 'mehr72rv',
+  dataset: 'production',
 
   plugins: [
     structureTool({
       structure: (S) =>
         S.list()
-          .title("Contenido")
+          .title('Contenido')
           .items([
             S.listItem()
-              .title("Posts")
+              .title('Posts')
               .child(
-                S.documentTypeList("post")
-                  .title("Posts")
+                S.documentTypeList('post')
+                  .title('Posts')
                   .filter('_type == "post"')
-                  .defaultOrdering([{ field: "publishedAt", direction: "desc" }]),
+                  .defaultOrdering([
+                    { field: 'publishedAt', direction: 'desc' },
+                  ])
               ),
             S.divider(),
-            ...S.documentTypeListItems().filter((listItem) => !["post"].includes(listItem.getId() || "")),
+            ...S.documentTypeListItems().filter(
+              (listItem) => !['post'].includes(listItem.getId() || '')
+            ),
           ]),
     }),
     visionTool(),
@@ -34,4 +38,4 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
-})
+});

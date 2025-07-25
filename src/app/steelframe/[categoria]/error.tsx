@@ -1,40 +1,50 @@
-"use client"
+'use client';
 
-import { AlertCircle, RefreshCw, Home } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { AlertCircle, RefreshCw, Home } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function MaterialesError({
   error,
   reset,
 }: {
-  error: Error & { digest?: string }
-  reset: () => void
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="flex items-center justify-center min-h-[500px]">
-        <div className="text-center max-w-md">
-          <AlertCircle className="h-20 w-20 text-red-500 mx-auto mb-6" />
-          <h2 className="text-2xl font-bold text-gray-100 mb-4">Error al Cargar Materiales</h2>
-          <p className="text-gray-400 mb-6">
-            Hubo un problema al conectar con el servidor. Por favor, intenta nuevamente.
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="flex min-h-[500px] items-center justify-center">
+        <div className="max-w-md text-center">
+          <AlertCircle className="mx-auto mb-6 h-20 w-20 text-red-500" />
+          <h2 className="mb-4 text-2xl font-bold text-gray-100">
+            Error al Cargar Materiales
+          </h2>
+          <p className="mb-6 text-gray-400">
+            Hubo un problema al conectar con el servidor. Por favor, intenta
+            nuevamente.
           </p>
 
-          <div className="bg-red-900/20 border border-red-800 p-4 rounded-lg mb-6 text-left">
-            <p className="text-sm text-red-400 font-medium mb-2">Detalles técnicos:</p>
-            <p className="text-sm text-red-300 font-mono">{error.message}</p>
-            {error.digest && <p className="text-xs text-red-400 mt-2">ID: {error.digest}</p>}
+          <div className="mb-6 rounded-lg border border-red-800 bg-red-900/20 p-4 text-left">
+            <p className="mb-2 text-sm font-medium text-red-400">
+              Detalles técnicos:
+            </p>
+            <p className="font-mono text-sm text-red-300">{error.message}</p>
+            {error.digest && (
+              <p className="mt-2 text-xs text-red-400">ID: {error.digest}</p>
+            )}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <Button onClick={reset} className="bg-blue-600 hover:bg-blue-700">
-              <RefreshCw className="h-4 w-4 mr-2" />
+              <RefreshCw className="mr-2 h-4 w-4" />
               Reintentar
             </Button>
             <Link href="/">
-              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent">
-                <Home className="h-4 w-4 mr-2" />
+              <Button
+                variant="outline"
+                className="border-gray-600 bg-transparent text-gray-300 hover:bg-gray-700"
+              >
+                <Home className="mr-2 h-4 w-4" />
                 Ir al Inicio
               </Button>
             </Link>
@@ -42,5 +52,5 @@ export default function MaterialesError({
         </div>
       </div>
     </div>
-  )
+  );
 }

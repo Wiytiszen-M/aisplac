@@ -1,12 +1,12 @@
-"use client";
+'use client';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import ProductCard from "../product-card/product-card";
+} from '@/components/ui/carousel';
+import ProductCard from '../product-card/product-card';
 
 function SingleCarrousel() {
   return (
@@ -21,7 +21,7 @@ function SingleCarrousel() {
                 sku="000000"
                 imageUrl="/fake-pvc-img.png"
                 onAddToCart={() => null}
-                className="w-[365px] h-[498px]"
+                className="h-[498px] w-[365px]"
               />
             </div>
           </CarouselItem>

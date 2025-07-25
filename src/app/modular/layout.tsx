@@ -6,13 +6,13 @@ export default function Layout({
   return (
     <>
       <div
-        className="absolute lg:min-h-screen lg:w-full bg-cover bg-center bg-no-repeat -z-10"
+        className="absolute -z-10 bg-cover bg-center bg-no-repeat lg:min-h-screen lg:w-full"
         style={{
           backgroundImage: "url('/modular/layout-bg.png')",
         }}
       />
       <div
-        className="absolute min-h-screen w-full bg-cover bg-center bg-no-repeat -z-10"
+        className="absolute -z-10 min-h-screen w-full bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: "url('/modular/fade-bg.png')",
         }}

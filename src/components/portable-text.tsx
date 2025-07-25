@@ -1,60 +1,60 @@
-"use client";
+'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
 import {
   PortableText as BasePortableText,
   type PortableTextComponents,
   type PortableTextProps,
-} from "@portabletext/react";
+} from '@portabletext/react';
 import type {
   ContentImageBlock,
   SeparatorBlock,
   VideoEmbedBlock,
-} from "@/types";
-import { urlForImage } from "@/sanity/lib/sanity.image";
+} from '@/types';
+import { urlForImage } from '@/sanity/lib/sanity.image';
 
 const components: PortableTextComponents = {
   block: {
     // Párrafos normales
     normal: ({ children }) => (
-      <p className="mb-6 text-base leading-7 text-gray-300 font-normal">
+      <p className="mb-6 text-base font-normal leading-7 text-gray-300">
         {children}
       </p>
     ),
     // Encabezados
     h1: ({ children }) => (
-      <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 mt-12 leading-tight">
+      <h1 className="mb-8 mt-12 text-4xl font-bold leading-tight text-white md:text-5xl">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 mt-10 leading-tight">
+      <h2 className="mb-6 mt-10 text-3xl font-bold leading-tight text-white md:text-4xl">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl md:text-3xl font-semibold text-white mb-5 mt-8 leading-tight">
+      <h3 className="mb-5 mt-8 text-2xl font-semibold leading-tight text-white md:text-3xl">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-xl md:text-2xl font-semibold text-white mb-4 mt-6 leading-tight">
+      <h4 className="mb-4 mt-6 text-xl font-semibold leading-tight text-white md:text-2xl">
         {children}
       </h4>
     ),
     h5: ({ children }) => (
-      <h5 className="text-lg md:text-xl font-semibold text-white mb-3 mt-5 leading-tight">
+      <h5 className="mb-3 mt-5 text-lg font-semibold leading-tight text-white md:text-xl">
         {children}
       </h5>
     ),
     h6: ({ children }) => (
-      <h6 className="text-base md:text-lg font-semibold text-white mb-3 mt-4 leading-tight">
+      <h6 className="mb-3 mt-4 text-base font-semibold leading-tight text-white md:text-lg">
         {children}
       </h6>
     ),
     // Citas
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-blue-400 pl-6 py-4 my-8 bg-white/5 italic text-lg text-gray-300 rounded-r-lg backdrop-blur-sm">
+      <blockquote className="my-8 rounded-r-lg border-l-4 border-blue-400 bg-white/5 py-4 pl-6 text-lg italic text-gray-300 backdrop-blur-sm">
         {children}
       </blockquote>
     ),
@@ -68,28 +68,28 @@ const components: PortableTextComponents = {
     em: ({ children }) => <em className="italic text-gray-300">{children}</em>,
     // Texto subrayado
     underline: ({ children }) => (
-      <span className="underline decoration-2 underline-offset-2 text-gray-300">
+      <span className="text-gray-300 underline decoration-2 underline-offset-2">
         {children}
       </span>
     ),
     // Texto tachado
-    "strike-through": ({ children }) => (
-      <span className="line-through text-gray-500">{children}</span>
+    'strike-through': ({ children }) => (
+      <span className="text-gray-500 line-through">{children}</span>
     ),
     // Enlaces
     link: ({ children, value }) => (
       <a
         href={value?.href}
-        target={value?.blank ? "_blank" : undefined}
-        rel={value?.blank ? "noopener noreferrer" : undefined}
-        className="text-blue-400 hover:text-blue-300 underline decoration-2 underline-offset-2 hover:decoration-blue-300 transition-colors duration-200 font-medium"
+        target={value?.blank ? '_blank' : undefined}
+        rel={value?.blank ? 'noopener noreferrer' : undefined}
+        className="font-medium text-blue-400 underline decoration-2 underline-offset-2 transition-colors duration-200 hover:text-blue-300 hover:decoration-blue-300"
       >
         {children}
       </a>
     ),
     // Código inline
     code: ({ children }) => (
-      <code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm font-mono border border-gray-700">
+      <code className="rounded border border-gray-700 bg-gray-800 px-2 py-1 font-mono text-sm text-gray-200">
         {children}
       </code>
     ),
@@ -97,13 +97,13 @@ const components: PortableTextComponents = {
   list: {
     // Listas con viñetas
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside mb-6 space-y-2 text-gray-300 marker:text-gray-500">
+      <ul className="mb-6 list-inside list-disc space-y-2 text-gray-300 marker:text-gray-500">
         {children}
       </ul>
     ),
     // Listas numeradas
     number: ({ children }) => (
-      <ol className="list-decimal list-inside mb-6 space-y-2 text-gray-300 marker:text-gray-500">
+      <ol className="mb-6 list-inside list-decimal space-y-2 text-gray-300 marker:text-gray-500">
         {children}
       </ol>
     ),
@@ -111,11 +111,11 @@ const components: PortableTextComponents = {
   listItem: {
     // Elementos de lista con viñetas
     bullet: ({ children }) => (
-      <li className="text-base leading-6 pl-2 text-gray-300">{children}</li>
+      <li className="pl-2 text-base leading-6 text-gray-300">{children}</li>
     ),
     // Elementos de lista numerada
     number: ({ children }) => (
-      <li className="text-base leading-6 pl-2 text-gray-300">{children}</li>
+      <li className="pl-2 text-base leading-6 text-gray-300">{children}</li>
     ),
   },
   types: {
@@ -124,7 +124,7 @@ const components: PortableTextComponents = {
         return null;
       }
 
-      const { alt, caption, size = "large", alignment = "center" } = value;
+      const { alt, caption, size = 'large', alignment = 'center' } = value;
       const imageUrlBuilder = urlForImage(value);
       const imageUrl = imageUrlBuilder
         ? imageUrlBuilder.width(1200).url()
@@ -132,9 +132,9 @@ const components: PortableTextComponents = {
 
       if (!imageUrl) {
         return (
-          <div className="my-8 p-8 bg-gray-800/50 rounded-lg text-center text-gray-400 border-2 border-dashed border-gray-600">
+          <div className="my-8 rounded-lg border-2 border-dashed border-gray-600 bg-gray-800/50 p-8 text-center text-gray-400">
             <svg
-              className="w-12 h-12 mx-auto mb-2"
+              className="mx-auto mb-2 h-12 w-12"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -150,32 +150,32 @@ const components: PortableTextComponents = {
       }
 
       const sizeClasses = {
-        small: "max-w-sm",
-        medium: "max-w-md",
-        large: "max-w-3xl",
-        full: "max-w-full",
+        small: 'max-w-sm',
+        medium: 'max-w-md',
+        large: 'max-w-3xl',
+        full: 'max-w-full',
       };
       const alignClasses = {
-        left: "mr-auto",
-        center: "mx-auto",
-        right: "ml-auto",
+        left: 'mr-auto',
+        center: 'mx-auto',
+        right: 'ml-auto',
       };
 
       return (
         <figure
           className={`my-10 ${sizeClasses[size]} ${alignClasses[alignment]}`}
         >
-          <div className="relative w-full h-auto rounded-lg overflow-hidden shadow-2xl">
+          <div className="relative h-auto w-full overflow-hidden rounded-lg shadow-2xl">
             <Image
-              src={imageUrl || "/placeholder.svg"}
-              alt={alt || "Imagen del contenido"}
+              src={imageUrl || '/placeholder.svg'}
+              alt={alt || 'Imagen del contenido'}
               width={1200}
               height={800}
-              className="w-full h-auto object-cover"
+              className="h-auto w-full object-cover"
             />
           </div>
           {caption && (
-            <figcaption className="text-center text-sm text-gray-400 mt-3 italic font-medium">
+            <figcaption className="mt-3 text-center text-sm font-medium italic text-gray-400">
               {caption}
             </figcaption>
           )}
@@ -183,31 +183,31 @@ const components: PortableTextComponents = {
       );
     },
     videoEmbed: ({ value }: { value: VideoEmbedBlock }) => {
-      const { url, caption, aspectRatio = "16:9" } = value;
+      const { url, caption, aspectRatio = '16:9' } = value;
       if (!url) return null;
 
       const ratioClasses = {
-        "16:9": "aspect-video",
-        "9:16": "aspect-[9/16]",
-        "1:1": "aspect-square",
+        '16:9': 'aspect-video',
+        '9:16': 'aspect-[9/16]',
+        '1:1': 'aspect-square',
       };
 
       return (
         <figure className="my-10">
           <div
-            className={`w-full ${ratioClasses[aspectRatio]} rounded-lg overflow-hidden shadow-2xl bg-gray-800`}
+            className={`w-full ${ratioClasses[aspectRatio]} overflow-hidden rounded-lg bg-gray-800 shadow-2xl`}
           >
             <iframe
               src={url}
               width="100%"
               height="100%"
               allowFullScreen
-              className="w-full h-full border-0"
-              title={caption || "Video embebido"}
+              className="h-full w-full border-0"
+              title={caption || 'Video embebido'}
             />
           </div>
           {caption && (
-            <figcaption className="text-center text-sm text-gray-400 mt-3 italic font-medium">
+            <figcaption className="mt-3 text-center text-sm font-medium italic text-gray-400">
               {caption}
             </figcaption>
           )}
@@ -215,12 +215,12 @@ const components: PortableTextComponents = {
       );
     },
     separator: ({ value }: { value: SeparatorBlock }) => {
-      const { style = "line" } = value;
+      const { style = 'line' } = value;
 
       const styleClasses = {
-        line: "border-t border-gray-600",
-        thick: "border-t-4 border-gray-500",
-        dots: "border-t-2 border-dashed border-gray-500",
+        line: 'border-t border-gray-600',
+        thick: 'border-t-4 border-gray-500',
+        dots: 'border-t-2 border-dashed border-gray-500',
       };
 
       return (
@@ -232,11 +232,11 @@ const components: PortableTextComponents = {
     // Bloque de código
     code: ({ value }) => (
       <div className="my-8">
-        <pre className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto text-sm leading-6 shadow-2xl border border-gray-700">
+        <pre className="overflow-x-auto rounded-lg border border-gray-700 bg-gray-900 p-6 text-sm leading-6 text-gray-100 shadow-2xl">
           <code className="font-mono">{value.code}</code>
         </pre>
         {value.filename && (
-          <p className="text-xs text-gray-500 mt-2 font-mono">
+          <p className="mt-2 font-mono text-xs text-gray-500">
             {value.filename}
           </p>
         )}

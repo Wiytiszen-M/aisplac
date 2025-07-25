@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 const Facebook: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg

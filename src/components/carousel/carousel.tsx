@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Carousel,
@@ -6,55 +6,55 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import Image from "next/image";
-import useEmblaCarousel from "embla-carousel-react";
+} from '@/components/ui/carousel';
+import Image from 'next/image';
+import useEmblaCarousel from 'embla-carousel-react';
 
 const slides = [
   {
     id: 1,
-    title: "Naturaleza Salvaje",
-    description: "Explora la belleza natural del mundo",
-    image: "/image-2.png",
+    title: 'Naturaleza Salvaje',
+    description: 'Explora la belleza natural del mundo',
+    image: '/image-2.png',
   },
   {
     id: 2,
-    title: "Vida Urbana",
-    description: "Descubre la energía de la ciudad",
-    image: "/image-2.png",
+    title: 'Vida Urbana',
+    description: 'Descubre la energía de la ciudad',
+    image: '/image-2.png',
   },
   {
     id: 3,
-    title: "Tecnología",
-    description: "El futuro está aquí",
-    image: "/image-2.png",
+    title: 'Tecnología',
+    description: 'El futuro está aquí',
+    image: '/image-2.png',
   },
   {
     id: 4,
-    title: "Arquitectura",
-    description: "Diseños que inspiran",
-    image: "/image-2.png",
+    title: 'Arquitectura',
+    description: 'Diseños que inspiran',
+    image: '/image-2.png',
   },
   {
     id: 5,
-    title: "Gastronomía",
-    description: "Sabores del mundo",
-    image: "/image-2.png",
+    title: 'Gastronomía',
+    description: 'Sabores del mundo',
+    image: '/image-2.png',
   },
   {
     id: 6,
-    title: "Arte",
-    description: "Expresiones creativas",
-    image: "/image-2.png",
+    title: 'Arte',
+    description: 'Expresiones creativas',
+    image: '/image-2.png',
   },
 ];
 
 export default function NewsCarousele() {
   const [emblaRef] = useEmblaCarousel({
-    align: "start",
+    align: 'start',
     loop: true,
     slidesToScroll: 1,
-    containScroll: "trimSnaps",
+    containScroll: 'trimSnaps',
     dragFree: true,
   });
 
@@ -64,27 +64,27 @@ export default function NewsCarousele() {
         <Carousel>
           <CarouselContent
             ref={emblaRef}
-            className="-ml-4 flex items-center h-[750px]"
+            className="-ml-4 flex h-[750px] items-center"
           >
             {slides.map((slide) => (
               <CarouselItem
                 key={slide.id}
-                className="pl-4 basis-full md:basis-1/3 "
+                className="basis-full pl-4 md:basis-1/3"
               >
-                <div className="bg-white w-80 h-[359px]">
-                  <div className=" flex flex-col items-center justify-center">
-                    <div className="bg-slate-500 relative h-[200px] w-full overflow-hidden ">
+                <div className="h-[359px] w-80 bg-white">
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="relative h-[200px] w-full overflow-hidden bg-slate-500">
                       <Image
-                        src={slide.image || "/image-2.png"}
+                        src={slide.image || '/image-2.png'}
                         alt={slide.title}
                         fill
-                        className="object-cover "
+                        className="object-cover"
                         priority
                       />
                     </div>
                     <div className="mt-4 text-center">
                       <h3 className="text-xl font-semibold">{slide.title}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground">
+                      <p className="text-muted-foreground mt-2 text-sm">
                         {slide.description}
                       </p>
                     </div>

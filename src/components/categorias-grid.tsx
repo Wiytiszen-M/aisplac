@@ -1,6 +1,6 @@
-import { Layers } from "lucide-react";
-import { getCategorias } from "@/lib/api";
-import { CategoriasClient } from "@/components/categorias-client";
+import { Layers } from 'lucide-react';
+import { getCategorias } from '@/lib/api';
+import { CategoriasClient } from '@/components/categorias-client';
 
 export async function CategoriasGrid() {
   const { data: categorias, error } = await getCategorias();
@@ -11,9 +11,9 @@ export async function CategoriasGrid() {
 
   if (!categorias || categorias.length === 0) {
     return (
-      <div className="text-center py-12">
-        <Layers className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-        <h3 className="text-lg font-medium text-gray-100 mb-2">
+      <div className="py-12 text-center">
+        <Layers className="mx-auto mb-4 h-16 w-16 text-gray-500" />
+        <h3 className="mb-2 text-lg font-medium text-gray-100">
           No se encontraron categorías
         </h3>
         <p className="text-gray-400">
