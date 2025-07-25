@@ -5,7 +5,7 @@ import type {
   GestionNikResponse,
   GestionNikProducto,
   EnvioResult,
-} from '@/types';
+} from "@/types";
 
 interface CotizacionData {
   items: ProductoCotizacion[];
@@ -18,15 +18,15 @@ interface CotizacionData {
 // Función para formatear fecha a AAAAMMDD
 function formatearFecha(fecha: Date): string {
   const year = fecha.getFullYear();
-  const month = String(fecha.getMonth() + 1).padStart(2, '0');
-  const day = String(fecha.getDate()).padStart(2, '0');
+  const month = String(fecha.getMonth() + 1).padStart(2, "0");
+  const day = String(fecha.getDate()).padStart(2, "0");
   return `${year}${month}${day}`;
 }
 
 // Función para formatear hora a HH:MM
 function formatearHora(fecha: Date): string {
-  const hours = String(fecha.getHours()).padStart(2, '0');
-  const minutes = String(fecha.getMinutes()).padStart(2, '0');
+  const hours = String(fecha.getHours()).padStart(2, "0");
+  const minutes = String(fecha.getMinutes()).padStart(2, "0");
   return `${hours}:${minutes}`;
 }
 
@@ -50,36 +50,36 @@ function construirJsonGestionNik(
     Detalle: item.descripcion,
     Cantidad: item.cantidad.toString(),
     UnitBruto: item.precio.toFixed(2),
-    DesPor: '0.00', // Sin descuento
+    DesPor: "0.00", // Sin descuento
     UnitNeto: item.precio.toFixed(2),
   }));
 
   return {
     Id: generarId(),
-    TipoComp: 'COT', // Cotización
+    TipoComp: "COT", // Cotización
     Nombre:
       cotizacion.datosCotizacion.nombreEmpresa ||
       cotizacion.datosCotizacion.contacto,
     Telefono: cotizacion.datosCotizacion.telefono,
-    Latitud: '0', // No disponible
-    Longitud: '0', // No disponible
+    Latitud: "0", // No disponible
+    Longitud: "0", // No disponible
     Direccion: cotizacion.datosCotizacion.direccion,
-    Localidad: 'General Pico', // Por defecto
-    Provincia: 'La Pampa', // Por defecto
+    Localidad: "General Pico", // Por defecto
+    Provincia: "La Pampa", // Por defecto
     email: cotizacion.datosCotizacion.email,
     CodPostal: cotizacion.datosCotizacion.codigoPostal,
     Fecha: fechaFormateada,
     FechaEntrega: fechaFormateada,
     Hora: horaFormateada,
-    DniCuit: '0', // No disponible
-    CodCliente: '0', // Usar CONSUMIDOR FINAL
-    Moneda: 'PESOS',
-    VerifStock: 'NO', // No verificar stock
-    IdApExterna: 'AisplacApp',
+    DniCuit: "0", // No disponible
+    CodCliente: "0", // Usar CONSUMIDOR FINAL
+    Moneda: "PESOS",
+    VerifStock: "NO", // No verificar stock
+    IdApExterna: "AisplacApp",
     Nota:
       cotizacion.datosCotizacion.observaciones ||
-      'Cotización generada desde Aisplac App',
-    Token: '12345EIDOS2K21IO23LASO',
+      "Cotización generada desde Aisplac App",
+    Token: process.env.NIK_TOKEK,
     Productos: productos,
     Servicios: [], // Sin servicios por ahora
   };
@@ -88,26 +88,26 @@ function construirJsonGestionNik(
 // Función para interpretar errores de Gestion-Nik
 function interpretarError(codigo: string): string {
   const errores: Record<string, string> = {
-    '-1': 'La moneda no fue encontrada',
-    '-2': 'La provincia no fue encontrada',
-    '-3': 'La provincia no contiene la localidad especificada',
-    '-4': 'Cliente no encontrado',
-    '-5': 'No se ha encontrado un cliente CONSUMIDOR FINAL',
-    '-6': 'Fecha no válida',
-    '-7': 'Error al guardar el encabezado del comprobante',
-    '-8': 'Error al guardar los productos del comprobante',
-    '-9': 'Error al guardar los servicios del comprobante',
-    '-10': 'La Localidad no puede quedar en blanco',
-    '1': 'La moneda no fue encontrada',
-    '2': 'La provincia no fue encontrada',
-    '3': 'La provincia no contiene la localidad especificada',
-    '4': 'Cliente no encontrado',
-    '5': 'No se ha encontrado un cliente CONSUMIDOR FINAL',
-    '6': 'Fecha no válida',
-    '7': 'Error al guardar el encabezado del comprobante',
-    '8': 'Error al guardar los productos del comprobante',
-    '9': 'Error al guardar los servicios del comprobante',
-    '10': 'La Localidad no puede quedar en blanco',
+    "-1": "La moneda no fue encontrada",
+    "-2": "La provincia no fue encontrada",
+    "-3": "La provincia no contiene la localidad especificada",
+    "-4": "Cliente no encontrado",
+    "-5": "No se ha encontrado un cliente CONSUMIDOR FINAL",
+    "-6": "Fecha no válida",
+    "-7": "Error al guardar el encabezado del comprobante",
+    "-8": "Error al guardar los productos del comprobante",
+    "-9": "Error al guardar los servicios del comprobante",
+    "-10": "La Localidad no puede quedar en blanco",
+    "1": "La moneda no fue encontrada",
+    "2": "La provincia no fue encontrada",
+    "3": "La provincia no contiene la localidad especificada",
+    "4": "Cliente no encontrado",
+    "5": "No se ha encontrado un cliente CONSUMIDOR FINAL",
+    "6": "Fecha no válida",
+    "7": "Error al guardar el encabezado del comprobante",
+    "8": "Error al guardar los productos del comprobante",
+    "9": "Error al guardar los servicios del comprobante",
+    "10": "La Localidad no puede quedar en blanco",
   };
 
   return errores[codigo] || `Error desconocido (código: ${codigo})`;
@@ -122,14 +122,14 @@ export async function enviarCotizacionGestionNik(
     if (!cotizacion.datosCotizacion.email) {
       return {
         success: false,
-        error: 'El email es requerido para enviar la cotización',
+        error: "El email es requerido para enviar la cotización",
       };
     }
 
     if (cotizacion.items.length === 0) {
       return {
         success: false,
-        error: 'No hay productos en la cotización',
+        error: "No hay productos en la cotización",
       };
     }
 
@@ -143,15 +143,15 @@ export async function enviarCotizacionGestionNik(
     // Construir URL
     const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/SaveOrder/${encodedJson}`;
 
-    console.log('🔗 URL de envío:', url.substring(0, 200) + '...');
-    console.log('📋 Datos enviados:', jsonRequest);
+    console.log("🔗 URL de envío:", url.substring(0, 200) + "...");
+    console.log("📋 Datos enviados:", jsonRequest);
 
     // Realizar petición
     const response = await fetch(url, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        Accept: 'application/json',
-        'User-Agent': 'Aisplac-App/1.0',
+        Accept: "application/json",
+        "User-Agent": "Aisplac-App/1.0",
       },
     });
 
@@ -160,22 +160,22 @@ export async function enviarCotizacionGestionNik(
     }
 
     const responseText = await response.text();
-    console.log('📥 Respuesta cruda:', responseText);
+    console.log("📥 Respuesta cruda:", responseText);
 
     // Parsear respuesta
     let responseData: GestionNikResponse;
 
     try {
       responseData = JSON.parse(responseText);
-    } catch (parseError) {
+    } catch {
       return {
         success: false,
-        error: 'Respuesta inválida del servidor',
+        error: "Respuesta inválida del servidor",
       };
     }
 
     // Verificar si hay error
-    if (responseData.Error === 'SI') {
+    if (responseData.Error === "SI") {
       const errorMessage = interpretarError(responseData.Codigo);
       return {
         success: false,
@@ -184,7 +184,7 @@ export async function enviarCotizacionGestionNik(
     }
 
     // Verificar éxito
-    if (responseData.Error === 'NO' && responseData.Codigo === '200') {
+    if (responseData.Error === "NO" && responseData.Codigo === "200") {
       return {
         success: true,
         data: responseData,
@@ -197,13 +197,13 @@ export async function enviarCotizacionGestionNik(
       error: `Respuesta inesperada: ${responseData.Descripcion}`,
     };
   } catch (error) {
-    console.error('❌ Error en enviarCotizacionGestionNik:', error);
+    console.error("❌ Error en enviarCotizacionGestionNik:", error);
 
     if (error instanceof Error) {
-      if (error.name === 'AbortError') {
+      if (error.name === "AbortError") {
         return {
           success: false,
-          error: 'Tiempo de espera agotado. Intenta nuevamente.',
+          error: "Tiempo de espera agotado. Intenta nuevamente.",
         };
       }
 
@@ -215,7 +215,7 @@ export async function enviarCotizacionGestionNik(
 
     return {
       success: false,
-      error: 'Error desconocido al enviar cotización',
+      error: "Error desconocido al enviar cotización",
     };
   }
 }
