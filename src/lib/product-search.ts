@@ -72,22 +72,6 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
         imagenes.push(prod.urlimg.trim());
       }
 
-      const camposImagenes = [
-        "urlimg2",
-        "urlimg3",
-        "urlimg4",
-        "urlimg5",
-        "imagen2",
-        "imagen3",
-        "imagen4",
-        "imagen5",
-      ];
-      camposImagenes.forEach((campo) => {
-        if (prod[campo] && prod[campo].trim() !== "") {
-          imagenes.push(prod[campo].trim());
-        }
-      });
-
       const producto: Producto = {
         codigo: String(prod.codigo),
         personal: prod.personal || "",
@@ -103,6 +87,8 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
         timestamp: prod.timestamp || "",
         uxf: prod.uxf || "",
         urlimg: imagenes[0] || "",
+        Fotos: [],
+        ProdRelacionados: [],
       };
 
       productMap.set(producto.codigo, producto);
