@@ -51,7 +51,7 @@ const About = () => {
           alt="equipo institucional"
           width={1472}
           height={595}
-          src="/about/institucional.png"
+          src="/about/institucional.webp"
           className="mx-auto rounded-lg"
         />
         <FadeIn>

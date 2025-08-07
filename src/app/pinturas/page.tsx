@@ -148,17 +148,17 @@ export default function PinturasPage() {
     {
       id: 16,
       titulo: "Proceso de Fabricación 1",
-      imagen: "/pinturas/16.png",
+      imagen: "/pinturas/16.webp",
     },
     {
       id: 17,
       titulo: "Proceso de Fabricación 2",
-      imagen: "/pinturas/17.png",
+      imagen: "/pinturas/17.webp",
     },
     {
       id: 18,
       titulo: "Proceso de Fabricación 3",
-      imagen: "/pinturas/18.png",
+      imagen: "/pinturas/18.webp",
     },
   ];
 
@@ -166,12 +166,12 @@ export default function PinturasPage() {
     {
       id: 19,
       titulo: "Carta de Colores 1",
-      imagen: "/pinturas/19.png",
+      imagen: "/pinturas/19.webp",
     },
     {
       id: 20,
       titulo: "Carta de Colores 2",
-      imagen: "/pinturas/20.png",
+      imagen: "/pinturas/20.webp",
     },
   ];
 
@@ -179,22 +179,22 @@ export default function PinturasPage() {
     {
       id: 21,
       titulo: "Obra Realizada 1",
-      imagen: "/pinturas/21.png",
+      imagen: "/pinturas/21.webp",
     },
     {
       id: 22,
       titulo: "Obra Realizada 2",
-      imagen: "/pinturas/22.png",
+      imagen: "/pinturas/22.webp",
     },
     {
       id: 23,
       titulo: "Obra Realizada 3",
-      imagen: "/pinturas/23.png",
+      imagen: "/pinturas/23.webp",
     },
   ];
 
   return (
-    <div className="container p-4 md:mx-auto py-36 space-y-8">
+    <div className="container max-w-7xl  p-4 md:mx-auto py-36 space-y-8">
       <BackButton text="Volver a Categorías" url="/steelframe" />
       {/* Header */}
       <div className="flex items-center justify-center gap-4 mb-8">
