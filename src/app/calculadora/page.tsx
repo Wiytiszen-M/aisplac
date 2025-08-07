@@ -1,10 +1,10 @@
-import { BackButton } from '@/components/back-button';
-import { PVCCeilingCalculator } from '@/components/pvc-ceiling-calculator';
+import { BackButton } from "@/components/back-button";
+import { PVCCeilingCalculator } from "@/components/pvc-ceiling-calculator";
 
 export const metadata = {
-  title: 'Calculadora de Cielorrasos PVC | AISPLAC',
+  title: "Calculadora de Cielorrasos PVC | AISPLAC",
   description:
-    'Calcula los materiales necesarios para estructuras de soporte de cielorrasos PVC.',
+    "Calcula los materiales necesarios para estructuras de soporte de cielorrasos PVC.",
 };
 
 export default function CalculatorPage() {
@@ -21,6 +21,12 @@ export default function CalculatorPage() {
               Calcula fácilmente los materiales necesarios para estructuras de
               soporte de cielorrasos PVC
             </p>
+            <div className="mt-6 rounded-md border border-yellow-600 bg-yellow-900/20 p-4">
+              <p className="text-sm font-medium text-yellow-300">
+                ACLARACIÓN: Precios al público referenciales. El valor final
+                será confirmado por el vendedor.
+              </p>
+            </div>
           </div>
 
           <PVCCeilingCalculator />

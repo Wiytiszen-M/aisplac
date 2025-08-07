@@ -5,6 +5,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/fade-in";
 import InfiniteBrandBanner from "@/components/infinite-brand-banner";
+import Link from "next/link";
 
 const brands = [
   {
@@ -63,14 +64,15 @@ const SolarEnergy = () => {
             ¡Consultanos y descubrí cómo integrar
             <br /> la energía solar en tus proyectos!
           </p>
-
-          <Button
-            variant="secundary"
-            size="lg"
-            className="w-[220px] lg:w-[300px]"
-          >
-            CONTACTANOS
-          </Button>
+          <Link href="/contact-us">
+            <Button
+              variant="secundary"
+              size="lg"
+              className="w-[220px] lg:w-[300px]"
+            >
+              CONTACTANOS
+            </Button>
+          </Link>
         </div>
       </FadeIn>
       <Image
@@ -108,9 +110,11 @@ const SolarEnergy = () => {
           y te ayudamos a hacerlo realidad.
         </h2>{" "}
       </FadeIn>
-      <Button variant="secundary" className="w-[220px] lg:w-[300px]">
-        CONTACTANOS
-      </Button>
+      <Link href="/contact-us">
+        <Button variant="secundary" className="w-[220px] lg:w-[300px]">
+          CONTACTANOS
+        </Button>
+      </Link>
     </section>
   );
 };

@@ -14,6 +14,10 @@ const valores = [
 ];
 
 const About = () => {
+  function calcularAniosDesde2000(): number {
+    const anioActual = new Date().getFullYear();
+    return anioActual - 2000;
+  }
   return (
     <section className="w-full overflow-hidden pb-[180px]">
       <div className="relative h-[50vh] md:h-[800px] w-full overflow-hidden">
@@ -44,11 +48,11 @@ const About = () => {
           </p>
         </FadeIn>
         <Image
-          alt="equipo aisplac"
+          alt="equipo institucional"
           width={1472}
           height={595}
-          src="/about/team.png"
-          className="mx-auto"
+          src="/about/institucional.png"
+          className="mx-auto rounded-lg"
         />
         <FadeIn>
           <div
@@ -95,11 +99,12 @@ const About = () => {
             </div>
             <div className="p-5 md:w-1/2">
               <p className="md:text-left text-center">
-                Tenemos una trayectoria de más de 24 años en la comercialización
+                {`Tenemos una trayectoria de más de ${calcularAniosDesde2000()} años en la comercialización
                 de materiales para la Construcción en Seco, realización de
                 módulos habitables con contenedores y destacamos nuestro
                 crecimiento de la mano de nuestro producto más comercializado y
-                que fábricamos: Paneles de PVC. 
+                que fábricamos: Paneles de PVC.`}
+                 
               </p>
               <br />
               <p className="md:text-left text-center">

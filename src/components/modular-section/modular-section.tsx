@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import React from 'react';
-import { FowardButton } from '../foward-button';
+import Image from "next/image";
+import React from "react";
+import { FowardButton } from "../foward-button";
 
 const ModularSection = () => {
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center gap-4 bg-cover bg-center bg-no-repeat p-4 md:gap-0 md:p-0">
+    <section className="mt-5 relative flex min-h-screen w-full flex-col items-center justify-center gap-4 bg-cover bg-center bg-no-repeat p-4 md:gap-0 md:p-0">
       <div
         className="absolute -z-20 flex h-full w-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{

@@ -1,15 +1,16 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
-import PortableText from '@/components/portable-text';
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
+import PortableText from "@/components/portable-text";
 
-import type { ImageWithAlt } from '@/types';
-import { formatDate } from '@/lib/utils';
-import { articleSlugsQuery } from '@/sanity/lib/queries';
-import { client } from '@/sanity/lib/sanity.client';
-import { getArticle } from '@/sanity/lib/sanity.api';
-import { urlForImage } from '@/sanity/lib/sanity.image';
+import type { ImageWithAlt } from "@/types";
+import { formatDate } from "@/lib/utils";
+import { articleSlugsQuery } from "@/sanity/lib/queries";
+import { client } from "@/sanity/lib/sanity.client";
+import { getArticle } from "@/sanity/lib/sanity.api";
+import { urlForImage } from "@/sanity/lib/sanity.image";
+import { BackButton } from "@/components/back-button";
 
 type Props = {
   params: { slug: string };
@@ -36,13 +37,7 @@ export default async function ArticlePage({ params }: Props) {
     <article className="px-4 py-36">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8">
-          <Link
-            href="/novedades"
-            className="group inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200 hover:text-gray-900"
-          >
-            <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
-            Volver a todos los artículos
-          </Link>
+          <BackButton text="Volver a novedades" url="/novedades" />
         </div>
 
         <header className="mb-12 text-center">
@@ -53,7 +48,7 @@ export default async function ArticlePage({ params }: Props) {
             <p className="mb-6 text-xl">{article.subtitle}</p>
           )}
           <div className="text-md text-gray-400">
-            <span>Por {article.author || 'Aisplac'}</span>
+            <span>Por {article.author || "Aisplac"}</span>
             <span className="mx-2">•</span>
             <span>{formatDate(article.publishedAt)}</span>
           </div>
@@ -62,8 +57,8 @@ export default async function ArticlePage({ params }: Props) {
         {mainImageUrl ? (
           <div className="relative mb-12 h-64 w-full overflow-hidden rounded-lg shadow-lg md:h-96">
             <Image
-              src={mainImageUrl || '/placeholder.svg'}
-              alt={article.mainImage?.alt || 'Imagen principal del artículo'}
+              src={mainImageUrl || "/placeholder.svg"}
+              alt={article.mainImage?.alt || "Imagen principal del artículo"}
               fill
               className="object-contain"
               priority
@@ -109,8 +104,8 @@ export default async function ArticlePage({ params }: Props) {
                   >
                     {galleryImageUrl ? (
                       <Image
-                        src={galleryImageUrl || '/placeholder.svg'}
-                        alt={image.alt || 'Imagen de la galería'}
+                        src={galleryImageUrl || "/placeholder.svg"}
+                        alt={image.alt || "Imagen de la galería"}
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />

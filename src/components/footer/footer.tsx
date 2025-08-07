@@ -4,9 +4,10 @@ import {
   LocalComertial,
   Location,
   Phone,
-} from '@/app/assets/icons';
-import Image from 'next/image';
-import Link from 'next/link';
+} from "@/app/assets/icons";
+import Image from "next/image";
+import Link from "next/link";
+import { WhatsAppLink } from "../whatsapp-link";
 
 const Footer = () => {
   return (
@@ -49,6 +50,9 @@ const Footer = () => {
                   <p>(2302) 435814 430191</p>
                   <p>(+54 9 2302) 457911</p>
                 </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <WhatsAppLink />
               </div>
 
               <div className="flex items-center gap-3">

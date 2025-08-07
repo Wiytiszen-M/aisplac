@@ -6,6 +6,13 @@ export interface Categoria {
   urlimg: string;
 }
 
+export interface ProductoRelacionado extends Partial<Producto> {
+  codigo: string;
+  personal: string;
+  descripcion: string;
+  urlimg: string;
+}
+
 export interface Producto {
   codigo: string;
   personal: string;
@@ -21,6 +28,8 @@ export interface Producto {
   timestamp: string;
   uxf: string;
   urlimg: string;
+  Fotos: { urlimg: string }[];
+  ProdRelacionados: ProductoRelacionado[];
 }
 
 export interface ProductoCotizacion {
@@ -126,11 +135,6 @@ export interface CategoryCardProps {
   categoria: Categoria;
 }
 
-export interface ProductCardProps {
-  producto: Producto;
-  codigoCategoria: string;
-}
-
 export interface CategoriasClientProps {
   categorias: Categoria[];
 }
@@ -142,12 +146,6 @@ export interface ProductosClientProps {
 
 export interface ProductosServerProps {
   codigoCategoria: string;
-}
-
-export interface ProductosRelacionadosProps {
-  codigoCategoria: string;
-  codigoProductoActual: string;
-  limite?: number;
 }
 
 export interface AgregarCotizacionButtonProps {

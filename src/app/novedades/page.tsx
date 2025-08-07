@@ -1,9 +1,11 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import type { ArticlePreview } from '@/types';
-import { getAllArticles } from '@/sanity/lib/sanity.api';
-import { urlForImage } from '@/sanity/lib/sanity.image';
+import Link from "next/link";
+import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { ArticlePreview } from "@/types";
+import { getAllArticles } from "@/sanity/lib/sanity.api";
+import { urlForImage } from "@/sanity/lib/sanity.image";
+import { MoveRight } from "lucide-react";
+import { BackButton } from "@/components/back-button";
 
 export const revalidate = 3600;
 
@@ -15,6 +17,9 @@ export default async function NovedadesPage() {
 
   return (
     <main className="container mx-auto min-h-screen p-4 py-36">
+      <div className="mb-8">
+        <BackButton text="Volver a home" url="/" />
+      </div>
       <header className="mb-12 text-center">
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
           Novedades
@@ -42,11 +47,11 @@ export default async function NovedadesPage() {
                         urlForImage(featuredArticle.mainImage)
                           ?.width(800)
                           .height(600)
-                          .url() || '/placeholder.svg'
+                          .url() || "/placeholder.svg"
                       }
                       alt={
                         featuredArticle.mainImage?.alt ||
-                        'Imagen del artículo destacado'
+                        "Imagen del artículo destacado"
                       }
                       fill
                       className="object-cover"
@@ -74,11 +79,11 @@ export default async function NovedadesPage() {
                   <div className="space-y-4">
                     <p className="text-sm font-semibold uppercase tracking-wide text-blue-400">
                       {new Date(featuredArticle.publishedAt).toLocaleDateString(
-                        'es-AR',
+                        "es-AR",
                         {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
                         }
                       )}
                     </p>
@@ -95,20 +100,8 @@ export default async function NovedadesPage() {
 
                     <div className="pt-4">
                       <span className="inline-flex items-center font-medium text-blue-400 transition-colors duration-200 group-hover:text-blue-300">
-                        Leer artículo completo
-                        <svg
-                          className="ml-2 h-5 w-5 transform transition-transform duration-200 group-hover:translate-x-1"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
+                        Leer más
+                        <MoveRight className="ml-2 " />
                       </span>
                     </div>
                   </div>
@@ -134,8 +127,8 @@ export default async function NovedadesPage() {
                     <div className="relative h-56 w-full bg-gray-800/50">
                       {imageUrl ? (
                         <Image
-                          src={imageUrl || '/placeholder.svg'}
-                          alt={article.mainImage?.alt || 'Imagen del artículo'}
+                          src={imageUrl || "/placeholder.svg"}
+                          alt={article.mainImage?.alt || "Imagen del artículo"}
                           fill
                           className="object-cover"
                         />
@@ -159,20 +152,26 @@ export default async function NovedadesPage() {
                   <CardContent className="p-6">
                     <p className="mb-2 text-sm text-gray-400">
                       {new Date(article.publishedAt).toLocaleDateString(
-                        'es-AR',
+                        "es-AR",
                         {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
                         }
                       )}
                     </p>
                     <CardTitle className="text-xl font-semibold text-white transition-colors duration-200 hover:text-blue-300">
                       {article.title}
                     </CardTitle>
-                    <p className="mt-2 line-clamp-3 text-gray-300">
+                    <p className="line-clamp-3 text-lg leading-relaxed text-gray-300">
                       {article.subtitle}
                     </p>
+                    <div className="flex justify-end items-end pt-4">
+                      <span className="inline-flex items-center font-medium text-blue-400 transition-colors duration-200 group-hover:text-blue-300">
+                        Leer más
+                        <MoveRight className="ml-2 " />
+                      </span>
+                    </div>
                   </CardContent>
                 </Card>
               </Link>

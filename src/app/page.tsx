@@ -13,7 +13,7 @@ import { FadeIn } from "@/components/fade-in";
 export default function Home() {
   return (
     <>
-      <div className="relative min-h-dvh w-full">
+      <div className=" relative min-h-dvh w-full">
         {/* Navigation solo visible en lg+ */}
         <div className="absolute left-0 top-[329px] hidden md:block">
           <Navigation />

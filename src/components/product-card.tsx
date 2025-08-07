@@ -1,11 +1,16 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Package, HelpCircle } from 'lucide-react';
-import type { ProductCardProps } from '@/types';
+import Link from "next/link";
+import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Package, HelpCircle } from "lucide-react";
+import type { Producto, ProductoRelacionado } from "@/types";
+
+export interface ProductCardProps {
+  producto: Producto | ProductoRelacionado;
+  codigoCategoria?: string;
+}
 
 export function ProductCard({ producto, codigoCategoria }: ProductCardProps) {
-  const imagenUrl = producto.urlimg || '';
+  const imagenUrl = producto?.Fotos?.[0]?.urlimg || producto.urlimg;
 
   return (
     <Link
@@ -15,14 +20,14 @@ export function ProductCard({ producto, codigoCategoria }: ProductCardProps) {
       <Card className="group relative flex h-full flex-col border-gray-700 bg-gray-800 transition-all duration-200 hover:shadow-lg">
         <CardHeader className="flex-shrink-0 pb-4">
           <div className="relative mb-4 aspect-square cursor-pointer overflow-hidden rounded-lg border border-gray-600 bg-gradient-to-br from-gray-700 to-gray-800">
-            {imagenUrl && imagenUrl.trim() !== '' ? (
+            {imagenUrl && imagenUrl.trim() !== "" ? (
               <Image
-                src={imagenUrl || '/placeholder.svg'}
+                src={imagenUrl || "/placeholder.svg"}
                 alt={producto.descripcion}
                 fill
-                className="object-contain transition-transform duration-200 group-hover:scale-105"
+                className="object-cover transition-transform duration-200 group-hover:scale-105"
                 onError={(e) => {
-                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.style.display = "none";
                 }}
               />
             ) : (
@@ -44,7 +49,7 @@ export function ProductCard({ producto, codigoCategoria }: ProductCardProps) {
               {producto.precio && producto.precio > 0 ? (
                 <>
                   <span className="text-lg font-semibold text-green-400">
-                    ${Number(producto.precio).toLocaleString('es-AR')}
+                    ${Number(producto.precio).toLocaleString("es-AR")}
                   </span>
                   {producto.unmedida && (
                     <p className="text-xs text-gray-500">

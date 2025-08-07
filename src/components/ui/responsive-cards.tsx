@@ -4,6 +4,7 @@ import { Suspense, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CardProps {
   title: string;
@@ -14,7 +15,7 @@ interface CardProps {
   isSelected?: boolean;
 }
 
-// Datos para cada tipo de proyecto
+// Datos de proyectos
 const projectData = {
   oficina: {
     description: `Oficina modular de 28,8 m² hecha con contenedor de 40 pies HC. Estructura de acero resistente, aislación térmica y acústica, instalación eléctrica completa e iluminación LED. Lista para usar, rápida de instalar y personalizable. Ideal para oficinas, obras o coworking.`,
@@ -56,6 +57,10 @@ export default function ResponsiveCards() {
   const [selectedCard, setSelectedCard] = useState("oficina");
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  // Modal con navegación
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
   const handleCardClick = (cardType: string) => {
     if (cardType === selectedCard) return;
 
@@ -63,7 +68,22 @@ export default function ResponsiveCards() {
     setTimeout(() => {
       setSelectedCard(cardType);
       setIsTransitioning(false);
-    }, 300); // Duración de la transición
+    }, 300);
+  };
+
+  const openModal = (index: number) => {
+    setCurrentIndex(index);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => setIsModalOpen(false);
+
+  const nextImage = (imagesLength: number) => {
+    setCurrentIndex((prev) => (prev + 1) % imagesLength);
+  };
+
+  const prevImage = (imagesLength: number) => {
+    setCurrentIndex((prev) => (prev - 1 + imagesLength) % imagesLength);
   };
 
   const cards: (CardProps & { type: string })[] = [
@@ -92,7 +112,7 @@ export default function ResponsiveCards() {
         Tenemos más de 50 proyectos construidos en arquitectura modular.
       </h3>
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-3  gap-2 md:gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-3 gap-2 md:gap-6 md:grid-cols-3">
           {cards.map((card, index) => (
             <div
               key={index}
@@ -113,7 +133,7 @@ export default function ResponsiveCards() {
         </div>
       </div>
       <div className="mx-auto mt-12 flex items-center justify-center">
-        <Link href="/contact">
+        <Link href="/contact-us">
           <Button variant="secundary" size="lg">
             SOLICITAR COTIZACIONES
           </Button>
@@ -139,7 +159,11 @@ export default function ResponsiveCards() {
           <div className="grid w-full grid-cols-2 justify-center gap-4 md:grid-cols-4">
             <Suspense fallback={<div>Loading...</div>}>
               {currentProject.images.map((image, index) => (
-                <div key={index} className="flex items-center justify-center">
+                <div
+                  key={index}
+                  className="flex items-center justify-center cursor-pointer"
+                  onClick={() => openModal(index)}
+                >
                   <Image
                     alt={`${currentProject.title}-${index + 1}`}
                     src={image}
@@ -153,6 +177,48 @@ export default function ResponsiveCards() {
           </div>
         </div>
       </div>
+
+      {/* MODAL con navegación */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
+          onClick={closeModal}
+        >
+          <div
+            className="relative max-w-5xl w-full p-4"
+            onClick={(e) => e.stopPropagation()} // Evita cerrar al hacer click en el contenido
+          >
+            <Image
+              src={currentProject.images[currentIndex]}
+              alt="modal-img"
+              width={1000}
+              height={800}
+              className="w-full h-auto rounded-lg"
+            />
+            {/* Cerrar */}
+            <button
+              className="absolute top-6 right-6 text-white text-2xl"
+              onClick={closeModal}
+            >
+              ✕
+            </button>
+            {/* Anterior */}
+            <button
+              className="absolute left-2 top-1/2 -translate-y-1/2 text-white text-4xl"
+              onClick={() => prevImage(currentProject.images.length)}
+            >
+              <ChevronLeft className="w-10 h-10 md:w-12 md:h-12" />
+            </button>
+            {/* Siguiente */}
+            <button
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-white text-4xl"
+              onClick={() => nextImage(currentProject.images.length)}
+            >
+              <ChevronRight className="w-10 h-10 md:w-12 md:h-12" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

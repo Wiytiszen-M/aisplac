@@ -1,6 +1,6 @@
-import { ShoppingBag } from 'lucide-react';
-import { getProductos } from '@/lib/api';
-import { ProductosClient } from '@/components/productos-client';
+import { ShoppingBag } from "lucide-react";
+import { getProductos } from "@/lib/api";
+import { ProductosClient } from "@/components/productos-client";
 
 interface ProductosServerProps {
   codigoCategoria: string;
@@ -12,7 +12,7 @@ export async function ProductosServer({
   const { data: productos, error } = await getProductos(codigoCategoria);
 
   if (error) {
-    throw new Error(error); // Esto activará error.tsx
+    throw new Error(error);
   }
 
   if (!productos || productos.length === 0) {

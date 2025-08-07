@@ -1,19 +1,19 @@
-'use client';
-import { useState, useRef, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+"use client";
+import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { links } from '@/lib/constants';
-import { FileText, Menu, X } from 'lucide-react';
-import { useCotizacionStore } from '@/stores/cotizacion-store';
+import Image from "next/image";
+import Link from "next/link";
+import { links } from "@/lib/constants";
+import { FileText, Menu, X } from "lucide-react";
+import { useCotizacionStore } from "@/stores/cotizacion-store";
 
 const Header = () => {
   const { items } = useCotizacionStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
-  const isHomePage = pathname === '/';
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -22,9 +22,9 @@ const Header = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
   const cantidadTotal = items.length;
@@ -77,12 +77,12 @@ const Header = () => {
       {/* Mobile Menu Overlay */}
       <div
         ref={menuRef}
-        className={`fixed left-0 top-0 z-40 flex h-full w-full max-w-[300px] flex-col items-center justify-center gap-8 bg-[#252147] bg-opacity-95 p-4 text-center text-white transition-all duration-300 ease-in-out ${
+        className={`fixed left-0 top-0 z-40 flex h-screen w-full max-w-[300px] flex-col items-center justify-center gap-8 bg-[#252147] bg-opacity-95 p-4 text-center text-white transition-all duration-300 ease-in-out ${
           isMenuOpen
-            ? 'pointer-events-auto translate-x-0 opacity-100'
-            : 'pointer-events-none -translate-x-full opacity-0'
+            ? "pointer-events-auto translate-x-0 opacity-100"
+            : "pointer-events-none -translate-x-full opacity-0"
         }`}
-        style={{ willChange: 'transform, opacity' }}
+        style={{ willChange: "transform, opacity" }}
       >
         <button
           className="absolute right-6 top-6 text-white"
@@ -99,8 +99,8 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
               className={`px-2 py-1 ${
                 isActive
-                  ? 'border-b-2 border-white'
-                  : 'border-b-2 border-transparent'
+                  ? "border-b-2 border-white"
+                  : "border-b-2 border-transparent"
               } hover:border-white`}
             >
               {link.label}

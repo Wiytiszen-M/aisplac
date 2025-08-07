@@ -1,6 +1,6 @@
 import type { Producto } from "@/types";
 
-const NIK_TOKEN = process.env.NIK_TOKEN;
+const NIK_TOKEN = process.env.NEXT_PUBLIC_NIK_TOKEN;
 export async function getPVCProducts(): Promise<Map<string, Producto>> {
   const productMap = new Map<string, Producto>();
 

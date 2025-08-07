@@ -6,7 +6,7 @@ export default function VideoInstitucional() {
       muted
       loop
       playsInline
-      className="h-auto w-full object-cover"
+      className="h-auto w-full object-cover rounded-lg"
     />
   );
 }

@@ -30,13 +30,14 @@ const PVCSection = () => {
           </div>
         </div>
       </div>
-      <Image
-        src="/pvc-table.png"
-        alt="pvc-tables-bg"
-        width={932}
-        height={523}
-        className="absolute bottom-[15%] top-14 z-0 h-[150px] w-[200px] md:bottom-0 md:h-full md:w-full md:max-w-[932px]"
-      />
+      <div className="absolute md:static bottom-[10%] top-14  h-[200px] w-[250px] md:h-full md:w-full md:max-w-[932px]">
+        <Image
+          src="/pvc-table.png"
+          alt="pvc-tables-bg"
+          fill
+          className="absolute  z-0  md:bottom-0 md:h-full md:w-full md:max-w-[932px]"
+        />
+      </div>
     </section>
   );
 };

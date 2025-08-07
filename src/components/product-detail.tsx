@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Minus, Plus, Share2, Copy, Check, Loader2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useCotizacionStore } from '@/stores/cotizacion-store';
-import { useClickProtection } from '@/hooks/use-click-protection';
+import { useState } from "react";
+import Image from "next/image";
+import { Minus, Plus, Share2, Copy, Check, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useCotizacionStore } from "@/stores/cotizacion-store";
+import { useClickProtection } from "@/hooks/use-click-protection";
 
 import {
   DropdownMenu,
@@ -13,9 +13,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import type { Producto } from '@/types';
-import { Separator } from '@radix-ui/react-separator';
+} from "@/components/ui/dropdown-menu";
+import type { Producto } from "@/types";
+import { Separator } from "@radix-ui/react-separator";
 
 interface ProductDetailProps {
   producto: Producto;
@@ -34,7 +34,10 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
   });
 
   // Generate multiple views of the product image
-  const productImages = [producto?.urlimg || '/logo.svg'];
+  const productImages =
+    producto?.Fotos?.length && Array.isArray(producto.Fotos)
+      ? producto.Fotos.map((foto) => foto.urlimg)
+      : [producto?.urlimg];
 
   const incrementQuantity = () => {
     setQuantity((prev) => Math.min(prev + 1, producto?.stock || 999));
@@ -45,9 +48,9 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('es-AR', {
-      style: 'currency',
-      currency: 'ARS',
+    return new Intl.NumberFormat("es-AR", {
+      style: "currency",
+      currency: "ARS",
     }).format(price);
   };
 
@@ -75,16 +78,16 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
     });
 
     if (!success && !isProcessing) {
-      console.log('Click bloqueado por protección - demasiado rápido');
+      console.log("Click bloqueado por protección - demasiado rápido");
     }
   };
 
   // Funciones de compartir
   const getShareData = () => {
-    const url = typeof window !== 'undefined' ? window.location.href : '';
+    const url = typeof window !== "undefined" ? window.location.href : "";
     const title = producto.descripcion;
     const price =
-      producto.precio > 0 ? formatPrice(producto.precio) : 'Consultar precio';
+      producto.precio > 0 ? formatPrice(producto.precio) : "Consultar precio";
     const text = `🏗️ ${title}\n💰 ${price}\n📦 SKU: ${producto.codigo}\n\n¡Mira este producto de construcción!`;
 
     return { url, title, text, price };
@@ -95,7 +98,7 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
       `${text}\n\n${url}`
     )}`;
-    window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, "_blank");
   };
 
   const copiarUrl = async () => {
@@ -106,19 +109,18 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
         await navigator.clipboard.writeText(url);
       } else {
         // Fallback para navegadores más antiguos
-        const textArea = document.createElement('textarea');
+        const textArea = document.createElement("textarea");
         textArea.value = url;
         document.body.appendChild(textArea);
         textArea.select();
-        document.execCommand('copy');
         document.body.removeChild(textArea);
       }
 
       setUrlCopiada(true);
       setTimeout(() => setUrlCopiada(false), 2000);
     } catch (err) {
-      console.error('Error al copiar URL:', err);
-      alert('No se pudo copiar la URL');
+      console.error("Error al copiar URL:", err);
+      alert("No se pudo copiar la URL");
     }
   };
 
@@ -131,14 +133,14 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
             {/* Main Image */}
             <div className="relative aspect-square overflow-hidden rounded-2xl bg-white shadow-2xl">
               <Image
-                src={productImages[currentImageIndex] || '/placeholder.svg'}
+                src={productImages[currentImageIndex] || "/placeholder.svg"}
                 alt={producto.descripcion}
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = '/logo.svg';
+                  target.src = "/logo.svg";
                 }}
               />
             </div>
@@ -151,18 +153,18 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                   onClick={() => setCurrentImageIndex(index)}
                   className={`relative aspect-square overflow-hidden rounded-lg bg-white transition-all duration-200 ${
                     currentImageIndex === index
-                      ? 'ring-3 ring-blue-400 ring-offset-2 ring-offset-slate-900'
-                      : 'hover:ring-2 hover:ring-blue-300 hover:ring-offset-1 hover:ring-offset-slate-900'
+                      ? "ring-3 ring-blue-400 ring-offset-2 ring-offset-slate-900"
+                      : "hover:ring-2 hover:ring-blue-300 hover:ring-offset-1 hover:ring-offset-slate-900"
                   }`}
                 >
                   <Image
-                    src={image || '/placeholder.svg'}
+                    src={image}
                     alt={`${producto.descripcion} vista ${index + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/placeholder.svg?height=100&width=100';
+                      target.src = "/placeholder.svg?height=100&width=100";
                     }}
                   />
                 </button>
@@ -220,7 +222,7 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                       ) : (
                         <Copy className="mr-2 h-4 w-4" />
                       )}
-                      {urlCopiada ? '¡URL Copiada!' : 'Copiar URL'}
+                      {urlCopiada ? "¡URL Copiada!" : "Copiar URL"}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -242,12 +244,12 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                   <span className="font-semibold">SKU</span> {producto.codigo}
                 </p>
                 <p className="text-sm">
-                  <span className="font-semibold">Unidad:</span>{' '}
+                  <span className="font-semibold">Unidad:</span>{" "}
                   {producto.unmedida}
                 </p>
                 {producto.pesogramos > 0 && (
                   <p className="text-sm">
-                    <span className="font-semibold">Peso:</span>{' '}
+                    <span className="font-semibold">Peso:</span>{" "}
                     {producto.pesogramos}g
                   </p>
                 )}
@@ -322,12 +324,12 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
               <h3 className="text-2xl font-semibold">DETALLES DEL PRODUCTO</h3>
               <div className="space-y-2 text-blue-100">
                 <p className="text-2xl">
-                  <span className="font-light">Descripción:</span>{' '}
+                  <span className="font-light">Descripción:</span>{" "}
                   {producto.descripcion}
                 </p>
                 {producto.uxb > 0 && (
                   <p className="text-2xl">
-                    <span className="font-light">Unidades por bulto:</span>{' '}
+                    <span className="font-light">Unidades por bulto:</span>{" "}
                     {producto.uxb}
                   </p>
                 )}

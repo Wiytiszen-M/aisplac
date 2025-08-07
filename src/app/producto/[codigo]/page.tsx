@@ -1,11 +1,12 @@
-import { Package } from 'lucide-react';
+import { Package } from "lucide-react";
 
-import { getProducto } from '@/lib/api';
-// import { AgregarCotizacionButton } from "@/components/agregar-cotizacion-button";
-import { BackButton } from '@/components/back-button';
-import ProductDetail from '@/components/product-detail';
-import { Suspense } from 'react';
-import ProductDetailSkeleton from '@/components/product-detail-skeleton';
+import { getProducto } from "@/lib/api";
+import { BackButton } from "@/components/back-button";
+import ProductDetail from "@/components/product-detail";
+import { Suspense } from "react";
+import ProductDetailSkeleton from "@/components/product-detail-skeleton";
+import { ProductosRelacionados } from "@/components/productos-relacionados";
+import { notFound } from "next/navigation";
 
 export default async function ProductoPage({
   params,
@@ -14,8 +15,12 @@ export default async function ProductoPage({
   params: { codigo: string };
   searchParams: { categoria?: string };
 }) {
-  const categoria = searchParams.categoria || '';
+  const categoria = searchParams.categoria || "";
   const { data: producto, error } = await getProducto(categoria, params.codigo);
+
+  if (!categoria) {
+    notFound();
+  }
 
   if (error) {
     throw new Error(error); // Esto activará error.tsx
@@ -41,6 +46,11 @@ export default async function ProductoPage({
         <BackButton text="Volver a productos" />
         <Suspense fallback={<ProductDetailSkeleton />}>
           <ProductDetail producto={producto} />
+          <ProductosRelacionados
+            codigoProductoActual={producto.codigo}
+            codigoCategoria={categoria}
+            productos={producto.ProdRelacionados}
+          />
         </Suspense>
       </div>
     </div>

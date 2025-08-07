@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Modular = () => {
   return (
-    <section className="mx-auto flex flex-col items-center pb-[150px] min-h-screen">
+    <section className="mx-auto flex flex-col items-center pb-36 md:py-36  min-h-screen overflow-x-hidden">
       <div className="relative flex w-full flex-col items-center justify-center ">
         <div className="md:relative h-[85vh] w-full max-w-[1728px] overflow-hidden pt-[100px] md:h-[852px] md:pt-0">
           <Image
@@ -19,7 +19,7 @@ const Modular = () => {
           />
 
           <Image
-            className="absolute -bottom-12 lg:-bottom-40 w-[420px] max-w-none -right-10 lg:-right-32"
+            className="absolute -bottom-12 lg:-bottom-40 w-[420px] md:w-full max-w-none -right-10 lg:-right-32"
             src="/modular/modular-building.png"
             width={1376}
             height={1022}
@@ -35,7 +35,7 @@ const Modular = () => {
           alternativa competitiva y de alto impacto en el mercado.
         </p>
         <Link
-          href="/contact"
+          href="/contact-us"
           className="text-base font-bold transition-all duration-1000 hover:underline md:text-3xl"
         >
           ¡Contactanos para planificar tu espacio modular!
@@ -56,7 +56,7 @@ const Modular = () => {
         <h2 className="p-8 md:my-[75px] md:w-[792px] md:p-0">
           Contactanos y te ayudamos a hacerlo realidad. 
         </h2>
-        <Link href="/contact">
+        <Link href="/contact-us">
           <Button variant="secundary" size="lg">
             SOLICITAR MÁS INFO
           </Button>

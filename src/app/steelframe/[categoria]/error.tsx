@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { AlertCircle, RefreshCw, Home } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { AlertCircle, RefreshCw, Home } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function MaterialesError({
   error,
@@ -12,7 +12,7 @@ export default function MaterialesError({
   reset: () => void;
 }) {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8">
       <div className="flex min-h-[500px] items-center justify-center">
         <div className="max-w-md text-center">
           <AlertCircle className="mx-auto mb-6 h-20 w-20 text-red-500" />

@@ -61,7 +61,6 @@ async function fetchWithRetry(
 // Obtener categorías PVC
 export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
   try {
-    console.log("📦 Obteniendo categorías...");
     const startTime = Date.now();
 
     const response = await fetchWithRetry(
@@ -69,6 +68,7 @@ export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
     );
 
     const responseText = await response.text();
+    console.log(responseText, "response text log");
 
     if (!responseText || responseText.trim() === "") {
       throw new Error("Respuesta vacía al obtener categorías");
@@ -205,15 +205,12 @@ export async function getProductos(
   codigoCategoria: string
 ): Promise<ApiResponse<Producto[]>> {
   try {
-    console.log(`📦 Obteniendo productos para categoría ${codigoCategoria}...`);
-    const startTime = Date.now();
-
     const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}`;
+    console.log("url", url);
 
     const response = await fetchWithRetry(url);
 
     const responseText = await response.text();
-    const loadTime = Date.now() - startTime;
 
     if (!responseText || responseText.trim() === "") {
       return { data: [], error: "La API devolvió una respuesta vacía" };
@@ -244,40 +241,32 @@ export async function getProductos(
       }
     }
 
-    console.log(
-      `✅ ${productosData.length} productos cargados en ${loadTime}ms`
-    );
+    // No es error si el array está vacío
+    const productosNormalizados = productosData.map((prod: Producto) => ({
+      codigo: String(prod.codigo),
+      personal: prod.personal || "",
+      descripcion: prod.descripcion || "",
+      unmedida: prod.unmedida || "UN",
+      precio: Number(prod.precio) || 0,
+      codcategoria: String(prod.codcategoria),
+      pesogramos: Number(prod.pesogramos) || 0,
+      codsubcategoria: String(prod.codsubcategoria),
+      uxb: Number(prod.uxb) || 0,
+      stock: Number(prod.stock) || 0,
+      activo: Boolean(prod.activo),
+      timestamp: prod.timestamp || "",
+      uxf: prod.uxf || "",
+      urlimg: prod.urlimg || "",
+      ProdRelacionados: prod.ProdRelacionados || [],
+      Fotos: Array.isArray(prod.Fotos)
+        ? prod.Fotos.filter((f) => typeof f.urlimg === "string")
+        : [],
+    }));
 
-    if (productosData.length > 0) {
-      const productosNormalizados = productosData.map((prod: Producto) => {
-        return {
-          codigo: String(prod.codigo),
-          personal: prod.personal || "",
-          descripcion: prod.descripcion || "",
-          unmedida: prod.unmedida || "UN",
-          precio: Number(prod.precio) || 0,
-          codcategoria: String(prod.codcategoria),
-          pesogramos: Number(prod.pesogramos) || 0,
-          codsubcategoria: String(prod.codsubcategoria),
-          uxb: Number(prod.uxb) || 0,
-          stock: Number(prod.stock) || 0,
-          activo: Boolean(prod.activo),
-          timestamp: prod.timestamp || "",
-          uxf: prod.uxf || "",
-          urlimg: prod.urlimg || "",
-        };
-      });
-
-      return {
-        data: productosNormalizados,
-        error: null,
-      };
-    } else {
-      return {
-        data: [],
-        error: "No se encontraron productos en esta categoría",
-      };
-    }
+    return {
+      data: productosNormalizados,
+      error: null,
+    };
   } catch (err) {
     const errorMessage =
       err instanceof Error ? err.message : "Error desconocido";

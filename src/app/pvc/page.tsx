@@ -1,11 +1,10 @@
-'use client';
-import { CategoriasPVCGrid } from '@/components/categorias-pvc-grid';
-import { CategoriasSkeleton } from '@/components/categorias-skeleton';
-import { FadeIn } from '@/components/fade-in';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Suspense } from 'react';
+import { CategoriasPVCGrid } from "@/components/categorias-pvc-grid";
+import { CategoriasSkeleton } from "@/components/categorias-skeleton";
+import { FadeIn } from "@/components/fade-in";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import { Suspense } from "react";
 
 const PVCPage = () => {
   return (
@@ -16,11 +15,11 @@ const PVCPage = () => {
           alt="bg-logo"
           width={375}
           height={308}
-          className="absolute bottom-[-50px] right-0 z-50 max-[450px]:object-contain"
+          className="absolute bottom-[-50px] right-0 z-40 max-[450px]:object-contain"
         />
         <div
           className="container-main relative w-full overflow-hidden rounded-bl-[80px] pt-20 md:w-[95%] md:rounded-bl-[218px] md:pl-28 md:pt-32"
-          style={{ background: '#018EA0' }}
+          style={{ background: "#018EA0" }}
         >
           <div className="relative aspect-[16/9] h-[70vh] w-full md:aspect-[16/7]">
             <div className="absolute left-0 right-0 top-20 flex justify-center">
@@ -48,7 +47,7 @@ const PVCPage = () => {
       <div className="hidden justify-end md:flex">
         <div
           className="relative w-full overflow-hidden rounded-bl-[80px] pt-20 md:w-[95%] md:rounded-bl-[218px] md:pl-28 md:pt-32"
-          style={{ background: '#018EA0' }}
+          style={{ background: "#018EA0" }}
         >
           <div className="relative aspect-[16/9] w-full md:aspect-[16/7]">
             <Image
@@ -61,8 +60,8 @@ const PVCPage = () => {
         </div>
       </div>
       <div className="flex w-full flex-col justify-around gap-6 p-4 md:my-[153px] md:flex-row">
-        <FadeIn className="w-full max-w-[630px]">
-          <p className="w-full max-w-[630px] pt-20 text-center md:p-0 md:pt-5 md:text-left">
+        <FadeIn className="w-full max-w-[630px] px-4">
+          <p className="w-full pt-20 text-center md:p-0 md:pt-5 md:text-left">
             Con amplia experiencia en la industria plástica, nos dedicamos a la
             fabricación de paneles de PVC y accesorios. Ofrecemos soluciones
             integrales para cielorrasos y terminaciones, atendiendo las
@@ -83,8 +82,8 @@ const PVCPage = () => {
         </Suspense>
       </div>
       <div className="relative flex justify-center md:py-[181px]">
-        <FadeIn className="w-[1230px]">
-          <p className="w-[1230px] p-5 text-center md:p-0">
+        <FadeIn className="w-full max-w-[1230px] px-4">
+          <p className="w-full p-5 text-center md:p-0">
             Material fabricado a partir de la extrusión de PVC, con maquinaria
             de calidad, solidez y precisión.  Respondiendo a las normativas
             constructivas, certificado aptitud técnica y aprobado por el SENASA
@@ -96,7 +95,7 @@ const PVCPage = () => {
           src="/pvc-logo.png"
           width={611}
           height={491}
-          className="absolute top-0 h-[491px] w-[611px] md:right-0"
+          className="absolute top-0 h-[250px] w-[250px] md:h-[491px] md:w-[611px] md:right-0"
           alt="pvc-logo"
         />
       </div>
@@ -112,11 +111,11 @@ const PVCPage = () => {
           src="/pvc-logo.png"
           width={611}
           height={491}
-          className="absolute -z-10 h-[491px] w-[611px] lg:relative"
+          className="absolute -z-10 h-[200px] w-[200px] md:h-[491px] md:w-[611px] lg:relative"
           alt="pvc-logo"
         />
-        <FadeIn className="w-[630px]">
-          <p className="w-[630px] p-5 text-center md:p-0 md:text-left">
+        <FadeIn className="w-full max-w-[630px]">
+          <p className="w-full p-5 text-center md:p-0 md:text-left">
             Perfiles plásticos para cielorrasos, con una línea de colores y
             accesorios variada. Solución integral en revestimientos para la
             industria, el comercio y el hogar.

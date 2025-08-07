@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { useEffect } from "react";
+import Image from "next/image";
 import {
   Trash2,
   FileText,
@@ -12,16 +12,28 @@ import {
   Minus,
   Phone,
   Mail,
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useCotizacionStore } from '@/stores/cotizacion-store';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { scrollToTop } from '@/lib/utils';
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useCotizacionStore } from "@/stores/cotizacion-store";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { scrollToTop } from "@/lib/utils";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+// Define form fields type
+interface ClienteForm {
+  nombreEmpresa: string;
+  contacto: string;
+  email: string;
+  telefono: string;
+  codigoPostal: string;
+  direccion: string;
+  observaciones: string;
+}
 
 export default function CotizacionPage() {
   const router = useRouter();
@@ -43,9 +55,24 @@ export default function CotizacionPage() {
     resetearEstadoExito,
   } = useCotizacionStore();
 
-  const [emailError, setEmailError] = useState('');
+  // Initialize form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ClienteForm>({
+    defaultValues: {
+      nombreEmpresa: datosCotizacion.nombreEmpresa,
+      contacto: datosCotizacion.contacto,
+      email: datosCotizacion.email,
+      telefono: datosCotizacion.telefono,
+      codigoPostal: datosCotizacion.codigoPostal,
+      direccion: datosCotizacion.direccion,
+      observaciones: datosCotizacion.observaciones,
+    },
+  });
 
-  // Resetear el estado de éxito cuando el componente se desmonta (usuario navega fuera)
+  // Reset success on unmount
   useEffect(() => {
     return () => {
       if (cotizacionEnviada) {
@@ -54,49 +81,40 @@ export default function CotizacionPage() {
     };
   }, [cotizacionEnviada, resetearEstadoExito]);
 
-  const handleEnviarCotizacion = async () => {
-    // Validar email
-    if (!datosCotizacion.email) {
-      setEmailError('El email es requerido');
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(datosCotizacion.email)) {
-      setEmailError('Ingresa un email válido');
-      return;
-    }
-
-    setEmailError('');
+  // Submit handler
+  const onSubmit: SubmitHandler<ClienteForm> = async (data) => {
+    // Sync form data to store
+    actualizarDatosCotizacion({ nombreEmpresa: data.nombreEmpresa });
+    actualizarDatosCotizacion({ contacto: data.contacto });
+    actualizarDatosCotizacion({ email: data.email });
+    actualizarDatosCotizacion({ telefono: data.telefono });
+    actualizarDatosCotizacion({ codigoPostal: data.codigoPostal });
+    actualizarDatosCotizacion({ direccion: data.direccion });
+    actualizarDatosCotizacion({ observaciones: data.observaciones });
+    // Send quotation
     await enviarCotizacion();
   };
 
   const handleSeguirComprando = () => {
     resetearEstadoExito();
-    router.push('/');
+    router.push("/");
   };
 
-  const formatearFecha = (fecha: string) => {
-    return new Date(fecha).toLocaleString('es-AR', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
+  const formatearFecha = (fecha: string) =>
+    new Date(fecha).toLocaleString("es-AR", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
     });
-  };
 
-  const incrementarCantidad = (codigo: string, cantidadActual: number) => {
-    actualizarCantidad(codigo, cantidadActual + 1);
-  };
+  const incrementarCantidad = (codigo: string, cantidad: number) =>
+    actualizarCantidad(codigo, cantidad + 1);
+  const decrementarCantidad = (codigo: string, cantidad: number) =>
+    cantidad > 1 && actualizarCantidad(codigo, cantidad - 1);
 
-  const decrementarCantidad = (codigo: string, cantidadActual: number) => {
-    if (cantidadActual > 1) {
-      actualizarCantidad(codigo, cantidadActual - 1);
-    }
-  };
-
-  // Si la cotización fue enviada exitosamente, mostrar mensaje de confirmación
+  // Success state
   if (cotizacionEnviada && ultimoEnvio) {
     scrollToTop();
     return (
@@ -106,13 +124,11 @@ export default function CotizacionPage() {
           <h1 className="mb-4 text-3xl font-bold text-white">
             ¡Cotización Enviada Exitosamente!
           </h1>
-
           <div className="space-y-4 text-gray-300">
             <p className="text-lg">
               Tu cotización ha sido enviada correctamente y se encuentra en
               proceso de revisión.
             </p>
-
             <div className="space-y-2 rounded-lg bg-gray-800 p-4">
               <div className="flex items-center justify-center gap-2 text-white">
                 <Mail className="h-5 w-5" />
@@ -121,13 +137,12 @@ export default function CotizacionPage() {
                 </span>
               </div>
               <p className="text-sm text-gray-400">
-                Enviado a:{' '}
+                Enviado a:{" "}
                 <span className="font-medium text-white">
                   {datosCotizacion.email}
                 </span>
               </p>
             </div>
-
             <div className="space-y-2 rounded-lg p-4">
               <div className="flex items-center justify-center gap-2 text-blue-400">
                 <Phone className="h-5 w-5" />
@@ -136,14 +151,13 @@ export default function CotizacionPage() {
                 </span>
               </div>
             </div>
-
             <div className="space-y-1 text-sm text-gray-400">
               <p className="space-y-1 text-sm text-gray-400">
                 Fecha de envío: {formatearFecha(ultimoEnvio)}
               </p>
               {referenciaGestionNik && (
                 <p className="space-y-1 text-sm text-gray-400">
-                  Referencia:{' '}
+                  Referencia:{" "}
                   <span className="rounded bg-gray-700 px-2 py-1 font-mono text-white">
                     {referenciaGestionNik}
                   </span>
@@ -151,7 +165,6 @@ export default function CotizacionPage() {
               )}
             </div>
           </div>
-
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             {urlComprobante && (
               <Button variant="outline">
@@ -164,7 +177,6 @@ export default function CotizacionPage() {
                 </a>
               </Button>
             )}
-
             <Button onClick={handleSeguirComprando}>Explorar Catálogo</Button>
           </div>
         </div>
@@ -172,6 +184,7 @@ export default function CotizacionPage() {
     );
   }
 
+  // Empty state
   if (items.length === 0) {
     scrollToTop();
     return (
@@ -221,7 +234,7 @@ export default function CotizacionPage() {
                   <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-gray-600 sm:h-16 sm:w-16">
                     {item.urlimg ? (
                       <Image
-                        src={item.urlimg || '/placeholder.svg'}
+                        src={item.urlimg || "/placeholder.svg"}
                         alt={item.descripcion}
                         width={64}
                         height={64}
@@ -287,7 +300,7 @@ export default function CotizacionPage() {
                           <span className="font-medium text-green-400">
                             $
                             {(item.precio * item.cantidad).toLocaleString(
-                              'es-AR'
+                              "es-AR"
                             )}
                           </span>
                         </div>
@@ -315,7 +328,7 @@ export default function CotizacionPage() {
                       Total:
                     </span>
                     <span className="text-xl font-bold text-green-400 sm:text-2xl">
-                      ${total.toLocaleString('es-AR')}
+                      ${total.toLocaleString("es-AR")}
                     </span>
                   </div>
                 </div>
@@ -324,8 +337,11 @@ export default function CotizacionPage() {
           </Card>
         </div>
 
-        {/* Datos del cliente y envío */}
-        <div className="space-y-4 sm:space-y-6">
+        {/* Formulario de datos del cliente */}
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-4 sm:space-y-6"
+        >
           <Card className="border-gray-700 bg-gray-800">
             <CardHeader className="pb-3 sm:pb-4">
               <CardTitle className="text-base text-white sm:text-lg">
@@ -335,25 +351,33 @@ export default function CotizacionPage() {
             <CardContent className="space-y-3 sm:space-y-4">
               <div>
                 <Label className="text-sm text-gray-300">
-                  Nombre de la Empresa
+                  Nombre de la Empresa *
                 </Label>
                 <Input
-                  value={datosCotizacion.nombreEmpresa}
-                  onChange={(e) =>
-                    actualizarDatosCotizacion({ nombreEmpresa: e.target.value })
-                  }
+                  {...register("nombreEmpresa", {
+                    required: "Nombre de empresa es requerido",
+                    onChange: (e) =>
+                      actualizarDatosCotizacion({
+                        nombreEmpresa: e.target.value,
+                      }),
+                  })}
                   className="h-9 border-gray-600 bg-gray-700 text-sm text-white sm:h-10"
                   placeholder="Nombre de tu empresa"
                 />
+                {errors.nombreEmpresa && (
+                  <p className="mt-1 text-xs text-red-400">
+                    {errors.nombreEmpresa.message}
+                  </p>
+                )}
               </div>
 
               <div>
                 <Label className="text-sm text-gray-300">Contacto</Label>
                 <Input
-                  value={datosCotizacion.contacto}
-                  onChange={(e) =>
-                    actualizarDatosCotizacion({ contacto: e.target.value })
-                  }
+                  {...register("contacto", {
+                    onChange: (e) =>
+                      actualizarDatosCotizacion({ contacto: e.target.value }),
+                  })}
                   className="h-9 border-gray-600 bg-gray-700 text-sm text-white sm:h-10"
                   placeholder="Nombre del contacto"
                 />
@@ -363,50 +387,64 @@ export default function CotizacionPage() {
                 <Label className="text-sm text-gray-300">Email *</Label>
                 <Input
                   type="email"
-                  value={datosCotizacion.email}
-                  onChange={(e) => {
-                    actualizarDatosCotizacion({ email: e.target.value });
-                    setEmailError('');
-                  }}
+                  {...register("email", {
+                    required: "El email es requerido",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Ingresa un email válido",
+                    },
+                    onChange: (e) =>
+                      actualizarDatosCotizacion({ email: e.target.value }),
+                  })}
                   className="h-9 border-gray-600 bg-gray-700 text-sm text-white sm:h-10"
                   placeholder="tu@email.com"
                 />
-                {emailError && (
-                  <p className="mt-1 text-xs text-red-400">{emailError}</p>
+                {errors.email && (
+                  <p className="mt-1 text-xs text-red-400">
+                    {errors.email.message}
+                  </p>
                 )}
               </div>
 
               <div>
                 <Label className="text-sm text-gray-300">Teléfono</Label>
                 <Input
-                  value={datosCotizacion.telefono}
-                  onChange={(e) =>
-                    actualizarDatosCotizacion({ telefono: e.target.value })
-                  }
+                  {...register("telefono", {
+                    onChange: (e) =>
+                      actualizarDatosCotizacion({ telefono: e.target.value }),
+                  })}
                   className="h-9 border-gray-600 bg-gray-700 text-sm text-white sm:h-10"
                   placeholder="Número de teléfono"
                 />
               </div>
 
               <div>
-                <Label className="text-sm text-gray-300">Código Postal</Label>
+                <Label className="text-sm text-gray-300">Código Postal *</Label>
                 <Input
-                  value={datosCotizacion.codigoPostal}
-                  onChange={(e) =>
-                    actualizarDatosCotizacion({ codigoPostal: e.target.value })
-                  }
+                  {...register("codigoPostal", {
+                    required: "Código postal es requerido",
+                    onChange: (e) =>
+                      actualizarDatosCotizacion({
+                        codigoPostal: e.target.value,
+                      }),
+                  })}
                   className="h-9 border-gray-600 bg-gray-700 text-sm text-white sm:h-10"
                   placeholder="Código postal"
                 />
+                {errors.codigoPostal && (
+                  <p className="mt-1 text-xs text-red-400">
+                    {errors.codigoPostal.message}
+                  </p>
+                )}
               </div>
 
               <div>
                 <Label className="text-sm text-gray-300">Dirección</Label>
                 <Input
-                  value={datosCotizacion.direccion}
-                  onChange={(e) =>
-                    actualizarDatosCotizacion({ direccion: e.target.value })
-                  }
+                  {...register("direccion", {
+                    onChange: (e) =>
+                      actualizarDatosCotizacion({ direccion: e.target.value }),
+                  })}
                   className="h-9 border-gray-600 bg-gray-700 text-sm text-white sm:h-10"
                   placeholder="Dirección completa"
                 />
@@ -415,59 +453,60 @@ export default function CotizacionPage() {
               <div>
                 <Label className="text-sm text-gray-300">Observaciones</Label>
                 <Textarea
-                  value={datosCotizacion.observaciones}
-                  onChange={(e) =>
-                    actualizarDatosCotizacion({ observaciones: e.target.value })
-                  }
+                  {...register("observaciones", {
+                    onChange: (e) =>
+                      actualizarDatosCotizacion({
+                        observaciones: e.target.value,
+                      }),
+                  })}
                   className="min-h-[60px] border-gray-600 bg-gray-700 text-sm text-white sm:min-h-[80px]"
                   placeholder="Observaciones adicionales..."
                   rows={2}
                 />
               </div>
             </CardContent>
+
+            {errorEnvio && (
+              <Card className="border-red-700 bg-red-900/20">
+                <CardContent className="pt-4 sm:pt-6">
+                  <div className="mb-2 flex items-center gap-2 text-red-400">
+                    <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span className="text-sm font-medium sm:text-base">
+                      Error al enviar
+                    </span>
+                  </div>
+                  <p className="text-xs text-red-300 sm:text-sm">
+                    {errorEnvio}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+
+            <div className="sticky bottom-4 space-y-3 rounded-t-lg border-t border-gray-700 bg-gray-900 p-3 sm:static sm:mx-0 sm:rounded-none sm;border-t-0 sm:bg-transparent  ">
+              <Button
+                type="submit"
+                disabled={enviando || items.length === 0}
+                className="w-full"
+              >
+                {enviando ? (
+                  "Enviando..."
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" />
+                    Enviar Cotización
+                  </>
+                )}
+              </Button>
+              <Button
+                onClick={limpiarCotizacion}
+                variant="outline"
+                className="h-9 w-full border-gray-600 bg-transparent text-sm text-gray-300 hover:bg-gray-700 sm:h-10"
+              >
+                Limpiar Cotización
+              </Button>
+            </div>
           </Card>
-
-          {errorEnvio && (
-            <Card className="border-red-700 bg-red-900/20">
-              <CardContent className="pt-4 sm:pt-6">
-                <div className="mb-2 flex items-center gap-2 text-red-400">
-                  <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5" />
-                  <span className="text-sm font-medium sm:text-base">
-                    Error al enviar
-                  </span>
-                </div>
-                <p className="text-xs text-red-300 sm:text-sm">{errorEnvio}</p>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Botones de acción */}
-          <div className="sticky bottom-4 -mx-4 space-y-3 rounded-t-lg border-t border-gray-700 bg-gray-900 p-3 sm:static sm:mx-0 sm:rounded-none sm:border-t-0 sm:bg-transparent sm:p-0">
-            <Button
-              onClick={handleEnviarCotizacion}
-              disabled={enviando || items.length === 0}
-              className="h-10 w-full bg-orange-600 text-sm text-white hover:bg-orange-700 sm:h-11 sm:text-base"
-              size="lg"
-            >
-              {enviando ? (
-                <>Enviando...</>
-              ) : (
-                <>
-                  <Send className="mr-2 h-4 w-4" />
-                  Enviar Cotización
-                </>
-              )}
-            </Button>
-
-            <Button
-              onClick={limpiarCotizacion}
-              variant="outline"
-              className="h-9 w-full border-gray-600 bg-transparent text-sm text-gray-300 hover:bg-gray-700 sm:h-10"
-            >
-              Limpiar Cotización
-            </Button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   );
