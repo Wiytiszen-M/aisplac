@@ -1,6 +1,12 @@
 "use client";
 
-import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  MessageCircle,
+  Mail,
+  BriefcaseBusiness,
+} from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -25,10 +31,11 @@ export default function ContactData() {
             <CardContent className="p-6 text-center">
               <Phone className="w-8 h-8 text-white mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-3">
-                Teléfonos
+                Teléfono
               </h3>
-              <p className="text-base text-white">+54 9 2302 457911</p>
-              <p className="text-base text-white">(2302) 435814 / 430191</p>
+              <p className="text-base text-white">
+                2302-582071 <strong>Venta Web</strong>
+              </p>
             </CardContent>
           </Card>
 
@@ -61,6 +68,26 @@ export default function ContactData() {
               >
                 ventas@aisplac.com.ar
               </a>
+            </CardContent>
+          </Card>
+          {/* Trabaja con nosotros */}
+          <Card className="bg-slate-800 border-slate-700">
+            <CardContent className="p-6 text-center">
+              <BriefcaseBusiness className="w-8 h-8 text-white mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-white mb-3">
+                Trabajá con nosotros
+              </h3>
+              <Button
+                className="bg-blue-600 hover:bg-blue-700 text-white w-full"
+                onClick={() =>
+                  window.open(
+                    "https://docs.google.com/forms/d/e/1FAIpQLSd219IGKGx2ChcC8UBgzOWQYZ2wPCg5mA-qmTQA_7-YZQzicQ/viewform",
+                    "_blank"
+                  )
+                }
+              >
+                Ingresá acá
+              </Button>
             </CardContent>
           </Card>
 

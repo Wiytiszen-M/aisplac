@@ -47,6 +47,24 @@ const About = () => {
             necesidades específicas de cada proyecto.
           </p>
         </FadeIn>
+        <FadeIn>
+          <div className="my-16 md:my-32 flex flex-col items-center justify-center gap-4">
+            <h3 className="text-4xl font-bold text-center">
+              ¿Querés trabajar con nosotros?
+            </h3>
+            <p className="text-center">
+              Formá parte de nuestro equipo enviando tu CV acá
+            </p>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSd219IGKGx2ChcC8UBgzOWQYZ2wPCg5mA-qmTQA_7-YZQzicQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded bg-blue-600 px-6 py-2 text-white font-semibold hover:bg-blue-700 transition"
+            >
+              Enviar CV
+            </a>
+          </div>
+        </FadeIn>
         <Image
           alt="equipo institucional"
           width={1472}
