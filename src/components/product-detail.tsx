@@ -63,6 +63,9 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
         unmedida: producto.unmedida,
         urlimg: producto.urlimg,
         codcategoria: producto.codcategoria,
+        Fotos: Array.isArray(producto.Fotos)
+          ? producto.Fotos.map((foto) => ({ urlimg: foto.urlimg }))
+          : [],
       };
 
       // Agregar la cantidad seleccionada (se suma a la existente)
