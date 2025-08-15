@@ -7,7 +7,7 @@ const About = () => {
       <div className="relative h-[300px] w-full overflow-hidden sm:h-[450px] md:h-[597px]">
         <Image
           className="absolute left-0 top-0 h-full w-full object-cover md:object-center"
-          src="/contact/hero.png"
+          src="/contact/hero.webp"
           fill
           priority
           alt="aisplac hero contact-us"

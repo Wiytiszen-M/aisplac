@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { enviarCotizacionGestionNik } from '@/lib/gestion-nik-api';
-import type { DatosCotizacion, CotizacionStore } from '@/types';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { enviarCotizacionGestionNik } from "@/lib/gestion-nik-api";
+import type { DatosCotizacion, CotizacionStore } from "@/types";
 
 const datosCotizacionIniciales: DatosCotizacion = {
-  nombreEmpresa: '',
-  contacto: '',
-  email: '',
-  telefono: '',
-  codigoPostal: '',
-  direccion: '',
-  observaciones: '',
-  fechaVencimiento: '',
+  nombreEmpresa: "",
+  contacto: "",
+  email: "",
+  telefono: "",
+  codigoPostal: "",
+  direccion: "",
+  observaciones: "",
+  fechaVencimiento: "",
 };
 
 export const useCotizacionStore = create<CotizacionStore>()(
@@ -48,7 +48,7 @@ export const useCotizacionStore = create<CotizacionStore>()(
           set((state) => ({
             items: [
               ...state.items,
-              { ...producto, cantidad, observaciones: '' },
+              { ...producto, cantidad, observaciones: "" },
             ],
           }));
         }
@@ -116,7 +116,7 @@ export const useCotizacionStore = create<CotizacionStore>()(
             fecha: new Date().toISOString(),
           };
 
-          console.log('📤 Enviando cotización a Gestion-Nik...');
+          console.log("📤 Enviando cotización a Gestion-Nik...");
 
           // Enviar a Gestion-Nik
           const resultado = await enviarCotizacionGestionNik(cotizacionData);
@@ -134,7 +134,7 @@ export const useCotizacionStore = create<CotizacionStore>()(
               total: 0,
             });
 
-            console.log('✅ Cotización enviada exitosamente:', {
+            console.log("✅ Cotización enviada exitosamente:", {
               referencia: resultado.data.Referencia,
               comprobante: resultado.data.Comprobante,
             });
@@ -142,13 +142,13 @@ export const useCotizacionStore = create<CotizacionStore>()(
             return true;
           } else {
             throw new Error(
-              resultado.error || 'Error desconocido al enviar cotización'
+              resultado.error || "Error desconocido al enviar cotización"
             );
           }
         } catch (error) {
           const errorMessage =
-            error instanceof Error ? error.message : 'Error desconocido';
-          console.error('❌ Error al enviar cotización:', errorMessage);
+            error instanceof Error ? error.message : "Error desconocido";
+          console.error("❌ Error al enviar cotización:", errorMessage);
           set({ errorEnvio: errorMessage });
           return false;
         } finally {
@@ -215,7 +215,7 @@ export const useCotizacionStore = create<CotizacionStore>()(
       },
     }),
     {
-      name: 'cotizacion-storage',
+      name: "cotizacion-storage",
     }
   )
 );

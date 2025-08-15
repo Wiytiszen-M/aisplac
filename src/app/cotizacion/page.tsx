@@ -202,6 +202,7 @@ export default function CotizacionPage() {
       </div>
     );
   }
+  console.log(items);
 
   return (
     <div className="mx-auto max-w-7xl space-y-6 px-4 py-36 sm:space-y-8 sm:px-6">
@@ -232,19 +233,13 @@ export default function CotizacionPage() {
                 >
                   {/* Imagen - siempre a la izquierda, tamaño reducido en móvil */}
                   <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-gray-600 sm:h-16 sm:w-16">
-                    {item.urlimg ? (
-                      <Image
-                        src={item.urlimg || "/placeholder.svg"}
-                        alt={item.descripcion}
-                        width={64}
-                        height={64}
-                        className="h-full w-full object-contain"
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center">
-                        <FileText className="h-4 w-4 text-gray-400 sm:h-6 sm:w-6" />
-                      </div>
-                    )}
+                    <Image
+                      src={item.urlimg || item.Fotos[0]?.urlimg || "/logo.svg"}
+                      alt={item.descripcion}
+                      width={64}
+                      height={64}
+                      className="h-full w-full object-contain"
+                    />
                   </div>
 
                   {/* Contenido - siempre a la derecha */}

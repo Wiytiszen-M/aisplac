@@ -22,7 +22,7 @@ export default function CalculatorPage() {
               soporte de cielorrasos PVC
             </p>
             <div className="mt-6 rounded-md border border-yellow-600 bg-yellow-900/20 p-4">
-              <p className="text-sm font-medium text-yellow-300">
+              <p className="text-base font-medium text-yellow-300">
                 ACLARACIÓN: Precios al público referenciales. El valor final
                 será confirmado por el vendedor.
               </p>

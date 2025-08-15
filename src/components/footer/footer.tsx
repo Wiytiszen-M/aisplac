@@ -1,13 +1,8 @@
-import {
-  Email,
-  Fabric,
-  LocalComertial,
-  Location,
-  Phone,
-} from "@/app/assets/icons";
+import { Email, Fabric, LocalComertial, Location } from "@/app/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { WhatsAppLink } from "../whatsapp-link";
+import { House } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -41,17 +36,18 @@ const Footer = () => {
                   <p>Av. José Viscardis 1050 - Zona Franca</p>
                 </div>
               </div>
+              <div className="flex items-center gap-3">
+                <House strokeWidth={1} className="h-10 w-10 shrink-0" />
+                <div className="text-left">
+                  <p className="font-medium">
+                    Arquitectura Modular - Energía Solar
+                  </p>
+                  <p>Sampayo N° 90 - Parque Industrial</p>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <Phone className="h-10 w-10 shrink-0" />
-                <div className="text-left">
-                  <p>
-                    2302-582071 <strong> Venta Web </strong>
-                  </p>
-                </div>
-              </div>
               <div className="flex items-center gap-3">
                 <WhatsAppLink />
               </div>
@@ -59,10 +55,10 @@ const Footer = () => {
               <div className="flex items-center gap-3">
                 <Email className="h-10 w-10 shrink-0" />
                 <Link
-                  href="mailto:ventas@aisplac.com.ar"
+                  href="mailto:ventasonline@aisplac.com.ar"
                   className="hover:underline"
                 >
-                  ventas@aisplac.com.ar
+                  ventasonline@aisplac.com.ar
                 </Link>
               </div>
 

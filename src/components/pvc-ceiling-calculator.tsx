@@ -67,28 +67,28 @@ const PVC_COLORS: PVCColor[] = [
     name: "Blanco",
     code: "685",
     description: "PANEL PVC 200 X 10MM (BLANCO)",
-    image: "/placeholder.svg?height=100&width=100&text=Blanco",
+    image: "/logo.svg",
   },
   {
     id: "fresno",
     name: "Fresno Almendro",
     code: "1543",
     description: "PANEL PVC 200 X 10 (FRESNO ALMENDRO)",
-    image: "/placeholder.svg?height=100&width=100&text=Fresno",
+    image: "/logo.svg",
   },
   {
     id: "negro",
     name: "Negro",
     code: "1907",
     description: "PANEL PVC 200 X 10 (NEGRO)",
-    image: "/placeholder.svg?height=100&width=100&text=Negro",
+    image: "/logo.svg",
   },
   {
     id: "valencia",
     name: "Valencia",
     code: "1847",
     description: "PANEL PVC 200 X 10 (VALENCIA)",
-    image: "/placeholder.svg?height=100&width=100&text=Valencia",
+    image: "/logo.svg",
   },
 ];
 
@@ -126,14 +126,15 @@ export function PVCCeilingCalculator() {
         console.log("🔍 Buscando productos PVC desde endpoint específico...");
 
         const productosEncontrados = await getPVCProducts();
-
         const coloresActualizados = pvcColors.map((color) => {
           const producto = productosEncontrados.get(color.code);
           if (producto) {
+            console.log("🔍 Productos en el if", producto);
+
             return {
               ...color,
               description: producto.descripcion,
-              image: producto.urlimg || color.image,
+              image: producto.Fotos[0].urlimg || color.image,
               producto: producto,
             };
           }
@@ -444,26 +445,20 @@ export function PVCCeilingCalculator() {
       calculatedRooms.forEach((room) => {
         if (room.materials) {
           room.materials.forEach((material) => {
-            const producto = material.producto
-              ? {
-                  codigo: material.producto.codigo,
-                  descripcion: `${material.producto.descripcion} - ${room.name}`,
-                  precio: material.producto.precio,
-                  unmedida: material.producto.unmedida,
-                  urlimg: material.producto.urlimg,
-                  codcategoria: material.producto.codcategoria,
-                }
-              : {
-                  codigo: material.code || `PVC-${material.id}-${room.id}`,
-                  descripcion: `${material.description} - ${room.name}`,
-                  precio: material.price || 0,
-                  unmedida: material.unit,
-                  urlimg: "/placeholder.svg?height=200&width=200&text=PVC",
-                  codcategoria: "PVC",
-                };
+            const producto = material.producto && {
+              codigo: material.producto.codigo,
+              descripcion: `${material.producto.descripcion} - ${room.name}`,
+              precio: material.producto.precio,
+              unmedida: material.producto.unmedida,
+              urlimg: material.producto.urlimg,
+              Fotos: material.producto.Fotos,
+              codcategoria: material.producto.codcategoria,
+            };
 
-            agregarProducto(producto, material.quantity);
-            totalItemsAdded++;
+            if (producto) {
+              agregarProducto(producto, material.quantity);
+              totalItemsAdded++;
+            }
           });
         }
       });
@@ -690,19 +685,19 @@ export function PVCCeilingCalculator() {
                                     <h6 className="mb-2 font-medium">
                                       Perfilería (M - F)
                                     </h6>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       Montantes (MO):{" "}
                                       {room.calculationDetails!.mo} UND
                                     </p>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       Maestras (MA):{" "}
                                       {room.calculationDetails!.ma} UND
                                     </p>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       Varillas rígidas (VR):{" "}
                                       {room.calculationDetails!.vr} UND
                                     </p>
-                                    <p className="font-medium">
+                                    <p className="font-medium text-sm">
                                       Total:{" "}
                                       {
                                         room.calculationDetails!
@@ -715,29 +710,29 @@ export function PVCCeilingCalculator() {
                                     <h6 className="mb-2 font-medium">
                                       Perfilería (S - U)
                                     </h6>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       Perímetro (PR):{" "}
                                       {room.calculationDetails!.pr} MTS
                                     </p>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       Unidades:{" "}
                                       {room.calculationDetails!.prUnits} UND
                                     </p>
                                   </div>
                                   <div>
                                     <h6 className="mb-2 font-medium">PVC</h6>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       Cantidad:{" "}
                                       {room.calculationDetails!.pvcCount} UND
                                     </p>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       Longitud:{" "}
                                       {room.calculationDetails!.pvcLength.toFixed(
                                         2
                                       )}{" "}
                                       MTS
                                     </p>
-                                    <p className="font-medium">
+                                    <p className="font-medium text-sm">
                                       Total:{" "}
                                       {room.calculationDetails!.pvcTotal.toFixed(
                                         2
@@ -757,19 +752,19 @@ export function PVCCeilingCalculator() {
                                     <h6 className="mb-2 font-medium">
                                       Tornillos y Fijaciones
                                     </h6>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       T1 CORTO:{" "}
                                       {room.calculationDetails!.t1Total} UND
                                     </p>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       T1 AGUJA:{" "}
                                       {room.calculationDetails!.t1ATotal} UND
                                     </p>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       T3 MECHA:{" "}
                                       {room.calculationDetails!.t3ATotal} UND
                                     </p>
-                                    <p className="text-gray-300">
+                                    <p className="text-gray-300 text-sm">
                                       FIJACIONES:{" "}
                                       {room.calculationDetails!.fijacionesTotal}{" "}
                                       UND
@@ -801,12 +796,6 @@ export function PVCCeilingCalculator() {
                             <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-300">
                               Unidad
                             </th>
-                            <th className="px-4 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-300">
-                              Precio Unit.
-                            </th>
-                            <th className="px-4 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-300">
-                              Subtotal
-                            </th>
                             <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-300">
                               Ambientes
                             </th>
@@ -837,7 +826,7 @@ export function PVCCeilingCalculator() {
                               <td className="whitespace-nowrap px-4 py-3 text-sm">
                                 {material.producto?.unmedida || material.unit}
                               </td>
-                              <td className="whitespace-nowrap px-4 py-3 text-right text-sm">
+                              {/* <td className="whitespace-nowrap px-4 py-3 text-right text-sm">
                                 {material.price && material.price > 0 ? (
                                   <span className="text-blue-300">
                                     ${material.price.toLocaleString("es-AR")}
@@ -847,8 +836,8 @@ export function PVCCeilingCalculator() {
                                     Consultar
                                   </span>
                                 )}
-                              </td>
-                              <td className="whitespace-nowrap px-4 py-3 text-right text-sm">
+                              </td> */}
+                              {/* <td className="whitespace-nowrap px-4 py-3 text-right text-sm">
                                 {material.price && material.price > 0 ? (
                                   <span className="font-medium text-green-400">
                                     $
@@ -861,7 +850,7 @@ export function PVCCeilingCalculator() {
                                     Consultar
                                   </span>
                                 )}
-                              </td>
+                              </td> */}
                               <td className="px-4 py-3 text-xs text-gray-400">
                                 {material.rooms.join(", ")}
                               </td>

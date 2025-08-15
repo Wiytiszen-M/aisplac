@@ -25,10 +25,7 @@ export function ProductCard({ producto, codigoCategoria }: ProductCardProps) {
                 src={imagenUrl || "/placeholder.svg"}
                 alt={producto.descripcion}
                 fill
-                className="object-cover transition-transform duration-200 group-hover:scale-105"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
+                className="object-contain transition-transform duration-200 group-hover:scale-105"
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center">

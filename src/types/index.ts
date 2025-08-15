@@ -38,6 +38,7 @@ export interface ProductoCotizacion {
   precio: number;
   unmedida: string;
   urlimg: string;
+  Fotos: { urlimg: string }[];
   cantidad: number;
   codcategoria: string;
   observaciones?: string;

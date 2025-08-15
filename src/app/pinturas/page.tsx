@@ -222,7 +222,7 @@ export default function PinturasPage() {
             www.pqllana.com.ar
           </a>
         </p>
-        <p className="text-sm text-gray-400 italic">
+        <p className="text-gray-400 italic">
           <strong>Productos a pedido, fuera de stock.</strong> Por favor
           comunicarse al teléfono de su vendedor para solicitarlo.
         </p>

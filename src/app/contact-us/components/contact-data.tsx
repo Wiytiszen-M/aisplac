@@ -63,10 +63,10 @@ export default function ContactData() {
               <Mail className="w-8 h-8 text-white mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-3">Email</h3>
               <a
-                href="mailto:ventas@aisplac.com.ar"
+                href="mailto:ventasonline@aisplac.com.ar"
                 className="text-base text-blue-400 hover:underline"
               >
-                ventas@aisplac.com.ar
+                ventasonline@aisplac.com.ar
               </a>
             </CardContent>
           </Card>

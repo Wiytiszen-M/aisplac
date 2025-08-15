@@ -65,13 +65,6 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     productosData.forEach((prod: any) => {
-      const imagenes: string[] = [];
-
-      // Procesar imágenes
-      if (prod.urlimg && prod.urlimg.trim() !== "") {
-        imagenes.push(prod.urlimg.trim());
-      }
-
       const producto: Producto = {
         codigo: String(prod.codigo),
         personal: prod.personal || "",
@@ -86,9 +79,9 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
         activo: Boolean(prod.activo),
         timestamp: prod.timestamp || "",
         uxf: prod.uxf || "",
-        urlimg: imagenes[0] || "",
-        Fotos: [],
-        ProdRelacionados: [],
+        urlimg: prod.urlimg || "",
+        Fotos: prod.Fotos,
+        ProdRelacionados: prod.ProdRelacionados || [],
       };
 
       productMap.set(producto.codigo, producto);
