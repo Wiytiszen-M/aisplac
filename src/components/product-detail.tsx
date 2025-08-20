@@ -89,8 +89,7 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
   const getShareData = () => {
     const url = typeof window !== "undefined" ? window.location.href : "";
     const title = producto.descripcion;
-    const price =
-      producto.precio > 0 ? formatPrice(producto.precio) : "Consultar precio";
+    const price = producto.precio > 0 ? formatPrice(producto.precio) : null;
     const text = `🏗️ ${title}\n💰 ${price}\n📦 SKU: ${producto.codigo}\n\n¡Mira este producto de construcción!`;
 
     return { url, title, text, price };

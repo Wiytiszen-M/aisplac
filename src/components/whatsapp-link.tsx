@@ -5,7 +5,7 @@ import { FaWhatsapp } from "react-icons/fa";
 export function WhatsAppLink() {
   return (
     <a
-      href="https://api.whatsapp.com/send/?phone=%2B5492302619183&text&type=phone_number&app_absent=0"
+      href="https://api.whatsapp.com/send/?phone=%2B5492302582071&text&type=phone_number&app_absent=0"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chatear por WhatsApp"

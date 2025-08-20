@@ -26,7 +26,7 @@ export async function ProductosRelacionados({
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
         {productos.map((producto) => (
           <ProductCard
             key={producto.codigo}
@@ -43,7 +43,7 @@ export async function ProductosRelacionados({
             className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
           >
             <ShoppingBag className="h-4 w-4" />
-            Ver todos los productos de esta categoría productos)
+            Ver todos los productos de esta categoría
           </a>
         </div>
       )}

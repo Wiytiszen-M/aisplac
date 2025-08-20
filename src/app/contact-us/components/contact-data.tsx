@@ -49,7 +49,7 @@ export default function ContactData() {
               <Button
                 className="bg-green-600 hover:bg-green-700 text-white w-full"
                 onClick={() =>
-                  window.open("https://wa.me/5492302619183", "_blank")
+                  window.open("https://wa.me/5492302582071", "_blank")
                 }
               >
                 Chatear en WhatsApp
