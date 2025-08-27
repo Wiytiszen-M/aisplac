@@ -3,14 +3,14 @@ import ValoresSwiper from "@/components/valores-swiper/valores-swiper";
 import Image from "next/image";
 
 const valores = [
-  { nombre: "CONSTRUCCIÓN", icono: "/about/construccion.svg" },
+  { nombre: "INNOVACIÓN", icono: "/about/construccion.svg" },
   { nombre: "SUSTENTABILIDAD", icono: "/about/sustentabilidad.svg" },
   { nombre: "CONFIANZA", icono: "/about/confianza.svg" },
   { nombre: "COMPROMISO", icono: "/about/compromiso.svg" },
   { nombre: "APRENDIZAJE", icono: "/about/aprendizaje.svg" },
-  { nombre: "REFLEXIONES", icono: "/about/reflexiones.svg" },
+  { nombre: "SOLIDARIDAD", icono: "/about/reflexiones.svg" },
   { nombre: "UNIÓN", icono: "/about/union.svg" },
-  { nombre: "DIGNIFICAR", icono: "/about/dignificar.svg" },
+  { nombre: "CALIDAD", icono: "/about/dignificar.svg" },
 ];
 
 const About = () => {

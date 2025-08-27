@@ -12,9 +12,7 @@ export function WhatsAppLink() {
       className="flex items-center gap-3"
     >
       <FaWhatsapp className="h-10 w-10 shrink-0" />
-      <p className=" text-foreground">
-        Escribinos por WhatsApp al +54 9 230 261 9183
-      </p>
+      <p className=" text-foreground">Mensajes al +549 2302 582071</p>
     </a>
   );
 }

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Package, HelpCircle } from "lucide-react";
+import { Package } from "lucide-react";
 import type { Producto, ProductoRelacionado } from "@/types";
 
 export interface ProductCardProps {
@@ -10,7 +10,7 @@ export interface ProductCardProps {
 }
 
 export function ProductCard({ producto, codigoCategoria }: ProductCardProps) {
-  const imagenUrl = producto?.Fotos?.[0]?.urlimg || producto.urlimg;
+  const imagenUrl = producto?.Fotos?.[0]?.urlimg;
 
   return (
     <Link
@@ -56,12 +56,6 @@ export function ProductCard({ producto, codigoCategoria }: ProductCardProps) {
                 </>
               ) : (
                 <>
-                  <div className="flex items-center justify-center gap-1 text-orange-400">
-                    <HelpCircle className="h-4 w-4" />
-                    <span className="text-sm font-medium">
-                      Consultar precio
-                    </span>
-                  </div>
                   {producto.unmedida && (
                     <p className="text-xs text-gray-500">
                       por {producto.unmedida}

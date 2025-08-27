@@ -5,12 +5,17 @@ export interface Categoria {
   descripcion: string;
   urlimg: string;
 }
+export interface ProductoFoto {
+  urlimg: string;
+}
 
-export interface ProductoRelacionado extends Partial<Producto> {
+export interface ProductoRelacionado {
   codigo: string;
   personal: string;
   descripcion: string;
-  urlimg: string;
+  unmedida?: string;
+  precio?: number;
+  Fotos: ProductoFoto[];
 }
 
 export interface Producto {
@@ -290,4 +295,34 @@ export interface ArticlePreview {
   slug: string;
   mainImage: ImageWithAlt;
   publishedAt: string;
+}
+
+export interface ApiProductoResponse {
+  productos: Array<{
+    urlimg: string;
+    codigo: number;
+    personal: string;
+    descripcion: string;
+    unmedida: string;
+    precio: number;
+    codcategoria: number;
+    pesogramos: number;
+    codsubcategoria: number;
+    uxb: number;
+    stock: number;
+    activo: boolean;
+    timestamp: string;
+    uxf: string;
+    Fotos: Array<{
+      urlimg: string;
+    }>;
+    ProdRelacionados: Array<{
+      codigo: string;
+      personal: string;
+      descripcion: string;
+      Fotos: Array<{
+        urlimg: string;
+      }>;
+    }>;
+  }>;
 }

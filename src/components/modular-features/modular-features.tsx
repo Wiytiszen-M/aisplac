@@ -17,12 +17,11 @@ export default function ModularFeatures() {
                   />
                 </div>
               </div>
-              <h3 className="mb-2 text-xl font-semibold">Sustentables</h3>
+              <h3 className="mb-2 text-xl font-semibold">Sostenibilidad</h3>
               <p className="text-sm opacity-80">
-                Construimos módulos funcionales que cumplan con altos estándares
-                de calidad, permitiendo un montaje rápido y escalable. Los
-                módulos están diseñados para ser versátiles, sostenibles y
-                eficientes.
+                Reutilizamos módulos y contenedores para darles una vida útil,
+                sin necesidad de fabricar con nuevos materiales. Los reciclamos
+                creando espacios integrados a partir de lo que ya existe.
               </p>
             </div>
           </div>
@@ -43,9 +42,10 @@ export default function ModularFeatures() {
                 Construcción Modular
               </h3>
               <p className="text-sm opacity-80">
-                Construcción en fábrica cuidando todos los detalles  y evitas
-                los recurrentes inconvenientes de obra. Selección de materiales
-                duraderos, livianos y de fácil transporte. 
+                Construimos módulos funcionales que cumplan con altos estándares
+                de calidad, permitiendo un montaje rápido y escalable. Los
+                módulos están diseñados para ser versátiles, sostenibles y
+                eficientes.
               </p>
             </div>
           </div>

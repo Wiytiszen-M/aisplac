@@ -1,4 +1,9 @@
-import type { Categoria, Producto, ApiResponse } from "@/types";
+import type {
+  Categoria,
+  Producto,
+  ApiResponse,
+  ApiProductoResponse,
+} from "@/types";
 
 const NIK_TOKEN = process.env.NIK_TOKEN;
 
@@ -278,28 +283,78 @@ export async function getProductos(
   }
 }
 
-// Obtener un producto específico
+// Obtener un producto específico usando su endpoint dedicado
 export async function getProducto(
   codigoCategoria: string,
   codigoProducto: string
 ): Promise<ApiResponse<Producto>> {
   try {
-    const { data: productos, error } = await getProductos(codigoCategoria);
+    const baseUrl = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}/${codigoProducto}`;
 
-    if (error || !productos) {
-      return { data: null, error: error || "Error al obtener productos" };
-    }
-
-    const producto = productos.find((p) => p.codigo === codigoProducto);
-
-    if (producto) {
-      return { data: producto, error: null };
-    } else {
+    let response: Response;
+    try {
+      response = await fetchWithRetry(baseUrl);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (fetchError) {
       return {
         data: null,
-        error: `Producto con código ${codigoProducto} no encontrado`,
+        error: `No se pudo cargar el producto ${codigoProducto} de la categoría ${codigoCategoria}`,
       };
     }
+
+    const responseText = await response.text();
+
+    if (!responseText || responseText.trim() === "") {
+      return { data: null, error: "La API devolvió una respuesta vacía" };
+    }
+
+    const cleanedJson = cleanJsonString(responseText);
+    let data: unknown;
+
+    try {
+      data = JSON.parse(cleanedJson);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (parseError) {
+      return { data: null, error: "Respuesta no es JSON válido" };
+    }
+
+    // La respuesta tiene la estructura: { "productos": [ { producto_data } ] }
+    if (data && typeof data === "object" && "productos" in data) {
+      const responseData = data as ApiProductoResponse;
+
+      if (
+        Array.isArray(responseData.productos) &&
+        responseData.productos.length > 0
+      ) {
+        const productoData = responseData.productos[0];
+
+        const productoNormalizado: Producto = {
+          codigo: String(productoData.codigo),
+          personal: productoData.personal || "",
+          descripcion: productoData.descripcion || "",
+          unmedida: productoData.unmedida || "UN",
+          precio: Number(productoData.precio) || 0,
+          codcategoria: String(productoData.codcategoria) || codigoCategoria,
+          pesogramos: Number(productoData.pesogramos) || 0,
+          codsubcategoria: String(productoData.codsubcategoria) || "0",
+          uxb: Number(productoData.uxb) || 0,
+          stock: Number(productoData.stock) || 0,
+          activo: productoData.activo !== false,
+          timestamp: productoData.timestamp || "",
+          urlimg: productoData.urlimg || "",
+          uxf: productoData.uxf || "",
+          Fotos: productoData.Fotos || [],
+          ProdRelacionados: productoData.ProdRelacionados || [],
+        };
+
+        return { data: productoNormalizado, error: null };
+      }
+    }
+
+    return {
+      data: null,
+      error: `Producto con código ${codigoProducto} no encontrado en la categoría ${codigoCategoria}`,
+    };
   } catch (err) {
     const errorMessage =
       err instanceof Error ? err.message : "Error desconocido";

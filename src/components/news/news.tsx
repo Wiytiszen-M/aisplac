@@ -1,9 +1,8 @@
-import { getAllArticles } from '@/sanity/lib/sanity.api';
-import NewsSlider from './news-slider';
+import { getAllArticles } from "@/sanity/lib/sanity.api";
+import NewsSlider from "./news-slider";
 
 const News = async () => {
   const articles = await getAllArticles();
-  console.log('Articles fetched for News component:', articles);
 
   return (
     <section className="min-h-screen px-4 py-16">

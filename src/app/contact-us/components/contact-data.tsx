@@ -107,7 +107,7 @@ export default function ContactData() {
                 José Viscardis 345, Gral. Pico
               </a>
               <p className="text-sm text-white mt-2">
-                Lunes a Viernes: 8:00 - 17:00
+                Lunes a Viernes: 8:00 - 17:00 | Sábados de 8 a 12.30hs
               </p>
             </CardContent>
           </Card>
@@ -141,7 +141,7 @@ export default function ContactData() {
                 Arquitectura Modular - Energía Solar
               </h3>
               <a
-                href="https://www.google.com.ar/maps/place/Aisplac+SRL.+Arquitectura+Modular+-+Solar/@-35.6816556,-63.7820771,441m"
+                href="https://maps.app.goo.gl/o8C4iWDHGoc8xT117"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-base text-blue-400 hover:underline block"
@@ -149,7 +149,7 @@ export default function ContactData() {
                 Sampayo 90, Parque Industrial, Gral. Pico
               </a>
               <p className="text-sm text-white mt-2">
-                Lunes a Viernes: 8:00 - 17:00
+                Lunes a Viernes: 8:00 - 17:00 | Sábados de 8 a 12.30hs
               </p>
             </CardContent>
           </Card>

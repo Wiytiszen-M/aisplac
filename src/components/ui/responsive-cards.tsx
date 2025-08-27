@@ -2,8 +2,7 @@
 
 import { Suspense, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "./button";
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CardProps {
@@ -132,13 +131,7 @@ export default function ResponsiveCards() {
           ))}
         </div>
       </div>
-      <div className="mx-auto mt-12 flex items-center justify-center">
-        <Link href="/contact-us">
-          <Button variant="secundary" size="lg">
-            SOLICITAR COTIZACIONES
-          </Button>
-        </Link>
-      </div>
+
       <div className={`relative mt-20 flex flex-col gap-3 md:gap-6`}>
         <Image
           alt="modular exibition"

@@ -3,7 +3,6 @@ import ModularFeatures from "@/components/modular-features/modular-features";
 import { Button } from "@/components/ui/button";
 import ResponsiveCards from "@/components/ui/responsive-cards";
 import Image from "next/image";
-import Link from "next/link";
 
 const Modular = () => {
   return (
@@ -34,12 +33,14 @@ const Modular = () => {
           tecnología, sostenibilidad y funcionalidad, se posiciona como una
           alternativa competitiva y de alto impacto en el mercado.
         </p>
-        <Link
-          href="/contact-us"
+        <a
+          href="https://wa.me/5492302204056"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-base font-bold transition-all duration-1000 hover:underline md:text-3xl"
         >
           ¡Contactanos para planificar tu espacio modular!
-        </Link>
+        </a>
       </div>
       <Image
         className="mt-16 lg:mt-[145px]"
@@ -56,11 +57,16 @@ const Modular = () => {
         <h2 className="p-8 md:my-[75px] md:w-[792px] md:p-0">
           Contactanos y te ayudamos a hacerlo realidad. 
         </h2>
-        <Link href="/contact-us">
+        <a
+          href="https://wa.me/5492302204056"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-base font-bold transition-all duration-1000 hover:underline md:text-3xl"
+        >
           <Button variant="secundary" size="lg">
-            SOLICITAR MÁS INFO
+            Solicitar cotizaciones
           </Button>
-        </Link>
+        </a>
       </FadeIn>
     </section>
   );

@@ -63,10 +63,16 @@ const Footer = () => {
               </div>
 
               <div className="flex gap-3 md:flex-col md:items-start md:pl-14">
-                <Link href="#" className="text-center hover:underline">
+                <Link
+                  href="/terminos-y-condiciones"
+                  className="text-center hover:underline"
+                >
                   Términos y condiciones
                 </Link>
-                <Link href="#" className="text-center hover:underline">
+                <Link
+                  href="/preguntas-frecuentes"
+                  className="text-center hover:underline"
+                >
                   Preguntas Frecuentes
                 </Link>
               </div>
