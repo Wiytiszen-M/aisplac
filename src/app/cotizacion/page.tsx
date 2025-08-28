@@ -188,7 +188,7 @@ export default function CotizacionPage() {
   if (items.length === 0) {
     scrollToTop();
     return (
-      <div className="py-60 text-center">
+      <div className="py-60 text-center md:px-4">
         <FileText className="mx-auto mb-4 h-16 w-16" />
         <h2 className="mb-2 font-bold text-gray-100">
           Tu cotización está vacía

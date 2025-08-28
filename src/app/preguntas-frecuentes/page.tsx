@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackButton } from "@/components/back-button";
@@ -67,9 +66,6 @@ export default function PreguntasFrecuentesPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-              <HelpCircle className="h-6 w-6 text-white" />
-            </div>
             <h1 className="text-4xl font-bold text-gray-100">
               Preguntas Frecuentes
             </h1>

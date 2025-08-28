@@ -1,14 +1,9 @@
 "use client";
 
-import {
-  MapPin,
-  Phone,
-  MessageCircle,
-  Mail,
-  BriefcaseBusiness,
-} from "lucide-react";
+import { MapPin, Phone, Mail, BriefcaseBusiness } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { AiOutlineWhatsApp } from "react-icons/ai";
 
 export default function ContactData() {
   return (
@@ -42,7 +37,7 @@ export default function ContactData() {
           {/* WhatsApp */}
           <Card className="bg-slate-800 border-slate-700">
             <CardContent className="p-6 text-center">
-              <MessageCircle className="w-8 h-8 text-white mx-auto mb-4" />
+              <AiOutlineWhatsApp className="w-8 h-8 font-light text-white mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-3">
                 WhatsApp
               </h3>

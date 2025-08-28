@@ -1,6 +1,6 @@
 "use client";
 
-import { FaWhatsapp } from "react-icons/fa";
+import { AiOutlineWhatsApp } from "react-icons/ai";
 
 export function WhatsAppLink() {
   return (
@@ -11,7 +11,7 @@ export function WhatsAppLink() {
       aria-label="Chatear por WhatsApp"
       className="flex items-center gap-3"
     >
-      <FaWhatsapp className="h-10 w-10 shrink-0" />
+      <AiOutlineWhatsApp className="h-10 w-10  font-light shrink-0" />
       <p className=" text-foreground">Mensajes al +549 2302 582071</p>
     </a>
   );

@@ -57,14 +57,14 @@ export default function RootLayout({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AiOutlineInstagram className="h-14 w-14 hover:text-red-500" />
+              <AiOutlineInstagram className="h-14 w-14 hover:text-[#E1306C]" />
             </Link>
             <Link
               href="https://www.facebook.com/Aisplac"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AiOutlineFacebook className="h-14 w-14 hover:text-red-500" />
+              <AiOutlineFacebook className="h-14 w-14 hover:text-[#39569c]" />
             </Link>
           </div>
         </main>
