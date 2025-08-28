@@ -9,6 +9,14 @@ import PVCSection from "@/components/pvc-section/pvc-section";
 import HeroSection from "@/components/hero-section/hero-section";
 import VideoInstitucional from "@/components/video-inst";
 import { FadeIn } from "@/components/fade-in";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Construcción en seco y Paneles de PVC | AISPLAC",
+  description:
+    "Empresa pampeana fundada en 2000. Soluciones en construcción en seco: Paneles de PVC, Steel Frame, Drywall y más. Presupuestos y asesoramiento.",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
@@ -18,6 +26,9 @@ export default function Home() {
         <div className="absolute left-0 top-[329px] hidden md:block">
           <Navigation />
         </div>
+        <h1 className="sr-only">
+          Construcción en seco y Paneles de PVC en Argentina — AISPLAC
+        </h1>
 
         <HeroSection />
 
@@ -49,6 +60,35 @@ export default function Home() {
           <MapSection />
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "AISPLAC SRL",
+            legalName: "Aisplac SRL",
+            url: "https://aisplac.com.ar/",
+            logo: "https://aisplac.com.ar/logo.svg",
+            foundingDate: "2000",
+            description:
+              "Empresa líder en la fabricación y comercialización de materiales para la construcción en seco. Fabricantes de Paneles de PVC desde hace 24 años.",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "José Viscardis 345 - Parque Industrial",
+              addressLocality: "General Pico",
+              addressRegion: "La Pampa",
+              addressCountry: "AR",
+            },
+            sameAs: [
+              "https://www.youtube.com/@aisplacsrl",
+              "https://ar.linkedin.com/company/aisplac-srl",
+              "https://www.instagram.com/aisplacsrl/",
+              "https://www.facebook.com/Aisplac",
+            ],
+          }),
+        }}
+      />
     </>
   );
 }
