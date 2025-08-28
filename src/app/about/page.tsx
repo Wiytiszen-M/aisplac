@@ -8,7 +8,7 @@ const valores = [
   { nombre: "CONFIANZA", icono: "/about/confianza.svg" },
   { nombre: "COMPROMISO", icono: "/about/compromiso.svg" },
   { nombre: "APRENDIZAJE", icono: "/about/aprendizaje.svg" },
-  { nombre: "SOLIDARIDAD", icono: "/about/reflexiones.svg" },
+  { nombre: "SOLIDARIDAD", icono: "/about/holding-heart.svg" },
   { nombre: "UNIÓN", icono: "/about/union.svg" },
   { nombre: "CALIDAD", icono: "/about/dignificar.svg" },
 ];
