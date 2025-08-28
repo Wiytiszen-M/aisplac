@@ -112,7 +112,7 @@ export default function PreguntasFrecuentesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/5492302204073"
+                href="https://wa.me/5492302582071"
                 target="_blank"
                 rel="noopener noreferrer"
               >
