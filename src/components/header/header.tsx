@@ -66,7 +66,7 @@ const Header = () => {
             <div className="relative">
               {cantidadTotal > 0 && (
                 <>
-                  <FileText className="h-6 w-6 hover:text-blue-300" />
+                  <FileText className="h-8 w-8 hover:text-blue-300" />
                   <div className="absolute right-0 top-0 h-3 w-3 rounded-full bg-red-500 text-white" />
                 </>
               )}

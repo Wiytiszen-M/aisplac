@@ -16,19 +16,17 @@ export default async function ProductoPage({
   searchParams: { categoria?: string };
 }) {
   const categoria = searchParams.categoria || "";
-  const { data: producto, error } = await getProducto(categoria, params.codigo);
+  const { data: producto } = await getProducto(categoria, params.codigo);
 
   if (!categoria) {
     notFound();
   }
 
-  if (error) {
-    throw new Error(error); // Esto activará error.tsx
-  }
-
   if (!producto) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8">
+        <BackButton text="Volver a productos" />
+
         <div className="py-12 text-center">
           <Package className="mx-auto mb-4 h-16 w-16 text-gray-500" />
           <h3 className="mb-2 text-lg font-medium text-gray-100">

@@ -68,10 +68,6 @@ const About = () => {
           className="mx-auto rounded-lg"
         />
         <FadeIn>
-          <div
-            className="absolute"
-            style={{ backgroundImage: "url('/about/hero.png')" }}
-          />
           <h2 className="mx-auto mb-9 md:mb-[75px] mt-16 md:mt-[157px] text-center text-3xl md:w-[1059px]">
             La tecnología, el ingenio y la confianza
             <br /> nos permitió

@@ -324,7 +324,7 @@ export async function getProducto(
 
       if (
         Array.isArray(responseData.productos) &&
-        responseData.productos.length > 0
+        responseData.productos.length >= 0
       ) {
         const productoData = responseData.productos[0];
 
