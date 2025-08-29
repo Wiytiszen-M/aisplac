@@ -12,7 +12,9 @@ export function WhatsAppLink() {
       className="flex items-center gap-3"
     >
       <AiOutlineWhatsApp className="h-10 w-10  font-light shrink-0" />
-      <p className=" text-foreground">Mensajes al +549 2302 582071</p>
+      <p className=" text-foreground hover:underline">
+        Mensajes al +549 2302 582071
+      </p>
     </a>
   );
 }

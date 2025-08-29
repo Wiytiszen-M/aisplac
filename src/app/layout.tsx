@@ -23,16 +23,13 @@ const siteUrl = "https://aisplac.com.ar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: "AISPLAC — Construcción en seco y Paneles de PVC",
-    template: "%s | AISPLAC",
-  },
+  title: "AISPLAC",
   description:
-    "Empresa líder en construcción en seco. Fabricantes de Paneles de PVC hace 24 años. Steel Frame, Drywall, cielorrasos PVC y más.",
+    "Empresa líder en construcción en seco. Fabricantes de Paneles de PVC. SteelFrame, Drywall, cielorrasos PVC y más.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "AISPLAC — Construcción en seco y Paneles de PVC",
+    title: "AISPLAC",
     description:
       "Soluciones constructivas innovadoras y sustentables: Steel Frame, Drywall, cielorrasos PVC y más.",
     url: "/",
@@ -51,10 +48,7 @@ export const metadata: Metadata = {
     images: ["/og-default.png"],
   },
   icons: {
-    icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
+    icon: [{ url: "/favicon.ico", type: "image/svg+xml" }],
     apple: [{ url: "/apple-touch-icon.png" }],
     other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg" }],
   },

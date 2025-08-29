@@ -9,6 +9,7 @@ export enum Routes {
   About = "/about",
   News = "/novedades",
   Contact = "/contact-us",
+  Distributor = "https://aisplacsrl.gestionnik.com/distribuidores",
 }
 
 export const links = [
@@ -20,4 +21,5 @@ export const links = [
   { href: Routes.About, label: "AISPLAC" },
   { href: Routes.News, label: "NOVEDADES" },
   { href: Routes.Contact, label: "CONTACTENOS" },
+  { href: Routes.Distributor, label: "DISTRIBUIDORES" },
 ];

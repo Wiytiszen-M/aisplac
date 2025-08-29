@@ -7,6 +7,7 @@ import Link from "next/link";
 import { links } from "@/lib/constants";
 import { FileText, Menu, X } from "lucide-react";
 import { useCotizacionStore } from "@/stores/cotizacion-store";
+import { SmartLink } from "../smart-link";
 
 const Header = () => {
   const { items } = useCotizacionStore();
@@ -93,7 +94,7 @@ const Header = () => {
         {links.map((link) => {
           const isActive = pathname === link.href;
           return (
-            <Link
+            <SmartLink
               key={link.href}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
@@ -104,7 +105,7 @@ const Header = () => {
               } hover:border-white`}
             >
               {link.label}
-            </Link>
+            </SmartLink>
           );
         })}
       </div>

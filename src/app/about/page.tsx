@@ -36,12 +36,7 @@ const About = () => {
             Somos una empresa familiar Pampeana fundada en el año 2000. Nuestra
             misión, desde nuestros inicios, es proporcionar soluciones
             integrales para la construcción en seco, con un enfoque en la
-            eficiencia y la sostenibilidad. Somos una empresa familiar Pampeana
-            fundada en el año 2000. Nuestra misión, desde nuestros inicios, es
-            proporcionar soluciones integrales para la construcción en seco, con
-            un enfoque en la eficiencia y la sostenibilidad. Ofrecemos productos
-            de la más alta calidad, adaptados a las necesidades específicas de
-            cada proyecto.
+            eficiencia y la sostenibilidad.
             <br />
             <br /> Ofrecemos productos de la más alta calidad, adaptados a las
             necesidades específicas de cada proyecto.
