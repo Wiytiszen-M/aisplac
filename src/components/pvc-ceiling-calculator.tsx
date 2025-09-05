@@ -123,8 +123,6 @@ export function PVCCeilingCalculator() {
     const loadProducts = async () => {
       setLoadingProducts(true);
       try {
-        console.log("🔍 Buscando productos PVC desde endpoint específico...");
-
         const productosEncontrados = await getPVCProducts();
         const coloresActualizados = pvcColors.map((color) => {
           const producto = productosEncontrados.get(color.code);
@@ -143,11 +141,6 @@ export function PVCCeilingCalculator() {
 
         setPvcColors(coloresActualizados);
         setProductsLoaded(true);
-
-        console.log(`✅ Productos PVC cargados: ${productosEncontrados.size}`);
-
-        const codigosEncontrados = Array.from(productosEncontrados.keys());
-        console.log("📋 Códigos de productos encontrados:", codigosEncontrados);
       } catch (error) {
         console.error("❌ Error cargando productos PVC:", error);
       } finally {
@@ -162,7 +155,6 @@ export function PVCCeilingCalculator() {
 
   const addRoom = () => {
     if (rooms.length >= 10) {
-      console.log("Máximo 10 ambientes permitidos");
       return;
     }
 
@@ -180,7 +172,6 @@ export function PVCCeilingCalculator() {
 
   const removeRoom = (id: string) => {
     if (rooms.length === 1) {
-      console.log("Debe haber al menos un ambiente");
       return;
     }
 
@@ -214,9 +205,6 @@ export function PVCCeilingCalculator() {
     });
 
     if (invalidRooms.length > 0) {
-      console.log(
-        "Por favor ingrese dimensiones válidas para todos los ambientes"
-      );
       setIsCalculating(false);
       return;
     }
@@ -421,7 +409,6 @@ export function PVCCeilingCalculator() {
         setRooms(updatedRooms);
         setIsCalculating(false);
         setCalculationDone(true);
-        console.log("Cálculo completado con productos reales");
       }, 800);
     } catch (error) {
       console.error("Error en cálculo:", error);
@@ -436,7 +423,6 @@ export function PVCCeilingCalculator() {
       );
 
       if (calculatedRooms.length === 0) {
-        console.log("No hay ambientes calculados para agregar");
         return;
       }
 

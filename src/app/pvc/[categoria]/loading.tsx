@@ -1,11 +1,11 @@
-import { Loader2, Package } from 'lucide-react';
+import { Loader2, Package } from "lucide-react";
 
 export default function MaterialesLoading() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8">
       <div className="mb-8">
         <h1 className="mb-4 text-3xl font-bold text-gray-100">
-          Materiales de Construcción en Seco
+          CARGANDO CATEGORIA PVC
         </h1>
         <p className="text-lg text-gray-400">
           Cargando categorías disponibles...

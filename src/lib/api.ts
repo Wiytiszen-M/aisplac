@@ -207,10 +207,11 @@ export async function getCategoria(
 
 // Obtener productos de una categoría
 export async function getProductos(
-  codigoCategoria: string
+  codigoCategoria: string,
+  type = "MPC"
 ): Promise<ApiResponse<Producto[]>> {
   try {
-    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}`;
+    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}/${type}`;
     console.log("url", url);
 
     const response = await fetchWithRetry(url);
@@ -289,7 +290,7 @@ export async function getProducto(
   codigoProducto: string
 ): Promise<ApiResponse<Producto>> {
   try {
-    const baseUrl = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}/${codigoProducto}`;
+    const baseUrl = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}/${codigoProducto}/PVC`;
 
     let response: Response;
     try {

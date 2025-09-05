@@ -1,8 +1,8 @@
-import { AlertCircle } from 'lucide-react';
-import Link from 'next/link';
-import { ProductosServer } from '@/components/productos-server';
-import { getCategoria } from '@/lib/api';
-import { BackButton } from '@/components/back-button';
+import { AlertCircle } from "lucide-react";
+import Link from "next/link";
+import { ProductosServer } from "@/components/productos-server";
+import { getCategoria } from "@/lib/api";
+import { BackButton } from "@/components/back-button";
 
 export default async function CategoriaPage({
   params,
@@ -14,7 +14,7 @@ export default async function CategoriaPage({
   return (
     <div className="mx-auto max-w-7xl px-4 pb-36 pt-32 sm:px-6 lg:px-8">
       <div className="mb-8">
-        <Link href="/steelframe">
+        <Link href="/pvc">
           <BackButton text=" Volver a Categorías" />
         </Link>
 
@@ -37,7 +37,7 @@ export default async function CategoriaPage({
         )}
       </div>
 
-      <ProductosServer codigoCategoria={params.categoria} />
+      <ProductosServer codigoCategoria={params.categoria} type="PVC" />
     </div>
   );
 }

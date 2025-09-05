@@ -4,12 +4,14 @@ import { ProductosClient } from "@/components/productos-client";
 
 interface ProductosServerProps {
   codigoCategoria: string;
+  type?: string;
 }
 
 export async function ProductosServer({
   codigoCategoria,
+  type = "MPC",
 }: ProductosServerProps) {
-  const { data: productos, error } = await getProductos(codigoCategoria);
+  const { data: productos, error } = await getProductos(codigoCategoria, type);
 
   if (error) {
     throw new Error(error);

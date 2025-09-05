@@ -8,7 +8,7 @@ export async function getPVCProducts(): Promise<Map<string, Producto>> {
     console.log("🔍 Cargando productos PVC desde endpoint específico...");
     const startTime = Date.now();
 
-    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/0/0/${NIK_TOKEN}/PVC`;
+    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/0/0/${NIK_TOKEN}/0/CALC`;
 
     const response = await fetch(url, {
       headers: {
