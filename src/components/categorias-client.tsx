@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState, useMemo } from 'react';
-import Link from 'next/link';
-import { Layers } from 'lucide-react';
-import { SearchInput } from '@/components/search-input';
-import { CategoryCard } from '@/components/category-card';
-import { usePathname } from 'next/navigation';
+import { useState, useMemo } from "react";
+import Link from "next/link";
+import { Layers } from "lucide-react";
+import { SearchInput } from "@/components/search-input";
+import { CategoryCard } from "@/components/category-card";
+import { usePathname } from "next/navigation";
 
 interface Categoria {
   codigo: string;
@@ -19,30 +19,32 @@ interface CategoriasClientProps {
 
 export function CategoriasClient({ categorias }: CategoriasClientProps) {
   const pathname = usePathname();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const baseUrl = pathname.includes('/steelframe') ? '/steelframe' : '/pvc';
+  const onSteelframe = pathname.startsWith("/steelframe");
+  const baseUrl = onSteelframe ? "/steelframe" : "/pvc";
 
-  // Filtrar categorías basado en la búsqueda
   const filteredCategorias = useMemo(() => {
+    // 1) Base: si estamos en /steelframe, excluir código "26"
+    const base = onSteelframe
+      ? categorias.filter((c) => c.codigo !== "26")
+      : categorias;
+
+    // 2) Sin búsqueda (o menos de 3 chars): devolver base tal cual
     if (!searchQuery || searchQuery.length < 3) {
-      return categorias;
+      return base;
     }
 
-    const query = searchQuery.toLowerCase().trim();
-
-    return categorias.filter((categoria) => {
-      const descripcion = categoria.descripcion.toLowerCase();
-      const codigo = categoria.codigo.toLowerCase();
-
-      // Buscar en descripción y código
-      return descripcion.includes(query) || codigo.includes(query);
+    // 3) Con búsqueda: filtrar por descripción o código
+    const q = searchQuery.toLowerCase().trim();
+    return base.filter((c) => {
+      const descripcion = c.descripcion.toLowerCase();
+      const codigo = c.codigo.toLowerCase();
+      return descripcion.includes(q) || codigo.includes(q);
     });
-  }, [categorias, searchQuery]);
+  }, [categorias, searchQuery, onSteelframe, pathname]);
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-  };
+  const handleSearch = (query: string) => setSearchQuery(query);
 
   if (!categorias || categorias.length === 0) {
     return (
@@ -60,7 +62,6 @@ export function CategoriasClient({ categorias }: CategoriasClientProps) {
 
   return (
     <>
-      {/* Buscador */}
       <div className="mb-6">
         <SearchInput
           onSearch={handleSearch}
@@ -68,7 +69,6 @@ export function CategoriasClient({ categorias }: CategoriasClientProps) {
         />
       </div>
 
-      {/* Resultados de búsqueda */}
       {searchQuery &&
       searchQuery.length >= 3 &&
       filteredCategorias.length === 0 ? (
@@ -85,9 +85,9 @@ export function CategoriasClient({ categorias }: CategoriasClientProps) {
       ) : (
         <div className="grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredCategorias.map((categoria) => {
-            const isPinturas = categoria.codigo === '11';
+            const isPinturas = categoria.codigo === "11";
             const linkHref = isPinturas
-              ? '/pinturas'
+              ? "/pinturas"
               : `${baseUrl}/${categoria.codigo}`;
 
             return (

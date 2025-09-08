@@ -1,8 +1,8 @@
-'use client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FadeIn } from '../fade-in';
-import { Button } from '../ui/button';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { FadeIn } from "../fade-in";
+import { Button } from "../ui/button";
 
 export default function HeroSection() {
   return (
@@ -10,10 +10,10 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 -z-20"
         style={{
-          backgroundImage: 'url(/bg.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
+          backgroundImage: "url(/bg.webp)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
       />
 
@@ -30,7 +30,7 @@ export default function HeroSection() {
           </div>
         </FadeIn>
         <div className="mb-44 mt-[250px] flex w-full max-w-[876px] flex-col items-center justify-center gap-12 md:mt-[530px]">
-          <FadeIn delay={200}>
+          <FadeIn>
             <p>
               Somos una empresa familiar Pampeana fundada en el año 2000.
               Nuestra misión, desde nuestros inicios, es proporcionar soluciones
@@ -55,7 +55,7 @@ export default function HeroSection() {
       <div
         className="absolute bottom-0 -z-10 h-full w-full"
         style={{
-          background: 'linear-gradient(transparent 82%, #1c1936 91%)',
+          background: "linear-gradient(transparent 82%, #1c1936 91%)",
         }}
       />
     </div>

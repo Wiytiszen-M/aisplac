@@ -21,5 +21,5 @@ export const links = [
   { href: Routes.About, label: "AISPLAC" },
   { href: Routes.News, label: "NOVEDADES" },
   { href: Routes.Contact, label: "CONTACTENOS" },
-  { href: Routes.Distributor, label: "DISTRIBUIDORES" },
+  // { href: Routes.Distributor, label: "DISTRIBUIDORES" },
 ];

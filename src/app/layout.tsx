@@ -52,7 +52,6 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png" }],
     other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg" }],
   },
-  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

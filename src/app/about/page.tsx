@@ -77,7 +77,7 @@ const About = () => {
             </span>
           </h2>
         </FadeIn>
-        <FadeIn delay={100} className="mx-auto mb-[75px] flex w-full max-w">
+        <FadeIn className="mx-auto mb-[75px] flex w-full max-w">
           <div className="mx-auto grid w-full max-w-[973px] grid-cols-2 gap-6 p-4 sm:grid-cols-4">
             {valores.map(({ nombre, icono }) => (
               <div

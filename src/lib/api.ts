@@ -6,6 +6,8 @@ import type {
 } from "@/types";
 
 const NIK_TOKEN = process.env.NIK_TOKEN;
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 // Función para limpiar JSON malformado
 function cleanJsonString(jsonString: string): string {
@@ -18,7 +20,7 @@ function cleanJsonString(jsonString: string): string {
 // Función base para hacer fetch con retry y timeout
 async function fetchWithRetry(
   url: string,
-  options: RequestInit = {},
+  options: RequestInit & { next?: { revalidate?: number } } = {},
   retries = 2
 ): Promise<Response> {
   const controller = new AbortController();
@@ -66,14 +68,11 @@ async function fetchWithRetry(
 // Obtener categorías PVC
 export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
   try {
-    const startTime = Date.now();
-
     const response = await fetchWithRetry(
       `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/PVC/${NIK_TOKEN}`
     );
 
     const responseText = await response.text();
-    console.log(responseText, "response text log");
 
     if (!responseText || responseText.trim() === "") {
       throw new Error("Respuesta vacía al obtener categorías");
@@ -87,9 +86,6 @@ export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
     } catch (error) {
       throw new Error(`Error al parsear JSON: ${error}`);
     }
-
-    const loadTime = Date.now() - startTime;
-    console.log(`✅ Categorías cargadas en ${loadTime}ms`);
 
     if (
       data &&
@@ -121,9 +117,6 @@ export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
 // Obtener categorías
 export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
   try {
-    console.log("📦 Obteniendo categorías...");
-    const startTime = Date.now();
-
     const response = await fetchWithRetry(
       `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/MPC/${NIK_TOKEN}`
     );
@@ -142,9 +135,6 @@ export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
     } catch (error) {
       throw new Error(`Error al parsear JSON: ${error}`);
     }
-
-    const loadTime = Date.now() - startTime;
-    console.log(`✅ Categorías cargadas en ${loadTime}ms`);
 
     if (
       data &&
@@ -211,8 +201,9 @@ export async function getProductos(
   type = "MPC"
 ): Promise<ApiResponse<Producto[]>> {
   try {
-    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}/${type}`;
-    console.log("url", url);
+    const suffix = type === "MPC" ? "MPC" : "0/PVC";
+
+    const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}/${suffix}`;
 
     const response = await fetchWithRetry(url);
 

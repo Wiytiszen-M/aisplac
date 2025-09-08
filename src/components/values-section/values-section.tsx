@@ -1,5 +1,5 @@
-import React from 'react';
-import { FadeIn } from '../fade-in';
+import React from "react";
+import { FadeIn } from "../fade-in";
 
 type Props = {
   className?: string;
@@ -11,15 +11,15 @@ const ValuesSection = ({ className }: Props) => {
       className={`mb-[77px] flex flex-col gap-20 md:gap-44 ${className}`}
     >
       <div className="relative flex w-full flex-col items-center gap-3">
-        <FadeIn delay={300} className="w-[300px] xl:w-[487px]">
+        <FadeIn delay={100} className="w-[300px] xl:w-[487px]">
           <div className="top-36 aspect-square w-[300px] overflow-hidden rounded-2xl lg:relative lg:rotate-45 xl:w-[487px]">
             <div
               className="h-full w-full scale-150 transform transition-transform duration-300 lg:-rotate-45"
               style={{
                 backgroundImage: "url('/sustentabilidad.webp')",
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
               }}
             >
               <div className="flex h-full w-full items-center justify-center duration-300 md:bg-black/40 md:hover:bg-black/0">
@@ -32,14 +32,14 @@ const ValuesSection = ({ className }: Props) => {
         </FadeIn>
 
         <div className="mt-[45px] flex w-full flex-col items-center justify-center gap-10 md:gap-[132px] lg:flex-row xl:mt-0 xl:gap-[220px]">
-          <FadeIn delay={350} className="w-[300px] xl:w-[487px]">
+          <FadeIn delay={150} className="w-[300px] xl:w-[487px]">
             <div className="aspect-square w-[300px] overflow-hidden rounded-2xl lg:rotate-45 xl:w-[487px]">
               <div
                 style={{
                   backgroundImage: "url('/confianza.webp')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                  backgroundSize: 'cover',
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
                 }}
                 className="h-full w-full scale-150 transform transition-transform duration-300 lg:-rotate-45"
               >
@@ -51,14 +51,14 @@ const ValuesSection = ({ className }: Props) => {
               </div>
             </div>
           </FadeIn>
-          <FadeIn delay={400} className="w-[300px] xl:w-[487px]">
+          <FadeIn delay={150} className="w-[300px] xl:w-[487px]">
             <div className="aspect-square w-[300px] overflow-hidden rounded-2xl lg:rotate-45 xl:w-[487px]">
               <div
                 style={{
                   backgroundImage: "url('/union.webp')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                  backgroundSize: 'cover',
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
                 }}
                 className="h-full w-full scale-150 transform transition-transform duration-300 lg:-rotate-45"
               >
