@@ -401,7 +401,7 @@ export default function CotizacionPage() {
               </div>
 
               <div>
-                <Label className="text-sm text-gray-300">Teléfono</Label>
+                <Label className="text-sm text-gray-300">Teléfono *</Label>
                 <Input
                   {...register("telefono", {
                     required: "Código postal es requerido",
@@ -409,7 +409,7 @@ export default function CotizacionPage() {
                       actualizarDatosCotizacion({ telefono: e.target.value }),
                   })}
                   className="h-9 border-gray-600 bg-gray-700 text-sm text-white sm:h-10"
-                  placeholder="Número de teléfono sin 0 o sin 15"
+                  placeholder="Número de teléfono sin 0 y sin 15"
                 />
               </div>
 
