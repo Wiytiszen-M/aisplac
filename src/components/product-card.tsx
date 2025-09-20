@@ -42,8 +42,8 @@ export function ProductCard({ producto, codigoCategoria }: ProductCardProps) {
         <CardContent className="flex flex-grow flex-col pt-0">
           <div className="flex-grow space-y-3">
             {/* Mostrar precio o consultar precio */}
-            <div className="text-center">
-              {producto.precio && producto.precio > 0 ? (
+            {/* <div className="text-center">
+              {producto.precio && producto.precio > 0 && (
                 <>
                   <span className="text-lg font-semibold text-green-400">
                     ${Number(producto.precio).toLocaleString("es-AR")}
@@ -54,16 +54,8 @@ export function ProductCard({ producto, codigoCategoria }: ProductCardProps) {
                     </p>
                   )}
                 </>
-              ) : (
-                <>
-                  {producto.unmedida && (
-                    <p className="text-xs text-gray-500">
-                      por {producto.unmedida}
-                    </p>
-                  )}
-                </>
               )}
-            </div>
+            </div> */}
           </div>
         </CardContent>
       </Card>

@@ -10,24 +10,69 @@ import { Suspense } from "react";
 
 const partnerLogos = [
   {
-    src: "/alfavinil-logo.png",
+    src: "/partner-logos/alfavinil-logo.png",
     alt: "alfavinil-logo",
     name: "Alfavinil",
   },
   {
-    src: "/barbieri-logo.png",
+    src: "/partner-logos/barbieri-logo.png",
     alt: "barbieri-logo",
     name: "Barbieri",
   },
   {
-    src: "/grupo-estisol-logo.png",
+    src: "/partner-logos/grupo-estisol-logo.png",
     alt: "grupo-estisol-logo",
     name: "Grupo Estisol",
   },
   {
-    src: "/isover-logo.png",
+    src: "/partner-logos/isover-logo.png",
     alt: "isover-logo",
     name: "Isover",
+  },
+  {
+    src: "/partner-logos/Acerolatina.webp",
+    alt: "acerolatina-logo",
+    name: "Acerolatina",
+  },
+  {
+    src: "/partner-logos/Eternit.png",
+    alt: "eternit-logo",
+    name: "Eternit",
+  },
+  {
+    src: "/partner-logos/Extraplack.png",
+    alt: "extraplack-logo",
+    name: "Extraplack",
+  },
+  {
+    src: "/partner-logos/Knauf.png",
+    alt: "knauf-logo",
+    name: "Knauf",
+  },
+  {
+    src: "/partner-logos/Llana.png",
+    alt: "llana-logo",
+    name: "Llana",
+  },
+  {
+    src: "/partner-logos/LP.png",
+    alt: "lp-logo",
+    name: "LP",
+  },
+  {
+    src: "/partner-logos/LTN.png",
+    alt: "ltn-logo",
+    name: "LTN",
+  },
+  {
+    src: "/partner-logos/RCDistribuciones.png",
+    alt: "rcdistribuciones-logo",
+    name: "RC Distribuciones",
+  },
+  {
+    src: "/partner-logos/Sika.png",
+    alt: "sika-logo",
+    name: "Sika",
   },
 ];
 

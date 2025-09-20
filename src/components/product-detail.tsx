@@ -229,7 +229,7 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
-              {/* Price */}
+              {/* Price
               {producto.precio && producto.precio > 0 ? (
                 <div className="text-2xl font-bold text-blue-300 md:text-3xl">
                   {formatPrice(producto.precio)}
@@ -238,7 +238,10 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
                 <div className="text-2xl font-bold text-orange-300 md:text-3xl">
                   CONSULTAR PRECIO
                 </div>
-              )}
+              )} */}
+              <div className="text-2xl font-bold text-orange-300 md:text-base">
+                CONSULTAR PRECIO
+              </div>
               <Separator className="my-4 h-[1px] bg-[#A7A7A7]" />
 
               <div className="space-y-2 text-blue-200">
@@ -302,14 +305,14 @@ export default function ProductDetail({ producto }: ProductDetailProps) {
               </div>
 
               {/* Total Price */}
-              {producto.precio > 0 && (
+              {/* {producto.precio > 0 && (
                 <div className="text-right text-blue-200">
                   <span className="text-sm">Total: </span>
                   <span className="text-xl font-bold text-white">
                     {formatPrice(producto.precio * quantity)}
                   </span>
                 </div>
-              )}
+              )} */}
 
               {isProcessing && (
                 <div className="text-center">

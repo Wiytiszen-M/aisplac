@@ -862,7 +862,7 @@ export function PVCCeilingCalculator() {
 
                       return totalConsolidado > 0 ? (
                         <div className="mt-4 rounded-md border border-green-600 bg-green-900/20 p-4">
-                          <div className="flex items-center justify-between">
+                          {/* <div className="flex items-center justify-between">
                             <span className="text-lg font-medium">
                               Total Estimado (Todos los ambientes):
                             </span>
@@ -873,7 +873,7 @@ export function PVCCeilingCalculator() {
                           <p className="mt-1 text-sm text-green-300">
                             * Precios sujetos a cambios. Algunos productos
                             requieren consulta.
-                          </p>
+                          </p> */}
                           <p className="text-sm text-green-300">
                             Ambientes calculados:{" "}
                             {rooms

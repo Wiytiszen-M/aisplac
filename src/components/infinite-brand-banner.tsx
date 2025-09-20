@@ -41,7 +41,7 @@ const InfiniteBrandBanner = ({ brands }: Props) => {
                 alt={brand.alt}
                 width={160}
                 height={80}
-                className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-16 w-auto max-w-[160px] max-h-[80px] object-contain grayscale hover:grayscale-0 transition-all duration-300"
               />
             </div>
           ))}

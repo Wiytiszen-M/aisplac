@@ -40,7 +40,7 @@ export default function CotizacionPage() {
   const {
     items,
     datosCotizacion,
-    total,
+    // total,
     enviando,
     ultimoEnvio,
     errorEnvio,
@@ -202,7 +202,6 @@ export default function CotizacionPage() {
       </div>
     );
   }
-  console.log(items);
 
   return (
     <div className="mx-auto max-w-7xl space-y-6 px-4 py-36 sm:space-y-8 sm:px-6">
@@ -289,7 +288,7 @@ export default function CotizacionPage() {
                       </div>
 
                       {/* Subtotal */}
-                      {item.precio > 0 && (
+                      {/* {item.precio > 0 && (
                         <div className="text-xs sm:text-sm">
                           <span className="text-gray-400">Subtotal: </span>
                           <span className="font-medium text-green-400">
@@ -299,7 +298,7 @@ export default function CotizacionPage() {
                             )}
                           </span>
                         </div>
-                      )}
+                      )} */}
                     </div>
                   </div>
 
@@ -316,7 +315,7 @@ export default function CotizacionPage() {
               ))}
 
               {/* Total */}
-              {total > 0 && (
+              {/* {total > 0 && (
                 <div className="border-t border-gray-600 pt-3 sm:pt-4">
                   <div className="flex items-center justify-between">
                     <span className="text-base font-medium text-white sm:text-lg">
@@ -327,7 +326,7 @@ export default function CotizacionPage() {
                     </span>
                   </div>
                 </div>
-              )}
+              )} */}
             </CardContent>
           </Card>
         </div>
@@ -405,11 +404,12 @@ export default function CotizacionPage() {
                 <Label className="text-sm text-gray-300">Teléfono</Label>
                 <Input
                   {...register("telefono", {
+                    required: "Código postal es requerido",
                     onChange: (e) =>
                       actualizarDatosCotizacion({ telefono: e.target.value }),
                   })}
                   className="h-9 border-gray-600 bg-gray-700 text-sm text-white sm:h-10"
-                  placeholder="Número de teléfono"
+                  placeholder="Número de teléfono sin 0 o sin 15"
                 />
               </div>
 

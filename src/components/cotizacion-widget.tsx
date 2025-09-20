@@ -10,8 +10,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export function CotizacionWidget() {
-  const { items, total, removerProducto, actualizarCantidad } =
-    useCotizacionStore();
+  const { items, removerProducto, actualizarCantidad } = useCotizacionStore();
   const [isOpen, setIsOpen] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -111,10 +110,10 @@ export function CotizacionWidget() {
                     {item.descripcion}
                   </p>
                   <p className="mb-1 text-xs text-gray-400">{item.unmedida}</p>
-                  <p className="text-xs font-medium text-white">
+                  {/* <p className="text-xs font-medium text-white">
                     ${item.precio.toLocaleString()} x {item.cantidad} = $
                     {(item.precio * item.cantidad).toLocaleString()}
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="flex flex-col items-center gap-1">
@@ -157,12 +156,12 @@ export function CotizacionWidget() {
           </CardContent>
 
           <div className="border-t border-gray-700 p-4">
-            <div className="mb-3 flex items-center justify-between">
+            {/* <div className="mb-3 flex items-center justify-between">
               <span className="font-semibold text-white">Total:</span>
               <span className="text-xl font-bold text-blue-300">
                 ${total.toLocaleString()}
               </span>
-            </div>
+            </div> */}
 
             <div className="flex gap-2">
               <Link

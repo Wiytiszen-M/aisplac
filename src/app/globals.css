@@ -100,7 +100,7 @@ body {
 }
 
 .animate-scroll-seamless {
-  animation: scroll-seamless 35s linear infinite;
+  animation: scroll-seamless 70s linear infinite;
 }
 
 /* Pausa la animación al hacer hover */
