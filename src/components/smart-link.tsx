@@ -22,7 +22,7 @@ export function SmartLink({ href, children, className, onClick }: Props) {
     );
   }
   return (
-    <Link href={href} className={className}>
+    <Link href={href} className={className} onClick={onClick}>
       {" "}
       {children}{" "}
     </Link>
