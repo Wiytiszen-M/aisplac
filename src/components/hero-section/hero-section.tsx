@@ -18,7 +18,7 @@ export default function HeroSection() {
       />
 
       <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-center px-4 text-center">
-        <FadeIn className="mt-[180px] w-full max-w-[486px] px-4 md:mt-[430px]">
+        <div className="mt-[180px] w-full max-w-[486px] px-4 md:mt-[430px]">
           <div className="relative aspect-[486/277] w-full">
             <Image
               src="/logo.svg"
@@ -28,7 +28,7 @@ export default function HeroSection() {
               className="object-contain"
             />
           </div>
-        </FadeIn>
+        </div>
         <div className="mb-44 mt-[250px] flex w-full max-w-[876px] flex-col items-center justify-center gap-12 md:mt-[530px]">
           <FadeIn>
             <p>
