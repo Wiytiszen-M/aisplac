@@ -205,7 +205,9 @@ export async function getProductos(
 
     const url = `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaProductosJson/${codigoCategoria}/0/${NIK_TOKEN}/${suffix}`;
 
-    const response = await fetchWithRetry(url);
+    const response = await fetchWithRetry(url, {
+      next: { revalidate: 3600 },
+    });
 
     const responseText = await response.text();
 
