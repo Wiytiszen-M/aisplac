@@ -69,7 +69,10 @@ async function fetchWithRetry(
 export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
   try {
     const response = await fetchWithRetry(
-      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/PVC/${NIK_TOKEN}`
+      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/PVC/${NIK_TOKEN}`,
+      {
+        next: { revalidate: 600 },
+      }
     );
 
     const responseText = await response.text();
@@ -118,7 +121,10 @@ export async function getCategoriasPVC(): Promise<ApiResponse<Categoria[]>> {
 export async function getCategorias(): Promise<ApiResponse<Categoria[]>> {
   try {
     const response = await fetchWithRetry(
-      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/MPC/${NIK_TOKEN}`
+      `https://aisplacsrl.gestionnik.com/aisplacsrl/NominaCategoriasJson/MPC/${NIK_TOKEN}`,
+      {
+        next: { revalidate: 600 },
+      }
     );
 
     const responseText = await response.text();
@@ -287,7 +293,9 @@ export async function getProducto(
 
     let response: Response;
     try {
-      response = await fetchWithRetry(baseUrl);
+      response = await fetchWithRetry(baseUrl, {
+        next: { revalidate: 600 },
+      });
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (fetchError) {
       return {

@@ -1,3 +1,5 @@
+export const revalidate = 120;
+
 import { CategoriasPVCGrid } from "@/components/categorias-pvc-grid";
 import { CategoriasSkeleton } from "@/components/categorias-skeleton";
 import { FadeIn } from "@/components/fade-in";

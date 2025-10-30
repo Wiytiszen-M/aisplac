@@ -1,6 +1,7 @@
-import { Layers } from 'lucide-react';
-import { getCategoriasPVC } from '@/lib/api';
-import { CategoriasClient } from '@/components/categorias-client';
+export const revalidate = 600;
+import { Layers } from "lucide-react";
+import { getCategoriasPVC } from "@/lib/api";
+import { CategoriasClient } from "@/components/categorias-client";
 
 export async function CategoriasPVCGrid() {
   const { data: categorias, error } = await getCategoriasPVC();

@@ -12,7 +12,7 @@ import { getArticle } from "@/sanity/lib/sanity.api";
 import { urlForImage } from "@/sanity/lib/sanity.image";
 import { BackButton } from "@/components/back-button";
 
-export const revalidate = 3600;
+export const revalidate = 600;
 
 type Props = {
   params: { slug: string };
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
   const slugs = await client.fetch<string[]>(
     articleSlugsQuery,
     {},
-    { next: { revalidate: 3600, tags: ["articles"] } }
+    { next: { revalidate: 600, tags: ["articles"] } }
   );
   return slugs.map((slug) => ({ slug }));
 }

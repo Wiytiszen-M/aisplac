@@ -1,3 +1,5 @@
+export const revalidate = 600;
+
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,8 +8,6 @@ import { getAllArticles } from "@/sanity/lib/sanity.api";
 import { urlForImage } from "@/sanity/lib/sanity.image";
 import { MoveRight } from "lucide-react";
 import { BackButton } from "@/components/back-button";
-
-export const revalidate = 3600;
 
 export default async function NovedadesPage() {
   const articles: ArticlePreview[] = await getAllArticles();
