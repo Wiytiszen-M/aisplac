@@ -7,8 +7,11 @@ export async function CategoriasGrid() {
 
   if (error) throw new Error(error);
 
-  // ✅ Filtrar categoría 43
-  const categoriasFiltradas = categorias?.filter((cat) => cat.codigo !== "43");
+  const codigosExcluidos = ["26", "43", "44", "17", "42"];
+
+  const categoriasFiltradas = categorias?.filter(
+    (cat) => !codigosExcluidos.includes(cat.codigo)
+  );
 
   if (!categoriasFiltradas || categoriasFiltradas.length === 0) {
     return (
