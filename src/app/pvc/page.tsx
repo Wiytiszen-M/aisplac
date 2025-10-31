@@ -1,4 +1,4 @@
-export const revalidate = 120;
+export const revalidate = 600;
 
 import { CategoriasPVCGrid } from "@/components/categorias-pvc-grid";
 import { CategoriasSkeleton } from "@/components/categorias-skeleton";

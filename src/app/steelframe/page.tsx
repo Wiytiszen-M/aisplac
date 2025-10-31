@@ -1,3 +1,5 @@
+export const revalidate = 600;
+
 import { CategoriasGrid } from "@/components/categorias-grid";
 import { CategoriasSkeleton } from "@/components/categorias-skeleton";
 import InfiniteBrandBanner from "@/components/infinite-brand-banner";
