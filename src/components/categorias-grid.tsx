@@ -1,15 +1,16 @@
-import { Layers } from 'lucide-react';
-import { getCategorias } from '@/lib/api';
-import { CategoriasClient } from '@/components/categorias-client';
+import { Layers } from "lucide-react";
+import { getCategorias } from "@/lib/api";
+import { CategoriasClient } from "@/components/categorias-client";
 
 export async function CategoriasGrid() {
   const { data: categorias, error } = await getCategorias();
 
-  if (error) {
-    throw new Error(error); // Esto activará error.tsx
-  }
+  if (error) throw new Error(error);
 
-  if (!categorias || categorias.length === 0) {
+  // ✅ Filtrar categoría 43
+  const categoriasFiltradas = categorias?.filter((cat) => cat.codigo !== "43");
+
+  if (!categoriasFiltradas || categoriasFiltradas.length === 0) {
     return (
       <div className="py-12 text-center">
         <Layers className="mx-auto mb-4 h-16 w-16 text-gray-500" />
@@ -23,5 +24,5 @@ export async function CategoriasGrid() {
     );
   }
 
-  return <CategoriasClient categorias={categorias} />;
+  return <CategoriasClient categorias={categoriasFiltradas} />;
 }
